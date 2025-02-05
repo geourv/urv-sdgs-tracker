@@ -16,13 +16,6 @@
     ],
     "selectors": [
         {
-            "id": "degree_name",
-            "type": "SelectorText",
-            "parentSelectors": ["_root"],
-            "selector": "h5",
-            "multiple": true
-        },
-        {
             "id": "degree_url",
             "type": "SelectorLink",
             "parentSelectors": ["_root"],
