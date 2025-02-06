@@ -93,9 +93,9 @@ rsconnect/
 *.Rda
 
 # csv data
-*.csv
-*.CSV
-*.Csv
+#*.csv
+#*.CSV
+#*.Csv
 
 # sas data
 *.sas7bdat
