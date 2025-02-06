@@ -1,48 +1,65 @@
 {
-  "_id": "first_year_table",
+  "_id": "course_details_list",
   "startUrl": [
     "https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/assignatures/gestionar"
   ],
   "selectors": [
     {
-      "id": "code",
+      "id": "table",
       "parentSelectors": ["_root"],
-      "type": "SelectorText",
-      "selector": "#listTable_1 tr td:nth-of-type(1)",
+      "type": "SelectorElement",
       "multiple": true,
-      "regex": ""
+      "selector": "table[id^='listTable_']"
     },
     {
-      "id": "name",
-      "parentSelectors": ["_root"],
-      "type": "SelectorText",
-      "selector": "#listTable_1 tr td:nth-of-type(2)",
+      "id": "course_row",
+      "parentSelectors": ["table"],
+      "type": "SelectorElement",
       "multiple": true,
-      "regex": ""
+      "selector": "tbody tr"
+    },
+    {
+      "id": "code",
+      "parentSelectors": ["course_row"],
+      "type": "SelectorText",
+      "selector": "td:nth-of-type(1)",
+      "multiple": false
+    },
+    {
+      "id": "url",
+      "parentSelectors": ["course_row"],
+      "type": "SelectorLink",
+      "selector": "td:nth-of-type(2) a",
+      "multiple": false
     },
     {
       "id": "period",
-      "parentSelectors": ["_root"],
+      "parentSelectors": ["course_row"],
       "type": "SelectorText",
-      "selector": "#listTable_1 tr td:nth-of-type(3)",
-      "multiple": true,
-      "regex": ""
+      "selector": "td:nth-of-type(3)",
+      "multiple": false
     },
     {
       "id": "type",
-      "parentSelectors": ["_root"],
+      "parentSelectors": ["course_row"],
       "type": "SelectorText",
-      "selector": "#listTable_1 tr td:nth-of-type(4)",
-      "multiple": true,
-      "regex": ""
+      "selector": "td:nth-of-type(4)",
+      "multiple": false
     },
     {
       "id": "credits",
-      "parentSelectors": ["_root"],
+      "parentSelectors": ["course_row"],
       "type": "SelectorText",
-      "selector": "#listTable_1 tr td:nth-of-type(5)",
-      "multiple": true,
-      "regex": ""
+      "selector": "td:nth-of-type(5)",
+      "multiple": false
+    },
+    {
+      "id": "year",
+      "parentSelectors": ["table"],
+      "type": "SelectorText",
+      "selector": "thead tr:nth-of-type(1)",
+      "multiple": false
     }
   ]
 }
+
