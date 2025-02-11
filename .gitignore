@@ -125,7 +125,7 @@ rsconnect/
 *.Smcl
 
 # data commonly used in Python
-*.json
+#*.json
 *.pkl
 *.h5
 *.msgpack
