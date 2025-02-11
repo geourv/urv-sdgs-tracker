@@ -53,7 +53,7 @@ Thumbs.db
 
 # Directories
 docs/
-data/
+#data/
 development/
 macros/
 output/
@@ -81,8 +81,8 @@ rsconnect/
 *.TXT
 
 # Exclude Excel
-*.xlsx
-*.xls
+#*.xlsx
+#*.xls
 
 # R data
 *.rds
