@@ -1,0 +1,19 @@
+{
+    "_id": "docnet-iframes",
+    "startUrl": [
+      "https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/assignatures/115109/guia_docent_docnet"
+    ],
+    "selectors": [
+      {
+        "id": "iframes",
+        "parentSelectors": [
+          "_root"
+        ],
+        "type": "SelectorElementAttribute",
+        "selector": "iframe",
+        "multiple": false,
+        "extractAttribute": "src"
+      }
+    ]
+}
+  
