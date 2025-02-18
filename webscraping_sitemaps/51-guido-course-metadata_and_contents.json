@@ -1,0 +1,24 @@
+{
+  "_id": "guido-course-metadata_and_contents",
+  "startUrl": [
+                "https://guiadocent.urv.cat/guido/public/centres/498/ensenyaments/3542/assignatures/116741/guia_docent"
+  ],
+  "selectors": [
+    {
+      "id": "dades_identificatives",
+      "parentSelectors": ["_root"],
+      "type": "SelectorText",
+      "selector": "#dades_identificatives",
+      "multiple": false,
+      "regex": ""
+    },
+    {
+      "id": "continguts",
+      "parentSelectors": ["_root"],
+      "type": "SelectorText",
+      "selector": "#continguts",
+      "multiple": false,
+      "regex": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "_id": "guido-course-coordinators",
+  "startUrl": [
+    "https://guiadocent.urv.cat/guido/public/centres/498/ensenyaments/3542/assignatures/116741/guia_docent"
+  ],
+    {
+      "id": "coordinators",
+      "linkType": "linkFromHref",
+      "multiple": true,
+      "parentSelectors": [
+        "_root"
+      ],
+      "selector": "#dades_identificatives div.row:contains('Coordinador/a') a",
+      "type": "SelectorLink"
+    }
+  ]
+}

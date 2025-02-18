@@ -1,0 +1,18 @@
+{
+  "_id": "guido-course-learning-results",
+  "startUrl": [
+    "https://guiadocent.urv.cat/guido/public/centres/494/ensenyaments/3562/assignatures/117028/guia_docent?&idioma=ca"
+  ],
+  "selectors": [
+    {
+      "id": "reference",
+      "multiple": true,
+      "parentSelectors": [
+        "_root"
+      ],
+      "regex": "",
+      "selector": "#avaluacio .container-fluid ul li",
+      "type": "SelectorText"
+    }
+  ]
+}

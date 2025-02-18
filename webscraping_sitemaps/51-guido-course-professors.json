@@ -1,0 +1,17 @@
+{
+  "_id": "guido-course-professors",
+  "startUrl": [
+    "https://guiadocent.urv.cat/guido/public/centres/498/ensenyaments/3542/assignatures/116741/guia_docent"
+  ],
+    {
+      "id": "professors",
+      "linkType": "linkFromHref",
+      "multiple": true,
+      "parentSelectors": [
+        "_root"
+      ],
+      "selector": "#dades_identificatives div.row:contains('Professors/es') a",
+      "type": "SelectorLink"
+    }
+  ]
+}
