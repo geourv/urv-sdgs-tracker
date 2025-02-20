@@ -1,5 +1,5 @@
 {
-    "_id": "faculty_list",
+    "_id": "faculties_list",
     "startUrl": ["https://guiadocent.urv.cat/guido/public/centres/gestionar"],
     "selectors": [
         {

@@ -59,6 +59,7 @@ macros/
 output/
 sasdata/
 libs/
+sandbox/
 
 # translation temp files
 po/*~
