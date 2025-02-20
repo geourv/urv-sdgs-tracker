@@ -59,8 +59,8 @@ macros/
 output/
 sasdata/
 libs/
-sandbox/
-logos/
+#sandbox/
+#logos/
 
 # translation temp files
 po/*~
