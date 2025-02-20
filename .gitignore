@@ -60,6 +60,7 @@ output/
 sasdata/
 libs/
 sandbox/
+logos/
 
 # translation temp files
 po/*~
