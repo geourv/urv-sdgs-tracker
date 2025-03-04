@@ -214,25 +214,11 @@ course_details_df <- course_details_list %>%
 
 #missing_description <- course_details_df[is.na(course_details_df$description),"course_url"]
 
-rm(course_coordinators,course_professors,course_description,course_contents,course_learning_results,course_competences,course_bibliography)
+rm(course_coordinators,course_professors,course_description,course_contents,course_competences_learning_results,course_bibliography)
 
 
 #Merge course details with degree details
-course_details <- left_join(degree_programs_list, course_details, by = "degree_url")
+# course_details <- left_join(degree_programs_list, course_details, by = "degree_url")
 
 rm(course_details_list,degree_programs_list)
 
-
-#Nest courses within each degree while keeping all degree information
-#final_structure <- degree_programs_list %>%
-#  left_join(course_details %>% group_by(degree_url) %>%
-#              summarise(courses = list(cur_data())), by = "degree_url") %>%
-#  mutate(courses = ifelse(is.na(courses), list(NULL), courses))  # Ensures degrees without courses still appear
-
-
-
-#Convert the final structure to JSON
-#json_output <- toJSON(final_structure, pretty = TRUE, auto_unbox = TRUE, na = "null")
-
-#Save the JSON to a file
-#write(json_output, "src/json/sdgs_urv_data.json")
