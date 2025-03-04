@@ -1,5 +1,16 @@
 # Version 2023-11-29
 
+# Directories
+docs/
+#data/
+development/
+macros/
+dist/
+sasdata/
+libs/
+#sandbox/
+#logos/
+
 # History files
 .Rhistory
 .Rapp.history
@@ -7,7 +18,7 @@
 # Session Data files
 .RData
 *.RData
-.RDataTmp
+.RDataTmp*
 
 # User-specific files
 .Ruserdata
@@ -51,17 +62,6 @@ Thumbs.db
 # R projects 
 *.Rproj
 
-# Directories
-docs/
-#data/
-development/
-macros/
-output/
-sasdata/
-libs/
-#sandbox/
-#logos/
-
 # translation temp files
 po/*~
 
@@ -99,33 +99,6 @@ rsconnect/
 #*.CSV
 #*.Csv
 
-# sas data
-*.sas7bdat
-*.sas7bcat
-
-# SPSS data
-*.sav
-*.SAV
-*.Sav
-
-# SPSS output
-*.spv
-*.SPV
-*.Spv
-
-# STATA data
-*.dta
-*.DTA
-*.Dta
-
-# STATA log files
-*.log
-*.LOG
-*.Log
-*.smcl
-*.SMCL
-*.Smcl
-
 # data commonly used in Python
 #*.json
 *.pkl
@@ -140,11 +113,6 @@ www/.vscode/
 # Bookdown book
 _book/
 _bookdown_files/
-
-# Binary - Powerpoint and iThoughtsX
-*.ppt
-*.pptx
-*.itmz
 
 # R packages
 *.tar
