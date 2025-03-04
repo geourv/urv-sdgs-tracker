@@ -4284,7 +4284,7 @@
       "id": "coordinators",
       "parentSelectors": ["_root"],
       "type": "SelectorText",
-      "selector": "tr:contains('Coordinador/a') td:nth-child(2)",
+      "selector": "tr:contains('Coordinador/a') td:nth-child(2) table tbody tr",
       "multiple": true,
       "regex": ""
     }
