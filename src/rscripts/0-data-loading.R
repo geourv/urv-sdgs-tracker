@@ -1,7 +1,5 @@
-
 # setwd("~/git/urv-sdgs-tracker")
 setwd("C:/Users/Lluis Salvat/git/urv-sdgs-tracker")
-
 
 library(readr)
 library(dplyr)
@@ -17,7 +15,6 @@ degree_programs_list <- read_delim("data/degree_programs_list.csv",
                                    trim_ws = TRUE)
 colnames(degree_programs_list) <- c("web_scraper_order", "faculty_school_url", 
                                     "degree_name", "degree_url")
-
 
 
 
@@ -57,6 +54,7 @@ course_details_list_docnet <-
 colnames(course_details_list_docnet) <- c("web_scraper_order", "degree_url", 
                                           "course_delivery_mode", "course_code", "course_name",
                                           "course_period", "course_type", "credits", "year","course_url")
+
 
 
 # Union docnet and guido course details ----
@@ -159,9 +157,13 @@ colnames(docnet_course_competences) <- c("web_scraper_order", "course_url", "com
 course_competences <- docnet_course_competences
 rm(docnet_course_competences)
 
+
+
 # Union of learning results and competences ----
 course_competences_learning_results <- rbind(course_learning_results,course_competences)
 rm(course_learning_results,course_competences)
+
+
 
 # Load and setup bibliography ----
 guido_course_bibliography <- read_csv("data/guido-course-bibliography.csv")
@@ -175,6 +177,7 @@ docnet_course_bibliography <- docnet_course_bibliography[, c("web_scraper_order"
 
 course_bibliography <- rbind(guido_course_bibliography, docnet_course_bibliography)
 rm(guido_course_bibliography, docnet_course_bibliography)
+
 
 
 # Aggregate ----
@@ -214,7 +217,8 @@ course_details_df <- course_details_list %>%
 
 #missing_description <- course_details_df[is.na(course_details_df$description),"course_url"]
 
-rm(course_coordinators,course_professors,course_description,course_contents,course_competences_learning_results,course_bibliography)
+rm(course_competences_learning_results_agg,course_description_agg,course_contents_agg,course_bibliography_agg,course_coordinators,course_professors,course_description,course_contents,course_competences_learning_results,course_bibliography)
+
 
 
 #Merge course details with degree details

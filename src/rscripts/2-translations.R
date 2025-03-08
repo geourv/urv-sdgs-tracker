@@ -1,5 +1,7 @@
 library(polyglotr)
 
+# Create translation column function----
+
 translate_column <- function(df, col_name, target_lang, source_lang = NULL) {
   # Verificar que la columna existe en el dataframe
   if (!col_name %in% names(df)) {
@@ -23,6 +25,21 @@ translate_column <- function(df, col_name, target_lang, source_lang = NULL) {
 }
 
 
-# test_df<-course_details_df %>% filter(document_number<10)
-df_translated <- translate_column(test_df, "course_name", "es", source_lang = "ca")
+
+#Translate the following columns from Catalan to English language----
+
+course_details_df <-
+  translate_column(course_details_df, "course_name", "en", source_lang = "ca") 
+
+course_details_df <-
+  translate_column(course_details_df, "description", "en", source_lang = "ca") 
+
+course_details_df <-
+  translate_column(course_details_df, "contents", "en", source_lang = "ca")
+
+course_details_df <-
+  translate_column(course_details_df, "competences_learning_results", "en", source_lang = "ca") 
+
+course_details_df <-
+  translate_column(course_details_df, "reference", "en", source_lang = "ca")
 
