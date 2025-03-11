@@ -5,7 +5,6 @@ library(readr)
 library(dplyr)
 library(jsonlite)
 library(stringr)
-library(polyglotr)
 
 
 
