@@ -1,11 +1,11 @@
 # Version 2023-11-29
 
 # Directories
-docs/
+#docs/
 #data/
 development/
 macros/
-dist/
+#dist/
 sasdata/
 libs/
 #sandbox/
