@@ -1,9 +1,8 @@
-# setwd("~/git/urv-sdgs-tracker")
-setwd("C:/Users/Lluis Salvat/git/urv-sdgs-tracker")
+setwd("~/git/urv-sdgs-tracker")
+# setwd("C:/Users/Lluis Salvat/git/urv-sdgs-tracker")
 
 library(readr)
 library(dplyr)
-library(jsonlite)
 library(stringr)
 
 
@@ -168,11 +167,11 @@ rm(course_learning_results,course_competences)
 guido_course_bibliography <- read_csv("data/guido-course-bibliography.csv")
 docnet_course_bibliography <- read_csv("data/docnet-course-bibliography.csv")
 
-colnames(guido_course_bibliography) <- c("web_scraper_order", "course_url", "reference")
-colnames(docnet_course_bibliography) <- c("web_scraper_order", "course_url", "reference")
+colnames(guido_course_bibliography) <- c("web_scraper_order", "course_url", "references")
+colnames(docnet_course_bibliography) <- c("web_scraper_order", "course_url", "references")
 
-guido_course_bibliography <- guido_course_bibliography[, c("web_scraper_order", "course_url", "reference")]
-docnet_course_bibliography <- docnet_course_bibliography[, c("web_scraper_order", "course_url", "reference")]
+guido_course_bibliography <- guido_course_bibliography[, c("web_scraper_order", "course_url", "references")]
+docnet_course_bibliography <- docnet_course_bibliography[, c("web_scraper_order", "course_url", "references")]
 
 course_bibliography <- rbind(guido_course_bibliography, docnet_course_bibliography)
 rm(guido_course_bibliography, docnet_course_bibliography)
@@ -192,7 +191,7 @@ course_contents_agg <- aggregate(contents ~ course_url,
                                     data = course_contents, 
                                     paste, collapse = ";")
 
-course_bibliography_agg <- aggregate(reference ~ course_url, 
+course_bibliography_agg <- aggregate(references ~ course_url, 
                                  data = course_bibliography, 
                                  paste, collapse = ";")
 

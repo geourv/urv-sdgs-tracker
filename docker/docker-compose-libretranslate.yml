@@ -1,0 +1,17 @@
+services:
+  libretranslate:
+    container_name: libretranslate_service
+    image: libretranslate/libretranslate
+    ports:
+      - "5000:5000"
+    environment:
+      - LT_LOAD_ONLY=en,ca
+      - LT_NO_UPDATE=true
+      - LT_WORKERS=6
+      - MAX_WORKERS=6
+      - WAITRESS_THREADS=6
+    cpus: "6"
+    mem_limit: "6g"
+
+
+

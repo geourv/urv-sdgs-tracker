@@ -1,55 +1,53 @@
-library(polyglotr)
 
-# Function to Translate a Specific Column, Track Progress, and Dynamically Name Output
-translate_column <- function(df, column, source_lang, target_lang, service = "mymemory") {
-  
-  handlers(global = TRUE)  # Enable progress globally within the function
-  handlers("progress")    # Enable progress reporting within the function
-  p <- progressor(along = seq_len(nrow(df)))  # Progress bar
-  
-  # Apply translation row by row
-  translations <- pmap(
-    list(df[[column]]),
-    ~ {
-      p()  # Update progress bar
-      if (service == "mymemory") {
-        mymemory_translate(..1, source_language = source_lang, target_language = target_lang)
-      } else {
-        stop("Unsupported translation service")
-      }
-    }
-  )
-  
-  # Add translations to the original data frame
-  new_col_name <- paste0(column, "_", target_lang)
-  if (!new_col_name %in% names(df)) {
-    df[[new_col_name]] <- NA  # Initialize new column with NA
-  }
-  df[[new_col_name]] <- translations
-  
-  return(df)
-}
+# Load data if necessary
+# source("./src/rscripts/0-data-loading.R")
 
-# Run the function
-# df_translated <- translate_column(course_details_df[1:100,], column = "course_name", source_lang = "ca", target_lang = "en")
-df_translated <- translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en")
+# Translate the columns from Catalan to English
+source("./src/R/translate_column.R")
+
+# Translate columns into individual CSV files ----
+translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en", 
+                 file_path = "./sandbox/course_name-en.csv", max_cores = 4,
+                 context = "Aquest és el nom de l'assignatura:") # Give some context so short texts are better translated
+
+translate_column(course_details_df, column = "description", source_lang = "ca", target_lang = "en", 
+                 file_path = "./sandbox/description-en.csv", max_cores = 4)
+
+translate_column(course_details_df, column = "contents", source_lang = "ca", target_lang = "en", 
+                 file_path = "./sandbox/contents-en.csv", max_cores = 4)
+
+translate_column(course_details_df, column = "competences_learning_results", source_lang = "ca", target_lang = "en", 
+                 file_path = "./sandbox/competences_learning_results-en.csv", max_cores = 4)
+
+translate_column(course_details_df, column = "references", source_lang = "ca", target_lang = "en", 
+                 file_path = "./sandbox/references-en.csv", max_cores = 4)
 
 
+# Prepare SDG analysis df ----
+course_name_en <- read_csv("./data/translations/course_name-en.csv") %>% 
+  select(translated_text) %>% 
+  rename(course_name_en = translated_text)
 
-#Translate the following columns from Catalan to English language----
+description_en <- read_csv("./data/translations/description-en.csv") %>% 
+  select(translated_text) %>% 
+  rename(description_en = translated_text)
 
-course_details_df <-
-  translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en") 
+contents_en <- read_csv("./data/translations/contents-en.csv") %>% 
+  select(translated_text) %>% 
+  rename(contents_en = translated_text)
 
-course_details_df <-
-  translate_column(course_details_df, "description", "en", source_lang = "ca") 
+competences_learning_results_en <- read_csv("./data/translations/competences_learning_results-en.csv") %>% 
+  select(translated_text) %>% 
+  rename(competences_learning_results_en = translated_text)
 
-course_details_df <-
-  translate_column(course_details_df, "contents", "en", source_lang = "ca")
+references_en <- read_csv("./data/translations/references-en.csv") %>% 
+  select(translated_text) %>% 
+  rename(references_en = translated_text)
 
-course_details_df <-
-  translate_column(course_details_df, "competences_learning_results", "en", source_lang = "ca") 
+# Bind all translated columns to the original dataframe
+sdg_analysis_df <- course_details_df %>%
+  select(document_number) %>%
+  cbind(course_name_en, description_en, contents_en, 
+        competences_learning_results_en, references_en)
 
-course_details_df <-
-  translate_column(course_details_df, "reference", "en", source_lang = "ca")
 
