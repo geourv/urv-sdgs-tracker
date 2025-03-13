@@ -4,3 +4,10 @@ sandbox/
 
 # R unwanted files
 .Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+.Rprofile
+
+# RStudio session files
+*.Rproj

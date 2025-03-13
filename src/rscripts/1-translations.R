@@ -48,6 +48,7 @@ references_en <- read_csv("./data/translations/references-en.csv") %>%
 sdg_analysis_df <- course_details_df %>%
   select(document_number) %>%
   cbind(course_name_en, description_en, contents_en, 
-        competences_learning_results_en, references_en)
+        competences_learning_results_en, references_en)%>%
+  mutate(across(ends_with("_en"), ~ na_if(., "Error in translation request")))
 
 
