@@ -1,3 +1,5 @@
+
+# Set working directory
 setwd("~/git/urv-sdgs-tracker")
 # setwd("C:/Users/Lluis Salvat/git/urv-sdgs-tracker")
 
@@ -180,8 +182,8 @@ rm(guido_course_bibliography, docnet_course_bibliography)
 
 # Aggregate ----
 course_competences_learning_results_agg <- aggregate(competences_learning_results ~ course_url, 
-                    data = course_competences_learning_results, 
-                    paste, collapse = ";")
+                                                     data = course_competences_learning_results, 
+                                                     paste, collapse = ";")
 
 course_description_agg <- aggregate(description ~ course_url, 
                                     data = course_description, 
@@ -224,3 +226,5 @@ rm(course_competences_learning_results_agg,course_description_agg,course_content
 
 rm(course_details_list,degree_programs_list)
 
+# Save course_details_df
+course_details_df <- write.csv(course_details_df, "./data/course_details_df.csv", row.names = FALSE)

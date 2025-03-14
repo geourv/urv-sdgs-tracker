@@ -4,7 +4,8 @@ df <- data.frame(
   degree = c("Biology", "Biology", "History", "History", "Physics"),
   course = c("Genetics", "Ecology", "Ancient History", "Modern History", "Quantum Mechanics"),
   professor = c("Dr. A", "Dr. B", "Dr. C", "Dr. D", "Dr. E"),
-  credits = c(4, 3, 5, 4, 6)
+  credits = c(4, 3, 5, 4, 6),
+  sdg = c("SDG-01","SDG-02","SDG-03","SDG-04","SDG-05","SDG-06","SDG-07","SDG-08","SDG-09","SDG-10","SDG-11","SDG-12","SDG-13","SDG-14","SDG-15","SDG-16","SDG-17")
 )
 
 # Split first by faculty, then within each faculty, split by degree

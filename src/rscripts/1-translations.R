@@ -1,6 +1,15 @@
 
+# Set working directory
+setwd("~/git/urv-sdgs-tracker")
+# setwd("C:/Users/Lluis Salvat/git/urv-sdgs-tracker")
+
 # Load data if necessary
 # source("./src/rscripts/0-data-loading.R")
+
+# Load readr and tidyverse library if necessary
+library(readr)
+library(tidyverse)
+library(data.table)
 
 # Translate the columns from Catalan to English
 source("./src/R/translate_column.R")
@@ -51,4 +60,6 @@ sdg_analysis_df <- course_details_df %>%
         competences_learning_results_en, references_en)%>%
   mutate(across(ends_with("_en"), ~ na_if(., "Error in translation request")))
 
+# Delete environment df
+rm(contents_en,course_name_en,competences_learning_results_en,description_en,references_en)
 
