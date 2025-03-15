@@ -25,6 +25,15 @@ services:
       - LT_NO_UPDATE=true
     networks:
       - libretranslate_network
+      
+  libretranslate4:
+    container_name: libretranslate4
+    image: libretranslate/libretranslate
+    environment:
+      - LT_LOAD_ONLY=en,ca
+      - LT_NO_UPDATE=true
+    networks:
+      - libretranslate_network
 
   nginx:
     container_name: nginx

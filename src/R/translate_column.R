@@ -15,6 +15,10 @@
 #' @param context (Optional) A string providing additional context to prepend to the text before translation.
 #'                The context is separated from the original text using `" ||| "` and removed after translation.
 #'                This is useful for improving the accuracy of short text translations.
+#' @param id_column (Optional) A character string specifying the name of a column 
+#'                  in `df` that contains unique row identifiers. If `NULL`, 
+#'                  row numbers will be used as a temporary ID to preserve order.
+
 #'
 #' @return None (writes results directly to a CSV file and prints a summary with a progress bar).
 #'
@@ -35,8 +39,20 @@
 #' @export
 #'
 #' @examples
+#' course_details_df <- data.frame(
+#' id = 1:5,
+#' course_name = c(
+#'   "Geografia i territori",
+#'   "Història de l'art modern",
+#'   "Fonaments de química",
+#'   "Anàlisi matemàtica",
+#'   "Dret constitucional"
+#' ),
+#' stringsAsFactors = FALSE  # Ensure text remains as character type
+#' )
+#' 
 #' # Translate and write directly to CSV with progress tracking
-#' translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en", file_path = "output.csv", max_cores = 4)
+#' translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en", file_path = "course_name-en.csv", max_cores = 4)
 #'
 #' # Translate with context for short texts
 #' translate_column(df = course_details_df, column = "course_name", 
@@ -45,9 +61,10 @@
 #'                  context = "Aquest és el nom de l'assignatura:")
 
 
-translate_column <- function(df, column, source_lang = "auto", target_lang, 
-                             file_path, batch_size = 100, max_cores = 4, 
-                             context = NULL) {
+
+translate_column <- function(df, column, source_lang = "auto", target_lang = "en", 
+                             file_path = "output.csv", batch_size = 100, max_cores = 4, 
+                             context = NULL, id_column = NULL) {
   library(parallel)
   library(pbapply)  # Provides progress bars for parallel tasks
   
@@ -59,7 +76,7 @@ translate_column <- function(df, column, source_lang = "auto", target_lang,
   }
   
   if (!file.exists(file_path)) {
-    fwrite(data.frame(original = character(), detected_language = character(), confidence = numeric(), translated_text = character()), 
+    fwrite(data.frame(id = character(), original = character(), detected_language = character(), confidence = numeric(), translated_text = character()), 
            file = file_path, append = FALSE)
   }
   
@@ -68,6 +85,13 @@ translate_column <- function(df, column, source_lang = "auto", target_lang,
   
   if (!is.null(context)) {
     df[[column]] <- paste0(context, df[[column]])
+  }
+  
+  if (is.null(id_column)) {
+    df$id_temp <- seq_len(nrow(df))  # Create a temporary ID if none is provided
+    id_column <- "id_temp"
+  } else if (!id_column %in% colnames(df)) {
+    stop("Error: The specified ID column does not exist in the data frame.")
   }
   
   detect_language <- function(text) {
@@ -120,17 +144,20 @@ translate_column <- function(df, column, source_lang = "auto", target_lang,
   clusterExport(cl, varlist = c("detect_language", "libretranslate_translate", "source_lang", "target_lang", "file_path"), envir = environment())
   
   # Split data into batches
-  batches <- split(df[[column]], ceiling(seq_along(df[[column]]) / batch_size))
+  batches <- split(df[, c(id_column, column)], ceiling(seq_along(df[[column]]) / batch_size))
   num_batches <- length(batches)
   
   cat(sprintf("Processing %d batches using %d cores...\n", num_batches, num_cores))
   
   process_and_write_batch <- function(batch, file_path) {
-    results <- lapply(batch, function(text) {
+    results <- lapply(seq_along(batch[[column]]), function(i) {
+      text <- batch[[column]][i]
+      row_id <- batch[[id_column]][i]  # Always store the ID
+      
       if (is.null(text) || is.na(text) || text == "" || trimws(text) == "") {
-        return(data.frame(original = NA, detected_language = NA, confidence = NA, translated_text = NA, stringsAsFactors = FALSE
-        ))
+        return(data.frame(id = row_id, original = NA, detected_language = NA, confidence = NA, translated_text = NA, stringsAsFactors = FALSE))
       }
+      
       
       detected <- detect_language(text)
       final_source_lang <- if (source_lang == "auto") detected$detectedLanguage else source_lang
@@ -144,6 +171,7 @@ translate_column <- function(df, column, source_lang = "auto", target_lang,
       }
       
       return(data.frame(
+        id = row_id,
         original = text,
         detected_language = detected$detectedLanguage,
         confidence = detected$confidence,
@@ -152,7 +180,7 @@ translate_column <- function(df, column, source_lang = "auto", target_lang,
       ))
     })
     
-    fwrite(do.call(rbind, results), file = file_path, append = TRUE)
+    fwrite(do.call(rbind, results), file = file_path, append = TRUE, col.names = !file.exists(file_path))
   }
   
   # Use `pblapply()` to correctly update progress bar

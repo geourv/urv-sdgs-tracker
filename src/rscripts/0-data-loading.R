@@ -226,5 +226,5 @@ rm(course_competences_learning_results_agg,course_description_agg,course_content
 
 rm(course_details_list,degree_programs_list)
 
-# Save course_details_df
-course_details_df <- write.csv(course_details_df, "./data/course_details_df.csv", row.names = FALSE)
+# Save course_details_df (only once!)
+# course_details_df <- write.csv(course_details_df, "./data/course_details_df.csv", row.names = FALSE)

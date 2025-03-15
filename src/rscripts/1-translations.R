@@ -19,8 +19,18 @@ translate_column(course_details_df, column = "course_name", source_lang = "ca", 
                  file_path = "./sandbox/course_name-en.csv", max_cores = 4,
                  context = "Aquest és el nom de l'assignatura:") # Give some context so short texts are better translated
 
+translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en", 
+                 file_path = "./sandbox/course_name-en.csv", max_cores = 8,
+                 context = "Aquest és el nom de l'assignatura:",
+                 service = "apertium")
+
+
+
+
+
+
 translate_column(course_details_df, column = "description", source_lang = "ca", target_lang = "en", 
-                 file_path = "./sandbox/description-en.csv", max_cores = 4)
+                 file_path = "./sandbox/description-en.csv", max_cores = 4,service = "apertium")
 
 translate_column(course_details_df, column = "contents", source_lang = "ca", target_lang = "en", 
                  file_path = "./sandbox/contents-en.csv", max_cores = 4)
