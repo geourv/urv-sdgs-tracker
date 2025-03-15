@@ -1,0 +1,29 @@
+> translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en", 
++                  file_path = "./sandbox/course_name-en-apertium.csv", max_cores = 8,
++                  context = "Aquest és el nom de l'assignatura:",
++                  service = "apertium")
+  |++++++++++++++++++++++++++++++++++++++++++++++++++| 100% elapsed=51s  
+Translation process completed.
+> translate_column(course_details_df, column = "description", source_lang = "ca", target_lang = "en", 
++                  file_path = "./sandbox/description-en-apertium.csv", max_cores = 8,
++                  service = "apertium")
+  |++++++++++++++++++++++++++++++++++++++++++++++++++| 100% elapsed=02m 12s
+Translation process completed.
+> translate_column(course_details_df, column = "contents", source_lang = "ca", target_lang = "en", 
++                  file_path = "./sandbox/contents-en-apertium.csv", max_cores = 8,
++                  service = "apertium")
+  |++++++++++++++++++++++++++++++++++++++++++++++++++| 100% elapsed=04m 30s
+Translation process completed.
+> translate_column(course_competences_learning_results, column = "competences_learning_results", source_lang = "ca", target_lang = "en", 
++                  file_path = "./sandbox/competences_learning_results-en-apertium.csv", max_cores = 8,
++                  service = "apertium")
+  |++++++++++++++++++++++++++++++++++++++++++++++++++| 100% elapsed=13m 01s
+Translation process completed.
+
+
+# Source language: AUTO
+> translate_column(course_bibliography, column = "references", source_lang = "auto", target_lang = "en", 
++                  file_path = "./sandbox/references-en-apertium.csv", max_cores = 8,
++                  service = "apertium")
+  |++++++++++++++++++++++++++++++++++++++++++++++++++| 100% elapsed=01m 25s
+Translation process completed.

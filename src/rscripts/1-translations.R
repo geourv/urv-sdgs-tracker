@@ -9,37 +9,48 @@ setwd("~/git/urv-sdgs-tracker")
 # Load readr and tidyverse library if necessary
 library(readr)
 library(tidyverse)
-library(data.table)
 
 # Translate the columns from Catalan to English
 source("./src/R/translate_column.R")
 
-# Translate columns into individual CSV files ----
-translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en", 
-                 file_path = "./sandbox/course_name-en.csv", max_cores = 4,
-                 context = "Aquest és el nom de l'assignatura:") # Give some context so short texts are better translated
+# TODO: Filter those rows with lower confidence and retry.
 
+# Translate columns into individual CSV files: Using Apertium ----
 translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en", 
-                 file_path = "./sandbox/course_name-en.csv", max_cores = 8,
+                 file_path = "./sandbox/course_name-en-apertium.csv", max_cores = 8,
                  context = "Aquest és el nom de l'assignatura:",
+                 service = "apertium")
+translate_column(course_details_df, column = "description", source_lang = "ca", target_lang = "en", 
+                 file_path = "./sandbox/description-en-apertium.csv", max_cores = 8,
+                 service = "apertium")
+translate_column(course_details_df, column = "contents", source_lang = "ca", target_lang = "en", 
+                 file_path = "./sandbox/contents-en-apertium.csv", max_cores = 8,
+                 service = "apertium")
+
+# With individual rows!!!!
+translate_column(course_competences_learning_results, column = "competences_learning_results", source_lang = "ca", target_lang = "en", 
+                 file_path = "./sandbox/competences_learning_results-en-apertium.csv", max_cores = 8,
+                 service = "apertium")
+translate_column(course_bibliography, column = "references", source_lang = "auto", target_lang = "en", 
+                 file_path = "./sandbox/references-en-apertium.csv", max_cores = 8,
                  service = "apertium")
 
 
-
-
-
-
+# Translate columns into individual CSV files: Using Libretranslate ----
+translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en", 
+                 file_path = "./sandbox/course_name-en.csv", max_cores = 4,
+                 context = "Aquest és el nom de l'assignatura:",
+                 service = "libretranslate")
 translate_column(course_details_df, column = "description", source_lang = "ca", target_lang = "en", 
-                 file_path = "./sandbox/description-en.csv", max_cores = 4,service = "apertium")
-
+                 file_path = "./sandbox/description-en.csv", max_cores = 4,
+                 service = "libretranslate")
 translate_column(course_details_df, column = "contents", source_lang = "ca", target_lang = "en", 
                  file_path = "./sandbox/contents-en.csv", max_cores = 4)
-
 translate_column(course_details_df, column = "competences_learning_results", source_lang = "ca", target_lang = "en", 
                  file_path = "./sandbox/competences_learning_results-en.csv", max_cores = 4)
-
 translate_column(course_details_df, column = "references", source_lang = "ca", target_lang = "en", 
                  file_path = "./sandbox/references-en.csv", max_cores = 4)
+
 
 
 # Prepare SDG analysis df ----

@@ -1,20 +1,71 @@
+#' Translate a specific column in a data frame using LibreTranslate
+#'
+#' This function detects the language of a specified column in a data frame (if `source_lang = "auto"`)
+#' and translates its content into a target language using the LibreTranslate API. It writes the results
+#' directly to a CSV file in batches to optimize memory usage and provides a progress bar.
+#'
+#' @param df A data frame containing the text data to be translated.
+#' @param column A character string specifying the column name to be translated.
+#' @param source_lang A character string indicating the source language code (e.g., `"ca"` for Catalan).
+#'   Set `"auto"` to automatically detect the language of each row.
+#' @param target_lang A character string indicating the target language code (e.g., `"en"` for English).
+#' @param file_path A character string specifying the CSV file path to save the results.
+#' @param batch_size An integer specifying how many rows to process per batch.
+#' @param max_cores An integer specifying the number of CPU cores to use for parallel processing.
+#' @param context (Optional) A string providing additional context to prepend to the text before translation.
+#'                The context is separated from the original text using `" ||| "` and removed after translation.
+#'                This is useful for improving the accuracy of short text translations.
+#' @param id_column (Optional) A character string specifying the name of a column 
+#'                  in `df` that contains unique row identifiers. If `NULL`, 
+#'                  row numbers will be used as a temporary ID to preserve order.
+#' @param service A character string specifying the translation service to use.
+#'                Options are `"apertium"` (rule-based translations) or 
+#'                `"libretranslate"` (neural machine translations). 
+#'                Default is `"libretranslate"`.
+#'                Ensure the corresponding service is running before translation.
+#'
+#' @return None (writes results directly to a CSV file and prints a summary with a progress bar).
+#'
+#' @details
+#' The function communicates with locally running instances of LibreTranslate or Apertium. 
+#' Ensure that LibreTranslate is running on port 5000, or Apertium on port 2737, before using this function.
+#'
+#' @import httr jsonlite data.table parallel
+#' @export
+#'
+#' @examples
+#' course_details_df <- data.frame(
+#' id = 1:5,
+#' course_name = c(
+#'   "Geografia i territori",
+#'   "Història de l'art modern",
+#'   "Fonaments de química",
+#'   "Anàlisi matemàtica",
+#'   "Dret constitucional"
+#' ),
+#' stringsAsFactors = FALSE  # Ensure text remains as character type
+#' )
+#' 
+#' # Translate and write directly to CSV with progress tracking
+#' translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en", file_path = "course_name-en.csv", max_cores = 4)
+#'
+#' # Translate with context for short texts
+#' translate_column(df = course_details_df, column = "course_name", 
+#'                  source_lang = "ca", target_lang = "en", 
+#'                  file_path = "course_name-en.csv", max_cores = 4, 
+#'                  context = "Aquest és el nom de l'assignatura:")
 
-translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en", 
-                 file_path = "./sandbox/course_name-en.csv", max_cores = 4, 
-                 service = "apertium")
 
 translate_column <- function(df, column, source_lang = "auto", target_lang = "en", 
                              file_path = "output.csv", batch_size = 100, max_cores = 4, 
                              context = NULL, id_column = NULL, service = "libretranslate") {
-  library(parallel)
-  library(pbapply)  
-  
+
   if (!column %in% colnames(df)) {
     stop(paste("Error: The column", column, "does not exist in the provided data frame."))
   }
   
   if (!file.exists(file_path)) {
-    fwrite(data.frame(id = character(), original = character(), detected_language = character(), confidence = numeric(), translated_text = character()), 
+    data.table::fwrite(data.frame(id = character(), original = character(), detected_language = character(), confidence = numeric(), translated_text = character()), 
            file = file_path, append = FALSE)
   }
   
@@ -179,16 +230,16 @@ translate_column <- function(df, column, source_lang = "auto", target_lang = "en
   
   num_cores <- min(max_cores, detectCores() - 1)
   closeAllConnections()
-  cl <- makeCluster(num_cores)
+  cl <- parallel::makeCluster(num_cores)
   
-  clusterEvalQ(cl, {
+  parallel::clusterEvalQ(cl, {
     library(httr)
     library(jsonlite)
     library(data.table)
   })
   
   # Explicitly pass service and other variables to the workers
-  clusterExport(cl, varlist = c(
+  parallel::clusterExport(cl, varlist = c(
     "detect_language", "detect_language_libretranslate", "detect_language_apertium",
     "translate_text", "translate_text_libretranslate", "translate_text_apertium",
     "convert_lang_code", "source_lang", "target_lang", "file_path", "service"
@@ -211,6 +262,12 @@ translate_column <- function(df, column, source_lang = "auto", target_lang = "en
       
       detected <- detect_language(text,service)
       final_source_lang <- if (source_lang == "auto") detected$detectedLanguage else source_lang
+      
+      # Convert to Apertium format if necessary
+      if (service == "apertium") {
+        final_source_lang <- convert_lang_code(final_source_lang, service)
+      }
+      
       translated_text <- translate_text(text, final_source_lang, target_lang, service)
       
       if (!is.null(context)) {
@@ -229,14 +286,14 @@ translate_column <- function(df, column, source_lang = "auto", target_lang = "en
       ))
     })
     
-    fwrite(do.call(rbind, results), file = file_path, append = TRUE, col.names = !file.exists(file_path))
+    data.table::fwrite(do.call(rbind, results), file = file_path, append = TRUE, col.names = !file.exists(file_path))
   }
   
   pbapply::pblapply(batches, function(batch) {
     process_and_write_batch(batch, file_path)
   }, cl = cl)
   
-  stopCluster(cl)
+  parallel::stopCluster(cl)
   closeAllConnections()
   
   cat("Translation process completed.")
