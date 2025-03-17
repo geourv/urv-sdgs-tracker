@@ -3,7 +3,8 @@
     const navLinks = document.querySelector(".nav-links");
 
     menuToggle.addEventListener("click", function() {
-        navLinks.style.display = navLinks.style.display === "flex" ? "none" : "flex";
+        navLinks.classList.toggle("active");
+        const isExpanded = navLinks.classList.contains("active");
+        menuToggle.setAttribute("aria-expanded", isExpanded);
     });
 });
-

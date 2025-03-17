@@ -13,9 +13,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1b5e20;
+    background-color: #982c2c;
     padding: 10px 20px;
-    color: #fff;
+    color: #fafafa;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -39,20 +39,61 @@ body {
 
 .navbar .nav-links a {
     text-decoration: none;
-    color: #fff;
+    color: #dddddd;
     font-weight: 500;
     transition: color 0.3s;
 }
 
 .navbar .nav-links a:hover,
 .navbar .nav-links a.active {
-    color: #cddc39;
+    color: #ffffff;
+    font-weight: bold;
+
 }
+
+/* Menú Responsive */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        visibility: hidden;
+        opacity: 0;
+        flex-direction: column;
+        width: 100%;
+        background-color: #1b5e20;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 50px;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+
+    .navbar .nav-links.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .navbar .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+
 
 /* Sección Hero */
 .hero {
-    background: url('../assets/sdg-banner.jpg') center/cover no-repeat;
-    height: 70vh;
+    position: relative;
+    background: url('../logos/edited/cat/cat_ods_logo.png') center/cover no-repeat;
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,18 +102,35 @@ body {
     padding: 0 20px;
 }
 
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); 
+    z-index: 0; /
+}
+
 .hero .hero-content {
+    position: relative;
+    z-index: 1; 
     max-width: 800px;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+    font-size: 45px;
+    margin-bottom: 30px; 
+    color: #fafafa;
+    z-index: 2; 
 }
 
 .hero p {
-    font-size: 20px;
+    font-size: 25px;
     margin-bottom: 30px;
+    color: #fafafa;
+    z-index: 2; 
 }
 
 .hero .btn {
@@ -89,13 +147,15 @@ body {
     background-color: #aabb00;
 }
 
+
+
 /* Sección de Contenido */
 .content {
     max-width: 1000px;
     margin: 40px auto;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
 }
 
@@ -108,6 +168,64 @@ body {
 .content p {
     font-size: 18px;
     margin-bottom: 15px;
+}
+
+/* Sección ODS */
+.ods-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9;  /* Fondo suave para cada sección */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ods-image {
+    flex: 1;
+    max-width: 300px;  /* Tamaño fijo para las imágenes */
+    padding-right: 20px; /* Espacio entre la imagen y el texto */
+}
+
+.ods-image img {
+    width: 100%;
+    height: auto;  /* Mantener proporciones de la imagen */
+    border-radius: 8px;
+}
+
+.ods-text {
+    flex: 2;
+    font-size: 18px;
+}
+
+.ods-text h2 {
+    color: #1b5e20;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.ods-text p {
+    color: #333;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    /* En dispositivos pequeños, las imágenes y el texto deben apilarse verticalmente */
+    .ods-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .ods-image {
+        max-width: 100%;  /* La imagen ocupará el 100% en pantallas pequeñas */
+        padding-right: 0;  /* Elimino el padding */
+    }
+
+    .ods-text {
+        flex: 1;
+        margin-top: 20px; /* Separación entre imagen y texto */
+    }
 }
 
 /* Pie de Página */
@@ -124,37 +242,4 @@ body {
 .footer p {
     margin: 0;
     font-size: 14px;
-}
-
-/* Diseño Responsivo */
-@media (max-width: 768px) {
-    .navbar .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #1b5e20;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        padding: 10px 0;
-    }
-
-    .navbar .nav-links li {
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    .navbar .menu-toggle {
-        display: block;
-        font-size: 28px;
-        cursor: pointer;
-    }
-
-    .hero h1 {
-        font-size: 36px;
-    }
-
-    .hero p {
-        font-size: 18px;
-    }
 }

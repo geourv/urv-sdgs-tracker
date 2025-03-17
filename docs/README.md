@@ -12,9 +12,12 @@ urv-sdgs-tracker/
 │   ├── CNAME              # Opcional: domini personalitzat
 │   ├── 404.html           # Pàgina d'error personalitzada
 │   ├── pages/             # Pàgines addicionals
+│   │   ├── index.html     # Inici
+│   │   ├── barchart.html  # Visualització resultats en gràfic de barres
+│   │   ├── piechart.html  # Visualització resultats en gràfic circular
+│   │   ├── wordclouds.html# Visualització resultats en núvols de paraules
 │   │   ├── about.html     # Sobre el projecte
 │   │   ├── contact.html   # Contacte
-│   │   ├── ...
 │   ├── data/              # Dades JSON. Tants fitxers com sigui necessari per fer més ràpida o fàcil de mantindre la web.
 │   │   ├── courses.json   # Dades de cursos
 │   │   ├── altres.json
