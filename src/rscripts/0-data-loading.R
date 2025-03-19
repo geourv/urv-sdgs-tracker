@@ -13,7 +13,7 @@ library(stringr)
 degree_programs_list <- read_delim("data/degree_programs_list.csv",
                                    delim = ";", escape_double = FALSE, locale = locale(encoding = "WINDOWS-1252"),
                                    trim_ws = TRUE)
-colnames(degree_programs_list) <- c("web_scraper_order", "faculty_school_url", 
+colnames(degree_programs_list) <- c("web_scraper_order", "faculty_school_url",
                                     "degree_name", "degree_url")
 
 
@@ -22,20 +22,20 @@ colnames(degree_programs_list) <- c("web_scraper_order", "faculty_school_url",
 course_details_list_guido <- read_csv("data/course_details_list_guido.csv")
 
 # colnames(course_details_list_guido)
-# c("web-scraper-order", "web-scraper-start-url",            "code",        "text_url",    "url",                  "url-href",   "period",        "type",        "credits", "year") 
-# c("web-scraper-order", "degree_url", "course_code", "course_name", "course_delivery_mode", "course_url", "course_period", "course_type", "credits", "year") 
+# c("web-scraper-order", "web-scraper-start-url",            "code",        "text_url",    "url",                  "url-href",   "period",        "type",        "credits", "year")
+# c("web-scraper-order", "degree_url", "course_code", "course_name", "course_delivery_mode", "course_url", "course_period", "course_type", "credits", "year")
 
 
 #head(course_details_list_guido)
 colnames(course_details_list_guido)<-
-  c("web_scraper_order", 
-    "degree_url", 
-    "course_code", "course_name", "course_delivery_mode", "course_url", "course_period", "course_type", "credits", "year") 
+  c("web_scraper_order",
+    "degree_url",
+    "course_code", "course_name", "course_delivery_mode", "course_url", "course_period", "course_type", "credits", "year")
 
 # Load course details list (docnet)----
 course_details_list_docnet <- read_csv("data/course_details_list_docnet.csv")
 
-colnames(course_details_list_docnet) <- c("web_scraper_order", "degree_url", 
+colnames(course_details_list_docnet) <- c("web_scraper_order", "degree_url",
                                           "course_delivery_mode", "course_code", "course_name","course_url",
                                           "course_period", "course_type", "credits", "year")
 
@@ -51,20 +51,20 @@ course_details_list_docnet <- merge(course_details_list_docnet, docnet_iframes, 
 course_details_list_docnet <-
   subset(course_details_list_docnet, select=-c(course_url))
 
-colnames(course_details_list_docnet) <- c("web_scraper_order", "degree_url", 
+colnames(course_details_list_docnet) <- c("web_scraper_order", "degree_url",
                                           "course_delivery_mode", "course_code", "course_name",
                                           "course_period", "course_type", "credits", "year","course_url")
 
 
 
 # Union docnet and guido course details ----
-course_details_list_docnet <- course_details_list_docnet[, c("web_scraper_order", "degree_url", 
+course_details_list_docnet <- course_details_list_docnet[, c("web_scraper_order", "degree_url",
                                                              "course_url", "course_code", "course_name", "course_delivery_mode",
                                                              "course_period", "course_type", "credits", "year")]
 
 
-course_details_list_guido <- course_details_list_guido[, c("web_scraper_order", "degree_url", 
-                                                           "course_url", "course_code", "course_name", "course_delivery_mode", 
+course_details_list_guido <- course_details_list_guido[, c("web_scraper_order", "degree_url",
+                                                           "course_url", "course_code", "course_name", "course_delivery_mode",
                                                            "course_period", "course_type", "credits", "year")]
 
 course_details_list <- rbind(course_details_list_guido, course_details_list_docnet)
@@ -179,22 +179,32 @@ course_bibliography <- rbind(guido_course_bibliography, docnet_course_bibliograp
 rm(guido_course_bibliography, docnet_course_bibliography)
 
 
+############################## Translation window
+
+#course_bibliography$references <- trimws(gsub("accés al CRAI", "", course_bibliography$references, fixed = TRUE))
+
+
+
+##############################
+
+
+
 
 # Aggregate ----
-course_competences_learning_results_agg <- aggregate(competences_learning_results ~ course_url, 
-                                                     data = course_competences_learning_results, 
+course_competences_learning_results_agg <- aggregate(competences_learning_results ~ course_url,
+                                                     data = course_competences_learning_results,
                                                      paste, collapse = ";")
 
-course_description_agg <- aggregate(description ~ course_url, 
-                                    data = course_description, 
+course_description_agg <- aggregate(description ~ course_url,
+                                    data = course_description,
                                     paste, collapse = ";")
 
-course_contents_agg <- aggregate(contents ~ course_url, 
-                                    data = course_contents, 
+course_contents_agg <- aggregate(contents ~ course_url,
+                                    data = course_contents,
                                     paste, collapse = ";")
 
-course_bibliography_agg <- aggregate(references ~ course_url, 
-                                 data = course_bibliography, 
+course_bibliography_agg <- aggregate(references ~ course_url,
+                                 data = course_bibliography,
                                  paste, collapse = ";")
 
 
@@ -207,12 +217,12 @@ course_details_df <- course_details_list %>%
   left_join(course_competences_learning_results_agg, by = "course_url") %>%
   left_join(course_description_agg, by = "course_url") %>%
   left_join(course_contents_agg, by = "course_url") %>%
-  left_join(course_bibliography_agg, by = "course_url") %>% 
-  select(-web_scraper_order) %>% 
-  left_join(degree_programs_list, by='degree_url') %>% 
-  select(-web_scraper_order) %>% 
-  mutate(document_number=row_number()) %>% 
-  mutate(degree_year=str_extract(degree_name, "(?<=\\()\\d{4}(?=\\))")) %>% 
+  left_join(course_bibliography_agg, by = "course_url") %>%
+  select(-web_scraper_order) %>%
+  left_join(degree_programs_list, by='degree_url') %>%
+  select(-web_scraper_order) %>%
+  mutate(document_number=row_number()) %>%
+  mutate(degree_year=str_extract(degree_name, "(?<=\\()\\d{4}(?=\\))")) %>%
   select(document_number,starts_with('degree'),starts_with('faculty'),everything())
 
 #missing_description <- course_details_df[is.na(course_details_df$description),"course_url"]

@@ -3,7 +3,7 @@ services:
     container_name: libretranslate1
     image: libretranslate/libretranslate
     environment:
-      - LT_LOAD_ONLY=en,ca
+      - LT_LOAD_ONLY=en,ca,es
       - LT_NO_UPDATE=true
     networks:
       - libretranslate_network
@@ -12,7 +12,7 @@ services:
     container_name: libretranslate2
     image: libretranslate/libretranslate
     environment:
-      - LT_LOAD_ONLY=en,ca
+      - LT_LOAD_ONLY=en,ca,es
       - LT_NO_UPDATE=true
     networks:
       - libretranslate_network
@@ -21,7 +21,7 @@ services:
     container_name: libretranslate3
     image: libretranslate/libretranslate
     environment:
-      - LT_LOAD_ONLY=en,ca
+      - LT_LOAD_ONLY=en,ca,es
       - LT_NO_UPDATE=true
     networks:
       - libretranslate_network
@@ -30,7 +30,7 @@ services:
     container_name: libretranslate4
     image: libretranslate/libretranslate
     environment:
-      - LT_LOAD_ONLY=en,ca
+      - LT_LOAD_ONLY=en,ca,es
       - LT_NO_UPDATE=true
     networks:
       - libretranslate_network
