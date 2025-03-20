@@ -1,8 +1,9 @@
 
-# Set working directory
+# Set working directory----
 setwd("~/git/urv-sdgs-tracker")
 # setwd("C:/Users/Lluis Salvat/git/urv-sdgs-tracker")
 
+# Load packages----
 library(readr)
 library(dplyr)
 library(stringr)
@@ -18,7 +19,7 @@ colnames(degree_programs_list) <- c("web_scraper_order", "faculty_school_url",
 
 
 
-# Load course details list guido ----
+# Load course details list (guido) ----
 course_details_list_guido <- read_csv("data/course_details_list_guido.csv")
 
 # colnames(course_details_list_guido)
@@ -39,7 +40,7 @@ colnames(course_details_list_docnet) <- c("web_scraper_order", "degree_url",
                                           "course_delivery_mode", "course_code", "course_name","course_url",
                                           "course_period", "course_type", "credits", "year")
 
-#Load and replace the first course_url for iframe_url in Docnet courses
+# Load and replace the first course_url for iframe_url in Docnet courses----
 docnet_iframes <- read_delim("data/docnet-iframe.csv",
                              delim = ";", escape_double = FALSE, locale = locale(encoding = "WINDOWS-1252"),
                              trim_ws = TRUE)
@@ -70,9 +71,61 @@ course_details_list_guido <- course_details_list_guido[, c("web_scraper_order", 
 course_details_list <- rbind(course_details_list_guido, course_details_list_docnet)
 
 # Clean
-rm(course_details_list_guido,course_details_list_docnet,docnet_iframes)
+rm(course_details_list_guido,course_details_list_docnet,docnet_iframes,replacements)
 
 
+
+# Course_details_list edition----
+
+
+
+# In course_name replace roman numbers per arabic numbers
+# Replacement list
+replacements <- c(" VIII$" = " 8", " VII$" = " 7", " VI$" = " 6", " V$" = " 5",
+                  " IV$" = " 4", " III$" = " 3", " II$" = " 2", " I$" = " 1")
+
+# Apply all the replacements
+course_details_list <- course_details_list %>%
+  mutate(course_name = Reduce(function(x, y) sub(y, replacements[[y]], x), names(replacements), course_name))
+
+
+
+# In course_details_list create faculty_school_name column
+# Function to match degree_url to faculty name
+assign_faculty_name <- function(url) {
+  if (grepl("^https://guiadocent.urv.cat/guido/public/centres/504/", url)) {
+    return("Escola Tècnica Superior d'Arquitectura")
+  } else if (grepl("^https://guiadocent.urv.cat/guido/public/centres/499/", url)) {
+    return("Escola Tècnica Superior d'Enginyeria")
+  } else if (grepl("^https://guiadocent.urv.cat/guido/public/centres/502/", url)) {
+    return("Escola Tècnica Superior d'Enginyeria Química")
+  } else if (grepl("^https://guiadocent.urv.cat/guido/public/centres/498/", url)) {
+    return("Facultat d'Economia i Empresa")
+  } else if (grepl("^https://guiadocent.urv.cat/guido/public/centres/501/", url)) {
+    return("Facultat d'Enologia")
+  } else if (grepl("^https://guiadocent.urv.cat/guido/public/centres/500/", url)) {
+    return("Facultat d'Infermeria")
+  } else if (grepl("^https://guiadocent.urv.cat/guido/public/centres/493/", url)) {
+    return("Facultat de Ciències de l'Educació i Psicologia")
+  } else if (grepl("^https://guiadocent.urv.cat/guido/public/centres/497/", url)) {
+    return("Facultat de Ciències Jurídiques")
+  } else if (grepl("^https://guiadocent.urv.cat/guido/public/centres/494/", url)) {
+    return("Facultat de Lletres")
+  } else if (grepl("^https://guiadocent.urv.cat/guido/public/centres/496/", url)) {
+    return("Facultat de Medicina i Ciències de la Salut")
+  } else if (grepl("^https://guiadocent.urv.cat/guido/public/centres/495/", url)) {
+    return("Facultat de Química")
+  } else if (grepl("^https://guiadocent.urv.cat/guido/public/centres/503/", url)) {
+    return("Facultat de Turisme i Geografia")
+  } else {
+    return(NA)  # If no match is found
+  }
+}
+
+# Apply the function row by row to the 'degree_url' column and create the new column
+course_details_list$faculty_school_name <- sapply(course_details_list$degree_url, assign_faculty_name)
+
+rm(replacements,assign_faculty_name)
 
 # Load and setup coordinators ----
 guido_course_coordinators <- read_csv("data/guido-course-coordinators.csv")
@@ -179,14 +232,100 @@ course_bibliography <- rbind(guido_course_bibliography, docnet_course_bibliograp
 rm(guido_course_bibliography, docnet_course_bibliography)
 
 
-############################## Translation window
 
-#course_bibliography$references <- trimws(gsub("accés al CRAI", "", course_bibliography$references, fixed = TRUE))
+############################## Translation window----
+# List of terms to remove in Description----
+terms_to_remove_description <- c("^'- ","^- ","^—","^• ","^NA")
+
+# Replace
+course_description$description <- trimws(
+  Reduce(function(x, pattern) gsub(pattern, "", x, fixed = TRUE), 
+         terms_to_remove_description, course_description$description))
 
 
+
+# List of terms to remove in References----
+terms_to_remove_references <- c(
+  "accés al CRAI", "No disponible a la URV", ", Més info", "Més info",
+  "diversos,", "Diversos,", "diversos.", "Diversos.",
+  "(Llibre) ", "(Llibre) , ", "(Llibre) / ", "(Llibre) -, ", "(Revista) ", "(Revista) , ",
+  "(Altres) ", "(Altres) , ", "(Altres) / " ,"(Lloc web) ", "(Lloc web) , ",
+  "(Bases de dades) ", "(Bases de dades) , ", "(Capítol llibre) ", "(Capitol llibre)  / ",
+  "(Audios)  /  ",
+  "^/ ","^:","^, ","^•","^- ","^. ")
+
+
+# Replace
+course_bibliography$references <- trimws(
+  Reduce(function(x, pattern) gsub(pattern, "", x, fixed = TRUE), 
+         terms_to_remove_references, course_bibliography$references))
+
+
+
+# List of terms to remove in Competences and Learning results----
+# Find the first row words of course_competences_learning_results df
+course_competences_learning_results_first_words <- 
+  sapply(strsplit(course_competences_learning_results$competences_learning_results, "[ \\n-]+"), `[`, 1)
+
+# Convert the vector to unique words
+course_competences_learning_results_unique_first_words <- 
+  unique(course_competences_learning_results_first_words)
+
+# Repeat the finding to better discriminate first words
+course_competences_learning_results_second_words <- 
+  sapply(strsplit(course_competences_learning_results_unique_first_words, "\\n+"), `[`, 1)
+
+# Convert the vector to unique words
+course_competences_learning_results_unique_second_words <- 
+  unique(course_competences_learning_results_second_words)
+
+# Save the vector to review and manually select words that don't have to be deleted
+# write.csv(data.frame(course_competences_learning_results_unique_second_words), 
+#          "sandbox/terms_to_remove_comp_learnres.csv", row.names = FALSE)
+
+# Read the df with words that don't have to be deleted 
+course_competences_learning_results_not_delete <-
+  read.csv("data/course_competences_learning_results_not_delete.csv")
+
+# Convert to vector
+course_competences_learning_results_not_delete <-  
+  course_competences_learning_results_not_delete[, 1]
+
+course_competences_learning_results_not_delete <- 
+  gsub("\\t+$", "", course_competences_learning_results_not_delete)
+
+# Check vectors
+#print(course_competences_learning_results_not_delete)
+#print(course_competences_learning_results_unique_second_words)
+
+# Delete words from course_competences_learning_results_unique_second_words vector (words that we want to be deleted)
+# that are included in course_competences_learning_results_not_delete vector (words that we don't want to be deleted)
+terms_to_remove_comp_learnres <- 
+  setdiff(course_competences_learning_results_unique_second_words,course_competences_learning_results_not_delete)
+
+terms_to_remove_comp_learnres <- terms_to_remove_comp_learnres[!is.na(terms_to_remove_comp_learnres) & terms_to_remove_comp_learnres != "NA"]
+
+# Check vector
+#print(terms_to_remove_comp_learnres)
+
+
+# Replace
+course_competences_learning_results$competences_learning_results <- trimws(
+  Reduce(function(x, pattern) gsub(pattern, "", x, fixed = TRUE), 
+         terms_to_remove_comp_learnres, course_competences_learning_results$competences_learning_results))
+
+
+# Delete useless data----
+rm(terms_to_remove_description,
+   terms_to_remove_comp_learnres,
+   terms_to_remove_references,
+   course_competences_learning_results_first_words,
+   course_competences_learning_results_unique_first_words,
+   course_competences_learning_results_second_words,
+   course_competences_learning_results_unique_second_words,
+   course_competences_learning_results_not_delete)
 
 ##############################
-
 
 
 
