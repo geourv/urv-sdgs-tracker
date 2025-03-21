@@ -1,199 +1,292 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web ODS - Inicio</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+<title>Web ODS - Inici</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
 </head>
-<body>
+<body class="w3-light-grey">
 
-    <nav class="navbar">
-        <div class="logo">Web ODS</div>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Inici</a></li>
-            <li><a href="pages/barchart.html">Gràfic de barres</a></li>
-            <li><a href="pages/piechart.html">Gràfic circular</a></li>
-            <li><a href="pages/wordclouds.html">Núvol de paraules</a></li>
-            <li><a href="pages/about.html">Sobre</a></li>
-            <li><a href="contact.html">Contacte</a></li>
-        </ul>
-        <div class="menu-toggle">&#9776;</div>
-    </nav>
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-right">Web ODS</span>
+</div>
 
-    <header class="hero">
-        <h1>Benvingut a la Web ODS de la Universitat Rovira i Virgili</h1>
-        <p>Aquesta pàgina web té com a objectiu principal mostrar
-            l’alineació dels programes acadèmics de la URV amb
-            els Objectius de Desenvolupament Sostenible</p>
-    </header>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+      <img src="assets/logos/edited/cat/cat_ods_logo.png" class="w3-circle w3-margin-right" style="width:92px">
+    </div>
+    <div class="w3-col s8 w3-bar">
+      <span>Benvingut a la Web ODS</span><br>
+    </div>
+  </div>
+  <hr>
+  <div class="w3-bar-block">
+    <a href="index.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-home fa-fw"></i>  Inici</a>
+    <a href="pages/barchart.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bar-chart fa-fw"></i>  Gràfic de barres</a>
+    <a href="pages/piechart.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pie-chart fa-fw"></i>  Gràfic circular</a>
+    <a href="pages/wordclouds.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cloud fa-fw"></i>  Núvol de paraules</a>
+    <a href="pages/about.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-info-circle fa-fw"></i>  Sobre</a>
+    <a href="contact.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
+  </div>
+</nav>
 
-    <section class="content">
-        <h2>Els 17 Objectius de Desenvolupament Sostenible</h2>
-        <p>El 2015, l’ONU va aprovar l’Agenda 2030 sobre el Desenvolupament Sostenible, una oportunitat perquè els països i 
-        les seves societats emprenguin un nou camí per millorar la vida de totes les persones, sense deixar ningú enrere. 
-        L’Agenda inclou 17 Objectius de Desenvolupament Sostenible (ODS), que estableixen que l’erradicació de la pobresa 
-        ha d’anar de la mà d’estratègies que fomentin el creixement econòmic i abordin necessitats socials com l’educació, 
-        la sanitat, la protecció social i les oportunitats laborals, mentre es combat el canvi climàtic i es protegeix el medi 
-        ambient. En aquest lloc web mostrem informació sobre aquests objectius i els esforços que l’ONU i els seus socis 
-        duen a terme per construir un món millor.</p>
-    </section>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_01.png" alt="ODS 1">
-        </div>
-        <div class="ods-text">
-            <p>Aquest objectiu té com a finalitat erradicar la pobresa extrema i reduir la pobresa en totes les seves formes i dimensions arreu del món. Això inclou garantir l'accés a serveis essencials com l'aigua potable, l'alimentació, l'educació i la salut per a totes les persones, especialment les més vulnerables. A més, l'ODS promou l'accés a recursos, oportunitats laborals i la protecció social, assegurant que ningú quedi enrere en el camí cap al desenvolupament.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_02.png" alt="ODS 2">
-        </div>
-        <div class="ods-text">
-            <p>L'ODS 2 té com a objectiu acabar amb la fam arreu del món i garantir la seguretat alimentària per a totes les persones. A més de garantir l'accés a una alimentació suficient, nutritiva i saludable durant tot l'any, l'ODS promou l'agricultura sostenible i el suport a la producció agrícola local. La nutrició, la seguretat alimentària, i la millora de les condicions laborals en el sector agrícola són aspectes fonamentals per combatre la fam i millorar la salut global.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_03.png" alt="ODS 3">
-        </div>
-        <div class="ods-text">
-            <p>Garantir una vida sana i promoure el benestar per a totes les persones, independentment de la seva edat, gènere o condicions socials, és l'objectiu d'aquest ODS. A més de millorar l'atenció sanitària i garantir l'accés a serveis mèdics essencials, s'orienta a la prevenció de malalties, com la malaria, el VIH/SIDA, la tuberculosi, les malalties no transmissibles i les malalties mentals. A més, aquest ODS promou l'educació en salut, la vacunació, i la protecció de les persones davant de pandèmies.<p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_04.png" alt="ODS 4">
-        </div>
-        <div class="ods-text">
-            <p>L'ODS 4 es compromet a garantir una educació inclusiva, equitativa i de qualitat, amb l'objectiu de promoure oportunitats d'aprenentatge al llarg de la vida per a totes les persones. Això inclou garantir l'accés a l'educació bàsica i a l'educació superior, la formació professional i la formació contínua. L'objectiu és que tothom pugui desenvolupar el seu ple potencial i contribuir al desenvolupament social i econòmic del seu país, a través d'una educació que promogui la igualtat i la inclusió.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_05.png" alt="ODS 5">
-        </div>
-        <div class="ods-text">
-            <p>Aquest ODS té com a objectiu aconseguir la igualtat de gènere i apoderar totes les dones i nenes. Això inclou eliminar la violència basada en el gènere, garantir la participació igualitària de les dones en la política, l'economia i la societat, així com assegurar l'accés a drets laborals i recursos. L'ODS 5 promou també la llei i les polítiques que fomenten la igualtat de gènere i la igualtat d'oportunitats en tots els àmbits de la vida.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_06.png" alt="ODS 6">
-        </div>
-        <div class="ods-text">
-            <p>L'ODS 6 busca garantir l'accés universal a l'aigua potable i al sanejament per a totes les persones, promovent una gestió sostenible d'aquests recursos. L'objectiu és garantir que tothom, especialment les poblacions més vulnerables, tinguin accés a aigua segura i a instal·lacions de sanejament adequades. A més, promou la protecció i la restauració de recursos hídrics, així com l'ús responsable i eficient de l'aigua a través de la conservació.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_07.png" alt="ODS 7">
-        </div>
-        <div class="ods-text">
-            <p>Garantir l'accés universal a l'energia neta, assequible i sostenible és l'objectiu d'aquest ODS. Això implica augmentar la proporció d'energies renovables en el consum energètic global i millorar l'eficiència energètica en tots els sectors. També s'han de crear infraestructures energètiques modernes i sostenibles que permetin un desenvolupament equitatiu i inclusiu, sense comprometre els recursos del futur.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_08.png" alt="ODS 8">
-        </div>
-        <div class="ods-text">
-            <p>Aquest ODS busca promoure el creixement econòmic inclusiu i sostenible, així com aconseguir l'ocupació plena i productiva. La creació de treball decent per a tots, la millora de les condicions laborals, i la reducció de les desigualtats laborals són aspectes essencials. A més, promou la creació de condicions que permetin a les empreses, especialment les petites i mitjanes, prosperar de manera responsable i sostenible.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_09.png" alt="ODS 9">
-        </div>
-        <div class="ods-text">
-            <p>L'objectiu d'aquest ODS és construir infraestructures resilients, promoure la industrialització inclusiva i sostenible, i fomentar la innovació. La millora de les infraestructures de transport, energia i tecnologia, així com la promoció de la innovació científica i tecnològica, són claus per al desenvolupament econòmic i social. A més, aquest ODS busca fomentar l'eficiència i la sostenibilitat de la producció industrial.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_10.png" alt="ODS 10">
-        </div>
-        <div class="ods-text">
-            <p>L'ODS 10 es fonamenta en reduir les desigualtats tant dins com entre els països. Això implica garantir l'accés a oportunitats econòmiques, socials i polítiques a tothom, independentment de la seva classe social, gènere, ètnia o altres factors. Eliminar les barreres a la participació activa i fomentar una distribució més equitativa dels recursos són objectius claus per combatre les desigualtats a nivell global.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_11.png" alt="ODS 11">
-        </div>
-        <div class="ods-text">
-            <p>Aquest ODS promou la creació de ciutats i comunitats inclusives, segures, resilients i sostenibles. Es vol millorar la qualitat de vida urbana, reduir la contaminació, i garantir l'accés a habitatge adequat, transport públic eficient i serveis bàsics per a tots. A més, es promou el disseny d'entorns urbans que fomentin la convivència, la seguretat i la sostenibilitat ambiental.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_12.png" alt="ODS 12">
-        </div>
-        <div class="ods-text">
-            <p>L'ODS 12 busca garantir modalitats de consum i producció sostenibles. Això inclou reduir la generació de residus, promoure la reutilització i el reciclatge, i millorar l'eficiència en l'ús dels recursos naturals. A més, es vol fomentar una producció més responsable, amb una reducció de l'impacte ambiental i un enfocament de producció circular per millorar la sostenibilitat.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_13.png" alt="ODS 13">
-        </div>
-        <div class="ods-text">
-            <p>Aquest ODS es centra en adoptar mesures urgents per combatre el canvi climàtic i les seves conseqüències. Això inclou la reducció d'emissions de gasos d'efecte hivernacle, la promoció de l'ús d'energies renovables, la protecció dels ecosistemes i la preparació davant desastres naturals provocats pel canvi climàtic. També busca sensibilitzar la població sobre la importància d'actuar davant aquesta crisi global.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_14.png" alt="ODS 14">
-        </div>
-        <div class="ods-text">
-            <p>L'ODS 14 busca conservar i utilitzar de manera sostenible els oceans, els mars i els recursos marins. Això implica la protecció dels ecosistemes marins, la reducció de la contaminació marina, la protecció de la biodiversitat marina i la gestió sostenible de la pesca. A més, busca reduir la sobreexplotació i l'impacte de les activitats humanes sobre els ecosistemes marins.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_15.png" alt="ODS 15">
-        </div>
-        <div class="ods-text">
-            <p>Aquest ODS té com a objectiu protegir, restaurar i promoure l'ús sostenible dels ecosistemes terrestres, gestionant de manera sostenible els boscos, combatent la desertificació i frenando la pèrdua de biodiversitat. També s'apunta a frenar la degradació del sòl i garantir la conservació de les espècies amenaçades, promovent la protecció i restauració dels ecosistemes terrestres a nivell global.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_16.png" alt="ODS 16">
-        </div>
-        <div class="ods-text">
-            <p>L'ODS 16 busca promoure societats pacífiques i inclusives, garantir l'accés a la justícia per a tothom, i construir institucions efectives, responsables i inclusives. Això implica la lluita contra la corrupció, el foment dels drets humans, la transparència en la gestió pública i el reforç de les institucions judicials per garantir una governança eficient i justa.</p>
-        </div>
-    </section>
-    
-    <section class="ods-section">
-        <div class="ods-image">
-            <img src="assets/logos/edited/cat/cat_ods_17.png" alt="ODS 17">
-        </div>
-        <div class="ods-text">
-            <p>Aquest ODS promou la creació de parteneriats globals per aconseguir els ODS, a través de la cooperació internacional, el finançament sostenible i el reforç de les capacitats a nivell local, nacional i global. L'objectiu és unir esforços entre països, organitzacions, societat civil i sector privat per assolir els objectius globals de manera inclusiva i efectiva.</p>
-        </div>
-    </section>
-   
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
 
-    <script src="assets/js/scripts.js"></script>
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> Web ODS</b></h5>
+  </header>
+
+  <div class="w3-container">
+    <h1>Benvingut a la Web ODS de la Universitat Rovira i Virgili</h1>
+    <p>Aquesta pàgina web té com a objectiu principal mostrar
+        l’alineació dels programes acadèmics de la URV amb
+        els Objectius de Desenvolupament Sostenible</p>
+  </div>
+
+  <div class="w3-container">
+    <h2>Els 17 Objectius de Desenvolupament Sostenible</h2>
+    <p>El 2015, l’ONU va aprovar l’Agenda 2030 sobre el Desenvolupament Sostenible, una oportunitat perquè els països i
+    les seves societats emprenguin un nou camí per millorar la vida de totes les persones, sense deixar ningú enrere.
+    L’Agenda inclou 17 Objectius de Desenvolupament Sostenible (ODS), que estableixen que l’erradicació de la pobresa
+    ha d’anar de la mà d’estratègies que fomentin el creixement econòmic i abordin necessitats socials com l’educació,
+    la sanitat, la protecció social i les oportunitats laborals, mentre es combat el canvi climàtic i es protegeix el medi
+    ambient. En aquest lloc web mostrem informació sobre aquests objectius i els esforços que l’ONU i els seus socis
+    duen a terme per construir un món millor.</p>
+  </div>
+
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_01.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 1</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Erradicar la pobresa extrema i reduir la pobresa en totes les seves formes i dimensions arreu del món.</p>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_02.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 2</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Acabar amb la fam arreu del món i garantir la seguretat alimentària per a totes les persones.</p>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_03.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 3</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Garantir una vida sana i promoure el benestar per a totes les persones.</p>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_04.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 4</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Garantir una educació inclusiva, equitativa i de qualitat.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_05.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 5</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Aconseguir la igualtat de gènere i apoderar totes les dones i nenes.</p>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_06.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 6</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Garantir l'accés universal a l'aigua potable i al sanejament.</p>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_07.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 7</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Garantir l'accés universal a l'energia neta, assequible i sostenible.</p>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_08.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 8</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Promoure el creixement econòmic inclusiu i sostenible.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_09.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 9</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Construir infraestructures resilients, promoure la industrialització inclusiva i sostenible.</p>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_10.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 10</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Reduir les desigualtats tant dins com entre els països.</p>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_11.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 11</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Crear ciutats i comunitats inclusives, segures, resilients i sostenibles.</p>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_12.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 12</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Garantir modalitats de consum i producció sostenibles.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_13.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 13</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Adoptar mesures urgents per combatre el canvi climàtic i les seves conseqüències.</p>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_14.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 14</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Conservar i utilitzar de manera sostenible els oceans, els mars i els recursos marins.</p>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_15.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 15</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Protegir, restaurar i promoure l'ús sostenible dels ecosistemes terrestres.</p>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_16.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 16</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Promoure societats pacífiques i inclusives.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <div class="w3-left"><img src="assets/logos/edited/cat/cat_ods_17.png" style="width:100px"></div>
+        <div class="w3-right">
+          <h4>ODS 17</h4>
+        </div>
+        <div class="w3-clear"></div>
+        <p>Crear parteneriats globals per aconseguir els ODS.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+    <h4>FOOTER</h4>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  </footer>
+
+  <!-- End page content -->
+</div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+
 </body>
 </html>
-

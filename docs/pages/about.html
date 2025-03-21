@@ -1,38 +1,69 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+<title>Sobre</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="logo">Web ODS</div>
-        <ul class="nav-links">
-            <li><a href="../index.html">Inici</a></li>
-            <li><a href="barchart.html">Gràfic de barres</a></li>
-            <li><a href="piechart.html">Gràfic circular</a></li>
-            <li><a href="wordclouds.html">Núvol de paraules</a></li>
-            <li><a href="about.html" class="active">Sobre</a></li>
-            <li><a href="contact.html">Contacte</a></li>
-        </ul>
-        <div class="menu-toggle">&#9776;</div>
-    </nav>
+<body class="w3-light-grey">
 
-    <section class="content">
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-right">Web ODS</span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+      <img src="../assets/logos/edited/cat/cat_ods_logo.png" class="w3-circle w3-margin-right" style="width:92px">
+    </div>
+    <div class="w3-col s8 w3-bar">
+      <span>Sobre aquest projecte</span><br>
+    </div>
+  </div>
+  <hr>
+  <div class="w3-bar-block">
+    <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Inici</a>
+    <a href="barchart.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bar-chart fa-fw"></i>  Gràfic de barres</a>
+    <a href="piechart.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pie-chart fa-fw"></i>  Gràfic circular</a>
+    <a href="wordclouds.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cloud fa-fw"></i>  Núvol de paraules</a>
+    <a href="about.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-info-circle fa-fw"></i>  Sobre</a>
+    <a href="contact.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
+  </div>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> Sobre aquest projecte</b></h5>
+  </header>
+
+  <div class="w3-container">
     <h2>Sobre aquest projecte</h2>
-    <p>Aquest projecte analitza l'alineació dels programes acadèmics de la URV amb els Objectius de Desenvolupament Sostenible (ODS). Mitjançant tècniques de web scraping i mineria de textos, s'extreuen les descripcions dels programes, es tradueixen i, posteriorment, es realitza una anàlisi de dades en R per avaluar els termes relacionats amb els ODS</p>
-    
+    <p>Aquest projecte analitza l'alineació dels programes acadèmics de la URV amb els Objectius de Desenvolupament Sostenible (ODS). Mitjançant tècniques de web scraping i mineria de textos, s'extreuen les descripcions dels programes, es tradueixen i, posteriorment, es realitza una anàlisi de dades en R per avaluar els termes relacionats amb els ODS.</p>
+
     <h3>Referències inicials</h3>
     <p>El plantejament inicial d'aquest estudi es basa en dues referències principals: l'<strong>Informe sobre la docència i la recerca en sostenibilitat i medi ambient a la Universitat Rovira i Virgili</strong> (Alberich González et al., 2012), que proporciona una anàlisi detallada de la sostenibilitat i l'educació ambiental a la URV, i l'estudi de Bautista-Cerro Ruiz i Díaz González (2017), que examina la presència de la sostenibilitat dins dels programes universitaris. Aquests treballs ofereixen una perspectiva inicial sobre com analitzar la integració de la sostenibilitat en els currículums de l'educació superior i serveixen com a base per desenvolupar el nostre marc metodològic.</p>
-    
+
     <h3>Obligacions legals futures</h3>
     <p>Les futures obligacions legals a Espanya, dictades per la legislació de la Unió Europea, estableixen la necessitat que les universitats contribueixin activament a l'assoliment dels ODS en línia amb l'Agenda 2030, segons la Resolució del 26 d’abril de 2023. Aquesta resolució, una col·laboració entre la <em>Secretaría de Estado para la Agenda 2030</em> i la <em>Conferencia de Rectores de las Universidades Españolas</em>, subratlla la importància de monitoritzar i garantir el compliment dels objectius de sostenibilitat. Per tant, es fa essencial desenvolupar un mètode sistemàtic per avaluar fins a quin punt els programes acadèmics de la URV s'alineen amb els ODS, garantint que l'oferta educativa contribueixi efectivament a l'estratègia global de sostenibilitat.</p>
-    
+
     <h3>Extracció de contingut dels cursos</h3>
     <p>Per recopilar el contingut dels cursos, va ser necessari extreure dades de les guies docents mitjançant diversos processos de web scraping. Es van obtenir enllaços als cursos basats en les facultats i escoles de la URV i, un cop accedits, es van recuperar dades detallades sobre els cursos (de grau i màster). Per exemple, un d’aquests enllaços seria: <a href="https://guiadocent.urv.cat/guido/public/centres/495/ensenyaments/3467/detall">Guia docent</a>, on "495" fa referència a la facultat i "3467" al curs específic.</p>
-    
+
     <h3>Dades extretes</h3>
     <p>Un cop dins els detalls del curs, es van extreure dades com el nom del curs i l’any acadèmic. Posteriorment, es van obtenir informacions clau com:</p>
     <ul>
@@ -48,10 +79,10 @@
         <li><strong>course_type</strong>: Tipus d’assignatura (e.g., "F Bàsica", "Optativa", "Obligatòria")</li>
         <li><strong>credits</strong>: Crèdits (e.g., 4.5, 6)</li>
     </ul>
-    
+
     <h3>Formats Docnet i Guido</h3>
     <p>La informació es va extreure en dos formats: <strong>Docnet</strong> (93% de les assignatures) i <strong>Guido</strong> (7% restants). Per accedir a les guies Docnet, va ser necessari recuperar l’enllaç a l’iframe que les contenia. En el format Guido, es van extreure dades similars, amb les competències integrades en els resultats d’aprenentatge.</p>
-    
+
     <h3>Anàlisi metodològica per identificar els ODS</h3>
     <p>Per identificar i quantificar els ODS en les guies docents, es van consultar conjunts de paraules clau de diverses fonts tot i que finalment es va optar per emprar l'eina <strong>text2SDG</strong>. El contingut es va traduir automàticament al anglès amb <strong>LibreTranslate</strong> per facilitar l'anàlisi. Entre les fonts utilitzades es troben:</p>
     <ul>
@@ -61,14 +92,44 @@
         <li><strong>Joint Research Centre de la UE</strong> i la seva eina <em>SDG Mapper</em></li>
         <li><strong>text2SDG</strong>, una eina d'anàlisi de codi obert en R desenvolupada per Meier, Mata i Wulff (2022)</li>
     </ul>
-    
+
     <h3>Resultats i estructura final</h3>
     <p>Finalment, els ODS es van identificar i la informació es va sintetitzar juntament amb les dades detallades de les assignatures. Aquesta síntesi es va organitzar en un format JSON estructurat per facultats, cursos, assignatures i els ODS associats al seu contingut.</p>
+  </div>
 
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+    <h4>FOOTER</h4>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  </footer>
 
+  <!-- End page content -->
+</div>
 
-    </section>
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
 
-    <script src="../assets/js/scripts.js"></script>
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+
 </body>
 </html>
