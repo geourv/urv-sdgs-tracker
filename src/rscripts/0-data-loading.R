@@ -90,6 +90,11 @@ course_details_list <- course_details_list %>%
 
 
 
+# In course_name replace apostrophes with spaces
+course_details_list$course_name <- gsub("'", " ", course_details_list$course_name)
+
+
+
 # In course_details_list create faculty_school_name column
 # Function to match degree_url to faculty name
 assign_faculty_name <- function(url) {
