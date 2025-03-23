@@ -18,7 +18,6 @@ source("./src/R/translate_column_services.R")
 # Translate columns into individual CSV files: Using Apertium ----
 translate_column(course_details_df, column = "course_name", source_lang = "ca", target_lang = "en",
                  file_path = "./sandbox/course_name-en-apertium.csv", max_cores = 8,
-                 context = "Aquest és el nom de l'assignatura:",
                  service = "apertium")
 translate_column(course_details_df, column = "description", source_lang = "ca", target_lang = "en",
                  file_path = "./sandbox/description-en-apertium.csv", max_cores = 8,

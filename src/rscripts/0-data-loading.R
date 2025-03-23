@@ -77,21 +77,45 @@ rm(course_details_list_guido,course_details_list_docnet,docnet_iframes,replaceme
 
 # Course_details_list edition----
 
-
-
 # In course_name replace roman numbers per arabic numbers
-# Replacement list
-replacements <- c(" VIII$" = " 8", " VII$" = " 7", " VI$" = " 6", " V$" = " 5",
-                  " IV$" = " 4", " III$" = " 3", " II$" = " 2", " I$" = " 1")
+library(dplyr)
+library(stringr)
 
-# Apply all the replacements
+replacements <- c(" VIII$" = " 8",
+                  " VII$"  = " 7",
+                  " V$"    = " 5",
+                  " IV$"   = " 4",
+                  " III$"  = " 3",
+                  " II$"   = " 2",
+                  " I$"    = " 1")
+
 course_details_list <- course_details_list %>%
-  mutate(course_name = Reduce(function(x, y) sub(y, replacements[[y]], x), names(replacements), course_name))
+  mutate(course_name = {
+    name <- course_name
+    
+    # Substituir tots els casos menys el VI
+    for (pattern in names(replacements)) {
+      name <- str_replace(name, pattern, replacements[[pattern]])
+    }
+    
+    # Substituir VI només si NO acaba amb " el VI" o " del VI"
+    name <- ifelse(str_detect(name, "(?i)( el VI| del VI)$"),
+                   name,  # No substituir si acaba amb 'el VI' o 'del VI'
+                   str_replace(name, " VI$", " 6"))  # Substituir en la resta
+    
+    name
+  })
+
+
+
+
+
+
 
 
 
 # In course_name replace apostrophes with spaces
-course_details_list$course_name <- gsub("'", " ", course_details_list$course_name)
+course_details_list$course_name <- gsub("'", "’", course_details_list$course_name)
 
 
 
@@ -190,6 +214,7 @@ docnet_course_contents <- docnet_course_contents[, c("web_scraper_order", "cours
 course_contents <- rbind(guido_course_contents, docnet_course_contents)
 rm(guido_course_contents, docnet_course_contents)
 
+course_contents$contents <- gsub("'", "’", course_contents$contents)
 
 
 # Load and setup learning-results ----
@@ -240,13 +265,17 @@ rm(guido_course_bibliography, docnet_course_bibliography)
 
 ############################## Translation window----
 # List of terms to remove in Description----
-terms_to_remove_description <- c("^'- ","^- ","^—","^• ","^NA")
+terms_to_remove_description <- c("^- ","^—","^• ","^NA")
 
 # Replace
 course_description$description <- trimws(
   Reduce(function(x, pattern) gsub(pattern, "", x, fixed = TRUE), 
          terms_to_remove_description, course_description$description))
 
+course_description$description <- str_replace_all(
+  course_description$description,
+  "'", "’"
+)
 
 
 # List of terms to remove in References----
@@ -329,6 +358,46 @@ rm(terms_to_remove_description,
    course_competences_learning_results_second_words,
    course_competences_learning_results_unique_second_words,
    course_competences_learning_results_not_delete)
+
+
+# Translate columns into individual CSV files: Using Apertium ----
+translate_column(course_details_list, column = "course_name", source_lang = "auto", target_lang = "en",
+                 file_path = "./sandbox/course_name-en-apertium.csv", max_cores = 8,
+                 service = "apertium")
+translate_column(course_description, column = "description", source_lang = "auto", target_lang = "en",
+                 file_path = "./sandbox/description-en-apertium.csv", max_cores = 8,
+                 service = "apertium")
+translate_column(course_contents, column = "contents", source_lang = "auto", target_lang = "en",
+                 file_path = "./sandbox/contents-en-apertium.csv", max_cores = 8,
+                 service = "apertium")
+translate_column(course_competences_learning_results, column = "competences_learning_results", source_lang = "auto", target_lang = "en",
+                 file_path = "./sandbox/competences_learning_results-en-apertium.csv", max_cores = 8,
+                 service = "apertium")
+translate_column(course_bibliography, column = "references", source_lang = "auto", target_lang = "en",
+                 file_path = "./sandbox/references-en-apertium.csv", max_cores = 8,
+                 service = "apertium")
+
+# Translate columns into individual CSV files: Using Libretranslate ----
+translate_column(course_details_list, column = "course_name", source_lang = "auto", target_lang = "en",
+                 file_path = "./sandbox/course_name-en.csv", max_cores = 4,
+                 context = "Aquest és el nom de l'assignatura:",
+                 service = "libretranslate")
+translate_column(course_description, column = "description", source_lang = "auto", target_lang = "en",
+                 file_path = "./sandbox/description-en.csv", max_cores = 4,
+                 service = "libretranslate")
+translate_column(course_contents, column = "contents", source_lang = "auto", target_lang = "en",
+                 file_path = "./sandbox/contents-en.csv", max_cores = 4)
+translate_column(course_competences_learning_results, column = "competences_learning_results", source_lang = "auto", target_lang = "en",
+                 file_path = "./sandbox/competences_learning_results-en.csv", max_cores = 4)
+translate_column(course_bibliography, column = "references", source_lang = "auto", target_lang = "en",
+                 file_path = "./sandbox/references-en.csv", max_cores = 4)
+
+
+
+# TODO: Once translated, need to load the translated columns and join them to the source dataframes, replace original columns,
+# then proceed to the aggregation phase.
+
+
 
 ##############################
 
