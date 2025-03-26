@@ -28,14 +28,24 @@ sdg_summary_df <- sdg_analysis_df_results %>%
   select(-system, -query_id, -hit) %>%
   group_by(document) %>%
   summarise(
-    sdg = list(sdg),
-    features = list(features),
+    sdg = list(sort(unique(unlist(sdg)))),
+    features = list(
+      features |>
+        unlist() |>
+        strsplit(",") |>
+        unlist() |>
+        trimws() |>
+        discard(~ .x %in% c("", "NA")) |>
+        unique() |>
+        sort()
+    ),
     .groups = "drop"
   ) %>%
-  mutate(document=as.integer(document))
+  mutate(document = as.integer(document))
+
 
 sdg_summary_df <-
   course_details_df %>%
   left_join(sdg_summary_df, by=c("document_number"="document"))
 
-rm("course_details_df","sdg_summary_df")
+rm("course_details_df","sdg_analysis_df_results")

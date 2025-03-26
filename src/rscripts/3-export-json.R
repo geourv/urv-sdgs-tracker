@@ -44,10 +44,10 @@ faculty_list <- df %>%
 
             # Aplanar sdg i features si són llistes o tenen duplicats
             if (!is.null(course_info$sdg)) {
-              course_info$sdg <- unique(unlist(course_info$sdg))
+              course_info$sdg <- course_info$sdg
             }
             if (!is.null(course_info$features)) {
-              course_info$features <- unique(unlist(course_info$features))
+              course_info$features <- course_info$features
             }
 
             course_info
@@ -60,22 +60,6 @@ faculty_list <- df %>%
     faculty_info$degrees <- degrees
     faculty_info
   })
-
-faculty_list <- map(faculty_list, function(faculty) {
-  faculty$degrees <- map(faculty$degrees, function(degree) {
-    degree$courses <- map(degree$courses, function(course) {
-      if (!is.null(course$sdg)) {
-        course$sdg <- sort(unique(course$sdg))
-      }
-      if (!is.null(course$features)) {
-        course$features <- sort(unique(course$features))
-      }
-      course
-    })
-    degree
-  })
-  faculty
-})
 
 
 # 4. Exportar a JSON
