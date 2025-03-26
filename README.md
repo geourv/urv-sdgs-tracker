@@ -5,19 +5,16 @@ Using web scraping and text mining, we extract program descriptions, translate t
 The results are published as a website in the `docs` folder and hosted via GitHub Pages. 
 
 The initial approach of this study has been informed by the following two references: 
-Informe sobre la docència i la recerca en sostenibilitat i medi ambient a la Universitat Rovira i Virgili (Alberich González et al., 2012), 
-which provides an in-depth analysis of sustainability and environmental education at URV, and the study La sostenibilidad en los grados universitarios: presencia y coherencia
-by Bautista-Cerro Ruiz and Díaz González (2017), 
-which examines the presence of sustainability within university degree programs. 
+Informe sobre la docència i la recerca en sostenibilitat i medi ambient a la Universitat Rovira i Virgili (Alberich González et al., 2012), which provides an in-depth analysis of sustainability and environmental education at URV, and the study La sostenibilidad en los grados universitarios: presencia y coherencia by Bautista-Cerro Ruiz and Díaz González (2017), which examines the presence of sustainability within university degree programs.
 
-These works provide an initial perspective on how to analyze the integration of sustainability 
+These works provide an initial perspective on how to analyze the integration of sustainability
 into higher education curricula and serve as a basis for developing our methodological framework.
 
 Furthermore, future legal obligations in Spain, as mandated by European Union legislation, 
-establish the need for uiversities, as outlined in the Resolution of April 26, 2023, 
+establish the need for uiversities, as outlined in the Resolution of April 26, 2023,
 to actively contribute to the achievement of the Sustainable Development Goals (SDGs) in alignment with the 2030 Agenda. 
 This resolution, a collaboration between the Secretaría de Estado para la Agenda 2030 and the Conferencia de Rectores de las Universidades Españolas, 
-underscores the importance of monitoring and ensuring compliance with sustainability objectives. 
+underscores the importance of monitoring and ensuring compliance with sustainability objectives.
 
 As a result, it becomes essential to develop a systematic method for evaluating the extent to which URV’s academic programs align with the SDGs, 
 ensuring that educational offerings contribute effectively to the broader sustainability strategy.

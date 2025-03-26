@@ -92,31 +92,23 @@ replacements <- c(" VIII$" = " 8",
 course_details_list <- course_details_list %>%
   mutate(course_name = {
     name <- course_name
-    
+
     # Substituir tots els casos menys el VI
     for (pattern in names(replacements)) {
       name <- str_replace(name, pattern, replacements[[pattern]])
     }
-    
+
     # Substituir VI només si NO acaba amb " el VI" o " del VI"
     name <- ifelse(str_detect(name, "(?i)( el VI| del VI)$"),
                    name,  # No substituir si acaba amb 'el VI' o 'del VI'
                    str_replace(name, " VI$", " 6"))  # Substituir en la resta
-    
+
     name
   })
 
 
-
-
-
-
-
-
-
-# In course_name replace apostrophes with spaces
+# In course_name replace apostrophes with valid character
 course_details_list$course_name <- gsub("'", "’", course_details_list$course_name)
-
 
 
 # In course_details_list create faculty_school_name column
@@ -199,6 +191,16 @@ docnet_course_description <- docnet_course_description[, c("web_scraper_order", 
 course_description <- rbind(guido_course_description, docnet_course_description)
 rm(guido_course_description, docnet_course_description)
 
+# In course_name replace apostrophes with valid character
+course_description$description <- gsub("'", "’", course_description$description)
+
+# List of terms to remove in Description
+terms_to_remove_description <- c("^- ","^—","^• ","^NA")
+
+# Replace
+course_description$description <- trimws(
+  Reduce(function(x, pattern) gsub(pattern, "", x, fixed = TRUE),
+         terms_to_remove_description, course_description$description))
 
 
 # Load and setup contents ----
@@ -240,11 +242,65 @@ colnames(docnet_course_competences) <- c("web_scraper_order", "course_url", "com
 course_competences <- docnet_course_competences
 rm(docnet_course_competences)
 
-
-
 # Union of learning results and competences ----
 course_competences_learning_results <- rbind(course_learning_results,course_competences)
 rm(course_learning_results,course_competences)
+
+course_competences_learning_results$competences_learning_results <- gsub("'", "’", course_competences_learning_results$competences_learning_results)
+
+
+# TODO: Is it not easier to check what to delete?
+
+# List of terms to remove in Competences and Learning results----
+# Find the first row words of course_competences_learning_results df
+course_competences_learning_results_first_words <-
+  sapply(strsplit(course_competences_learning_results$competences_learning_results, "[ \\n-]+"), `[`, 1)
+
+# Convert the vector to unique words
+course_competences_learning_results_unique_first_words <-
+  unique(course_competences_learning_results_first_words)
+
+# Repeat the finding to better discriminate first words
+course_competences_learning_results_second_words <-
+  sapply(strsplit(course_competences_learning_results_unique_first_words, "\\n+"), `[`, 1)
+
+# Convert the vector to unique words
+course_competences_learning_results_unique_second_words <-
+  unique(course_competences_learning_results_second_words)
+
+# Save the vector to review and manually select words that don't have to be deleted
+# write.csv(data.frame(course_competences_learning_results_unique_second_words),
+#          "sandbox/terms_to_remove_comp_learnres.csv", row.names = FALSE)
+
+# Read the df with words that don't have to be deleted
+course_competences_learning_results_not_delete <-
+  read.csv("data/course_competences_learning_results_not_delete.csv")
+
+# Convert to vector
+course_competences_learning_results_not_delete <-
+  course_competences_learning_results_not_delete[, 1]
+
+course_competences_learning_results_not_delete <-
+  gsub("\\t+$", "", course_competences_learning_results_not_delete)
+
+# Check vectors
+#print(course_competences_learning_results_not_delete)
+#print(course_competences_learning_results_unique_second_words)
+
+# Delete words from course_competences_learning_results_unique_second_words vector (words that we want to be deleted)
+# that are included in course_competences_learning_results_not_delete vector (words that we don't want to be deleted)
+terms_to_remove_comp_learnres <-
+  setdiff(course_competences_learning_results_unique_second_words,course_competences_learning_results_not_delete)
+
+terms_to_remove_comp_learnres <- terms_to_remove_comp_learnres[!is.na(terms_to_remove_comp_learnres) & terms_to_remove_comp_learnres != "NA"]
+
+# Check vector
+#print(terms_to_remove_comp_learnres)
+
+# Replace
+course_competences_learning_results$competences_learning_results <- trimws(
+  Reduce(function(x, pattern) gsub(pattern, "", x, fixed = TRUE),
+         terms_to_remove_comp_learnres, course_competences_learning_results$competences_learning_results))
 
 
 
@@ -261,92 +317,32 @@ docnet_course_bibliography <- docnet_course_bibliography[, c("web_scraper_order"
 course_bibliography <- rbind(guido_course_bibliography, docnet_course_bibliography)
 rm(guido_course_bibliography, docnet_course_bibliography)
 
+# List of terms to remove in References----
+# Convertim tot a minúscules
+course_bibliography$references <- tolower(course_bibliography$references)
 
-
-############################## Translation window----
-# List of terms to remove in Description----
-terms_to_remove_description <- c("^- ","^—","^• ","^NA")
-
-# Replace
-course_description$description <- trimws(
-  Reduce(function(x, pattern) gsub(pattern, "", x, fixed = TRUE), 
-         terms_to_remove_description, course_description$description))
-
-course_description$description <- str_replace_all(
-  course_description$description,
-  "'", "’"
+# Neteja insensible a majúscules/minúscules
+terms_to_remove_references <- c(
+  "accés al crai", "no disponible a la urv", ", més info", "més info",
+  "diversos,", "diversos.",
+  "\\(llibre\\)\\s*[,-/]*\\s*",
+  "\\(revista\\)\\s*[,-/]*\\s*",
+  "\\(altres\\)\\s*[,-/]*\\s*",
+  "\\(lloc web\\)\\s*[,-/]*\\s*",
+  "\\(bases de dades\\)\\s*[,-/]*\\s*",
+  "\\(cap[ií]tol llibre\\)\\s*[,-/]*\\s*",
+  "\\(audios\\)\\s*/\\s*",
+  "^/\\s*", "^:\\s*", "^,\\s*", "^•\\s*", "^-\\s*", "^\\.\\s*"
 )
 
+# Aplicar gsub encadenat (regex i insensible a majúscules)
+for (pattern in terms_to_remove_references) {
+  course_bibliography$references <- gsub(pattern, "", course_bibliography$references, ignore.case = TRUE, perl = TRUE)
+}
 
-# List of terms to remove in References----
-terms_to_remove_references <- c(
-  "accés al CRAI", "No disponible a la URV", ", Més info", "Més info",
-  "diversos,", "Diversos,", "diversos.", "Diversos.",
-  "(Llibre) ", "(Llibre) , ", "(Llibre) / ", "(Llibre) -, ", "(Revista) ", "(Revista) , ",
-  "(Altres) ", "(Altres) , ", "(Altres) / " ,"(Lloc web) ", "(Lloc web) , ",
-  "(Bases de dades) ", "(Bases de dades) , ", "(Capítol llibre) ", "(Capitol llibre)  / ",
-  "(Audios)  /  ",
-  "^/ ","^:","^, ","^•","^- ","^. ")
+# Eliminar espais al principi i final
+course_bibliography$references <- trimws(course_bibliography$references)
 
-
-# Replace
-course_bibliography$references <- trimws(
-  Reduce(function(x, pattern) gsub(pattern, "", x, fixed = TRUE), 
-         terms_to_remove_references, course_bibliography$references))
-
-
-
-# List of terms to remove in Competences and Learning results----
-# Find the first row words of course_competences_learning_results df
-course_competences_learning_results_first_words <- 
-  sapply(strsplit(course_competences_learning_results$competences_learning_results, "[ \\n-]+"), `[`, 1)
-
-# Convert the vector to unique words
-course_competences_learning_results_unique_first_words <- 
-  unique(course_competences_learning_results_first_words)
-
-# Repeat the finding to better discriminate first words
-course_competences_learning_results_second_words <- 
-  sapply(strsplit(course_competences_learning_results_unique_first_words, "\\n+"), `[`, 1)
-
-# Convert the vector to unique words
-course_competences_learning_results_unique_second_words <- 
-  unique(course_competences_learning_results_second_words)
-
-# Save the vector to review and manually select words that don't have to be deleted
-# write.csv(data.frame(course_competences_learning_results_unique_second_words), 
-#          "sandbox/terms_to_remove_comp_learnres.csv", row.names = FALSE)
-
-# Read the df with words that don't have to be deleted 
-course_competences_learning_results_not_delete <-
-  read.csv("data/course_competences_learning_results_not_delete.csv")
-
-# Convert to vector
-course_competences_learning_results_not_delete <-  
-  course_competences_learning_results_not_delete[, 1]
-
-course_competences_learning_results_not_delete <- 
-  gsub("\\t+$", "", course_competences_learning_results_not_delete)
-
-# Check vectors
-#print(course_competences_learning_results_not_delete)
-#print(course_competences_learning_results_unique_second_words)
-
-# Delete words from course_competences_learning_results_unique_second_words vector (words that we want to be deleted)
-# that are included in course_competences_learning_results_not_delete vector (words that we don't want to be deleted)
-terms_to_remove_comp_learnres <- 
-  setdiff(course_competences_learning_results_unique_second_words,course_competences_learning_results_not_delete)
-
-terms_to_remove_comp_learnres <- terms_to_remove_comp_learnres[!is.na(terms_to_remove_comp_learnres) & terms_to_remove_comp_learnres != "NA"]
-
-# Check vector
-#print(terms_to_remove_comp_learnres)
-
-
-# Replace
-course_competences_learning_results$competences_learning_results <- trimws(
-  Reduce(function(x, pattern) gsub(pattern, "", x, fixed = TRUE), 
-         terms_to_remove_comp_learnres, course_competences_learning_results$competences_learning_results))
 
 
 # Delete useless data----
@@ -359,66 +355,141 @@ rm(terms_to_remove_description,
    course_competences_learning_results_unique_second_words,
    course_competences_learning_results_not_delete)
 
+############################## Translation window----
 
-# Translate columns into individual CSV files: Using Apertium ----
-translate_column(course_details_list, column = "course_name", source_lang = "auto", target_lang = "en",
-                 file_path = "./sandbox/course_name-en-apertium.csv", max_cores = 8,
-                 service = "apertium")
-translate_column(course_description, column = "description", source_lang = "auto", target_lang = "en",
-                 file_path = "./sandbox/description-en-apertium.csv", max_cores = 8,
-                 service = "apertium")
-translate_column(course_contents, column = "contents", source_lang = "auto", target_lang = "en",
-                 file_path = "./sandbox/contents-en-apertium.csv", max_cores = 8,
-                 service = "apertium")
-translate_column(course_competences_learning_results, column = "competences_learning_results", source_lang = "auto", target_lang = "en",
-                 file_path = "./sandbox/competences_learning_results-en-apertium.csv", max_cores = 8,
-                 service = "apertium")
-translate_column(course_bibliography, column = "references", source_lang = "auto", target_lang = "en",
-                 file_path = "./sandbox/references-en-apertium.csv", max_cores = 8,
-                 service = "apertium")
+# source("./src/R/translate_column_services.R")
+#
+# # Translate columns into individual CSV files: Using Apertium ----
+# translate_column(course_details_list, column = "course_name", source_lang = "cat", target_lang = "en",
+#                  file_path = "./sandbox/course_name-en-apertium.csv", max_cores = 8,
+#                  service = "apertium")
+#
+# translate_column(course_description, column = "description", source_lang = "auto", target_lang = "en",
+#                  file_path = "./sandbox/description-en-apertium.csv", max_cores = 8,
+#                  service = "apertium")
+# description_en_apertium <- read_csv("sandbox/description-en-apertium.csv")
+# description_en_apertium <- description_en_apertium %>%
+#   mutate(translated_text = if_else(detected_language == "eng" & translated_text == "Translation Error",
+#                                    "original",
+#                                    translated_text))
+# write_csv(description_en_apertium, "sandbox/description-en-apertium.csv")
+# rm(description_en_apertium)
+#
+#
+# translate_column(course_contents, column = "contents", source_lang = "auto", target_lang = "en",
+#                  file_path = "./sandbox/contents-en-apertium.csv", max_cores = 8,
+#                  service = "apertium")
+# contents_en_apertium <- read_csv("sandbox/contents-en-apertium.csv")
+# contents_en_apertium <- contents_en_apertium %>%
+#   mutate(translated_text = if_else(detected_language == "eng" & translated_text == "Translation Error",
+#                                    "original",
+#                                    translated_text))
+# write_csv(contents_en_apertium, "sandbox/contents-en-apertium.csv")
+# rm(contents_en_apertium)
+#
+#
+#
+# translate_column(course_competences_learning_results, column = "competences_learning_results", source_lang = "auto", target_lang = "en",
+#                  file_path = "./sandbox/competences_learning_results-en-apertium.csv", max_cores = 8,
+#                  service = "apertium")
+# competences_learning_results_en_apertium <- read_csv("sandbox/competences_learning_results-en-apertium.csv")
+# competences_learning_results_en_apertium <- competences_learning_results_en_apertium %>%
+#   mutate(translated_text = if_else(detected_language == "eng" & translated_text == "Translation Error",
+#                                    "original",
+#                                    translated_text))
+# write_csv(competences_learning_results_en_apertium, "sandbox/competences_learning_results-en-apertium.csv")
+#
+#
+#
+# translate_column(course_bibliography, column = "references", source_lang = "auto", target_lang = "en",
+#                  file_path = "./sandbox/references-en-apertium.csv", max_cores = 8,
+#                  service = "apertium")
+# references_en_apertium <- read_csv("sandbox/references-en-apertium.csv")
+# references_en_apertium <- references_en_apertium %>%
+#   mutate(translated_text = if_else(detected_language == "eng" & translated_text == "Translation Error",
+#                                    "original",
+#                                    translated_text))
+# write_csv(references_en_apertium, "sandbox/references-en-apertium.csv")
+
 
 # Translate columns into individual CSV files: Using Libretranslate ----
-translate_column(course_details_list, column = "course_name", source_lang = "auto", target_lang = "en",
-                 file_path = "./sandbox/course_name-en.csv", max_cores = 4,
-                 context = "Aquest és el nom de l'assignatura:",
-                 service = "libretranslate")
-translate_column(course_description, column = "description", source_lang = "auto", target_lang = "en",
-                 file_path = "./sandbox/description-en.csv", max_cores = 4,
-                 service = "libretranslate")
-translate_column(course_contents, column = "contents", source_lang = "auto", target_lang = "en",
-                 file_path = "./sandbox/contents-en.csv", max_cores = 4)
-translate_column(course_competences_learning_results, column = "competences_learning_results", source_lang = "auto", target_lang = "en",
-                 file_path = "./sandbox/competences_learning_results-en.csv", max_cores = 4)
-translate_column(course_bibliography, column = "references", source_lang = "auto", target_lang = "en",
-                 file_path = "./sandbox/references-en.csv", max_cores = 4)
+# translate_column(course_details_list, column = "course_name", source_lang = "auto", target_lang = "en",
+#                  file_path = "./sandbox/course_name-en-libretranslate.csv", max_cores = 4,
+#                  context = "Aquest és el nom de l'assignatura:",
+#                  service = "libretranslate")
+# translate_column(course_description, column = "description", source_lang = "auto", target_lang = "en",
+#                  file_path = "./sandbox/description-en-libretranslate.csv", max_cores = 4,
+#                  service = "libretranslate")
+# translate_column(course_contents, column = "contents", source_lang = "auto", target_lang = "en",
+#                  file_path = "./sandbox/contents-en-libretranslate.csv", max_cores = 4,
+#                  service = "libretranslate")
+# translate_column(course_competences_learning_results, column = "competences_learning_results", source_lang = "auto", target_lang = "en",
+#                  file_path = "./sandbox/competences_learning_results-en-libretranslate.csv", max_cores = 4,
+#                  service = "libretranslate")
+# translate_column(course_bibliography, column = "references", source_lang = "auto", target_lang = "en",
+#                  file_path = "./sandbox/references-en-libretranslate.csv", max_cores = 3,
+#                  service = "libretranslate")
 
 
 
 # TODO: Once translated, need to load the translated columns and join them to the source dataframes, replace original columns,
 # then proceed to the aggregation phase.
 
+course_details_list <- course_details_list %>%
+  mutate(rownum = row_number()) %>%
+  left_join(read.csv("./data/translations/course_name-en-libretranslate.csv") %>% rename(rownum = id),
+            by = "rownum") %>%
+  rename(course_name_en = translated_text) %>%
+  select(course_name, course_name_en, everything())
+
+course_description <- course_description %>%
+  mutate(rownum = row_number()) %>%
+  left_join(read.csv("./data/translations/description-en-libretranslate.csv") %>% rename(rownum = id),
+            by = "rownum") %>%
+  rename(description_en = translated_text) %>%
+  select(description, description_en, everything())
+
+course_contents <- course_contents %>%
+  mutate(rownum = row_number()) %>%
+  left_join(read.csv("./data/translations/contents-en-libretranslate.csv") %>% rename(rownum = id),
+            by = "rownum") %>%
+  rename(contents_en = translated_text) %>%
+  select(contents, contents_en, everything())
+
+course_competences_learning_results <- course_competences_learning_results %>%
+  mutate(rownum = row_number()) %>%
+  left_join(read.csv("./data/translations/competences_learning_results-en-libretranslate.csv") %>% rename(rownum = id),
+            by = "rownum") %>%
+  rename(competences_learning_results_en = translated_text) %>%
+  select(competences_learning_results, competences_learning_results_en, everything())
+
+course_bibliography <- course_bibliography %>%
+  mutate(rownum = row_number()) %>%
+  left_join(read.csv("./data/translations/references-en-libretranslate.csv") %>% rename(rownum = id),
+            by = "rownum") %>%
+  rename(references_en = translated_text) %>%
+  select(references, references_en, everything())
+
 
 
 ##############################
 
-
-
 # Aggregate ----
-course_competences_learning_results_agg <- aggregate(competences_learning_results ~ course_url,
+course_competences_learning_results_agg <- aggregate(competences_learning_results_en ~ course_url,
                                                      data = course_competences_learning_results,
-                                                     paste, collapse = ";")
+                                                     paste, collapse = " ; ")
 
-course_description_agg <- aggregate(description ~ course_url,
+course_description_agg <- aggregate(description_en ~ course_url,
                                     data = course_description,
-                                    paste, collapse = ";")
+                                    paste, collapse = " ; ")
 
-course_contents_agg <- aggregate(contents ~ course_url,
+course_contents_agg <- aggregate(contents_en ~ course_url,
                                     data = course_contents,
-                                    paste, collapse = ";")
+                                    paste, collapse = " ; ")
 
-course_bibliography_agg <- aggregate(references ~ course_url,
+course_bibliography_agg <- aggregate(references_en ~ course_url,
                                  data = course_bibliography,
-                                 paste, collapse = ";")
+                                 paste, collapse = " ; ")
 
 
 # Remove the suffixes from degree_url in both datasets so that degree_url matches in both cases
@@ -427,6 +498,7 @@ course_details_list$degree_url <- sub("/assignatures/gestionar$", "", course_det
 
 
 course_details_df <- course_details_list %>%
+  select(-original,-detected_language,-confidence,-rownum) %>%
   left_join(course_competences_learning_results_agg, by = "course_url") %>%
   left_join(course_description_agg, by = "course_url") %>%
   left_join(course_contents_agg, by = "course_url") %>%
@@ -440,14 +512,7 @@ course_details_df <- course_details_list %>%
 
 #missing_description <- course_details_df[is.na(course_details_df$description),"course_url"]
 
-rm(course_competences_learning_results_agg,course_description_agg,course_contents_agg,course_bibliography_agg,course_coordinators,course_professors,course_description,course_contents,course_competences_learning_results,course_bibliography)
-
-
-
-#Merge course details with degree details
-# course_details <- left_join(degree_programs_list, course_details, by = "degree_url")
-
-rm(course_details_list,degree_programs_list)
+rm(list=setdiff(ls(), "course_details_df"))
 
 # Save course_details_df (only once!)
-# course_details_df <- write.csv(course_details_df, "./data/course_details_df.csv", row.names = FALSE)
+# write.csv(course_details_df, "./data/course_details_df.csv", row.names = FALSE)

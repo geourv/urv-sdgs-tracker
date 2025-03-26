@@ -13,7 +13,7 @@ RUN apt-get -qq update && apt-get -qq install -y \
     hfst-ospell \
     apertium-eng-spa \
     apertium-spa-cat \
-    apertium-cat-eng \
+    apertium-eng-cat \
     python3-lxml \
     python3-requests \
     python3-chardet \

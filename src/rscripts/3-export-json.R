@@ -1,25 +1,83 @@
-# Example dataframe
-df <- data.frame(
-  faculty = c("Science", "Science", "Arts", "Arts", "Science"),
-  degree = c("Biology", "Biology", "History", "History", "Physics"),
-  course = c("Genetics", "Ecology", "Ancient History", "Modern History", "Quantum Mechanics"),
-  professor = c("Dr. A", "Dr. B", "Dr. C", "Dr. D", "Dr. E"),
-  credits = c(4, 3, 5, 4, 6),
-  sdg = c("SDG-01","SDG-02","SDG-03","SDG-04","SDG-05","SDG-06","SDG-07","SDG-08","SDG-09","SDG-10","SDG-11","SDG-12","SDG-13","SDG-14","SDG-15","SDG-16","SDG-17")
-)
+library(dplyr)
+library(purrr)
+library(jsonlite)
 
-# Split first by faculty, then within each faculty, split by degree
-faculty_list <- split(df, df$faculty) 
-faculty_list <- lapply(faculty_list, function(fac) split(fac[, -1:-2], fac$degree))
+# 1. Preprocessament del dataframe
+df <- sdg_summary_df %>%
+  select(-competences_learning_results_en, -description_en, -contents_en, -references_en) %>%
+  mutate(
+    course_name = tolower(course_name)
+  )
 
-# Print structure
-str(faculty_list, max.level = 2)
+# 2. Identificació de columnes per nivell jeràrquic
+faculty_cols <- grep("^faculty_school_", names(df), value = TRUE)
+degree_cols  <- grep("^degree_", names(df), value = TRUE)
+course_cols  <- grep("^course_", names(df), value = TRUE)
 
-# Convert to JSON
-json_output <- jsonlite::toJSON(faculty_list, dataframe = "rows", pretty = TRUE)
+# Columnes que volem conservar a nivell de curs
+course_level_cols <- c(course_cols, setdiff(names(df), c(faculty_cols, degree_cols, course_cols)))
 
-# Save JSON to file
-write(json_output, "./docs/data/urv-sdgs.json")
+# 3. Construcció de la jerarquia facultat → grau → assignatures
+faculty_list <- df %>%
+  group_by(across(all_of(faculty_cols))) %>%
+  group_split() %>%
+  map(function(fac_df) {
 
-# Print JSON
-cat(json_output)
+    # Atributs de la facultat
+    faculty_info <- fac_df[1, faculty_cols] %>% as.list()
+
+    # Llista de graus dins la facultat
+    degrees <- fac_df %>%
+      group_by(across(all_of(degree_cols))) %>%
+      group_split() %>%
+      map(function(degree_df) {
+
+        # Atributs del grau
+        degree_info <- degree_df[1, degree_cols] %>% as.list()
+
+        # Llista d'assignatures amb tota la informació
+        courses <- degree_df %>%
+          group_by(across(all_of(course_cols))) %>%
+          group_split() %>%
+          map(function(course_df) {
+            course_info <- course_df[1, course_level_cols] %>% as.list()
+
+            # Aplanar sdg i features si són llistes o tenen duplicats
+            if (!is.null(course_info$sdg)) {
+              course_info$sdg <- unique(unlist(course_info$sdg))
+            }
+            if (!is.null(course_info$features)) {
+              course_info$features <- unique(unlist(course_info$features))
+            }
+
+            course_info
+          })
+
+        degree_info$courses <- courses
+        degree_info
+      })
+
+    faculty_info$degrees <- degrees
+    faculty_info
+  })
+
+faculty_list <- map(faculty_list, function(faculty) {
+  faculty$degrees <- map(faculty$degrees, function(degree) {
+    degree$courses <- map(degree$courses, function(course) {
+      if (!is.null(course$sdg)) {
+        course$sdg <- sort(unique(course$sdg))
+      }
+      if (!is.null(course$features)) {
+        course$features <- sort(unique(course$features))
+      }
+      course
+    })
+    degree
+  })
+  faculty
+})
+
+
+# 4. Exportar a JSON
+json_output <- toJSON(faculty_list, pretty = TRUE, auto_unbox = TRUE)
+write(json_output, "./sandbox/urv-sdgs.json")

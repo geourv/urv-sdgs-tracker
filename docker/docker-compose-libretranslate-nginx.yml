@@ -1,6 +1,5 @@
 services:
   libretranslate1:
-    container_name: libretranslate1
     image: libretranslate/libretranslate
     environment:
       - LT_LOAD_ONLY=en,ca,es
@@ -9,7 +8,6 @@ services:
       - libretranslate_network
 
   libretranslate2:
-    container_name: libretranslate2
     image: libretranslate/libretranslate
     environment:
       - LT_LOAD_ONLY=en,ca,es
@@ -18,16 +16,6 @@ services:
       - libretranslate_network
 
   libretranslate3:
-    container_name: libretranslate3
-    image: libretranslate/libretranslate
-    environment:
-      - LT_LOAD_ONLY=en,ca,es
-      - LT_NO_UPDATE=true
-    networks:
-      - libretranslate_network
-      
-  libretranslate4:
-    container_name: libretranslate4
     image: libretranslate/libretranslate
     environment:
       - LT_LOAD_ONLY=en,ca,es
@@ -41,7 +29,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx-libretranslate.conf:/etc/nginx/nginx.conf:ro
     networks:
       - libretranslate_network
 

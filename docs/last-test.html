@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>ODS per facultat - Gràfiques dinàmiques</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+    }
+    h1 {
+      margin-bottom: 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+    }
+    .chart-container {
+      text-align: center;
+      background: #f5f5f5;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    canvas {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Distribució dels ODS per facultat</h1>
+  <div class="grid" id="charts-container"></div>
+
+  <script>
+    fetch('./data/faculties_sdg_data.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('charts-container');
+
+        const sdgColors = {
+          "SDG-01": "#e5243b",
+          "SDG-02": "#dda63a",
+          "SDG-03": "#4c9f38",
+          "SDG-04": "#c5192d",
+          "SDG-05": "#ff3a21",
+          "SDG-06": "#26bde2",
+          "SDG-07": "#fcc30b",
+          "SDG-08": "#a21942",
+          "SDG-09": "#fd6925",
+          "SDG-10": "#dd1367",
+          "SDG-11": "#fd9d24",
+          "SDG-12": "#bf8b2e",
+          "SDG-13": "#3f7e44",
+          "SDG-14": "#0a97d9",
+          "SDG-15": "#56c02b",
+          "SDG-16": "#00689d",
+          "SDG-17": "#19486a"
+        };
+        
+
+        data.forEach((faculty, index) => {
+          const canvasId = `chart-${index}`;
+          const radius = Math.min(300, faculty.total_courses * 3);
+
+          const div = document.createElement('div');
+          div.className = 'chart-container';
+          div.innerHTML = `
+            <h2>${faculty.faculty}</h2>
+            <p>${faculty.total_courses} assignatures amb SDG</p>
+            <canvas id="${canvasId}" width="${radius}" height="${radius}"></canvas>
+          `;
+
+          container.appendChild(div);
+
+          const labels = Object.keys(faculty.sdgs);
+          const values = Object.values(faculty.sdgs);
+          const percentages = faculty.percentages;
+
+          new Chart(document.getElementById(canvasId), {
+            type: 'doughnut',
+            data: {
+              labels: labels,
+              datasets: [{
+                data: values,
+                backgroundColor: labels.map(sdg => sdgColors[sdg] || '#ccc'),
+                borderWidth: 1
+              }]
+            },
+            options: {
+              cutout: '40%',
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  callbacks: {
+                    label: function(context) {
+                      const label = context.label || '';
+                      const value = context.parsed;
+                      const percent = percentages[label] || 0;
+                      return `${label}: ${value} (${percent}%)`;
+                    }
+                  }
+                },
+                datalabels: {
+                  formatter: function(value, context) {
+                    const label = context.chart.data.labels[context.dataIndex];
+                    const percent = percentages[label] || 0;
+                    return `${label}\n${percent}%`;
+                  },
+                  color: '#000',
+                  font: {
+                    weight: 'bold'
+                  },
+                  anchor: 'end',
+                  align: 'start'
+                }
+              }
+            },
+            plugins: [ChartDataLabels]
+          });
+          
+        });
+      });
+  </script>
+
+</body>
+</html>
