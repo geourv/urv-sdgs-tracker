@@ -7,6 +7,7 @@ setwd("~/git/urv-sdgs-tracker")
 library(readr)
 library(dplyr)
 library(stringr)
+library(tidyverse)
 
 
 
@@ -343,6 +344,10 @@ for (pattern in terms_to_remove_references) {
 # Eliminar espais al principi i final
 course_bibliography$references <- trimws(course_bibliography$references)
 
+# Separar files per salts de línea
+course_bibliography <- course_bibliography %>%
+  separate_rows(references, sep = "\n") %>%
+  filter(!str_detect(references, "^[\\s\\.,;\\/\\-]*$"))
 
 
 # Delete useless data----

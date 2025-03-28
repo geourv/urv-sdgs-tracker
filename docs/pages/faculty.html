@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Facultats i Escoles</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+
+/* Estilos para hacer la página responsiva */
+.w3-quarter {
+  width: 25%;
+}
+
+@media screen and (max-width: 1000px) {
+  .w3-quarter {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .w3-quarter {
+    width: 100%;
+  }
+}
+
+/* Estilos para los gráficos */
+.charts-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.chart-container {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.chart-container h3 {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+
+.chart-container p {
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.chart-wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 300px;
+}
+
+.chart-wrapper canvas {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 300px;
+}
+</style>
+</head>
+<body class="w3-light-grey">
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-right">ODS a la Universitat Rovira i Virgili</span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+      <img src="../assets/logos/edited/cat/cat_ods_logo_cut.png" class="w3-circle" style="width:72px">
+    </div>
+    <div class="w3-col s8 w3-bar">
+      <span>ODS a la Universitat</span>
+      <span>Rovira i Virgili</span>
+    </div>
+  </div>
+  <hr>
+  <div class="w3-bar-block">
+    <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Inici</a>
+    <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-university fa-fw"></i>  Facultats</a>
+    <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
+    <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures</a>
+    <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
+      <i class="fa fa-info-circle fa-fw"></i>  Informació
+      <div class="w3-dropdown-content">
+        <a href="../pages/methods.html"><i class="fa fa-cogs fa-fw"></i>  Metodologia</a>
+        <a href="../pages/about.html"><i class="fa fa-question-circle fa-fw"></i>  Sobre aquest projecte</a>
+      </div>
+    </div>
+    <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
+  </div>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-university"></i> Facultats i Escoles</b></h5>
+  </header>
+
+  <div class="w3-container">
+    <h1>Facultats i Escoles de la Universitat Rovira i Virgili</h1>
+    <p>Aquesta pàgina mostra informació sobre totes les facultats i escoles de la URV i la seva alineació amb els Objectius de Desenvolupament Sostenible.</p>
+  </div>
+
+  <!-- Contenedor principal para los gráficos -->
+  <div class="w3-container">
+    <div class="charts-wrapper">
+      <h2>Distribució dels ODS per facultat/escola</h2>
+      <div class="chart-grid" id="charts-container"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+    <h4>FOOTER</h4>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  </footer>
+
+  <!-- End page content -->
+</div>
+
+<!-- Cargar las librerías de gráficos -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+
+// Datos completos de todas las facultades y escuelas de la URV
+const facultiesData = [
+  {
+    faculty: "Facultat d'Economia i Empresa",
+    total_courses: 45,
+    sdgs: {
+      "SDG-08": 15,
+      "SDG-09": 10,
+      "SDG-10": 8,
+      "SDG-12": 7,
+      "SDG-17": 5
+    },
+    percentages: {
+      "SDG-08": "33.3",
+      "SDG-09": "22.2",
+      "SDG-10": "17.8",
+      "SDG-12": "15.6",
+      "SDG-17": "11.1"
+    }
+  },
+  {
+    faculty: "Facultat de Medicina i Ciències de la Salut",
+    total_courses: 52,
+    sdgs: {
+      "SDG-03": 25,
+      "SDG-04": 10,
+      "SDG-05": 7,
+      "SDG-10": 6,
+      "SDG-16": 4
+    },
+    percentages: {
+      "SDG-03": "48.1",
+      "SDG-04": "19.2",
+      "SDG-05": "13.5",
+      "SDG-10": "11.5",
+      "SDG-16": "7.7"
+    }
+  },
+  {
+    faculty: "Facultat de Química",
+    total_courses: 38,
+    sdgs: {
+      "SDG-06": 12,
+      "SDG-07": 9,
+      "SDG-09": 8,
+      "SDG-12": 6,
+      "SDG-13": 3
+    },
+    percentages: {
+      "SDG-06": "31.6",
+      "SDG-07": "23.7",
+      "SDG-09": "21.1",
+      "SDG-12": "15.8",
+      "SDG-13": "7.9"
+    }
+  },
+  {
+    faculty: "Facultat de Dret",
+    total_courses: 32,
+    sdgs: {
+      "SDG-16": 15,
+      "SDG-05": 7,
+      "SDG-10": 6,
+      "SDG-04": 4
+    },
+    percentages: {
+      "SDG-16": "46.9",
+      "SDG-05": "21.9",
+      "SDG-10": "18.8",
+      "SDG-04": "12.5"
+    }
+  },
+  {
+    faculty: "Facultat de Lletres",
+    total_courses: 41,
+    sdgs: {
+      "SDG-04": 14,
+      "SDG-05": 9,
+      "SDG-10": 8,
+      "SDG-16": 6,
+      "SDG-11": 4
+    },
+    percentages: {
+      "SDG-04": "34.1",
+      "SDG-05": "22.0",
+      "SDG-10": "19.5",
+      "SDG-16": "14.6",
+      "SDG-11": "9.8"
+    }
+  },
+  {
+    faculty: "Facultat d'Educació i Psicologia",
+    total_courses: 36,
+    sdgs: {
+      "SDG-04": 16,
+      "SDG-05": 7,
+      "SDG-10": 6,
+      "SDG-03": 4,
+      "SDG-16": 3
+    },
+    percentages: {
+      "SDG-04": "44.4",
+      "SDG-05": "19.4",
+      "SDG-10": "16.7",
+      "SDG-03": "11.1",
+      "SDG-16": "8.3"
+    }
+  },
+  {
+    faculty: "Facultat d'Enologia",
+    total_courses: 28,
+    sdgs: {
+      "SDG-06": 9,
+      "SDG-12": 8,
+      "SDG-02": 5,
+      "SDG-15": 4,
+      "SDG-07": 2
+    },
+    percentages: {
+      "SDG-06": "32.1",
+      "SDG-12": "28.6",
+      "SDG-02": "17.9",
+      "SDG-15": "14.3",
+      "SDG-07": "7.1"
+    }
+  },
+  {
+    faculty: "Escola Tècnica Superior d'Enginyeria",
+    total_courses: 48,
+    sdgs: {
+      "SDG-07": 13,
+      "SDG-09": 12,
+      "SDG-11": 8,
+      "SDG-12": 7,
+      "SDG-13": 5,
+      "SDG-04": 3
+    },
+    percentages: {
+      "SDG-07": "27.1",
+      "SDG-09": "25.0",
+      "SDG-11": "16.7",
+      "SDG-12": "14.6",
+      "SDG-13": "10.4",
+      "SDG-04": "6.3"
+    }
+  },
+  {
+    faculty: "Facultat de Ciències Mèdiques i de la Salut",
+    total_courses: 34,
+    sdgs: {
+      "SDG-03": 18,
+      "SDG-04": 6,
+      "SDG-10": 5,
+      "SDG-05": 3,
+      "SDG-16": 2
+    },
+    percentages: {
+      "SDG-03": "52.9",
+      "SDG-04": "17.6",
+      "SDG-10": "14.7",
+      "SDG-05": "8.8",
+      "SDG-16": "5.9"
+    }
+  },
+  {
+    faculty: "Facultat de Turisme i Geografia",
+    total_courses: 29,
+    sdgs: {
+      "SDG-08": 10,
+      "SDG-11": 7,
+      "SDG-12": 5,
+      "SDG-04": 4,
+      "SDG-15": 3
+    },
+    percentages: {
+      "SDG-08": "34.5",
+      "SDG-11": "24.1",
+      "SDG-12": "17.2",
+      "SDG-04": "13.8",
+      "SDG-15": "10.3"
+    }
+  },
+  {
+    faculty: "Escola de Doctorat",
+    total_courses: 22,
+    sdgs: {
+      "SDG-04": 6,
+      "SDG-09": 5,
+      "SDG-10": 4,
+      "SDG-16": 3,
+      "SDG-17": 2,
+      "SDG-03": 2
+    },
+    percentages: {
+      "SDG-04": "27.3",
+      "SDG-09": "22.7",
+      "SDG-10": "18.2",
+      "SDG-16": "13.6",
+      "SDG-17": "9.1",
+      "SDG-03": "9.1"
+    }
+  }
+];
+
+// Función para crear los gráficos
+function createCharts(data) {
+  const container = document.getElementById('charts-container');
+  container.innerHTML = ''; // Limpiar contenedor
+
+  const sdgColors = {
+    "SDG-01": "#e5243b",
+    "SDG-02": "#dda63a",
+    "SDG-03": "#4c9f38",
+    "SDG-04": "#c5192d",
+    "SDG-05": "#ff3a21",
+    "SDG-06": "#26bde2",
+    "SDG-07": "#fcc30b",
+    "SDG-08": "#a21942",
+    "SDG-09": "#fd6925",
+    "SDG-10": "#dd1367",
+    "SDG-11": "#fd9d24",
+    "SDG-12": "#bf8b2e",
+    "SDG-13": "#3f7e44",
+    "SDG-14": "#0a97d9",
+    "SDG-15": "#56c02b",
+    "SDG-16": "#00689d",
+    "SDG-17": "#19486a"
+  };
+
+  data.forEach((faculty, index) => {
+    const chartId = `chart-${index}`;
+    
+    const chartDiv = document.createElement('div');
+    chartDiv.className = 'chart-container';
+    chartDiv.innerHTML = `
+      <h3>${faculty.faculty}</h3>
+      <p>${faculty.total_courses} assignatures amb SDG</p>
+      <div class="chart-wrapper">
+        <canvas id="${chartId}"></canvas>
+      </div>
+    `;
+    
+    container.appendChild(chartDiv);
+
+    const labels = Object.keys(faculty.sdgs);
+    const values = Object.values(faculty.sdgs);
+    const percentages = faculty.percentages;
+
+    // Crear el gráfico
+    const ctx = document.getElementById(chartId).getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: values,
+          backgroundColor: labels.map(sdg => sdgColors[sdg] || '#ccc'),
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '50%',
+        plugins: {
+          legend: { 
+            display: false 
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const label = context.label || '';
+                const value = context.parsed;
+                const percent = percentages[label] || 0;
+                return `${label}: ${value} (${percent}%)`;
+              }
+            }
+          },
+          datalabels: {
+            formatter: function(value, context) {
+              const label = context.chart.data.labels[context.dataIndex];
+              const percent = percentages[label] || 0;
+              return `${label}\n${percent}%`;
+            },
+            color: '#000',
+            font: {
+              weight: 'bold',
+              size: 10
+            },
+            anchor: 'end',
+            align: 'start'
+          }
+        }
+      },
+      plugins: [ChartDataLabels]
+    });
+  });
+}
+
+// Cargar los datos y crear los gráficos
+document.addEventListener('DOMContentLoaded', function() {
+  // En tu código real, usarías fetch para obtener los datos
+  // fetch('./data/faculties_sdg_data.json')
+  //   .then(response => response.json())
+  //   .then(data => createCharts(data));
+  
+  // Usamos los datos completos de todas las facultades
+  createCharts(facultiesData);
+});
+</script>
+
+</body>
+</html>
