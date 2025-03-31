@@ -114,13 +114,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-bar-block">
     <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Inici</a>
     <a href="faculty.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles</a>
-    <a href="degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Assignatures</a>
+    <a href="degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
     <a href="course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures</a>
     <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding w3-blue" id="infoDropdown">
       <i class="fa fa-info-circle fa-fw"></i>  Informació
       <div class="w3-dropdown-content">
-        <a href="methods.html"class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-cogs fa-fw"></i>  Metodologia</a>
         <a href="about.html" ><i class="fa fa-question-circle fa-fw"></i>  Sobre aquest projecte</a>
+        <a href="methods.html"class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-cogs fa-fw"></i>  Metodologia</a>
       </div>
     </div>
     <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
@@ -140,51 +140,71 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <div class="w3-container">
     <h2>Metodologia</h2>
-    <p>Aquest projecte analitza l'alineació dels programes acadèmics de la URV amb els Objectius de Desenvolupament Sostenible (ODS). Mitjançant tècniques de web scraping i mineria de textos, s'extreuen les descripcions dels programes, es tradueixen i, posteriorment, es realitza una anàlisi de dades en R per avaluar els termes relacionats amb els ODS.</p>
-
-    <h3>Referències inicials</h3>
-    <p>El plantejament inicial d'aquest estudi es basa en dues referències principals: l'<strong>Informe sobre la docència i la recerca en sostenibilitat i medi ambient a la Universitat Rovira i Virgili</strong> (Alberich González et al., 2012), que proporciona una anàlisi detallada de la sostenibilitat i l'educació ambiental a la URV, i l'estudi "La sostenibilidad en los grados universitarios: presencia y coherencia" de Bautista-Cerro Ruiz i Díaz González (2017), que examina la presència de la sostenibilitat dins dels programes universitaris. Aquests treballs ofereixen una perspectiva inicial sobre com analitzar la integració de la sostenibilitat en els currículums de l'educació superior i serveixen com a base per desenvolupar el nostre marc metodològic.</p>
-
-    <h3>Futur marc legal</h3>
-    <p>La legislació dictada per la legislació de la Unió Europea, estableix la necessitat que les universitats contribueixin activament a l'assoliment dels ODS en línia amb l'Agenda 2030, segons la Resolució del 26 d’abril de 2023. Aquesta resolució, una col·laboració entre la <em>Secretaría de Estado para la Agenda 2030</em> i la <em>Conferencia de Rectores de las Universidades Españolas</em>, subratlla la importància de monitoritzar i garantir el compliment dels objectius de sostenibilitat. Per tant, es fa essencial desenvolupar un mètode sistemàtic per avaluar fins a quin punt els programes acadèmics de la URV s'alineen amb els ODS, garantint que l'oferta educativa contribueixi efectivament a l'estratègia global de sostenibilitat.</p>
-
-    <h3>Extracció de contingut dels cursos</h3>
-    <p>Per recopilar el contingut dels cursos, ha estat necessari extreure dades de les guies docents mitjançant diversos processos de web scraping. S'han obtingut enllaços als cursos basats en les facultats i escoles de la URV i, un cop accedits, s'han recuperat dades detallades sobre els cursos (de grau i màster). Per exemple, un d’aquests enllaços seria: <a href="https://guiadocent.urv.cat/guido/public/centres/495/ensenyaments/3467/detall">Guia docent</a>, on "495" fa referència a la facultat i "3467" al curs específic.</p>
+    <p>Amb l'objectiu d'avaluar la presència dels ODS als ensenyaments de la Universitat Rovira i Virgili, s'ha emprat la següent metodologia: En primer lloc, s'han utilitzat tècniques de web scraping i mineria de textos a fi d'extreure els continguts de les guies docents. Tot seguit, es tradueixen a l'anglès per a poder-se sotmetre a estudi i, finalment, es realitza una anàlisi de dades en R per avaluar els termes relacionats amb els ODS i definir la presència d'aquests als ensenyaments de la URV.</p>
 
     <h3>Dades extretes</h3>
-    <p>Un cop dins els detalls del curs, s'extreuen dades com el nom del curs i l’any acadèmic. Posteriorment, s'han obtingut informacions clau com:</p>
+    <p>Per obtenir el contingut dels ensenyaments, cal extreure les dades de les guies docents de les assignatures de l'ensenyament corresponent.
+      Això s'ha aconseguit mitjançant múltiples processos de webscrapping dirigits a accedir al contingut de les guies.
+      Inicialment, s'han extret els enllaços des les assignatures a partir dels enllaços a les facultats i escoles de la URV.
+      Després d'accedir a aquests enllaços, s'ha extret informació detallada dels ensenyaments (tant de grau com de màster).
+      Per exemple, un d'aquests enllaços seria: <a href=https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/detall target="_blank">https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/detall</a>
+      on "503" fa referència al codi de la facultat o escola, en aquest cas Facultat de Turisme i Geografia, i "3475" a l'ensenyament, Grau en Geografia, Anàlisi Territorial i Sostenibilitat.
+    
+    <p>Un cop dins del marc amb contingut i estructura de l'ensenyament, s'han extret les següents dades de cadascun dels ensenyaments:</p>
     <ul>
-        <li><strong>degree_url</strong>: Enllaç al grau</li>
-        <li><strong>degree_name</strong>: Nom del grau (e.g., "Grau en Enginyeria Informàtica")</li>
-        <li><strong>degree_year</strong>: Any acadèmic (e.g., "2023")</li>
-        <li><strong>faculty_school_url</strong>: Enllaç a la facultat/escola</li>
-        <li><strong>faculty_school_name</strong>: Nom de la facultat/escola</li>
-        <li><strong>course_url</strong>: Enllaç a l’assignatura</li>
-        <li><strong>course_code</strong>: Codi de l’assignatura</li>
-        <li><strong>course_name</strong>: Nom de l’assignatura (e.g., "Introducció a la Programació")</li>
+        <li><strong>degree_url</strong>: Enllaç al grau (e.g., <a href="https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/detall" target="_blank">https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/detall</a>)</li>
+        <li><strong>degree_name</strong>: Nom del grau (e.g., "Grau en Geografia, Anàlisi Territorial i Sostenibilitat")</li>
+        <li><strong>degree_year</strong>: Any acadèmic (e.g., "2018")</li>
+        <li><strong>faculty_school_url</strong>: Enllaç a la facultat o escola (e.g., <a href="https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/gestionar" target="_blank">https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/gestionar</a>)</li>
+        <li><strong>faculty_school_name</strong>: Nom de la facultat o escola (e.g., "Facultat de Turisme i Geografia")</li>
+        <li><strong>course_url</strong>: Enllaç a l’assignatura (e.g., <a href="https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/assignatures/115109/guia_docent_docnet" target="_blank">https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/assignatures/115109/guia_docent_docnet</a>)</li>
+        <li><strong>course_code</strong>: Codi de l’assignatura (e.g., "115109")</li>
+        <li><strong>course_name</strong>: Nom de l’assignatura (e.g., "Espais Europeus")</li>
         <li><strong>course_delivery_mode</strong>: Modalitat (e.g., "Presencial", "Semipresencial", "Virtual")</li>
         <li><strong>course_period</strong>: Període (e.g., "Primer quadrimestre", "Segon quadrimestre", "Anual")</li>
         <li><strong>course_type</strong>: Tipus d’assignatura (e.g., "F Bàsica", "Optativa", "Obligatòria")</li>
-        <li><strong>credits</strong>: Crèdits (e.g., 4.5, 6)</li>
+        <li><strong>credits</strong>: Crèdits (e.g., "4.5", "6")</li>
     </ul>
 
-    <h3>Formats Docnet i Guido</h3>
-    <p>La informació s'extreu en dos formats: <strong>Docnet</strong> (93% de les assignatures) i <strong>Guido</strong> (7% restants). Per accedir a les guies Docnet, ha estat necessari recuperar l’enllaç a l’iframe que les conté. Un exemple d'aquest enllaç seria: <em><a href="https://guiadocent.urv.cat/docnet/guia_docent/assignatures/print/?centre=21&ensenyament=2123&assignatura=21234217&any_academic=2024_25&idioma=cat&modalitat=p" target="_blank">https://guiadocent.urv.cat/docnet/guia_docent/assignatures/print/?centre=21&ensenyament=2123&assignatura=21234217&any_academic=2024_25&idioma=cat&modalitat=p</a></em>.</p>
+    <h3>Format dels continguts</h3>
+    <p>La informació s'extreu en dos formats: <strong>Docnet</strong> (93% de les assignatures) i <strong>Guido</strong> (7% restants). Docnet és el format anterior i temporal, ja que actualment s'està duent a terme una transició entre aquest format i el Guido. Tot i així, Docnet encara existeix en moltes guies docents. Guido és el nou format que ha d'incorporar-se properament a totes les guies docents, tot i que solament el disposen els nous ensenyaments o ensenyaments renovats recentment.</p>
 
-    <p>En el format Guido, s'extreuen dades similars, amb la diferència que les competències integrades en els resultats d’aprenentatge. Utilitzant l'exemple d'enllaç següent: <em><a href="https://guiadocent.urv.cat/guido/public/centres/498/ensenyaments/3545/assignatures/116896/guia_docent" target="_blank">https://guiadocent.urv.cat/guido/public/centres/498/ensenyaments/3545/assignatures/116896/guia_docent</a></em>.</p>
+    <p>Per accedir a les guies de format Docnet, ha estat necessari recuperar l’enllaç a l’iframe que les conté. Un exemple d'aquest enllaç seria: <em><a href="https://guiadocent.urv.cat/docnet/guia_docent/assignatures/print/?centre=21&ensenyament=2123&assignatura=21234217&any_academic=2024_25&idioma=cat&modalitat=p" target="_blank">Enllaç Docnet</a></em>.</p>
 
-    <h3>Anàlisi metodològica per identificar els ODS</h3>
-    <p>Per identificar i quantificar els ODS en les guies docents, s'han consultat conjunts de paraules clau de diverses fonts tot i que finalment s'ha optat per emprar l'eina <strong>text2SDG</strong>. El contingut s'ha traduït automàticament a l'anglès amb <strong>LibreTranslate</strong> per facilitar l'anàlisi. Entre les fonts utilitzades es troben:</p>
+    <p>En el format Guido, s'extreuen dades similars, amb la diferència que les competències s'integren amb els resultats d’aprenentatge, i l'accés visual a les dades requereix accedir a apartat per apartat. Utilitzant l'exemple d'enllaç següent: <em><a href="https://guiadocent.urv.cat/guido/public/centres/498/ensenyaments/3545/assignatures/116896/guia_docent" target="_blank">Enllaç Guido</a></em>.</p>
+
+    <p>En ambdós formats s'han extret els coordinadors, professors, descripció, contingut, resultats d'aprenentatge, competències i
+      referències (tenint en compte que al format Guido les competències s'integren en els resultats d'aprenentatge). Posteriorment, la informació extreta s'ha organitzat en un dataframe que integra el detall de la guia docent de l'assignatura, ensenyament i informació complementària del mateix, i facultat o escola corresponents.</p>
+
+    <h3>Identificació dels ODS</h3>
+    <p>L’anàlisi metodològica que s’ha utilitzat per identificar i quantificar els Objectius de Desenvolupament Sostenible (ODS) en el contingut de les guies docents dels programes universitaris dels ensenyament s’ha basat en la detecció de paraules clau relacionades amb els ODS.</p>
+
+    <p>Per assolir aquest objectiu, s’han identificat diverses fonts que proporcionaven conjunts de paraules clau associades als ODS.
+      Com que tot el contingut era originalment en català, primer s’ha traduït automàticament a l’anglès mitjançant LibreTranslate (executant-se en un contenidor Docker a través de Docker Compose) i complementàriament també s'ha emprat Apertium, tot i que s'han triat les traduccions del primer.</p>
     <ul>
-        <li><strong>Sustainable Development Goals (SDGs) Keywords</strong> (2022) de la University of Toronto</li>
-        <li><strong>Institut Teknologi Sepuluh Nopember</strong>, que classifica centenars de termes relacionats amb els ODS</li>
-        <li><strong>University of Auckland</strong>, que ofereix un mapa de paraules clau dels 17 ODS</li>
-        <li><strong>Joint Research Centre de la UE</strong> i la seva eina <em>SDG Mapper</em></li>
-        <li><strong>text2SDG</strong>, una eina d'anàlisi de codi obert en R desenvolupada per Meier, Mata i Wulff (2022)</li>
+        <li><strong>Sustainable Development Goals (SDGs) Keywords</strong> (2022) de la University of Toronto: Aquesta font ofereix una llista detallada de 388 paraules clau en anglès relacionades amb els ODS. <a href="https://sustainability.utoronto.ca/inventories/sustainable-development-goals-sdgs-keywords/" target="_blank">Més informació</a>.</li>
+        <li><strong>Institut Teknologi Sepuluh Nopember</strong>: Aquest institut classifica centenars de termes en llengua anglesa relacionats amb els ODS. <a href="https://www.its.ac.id/drpm/wp-content/uploads/sites/71/2021/04/Daftar-keywords-Sustainable-Development-Goals.pdf" target="_blank">Més informació</a>.</li>
+        <li><strong>University of Auckland</strong>: Ofereix un mapa de paraules clau dels 17 ODS permetent la seva descàrrega en anglès. <a href="https://www.sdgmapping.auckland.ac.nz/" target="_blank">Més informació</a>.</li>
+        <li><strong>Joint Research Centre de la UE</strong> i la seva eina <em>SDG Mapper</em>: Aquesta eina permet mapejar els ODS en texts. <a href="https://ec.europa.eu/jrc/en" target="_blank">Més informació</a>.</li>
+        <li><strong>text2SDG</strong>: Una eina d'anàlisi de codi obert en R desenvolupada per Meier, Mata i Wulff (2022), que permet identificar i quantificar els ODS en textos. <a href="https://knowsdgs.jrc.ec.europa.eu/sdgmapper" target="_blank">Més informació</a>.</li>
     </ul>
+    <p>Entre aquestes fonts, finalment s’ha emprat <strong>text2SDG</strong>, un paquet d’anàlisi de codi obert en el llenguatge de programació R, per identificar els ODS i les paraules relacionades amb els ODS als continguts de les assignatures dels ensenyaments de la URV.
 
-    <h3>Resultats i estructura final</h3>
-    <p>Finalment, els ODS s'han identificat i la informació s'ha sintetitzat juntament amb les dades detallades de les assignatures. Aquesta síntesi s'ha organitzat en un format JSON estructurat per facultats, cursos, assignatures i els ODS associats al seu contingut.</p>
+      Aquesta eina ha permès identificar els ODS en textos mitjançant sistemes de consulta científica. El model ha estat desenvolupat per Meier, Mata i Wulff (2022).
+      
+      Tot i que totes les fonts identificades han proporcionat un conjunt extens de paraules classificades segons els 17 ODS, s’ha considerat que l’eina de codi obert text2SDG és especialment avantatjosa per la seva utilitat i eficiència en la identificació automàtica dels ODS en grans volums de text.</p>
+
+    <h3>Estructura final</h3>
+    <p>Finalment, els ODS s'han identificat i la informació s'ha sintetitzat juntament amb les dades detallades de les assignatures. Aquesta síntesi s'ha organitzat en un format JSON estructurat per facultats, cursos, assignatures, els ODS associats al seu contingut i els termes relacionats amb els ODS. Aquest format permet una consulta ràpida i iterativa dels resultats, facilitant la identificació de les facultats o escoles, ensenyaments i assignatures més alineades amb els ODS.</p>
+
+    <h3>Limitacions del projecte</h3>
+    <p>El projecte ha enfrontat diverses limitacions que han afectat el tractament de les dades i el procés d'anàlisi per identificar els ODS als ensenyaments:</p>
+    <ul>
+        <li><strong>Continguts brossa</strong>: La presència de dades incompletes o mal formatejades ha requerit una revisió manual exhaustiva, afectant l'eficiència del procés. Aquestes dades poden incloure caselles buides, caràcters estranys o referències mal espaiades, que han hagut de ser corregides per garantir la qualitat de l'anàlisi. Casos d'aquest tipus s'han donat especialment als continguts de referències bibliogràfiques o competències i resultats d'aprenentatge.</li>
+        <li><strong>Ubicació incorrecta del contingut</strong>: S'ha detectat la presència equivocada de continguts en ubicacions o caselles de la guia docent on no els pertoca. Aquest fet suposa que en determinats ensenyaments la detecció dels ODS no sigui del tot coherent amb la realitat.</li>
+        <li><strong>Diferències en formats</strong>: La variabilitat entre els formats Docnet i Guido ha complicat l'extracció uniforme de dades, especialment en la fase de webscrapping. Aquesta diferència ha requerit ajustos en el codi d'obtenció automatitzada de dades per assegurar que les dades s'extreguessin correctament en cada format. Les principals diferències han estat el marc que engloba els continguts; en concret, el format Docnet, mostra els continguts en un iframe, fet que ha provocat realitzar un pas més al procés d'extracció per accedir als continguts complets de la guia docent.</li>
+        <li><strong>Fiabilitat de les traduccions</strong>: És important garantir fiabilitat en les traduccions ja que és un pas essencial per obtenir la correcta identificació dels termes relacionats amb els ODS. Tot i que s'han utilitzat diverses eines de traducció, LibreTranslate i Apertium, la precisió en la traducció de termes tècnics i específics ha presentat dificultats en algunes ocasions. En el cas del paquet Apertium, la traducció dels mots compostos, anglicismes o tecnicismes no ha estat del tot fiable, mentre que amb LibreTranslate s'han pogut garantir millors traduccions. No obstant això, s'han realitzat canvis de format al contingut (incorporant salts de línia a les referències bibliogràfiques o context als noms de les assignatures) per fer possible una traducció més íntegra.</li>
+    </ul>
   </div>
 
   <!-- Footer -->
