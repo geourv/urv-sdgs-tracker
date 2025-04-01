@@ -50,7 +50,10 @@ sdg_mapping <- tibble(
 #
 # If CSV is too heavy, saving this one a RDS
 # saveRDS(sdg_analysis_df_results, "./data/sdg_analysis_df_results.rds")
+
+# sdg_analysis_df_results <- readRDS("C:/Users/Lluis Salvat/git/urv-sdgs-tracker/data/sdg_analysis_df_results.rds")
 sdg_analysis_df_results <- readRDS("./data/sdg_analysis_df_results.rds")
+
 
 sdg_summary_df <- sdg_analysis_df_results %>%
   select(-system, -query_id, -hit) %>%
