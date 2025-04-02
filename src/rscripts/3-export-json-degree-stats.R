@@ -54,4 +54,4 @@ sdg_degree_summary <- flat_df %>%
   unname()
 
 # Exportar JSON
-write_json(sdg_degree_summary, "../data/degree_sdg_data.json", pretty = TRUE, auto_unbox = TRUE)
+write_json(sdg_degree_summary, "./docs/data/degree_sdg_data.json", pretty = TRUE, auto_unbox = TRUE)

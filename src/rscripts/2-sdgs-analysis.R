@@ -52,22 +52,35 @@ sdg_mapping <- tibble(
 # saveRDS(sdg_analysis_df_results, "./data/sdg_analysis_df_results.rds")
 
 # sdg_analysis_df_results <- readRDS("C:/Users/Lluis Salvat/git/urv-sdgs-tracker/data/sdg_analysis_df_results.rds")
-sdg_analysis_df_results <- readRDS("./data/sdg_analysis_df_results.rds")
+# sdg_analysis_df_results <- readRDS("./data/sdg_analysis_df_results.rds")
 
 
 # Window for paste compound features ----
 
-sdg_analysis_df_results
-
-sdg_analysis_df_results$features <- gsub("determinants, of, health", "determinants of health", sdg_analysis_df_results$features, fixed = TRUE)
-sdg_analysis_df_results$features <- gsub("quality, of, life", "quality of life", sdg_analysis_df_results$features, fixed = TRUE)
-sdg_analysis_df_results$features <- gsub("rule, of, law", "rule of law", sdg_analysis_df_results$features, fixed = TRUE)
+# sdg_analysis_df_results$features <- gsub("determinants, of, health", "determinants of health", sdg_analysis_df_results$features, fixed = TRUE)
+# sdg_analysis_df_results$features <- gsub("quality, of, life", "quality of life", sdg_analysis_df_results$features, fixed = TRUE)
+# sdg_analysis_df_results$features <- gsub("rule, of, law", "rule of law", sdg_analysis_df_results$features, fixed = TRUE)
 # ...
 
+# Script 2-sdgs-unique-expressions solves the step to get more accurate non-splitted features.
 
+## Patterns and replacements
+# patterns <- gsub(" ", ", ", unique_expressions$expression, fixed = TRUE)
+# replacements <- unique_expressions$expression
+# 
+# # Do all substitutions in one step
+# sdg_analysis_df_results$features_fixed <- Reduce(function(x, i) {
+#   gsub(patterns[i], replacements[i], x, fixed = TRUE)
+# }, seq_along(patterns), init = sdg_analysis_df_results$features)
+# 
+# sdg_analysis_df_results<-
+#   sdg_analysis_df_results %>% 
+#   select(-features) %>% 
+#   rename(features=features_fixed)
+# 
+# saveRDS(sdg_analysis_df_results, "./data/sdg_analysis_df_results.rds")
 
-
-
+sdg_analysis_df_results <- readRDS("./data/sdg_analysis_df_results.rds")
 
 sdg_summary_df <- sdg_analysis_df_results %>%
   select(-system, -query_id, -hit) %>%

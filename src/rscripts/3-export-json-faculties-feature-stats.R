@@ -43,4 +43,4 @@ sdg_faculty_summary <- flat_df %>%
   })
 
 # Exportar JSON
-write_json(sdg_faculty_summary, "docs/data/faculties_features_data.json", pretty = TRUE, auto_unbox = TRUE)
+write_json(sdg_faculty_summary, "./docs/data/faculties_features_data.json", pretty = TRUE, auto_unbox = TRUE)

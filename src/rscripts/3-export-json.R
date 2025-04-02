@@ -64,4 +64,4 @@ faculty_list <- df %>%
 
 # 4. Exportar a JSON
 json_output <- toJSON(faculty_list, pretty = TRUE, auto_unbox = TRUE)
-write(json_output, "./sandbox/urv-sdgs.json")
+write(json_output, "./docs/data/urv-sdgs.json")
