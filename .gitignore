@@ -1,6 +1,6 @@
 # Directories
 dist/
-#sandbox/
+sandbox/
 
 # R unwanted files
 .Rhistory

@@ -55,6 +55,20 @@ sdg_mapping <- tibble(
 sdg_analysis_df_results <- readRDS("./data/sdg_analysis_df_results.rds")
 
 
+# Window for paste compound features ----
+
+sdg_analysis_df_results
+
+sdg_analysis_df_results$features <- gsub("determinants, of, health", "determinants of health", sdg_analysis_df_results$features, fixed = TRUE)
+sdg_analysis_df_results$features <- gsub("quality, of, life", "quality of life", sdg_analysis_df_results$features, fixed = TRUE)
+sdg_analysis_df_results$features <- gsub("rule, of, law", "rule of law", sdg_analysis_df_results$features, fixed = TRUE)
+# ...
+
+
+
+
+
+
 sdg_summary_df <- sdg_analysis_df_results %>%
   select(-system, -query_id, -hit) %>%
   group_by(document) %>%
@@ -74,7 +88,7 @@ sdg_summary_df <- sdg_analysis_df_results %>%
   ) %>%
   mutate(document = as.integer(document))
 
-# Create the SDG lookup tables 
+# Create the SDG lookup tables
 sdg_summary_df <- sdg_summary_df %>%
   rowwise() %>%
   mutate(
@@ -93,7 +107,7 @@ rm("course_details_df","sdg_analysis_df_results")
 
 # ########### SDGs analysis for course_name_en----
 # sdg_analysis_df <- course_details_df
-# 
+#
 # sdg_analysis_df_course_name_results <- detect_sdg_systems(sdg_analysis_df$course_name_en,
 #                                               system = c("Aurora", "Elsevier", "Auckland", "SIRIS", "SDSN", "SDGO"))
 # #write.csv(sdg_analysis_df_course_name_results, "./sandbox/sdg_analysis_df_course_name_results.csv", row.names = FALSE)
@@ -101,7 +115,7 @@ rm("course_details_df","sdg_analysis_df_results")
 # # If CSV is too heavy, saving this one a RDS
 # # saveRDS(sdg_analysis_df_course_name_results, "./data/sdg_analysis_df_course_name_results.rds")
 # # sdg_analysis_df_course_name_results <- readRDS("./data/sdg_analysis_df_course_name_results.rds")
-# 
+#
 # sdg_analysis_course_name_df <- sdg_analysis_df_course_name_results %>%
 #   select(-system, -query_id, -hit) %>%
 #   group_by(document) %>%
@@ -120,8 +134,8 @@ rm("course_details_df","sdg_analysis_df_results")
 #     .groups = "drop"
 #   ) %>%
 #   mutate(document = as.integer(document))
-# 
-# # Create the SDG lookup tables 
+#
+# # Create the SDG lookup tables
 # sdg_analysis_course_name_df <- sdg_analysis_course_name_df %>%
 #   rowwise() %>%
 #   mutate(
@@ -130,15 +144,15 @@ rm("course_details_df","sdg_analysis_df_results")
 #     sdg_es = if (length(sdg) > 0) list(paste(sub("SDG", "ODS", sdg), sdg_mapping$sdg_es[match(sdg, sdg_mapping$sdg_code)], sep = ": ")) else list(NA)
 #   ) %>%
 #   ungroup()
-# 
-# 
+#
+#
 # sdg_analysis_course_name_df <-
 #   course_details_df %>%
 #   left_join(sdg_analysis_course_name_df, by=c("document_number"="document"))
-# 
+#
 # ########### SDGs analysis for description_en----
-# sdg_analysis_df <- course_details_df 
-# 
+# sdg_analysis_df <- course_details_df
+#
 # sdg_analysis_df_description_results <- detect_sdg_systems(sdg_analysis_df$description_en,
 #                                                           system = c("Aurora", "Elsevier", "Auckland", "SIRIS", "SDSN", "SDGO"))
 # #write.csv(sdg_analysis_df_description_results, "./sandbox/sdg_analysis_df_description_results.csv", row.names = FALSE)
@@ -146,7 +160,7 @@ rm("course_details_df","sdg_analysis_df_results")
 # # If CSV is too heavy, saving this one a RDS
 # # saveRDS(sdg_analysis_df_description_results, "./data/sdg_analysis_df_description_results.rds")
 # # sdg_analysis_df_description_results <- readRDS("./data/sdg_analysis_df_description_results.rds")
-# 
+#
 # sdg_analysis_description_df <- sdg_analysis_df_description_results %>%
 #   select(-system, -query_id, -hit) %>%
 #   group_by(document) %>%
@@ -165,8 +179,8 @@ rm("course_details_df","sdg_analysis_df_results")
 #     .groups = "drop"
 #   ) %>%
 #   mutate(document = as.integer(document))
-# 
-# # Create the SDG lookup tables 
+#
+# # Create the SDG lookup tables
 # sdg_analysis_description_df <- sdg_analysis_description_df %>%
 #   rowwise() %>%
 #   mutate(
@@ -175,14 +189,14 @@ rm("course_details_df","sdg_analysis_df_results")
 #     sdg_es = if (length(sdg) > 0) list(paste(sub("SDG", "ODS", sdg), sdg_mapping$sdg_es[match(sdg, sdg_mapping$sdg_code)], sep = ": ")) else list(NA)
 #   ) %>%
 #   ungroup()
-# 
-# 
+#
+#
 # sdg_analysis_description_df <-
 #   course_details_df %>%
 #   left_join(sdg_analysis_description_df, by=c("document_number"="document"))
 # ########### SDGs analysis for contents_en----
-# sdg_analysis_df <- course_details_df 
-# 
+# sdg_analysis_df <- course_details_df
+#
 # sdg_analysis_df_contents_results <- detect_sdg_systems(sdg_analysis_df$contents_en,
 #                                                           system = c("Aurora", "Elsevier", "Auckland", "SIRIS", "SDSN", "SDGO"))
 # #write.csv(sdg_analysis_df_contents_results, "./sandbox/sdg_analysis_df_contents_results.csv", row.names = FALSE)
@@ -190,7 +204,7 @@ rm("course_details_df","sdg_analysis_df_results")
 # # If CSV is too heavy, saving this one a RDS
 # # saveRDS(sdg_analysis_df_contents_results, "./data/sdg_analysis_df_contents_results.rds")
 # # sdg_analysis_df_contents_results <- readRDS("./data/sdg_analysis_df_contents_results.rds")
-# 
+#
 # sdg_analysis_contents_df <- sdg_analysis_df_contents_results %>%
 #   select(-system, -query_id, -hit) %>%
 #   group_by(document) %>%
@@ -209,8 +223,8 @@ rm("course_details_df","sdg_analysis_df_results")
 #     .groups = "drop"
 #   ) %>%
 #   mutate(document = as.integer(document))
-# 
-# # Create the SDG lookup tables 
+#
+# # Create the SDG lookup tables
 # sdg_analysis_contents_df <- sdg_analysis_contents_df %>%
 #   rowwise() %>%
 #   mutate(
@@ -219,14 +233,14 @@ rm("course_details_df","sdg_analysis_df_results")
 #     sdg_es = if (length(sdg) > 0) list(paste(sub("SDG", "ODS", sdg), sdg_mapping$sdg_es[match(sdg, sdg_mapping$sdg_code)], sep = ": ")) else list(NA)
 #   ) %>%
 #   ungroup()
-# 
-# 
+#
+#
 # sdg_analysis_contents_df <-
 #   course_details_df %>%
 #   left_join(sdg_analysis_contents_df, by=c("document_number"="document"))
 # ########### SDGs analysis for competences_learning_results_en----
-# sdg_analysis_df <- course_details_df 
-# 
+# sdg_analysis_df <- course_details_df
+#
 # sdg_analysis_df_competences_learning_results <- detect_sdg_systems(sdg_analysis_df$competences_learning_results_en,
 #                                                        system = c("Aurora", "Elsevier", "Auckland", "SIRIS", "SDSN", "SDGO"))
 # #write.csv(sdg_analysis_df_competences_learning_results, "./sandbox/sdg_analysis_df_competences_learning_results.csv", row.names = FALSE)
@@ -234,7 +248,7 @@ rm("course_details_df","sdg_analysis_df_results")
 # # If CSV is too heavy, saving this one a RDS
 # # saveRDS(sdg_analysis_df_competences_learning_results, "./data/sdg_analysis_df_competences_learning_results.rds")
 # # sdg_analysis_df_competences_learning_results <- readRDS("./data/sdg_analysis_df_competences_learning_results.rds")
-# 
+#
 # sdg_analysis_competences_learning_df <- sdg_analysis_df_competences_learning_results %>%
 #   select(-system, -query_id, -hit) %>%
 #   group_by(document) %>%
@@ -253,8 +267,8 @@ rm("course_details_df","sdg_analysis_df_results")
 #     .groups = "drop"
 #   ) %>%
 #   mutate(document = as.integer(document))
-# 
-# # Create the SDG lookup tables 
+#
+# # Create the SDG lookup tables
 # sdg_analysis_competences_learning_df <- sdg_analysis_competences_learning_df %>%
 #   rowwise() %>%
 #   mutate(
@@ -263,14 +277,14 @@ rm("course_details_df","sdg_analysis_df_results")
 #     sdg_es = if (length(sdg) > 0) list(paste(sub("SDG", "ODS", sdg), sdg_mapping$sdg_es[match(sdg, sdg_mapping$sdg_code)], sep = ": ")) else list(NA)
 #   ) %>%
 #   ungroup()
-# 
-# 
+#
+#
 # sdg_analysis_competences_learning_df <-
 #   course_details_df %>%
 #   left_join(sdg_analysis_competences_learning_df, by=c("document_number"="document"))
 # ########### SDGs analysis for references_en----
-# sdg_analysis_df <- course_details_df 
-# 
+# sdg_analysis_df <- course_details_df
+#
 # sdg_analysis_df_references_results <- detect_sdg_systems(sdg_analysis_df$references_en,
 #                                                        system = c("Aurora", "Elsevier", "Auckland", "SIRIS", "SDSN", "SDGO"))
 # #write.csv(sdg_analysis_df_references_results, "./sandbox/sdg_analysis_df_references_results.csv", row.names = FALSE)
@@ -278,7 +292,7 @@ rm("course_details_df","sdg_analysis_df_results")
 # # If CSV is too heavy, saving this one a RDS
 # # saveRDS(sdg_analysis_df_references_results, "./data/sdg_analysis_df_references_results.rds")
 # # sdg_analysis_df_references_results <- readRDS("./data/sdg_analysis_df_references_results.rds")
-# 
+#
 # sdg_analysis_references_df <- sdg_analysis_df_references_results %>%
 #   select(-system, -query_id, -hit) %>%
 #   group_by(document) %>%
@@ -297,8 +311,8 @@ rm("course_details_df","sdg_analysis_df_results")
 #     .groups = "drop"
 #   ) %>%
 #   mutate(document = as.integer(document))
-# 
-# # Create the SDG lookup tables 
+#
+# # Create the SDG lookup tables
 # sdg_analysis_references_df <- sdg_analysis_references_df %>%
 #   rowwise() %>%
 #   mutate(
@@ -307,8 +321,8 @@ rm("course_details_df","sdg_analysis_df_results")
 #     sdg_es = if (length(sdg) > 0) list(paste(sub("SDG", "ODS", sdg), sdg_mapping$sdg_es[match(sdg, sdg_mapping$sdg_code)], sep = ": ")) else list(NA)
 #   ) %>%
 #   ungroup()
-# 
-# 
+#
+#
 # sdg_analysis_references_df <-
 #   course_details_df %>%
 #   left_join(sdg_analysis_references_df, by=c("document_number"="document"))
