@@ -1,5 +1,5 @@
 # URV SDG tracker
--About:
+## About
 This project analyzes the alignment of URV academic programs with the Sustainable Development Goals (ODS). 
 Using web scraping and text mining, we extract program descriptions, translate them, and then perform data analysis in R to evaluate ODS-related terms. 
 The results are published as a website in the `docs` folder and hosted via GitHub Pages. 
@@ -16,32 +16,32 @@ to actively contribute to the achievement of the Sustainable Development Goals (
 This resolution, a collaboration between the Secretaría de Estado para la Agenda 2030 and the Conferencia de Rectores de las Universidades Españolas, 
 underscores the importance of monitoring and ensuring compliance with sustainability objectives.
 
--Methods:
+## Methods
 As a result, it becomes essential to develop a systematic method for evaluating the extent to which URV’s academic programs align with the SDGs, 
 ensuring that educational offerings contribute effectively to the broader sustainability strategy.
 
 With the aim of evaluating the presence of the SDGs in the courses at the Universitat Rovira i Virgili, the following methodology was employed: First, web scraping and text mining techniques were used to extract the contents of the course guides. These contents were then translated into English to be analyzed, and finally, a data analysis in R was performed to evaluate the terms related to the SDGs and define their presence in the URV's courses.
 
--Extracted Data:
+## Extracted Data
 
 To obtain the content of the courses, it was necessary to extract data from the course guides of the corresponding subjects. This was achieved through multiple web scraping processes aimed at accessing the content of the guides. Initially, links to the subjects were extracted from the links to the faculties and schools of the URV. After accessing these links, detailed information about the courses (both undergraduate and master's) was extracted. For example, one of these links would be: https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/detall, where "503" refers to the code of the faculty or school, in this case, the Faculty of Tourism and Geography, and "3475" to the course, Bachelor's Degree in Geography, Territorial Analysis, and Sustainability.
 
 Once inside the framework with content and structure of the course, the following data was extracted from each course:
 
-degree_url: Link to the degree (e.g., https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/detall)
-degree_name: Name of the degree (e.g., "Bachelor's Degree in Geography, Territorial Analysis, and Sustainability")
-degree_year: Academic year (e.g., "2018")
-faculty_school_url: Link to the faculty or school (e.g., https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/gestionar)
-faculty_school_name: Name of the faculty or school (e.g., "Faculty of Tourism and Geography")
-course_url: Link to the subject (e.g., https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/assignatures/115109/guia_docent_docnet)
-course_code: Subject code (e.g., "115109")
-course_name: Name of the subject (e.g., "European Spaces")
-course_delivery_mode: Modality (e.g., "Face-to-face", "Semi-face-to-face", "Virtual")
-course_period: Period (e.g., "First semester", "Second semester", "Annual")
-course_type: Type of subject (e.g., "Basic F", "Optional", "Mandatory")
-credits: Credits (e.g., "4.5", "6")
+- degree_url: Link to the degree (e.g., https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/detall)
+- degree_name: Name of the degree (e.g., "Bachelor's Degree in Geography, Territorial Analysis, and Sustainability")
+- degree_year: Academic year (e.g., "2018")
+- faculty_school_url: Link to the faculty or school (e.g., https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/gestionar)
+- faculty_school_name: Name of the faculty or school (e.g., "Faculty of Tourism and Geography")
+- course_url: Link to the subject (e.g., https://guiadocent.urv.cat/guido/public/centres/503/ensenyaments/3475/assignatures/115109/guia_docent_docnet)
+- course_code: Subject code (e.g., "115109")
+- course_name: Name of the subject (e.g., "European Spaces")
+- course_delivery_mode: Modality (e.g., "Face-to-face", "Semi-face-to-face", "Virtual")
+- course_period: Period (e.g., "First semester", "Second semester", "Annual")
+- course_type: Type of subject (e.g., "Basic F", "Optional", "Mandatory")
+- credits: Credits (e.g., "4.5", "6")
 
--Content Format:
+## App Format
 
 The information is extracted in two formats: Docnet (93% of the subjects) and Guido (the remaining 7%). Docnet is the older and temporary format, as there is currently a transition underway from this format to Guido. However, Docnet still exists in many course guides. Guido is the new format that should be incorporated into all course guides, although only new or recently revised courses currently use it.
 
@@ -52,24 +52,24 @@ In the Guido format, similar data is extracted, with the difference that compete
 In both formats, coordinators, professors, descriptions, contents, learning outcomes, competencies, and references were extracted (noting that in the Guido format, competencies are integrated into learning outcomes). Subsequently, the extracted information was organized into a dataframe that integrates the details of the course guide, course, and complementary information, as well as the corresponding faculty or school.
 
 
--Identification of SDGs:
+## Identification of SDGs
 
 The methodological analysis used to identify and quantify the Sustainable Development Goals (SDGs) in the content of the course guides of the university programs was based on the detection of keywords related to the SDGs.
 
 To achieve this objective, various sources were identified that provided sets of keywords associated with the SDGs. Since all the content was originally in Catalan, it was first automatically translated into English using LibreTranslate (executed in a Docker container via Docker Compose) and complementarily Apertium, although the translations from the former were chosen.
 
-Sustainable Development Goals (SDGs) Keywords (2022) from the University of Toronto: This source provides a detailed list of 388 keywords in English related to the SDGs. More information.
-Institut Teknologi Sepuluh Nopember: This institute classifies hundreds of terms in English related to the SDGs. More information.
-University of Auckland: Provides a map of keywords for the 17 SDGs, allowing download in English. More information.
-Joint Research Centre of the EU and its tool SDG Mapper: This tool allows mapping SDGs in texts. More information.
-text2SDG: An open-source analysis tool in R developed by Meier, Mata, and Wulff (2022), which allows identifying and quantifying SDGs in texts. More information.
+- Sustainable Development Goals (SDGs) Keywords (2022) from the University of Toronto: This source provides a detailed list of 388 keywords in English related to the SDGs.
+- Institut Teknologi Sepuluh Nopember: This institute classifies hundreds of terms in English related to the SDGs. 
+- University of Auckland: Provides a map of keywords for the 17 SDGs, allowing download in English. 
+- Joint Research Centre of the EU and its tool SDG Mapper: This tool allows mapping SDGs in texts. 
+- text2SDG: An open-source analysis tool in R developed by Meier, Mata, and Wulff (2022), which allows identifying and quantifying SDGs in texts.
 Among these sources, text2SDG, an open-source analysis package in the R programming language, was ultimately used to identify the SDGs and related words in the contents of the courses at the URV. This tool allowed the identification of SDGs in texts through scientific query systems. Although all identified sources provided an extensive set of words classified according to the 17 SDGs, text2SDG was considered particularly advantageous for its utility and efficiency in the automatic identification of SDGs in large volumes of text.
 
--Final Structure:
+## Final Structure
 
 Finally, the SDGs were identified, and the information was synthesized along with the detailed data of the subjects. This synthesis was organized into a JSON format structured by faculties, courses, subjects, the SDGs associated with their content, and the terms related to the SDGs. This format allows for quick and iterative consultation of the results, facilitating the identification of the faculties or schools, courses, and subjects most aligned with the SDGs.
 
--Project Limitations:
+## Project Limitations
 
 The project faced several limitations that affected the handling of data and the analysis process to identify SDGs in the courses:
 
