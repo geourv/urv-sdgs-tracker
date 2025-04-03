@@ -5,7 +5,8 @@ Using web scraping and text mining, we extract program descriptions, translate t
 The results are published as a website in the `docs` folder and hosted via GitHub Pages. 
 
 The initial approach of this study has been informed by the following two references: 
-Informe sobre la docència i la recerca en sostenibilitat i medi ambient a la Universitat Rovira i Virgili (Alberich González et al., 2012), which provides an in-depth analysis of sustainability and environmental education at URV, and the study La sostenibilidad en los grados universitarios: presencia y coherencia by Bautista-Cerro Ruiz and Díaz González (2017), which examines the presence of sustainability within university degree programs.
+**[Informe sobre la docència i la recerca en sostenibilitat i medi ambient a la Universitat Rovira i Virgili](https://llibres.urv.cat/index.php/purv/catalog/view/103/89/214)**
+Informe sobre la docència i la recerca en sostenibilitat i medi ambient a la Universitat Rovira i Virgili (Alberich González et al., 2012), which provides an in-depth analysis of sustainability and environmental education at URV, and the study **[La sostenibilidad en los grados universitarios: presencia y coherencia](https://revistas.usal.es/tres/index.php/1130-3743/article/view/teoredu291161187/17347)** by Bautista-Cerro Ruiz and Díaz González (2017), which examines the presence of sustainability within university degree programs.
 
 These works provide an initial perspective on how to analyze the integration of sustainability
 into higher education curricula and serve as a basis for developing our methodological framework.
@@ -58,11 +59,11 @@ The methodological analysis used to identify and quantify the Sustainable Develo
 
 To achieve this objective, various sources were identified that provided sets of keywords associated with the SDGs. Since all the content was originally in Catalan, it was first automatically translated into English using LibreTranslate (executed in a Docker container via Docker Compose) and complementarily Apertium, although the translations from the former were chosen.
 
-- Sustainable Development Goals (SDGs) Keywords (2022) from the University of Toronto: This source provides a detailed list of 388 keywords in English related to the SDGs.
-- Institut Teknologi Sepuluh Nopember: This institute classifies hundreds of terms in English related to the SDGs. 
-- University of Auckland: Provides a map of keywords for the 17 SDGs, allowing download in English. 
-- Joint Research Centre of the EU and its tool SDG Mapper: This tool allows mapping SDGs in texts. 
-- text2SDG: An open-source analysis tool in R developed by Meier, Mata, and Wulff (2022), which allows identifying and quantifying SDGs in texts.
+- Sustainable Development Goals (SDGs) Keywords (2022) from the University of Toronto: This source provides a detailed list of 388 keywords in English related to the SDGs.[More information](https://sustainability.utoronto.ca/inventories/sustainable-development-goals-sdgs-keywords/)
+- Institut Teknologi Sepuluh Nopember: This institute classifies hundreds of terms in English related to the SDGs. [More information](https://www.its.ac.id/drpm/wp-content/uploads/sites/71/2021/04/Daftar-keywords-Sustainable-Development-Goals.pdf)
+- University of Auckland: Provides a map of keywords for the 17 SDGs, allowing download in English. [More information](https://www.its.ac.id/drpm/wp-content/uploads/sites/71/2021/04/Daftar-keywords-Sustainable-Development-Goals.pdf)
+- Joint Research Centre of the EU and its tool SDG Mapper: This tool allows mapping SDGs in texts. [More information](https://knowsdgs.jrc.ec.europa.eu/sdgmapper)
+- text2SDG: An open-source analysis tool in R developed by Meier, Mata, and Wulff (2022), which allows identifying and quantifying SDGs in texts. [More information](https://www.text2sdg.io/reference/text2sdg.html)
 Among these sources, text2SDG, an open-source analysis package in the R programming language, was ultimately used to identify the SDGs and related words in the contents of the courses at the URV. This tool allowed the identification of SDGs in texts through scientific query systems. Although all identified sources provided an extensive set of words classified according to the 17 SDGs, text2SDG was considered particularly advantageous for its utility and efficiency in the automatic identification of SDGs in large volumes of text.
 
 ## Final Structure
