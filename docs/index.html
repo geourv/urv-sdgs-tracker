@@ -54,19 +54,38 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   text-align: center;
 }
 
-/* Ajustes para el logo y el texto en la barra lateral */
-.w3-sidebar .w3-col {
-  margin-top: 10px;
+/* Estilos para el copyright */
+.copyright {
+  font-size: 14px;
+  color: #555;
+  padding: 8px 0;
 }
 
-.w3-sidebar .w3-bar {
-  text-align: left;
-  margin-top: 10px;
+.copyright a {
+  color: #0066cc;
+  text-decoration: none;
 }
 
-.w3-sidebar .w3-bar span {
-  display: block;
-  margin-top: 5px;
+.copyright a:hover {
+  text-decoration: underline;
+}
+
+.copyright span {
+  margin: 0 5px;
+  color: #999;
+}
+
+/* Ajustes para móviles */
+@media screen and (max-width: 600px) {
+  .copyright {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  
+  .copyright span {
+    display: inline-block;
+    margin: 0 3px;
+  }
 }
 
 /* Estilos para el desplegable */
@@ -89,13 +108,25 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 .w3-dropdown-content a:hover {background-color: #f1f1f1}
 
 .w3-dropdown-clicker:hover .w3-dropdown-content {display: block;}
+
+/* Ajustes para el sidebar */
+.w3-sidebar {
+  width: 300px;
+  max-width: 80vw;
+}
+
+@media screen and (max-width: 600px) {
+  .w3-main {
+    margin-left: 0;
+  }
+}
 </style>
 </head>
 <body class="w3-light-grey">
 
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
   <span class="w3-bar-item w3-right">ODS a la Universitat Rovira i Virgili</span>
 </div>
 
@@ -112,18 +143,17 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <hr>
   <div class="w3-bar-block">
-    <a href="index.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-home fa-fw"></i>  Inici</a>
-    <a href="pages/faculty.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles</a>
-    <a href="pages/degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
-    <a href="pages/course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures</a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-home fa-fw"></i>  Inici</a>
     <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
-      <i class="fa fa-info-circle fa-fw"></i>  Informació
+      <i class="fa fa-line-chart fa-fw"></i>  Anàlisi
       <div class="w3-dropdown-content">
-        <a href="pages/about.html"><i class="fa fa-question-circle fa-fw"></i>  Sobre aquest projecte</a>
-        <a href="pages/methods.html"><i class="fa fa-cogs fa-fw"></i>  Metodologia</a>
+        <a href="pages/faculty.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles</a>
+        <a href="pages/degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
+        <a href="pages/course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures</a>
       </div>
     </div>
-    <a href="pages/contact.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
+    <a href="pages/info.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-info-circle fa-fw"></i>  Informació</a>
+    <a href="pages/contact.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
   </div>
 </nav>
 
@@ -141,18 +171,18 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-container">
     <h1>Benvingut a la web ODS a la Universitat Rovira i Virgili</h1>
     <p>Aquesta pàgina web té com a objectiu principal mostrar
-        l’alineació dels programes acadèmics de la URV amb
+        l'alineació dels programes acadèmics de la URV amb
         els Objectius de Desenvolupament Sostenible</p>
   </div>
 
   <div class="w3-container">
     <h2>Els 17 Objectius de Desenvolupament Sostenible</h2>
-    <p>El 2015, l’ONU va aprovar l’Agenda 2030 sobre el Desenvolupament Sostenible, una oportunitat perquè els països i
+    <p>El 2015, l'ONU va aprovar l'Agenda 2030 sobre el Desenvolupament Sostenible, una oportunitat perquè els països i
     les seves societats emprenguin un nou camí per millorar la vida de totes les persones, sense deixar ningú enrere.
-    L’Agenda inclou 17 Objectius de Desenvolupament Sostenible (ODS), que estableixen que l’erradicació de la pobresa
-    ha d’anar de la mà d’estratègies que fomentin el creixement econòmic i abordin necessitats socials com l’educació,
+    L'Agenda inclou 17 Objectius de Desenvolupament Sostenible (ODS), que estableixen que l'erradicació de la pobresa
+    ha d'anar de la mà d'estratègies que fomentin el creixement econòmic i abordin necessitats socials com l'educació,
     la sanitat, la protecció social i les oportunitats laborals, mentre es combat el canvi climàtic i es protegeix el medi
-    ambient. En aquest lloc web mostrem informació sobre aquests objectius i els esforços que l’ONU i els seus socis
+    ambient. En aquest lloc web mostrem informació sobre aquests objectius i els esforços que l'ONU i els seus socis
     duen a terme per construir un món millor.</p>
   </div>
 
@@ -326,8 +356,19 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-light-grey">
-    <h4>FOOTER</h4>
-    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    <div class="footer-content">
+      <div class="copyright w3-center">
+        © Universitat Rovira i Virgili 
+        <span>·</span> 
+        <a href="/ca/universitat/comunicacio/web/legal/">Avís legal</a> 
+        <span>·</span> 
+        <a href="/ca/universitat/comunicacio/web/legal/galetes/">Política de galetes</a> 
+        <span>·</span> 
+        <a href="/ca/universitat/comunicacio/web/accessibilitat/">Accessibilitat</a> 
+        <span>·</span> 
+        <a href="/ca/universitat/comunicacio/web/suport/">Sobre aquest web</a>
+      </div>
+    </div>
   </footer>
 
   <!-- End page content -->

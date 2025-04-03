@@ -15,9 +15,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   width: 25%;
 }
 
-@media screen and (max-width: 1000px) {
-  .w3-quarter {
-    width: 50%;
+@media screen and (max-width: 600px) {
+  .w3-main {
+    margin-left: 0;
   }
 }
 
@@ -26,6 +26,71 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     width: 100%;
   }
 }
+
+.w3-sidebar {
+  width: 300px;
+  max-width: 80vw; /* Permite que se ajuste en pantallas pequeñas */
+}
+
+.w3-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Estilos para el copyright */
+.copyright {
+  font-size: 14px;
+  color: #555;
+  padding: 8px 0;
+}
+
+.copyright a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.copyright a:hover {
+  text-decoration: underline;
+}
+
+.copyright span {
+  margin: 0 5px;
+  color: #999;
+}
+
+/* Ajustes para móviles */
+@media screen and (max-width: 600px) {
+  .copyright {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  
+  .copyright span {
+    display: inline-block;
+    margin: 0 3px;
+  }
+}
+
+/* Estilos para el desplegable */
+.w3-dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.w3-dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.w3-dropdown-content a:hover {background-color: #f1f1f1}
+
+.w3-dropdown-clicker:hover .w3-dropdown-content {display: block;}
 
 /* Ajustar el tamaño de los logos */
 .w3-quarter img {
@@ -69,33 +134,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   margin-top: 5px;
 }
 
-/* Estilos para el desplegable */
-.w3-dropdown-content {
-  display: none;
-  position: relative;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.w3-dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.w3-dropdown-content a:hover {background-color: #f1f1f1}
-
-.w3-dropdown-clicker:hover .w3-dropdown-content {display: block;}
 </style>
 </head>
 <body class="w3-light-grey">
 
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
   <span class="w3-bar-item w3-right">ODS a la Universitat Rovira i Virgili</span>
 </div>
 
@@ -112,18 +157,17 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <hr>
   <div class="w3-bar-block">
-    <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Inici</a>
-    <a href="faculty.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles</a>
-    <a href="degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
-    <a href="course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures</a>
+    <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Inici</a>
     <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
-      <i class="fa fa-info-circle fa-fw"></i>  Informació
+      <i class="fa fa-line-chart fa-fw"></i>  Anàlisi
       <div class="w3-dropdown-content">
-        <a href="../pages/about.html"><i class="fa fa-question-circle fa-fw"></i>  Sobre aquest projecte</a>
-        <a href="../pages/methods.html"><i class="fa fa-cogs fa-fw"></i>  Metodologia</a>
+        <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles</a>
+        <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
+        <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures</a>
       </div>
     </div>
-    <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding  w3-blue"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
+    <a href="../pages/info.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-info-circle fa-fw"></i>  Informació</a>
+    <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
   </div>
 </nav>
 
@@ -135,20 +179,30 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-university"></i> Contacte</b></h5>
+    <h5><b><i class="fa fa-envelope"></i> Contacte</b></h5>
   </header>
 
   <div class="w3-container">
     <h1>Contacte</h1>
     <p>Departament de Geografia de la Universitat Rovira i Virgili.</p>
+    
   </div>
-
-  <!-- Per afegir més contingut sobre el contacte -->
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-light-grey">
-    <h4>FOOTER</h4>
-    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    <div class="footer-content">
+      <div class="copyright w3-center">
+        © Universitat Rovira i Virgili 
+        <span>·</span> 
+        <a href="/ca/universitat/comunicacio/web/legal/">Avís legal</a> 
+        <span>·</span> 
+        <a href="/ca/universitat/comunicacio/web/legal/galetes/">Política de galetes</a> 
+        <span>·</span> 
+        <a href="/ca/universitat/comunicacio/web/accessibilitat/">Accessibilitat</a> 
+        <span>·</span> 
+        <a href="/ca/universitat/comunicacio/web/suport/">Sobre aquest web</a>
+      </div>
+    </div>
   </footer>
 
   <!-- End page content -->

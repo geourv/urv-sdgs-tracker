@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.1.1/src/wordcloud2.min.js"></script>
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
@@ -15,17 +16,99 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   width: 25%;
 }
 
-@media screen and (max-width: 1000px) {
-  .w3-quarter {
-    width: 50%;
+@media screen and (max-width: 600px) {
+  .w3-main {
+    margin-left: 0;
   }
 }
+
 
 @media screen and (max-width: 600px) {
   .w3-quarter {
     width: 100%;
   }
 }
+
+.w3-sidebar {
+  width: 300px;
+  max-width: 80vw; /* Permite que se ajuste en pantallas pequeñas */
+}
+
+.w3-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#faculty-select {
+  width: auto;
+  min-width: 200px;
+  display: inline-block;
+}
+
+.w3-col.m3.l2 {
+  padding: 0 8px; /* Reducimos el padding */
+}
+
+@media screen and (max-width: 600px) {
+  #faculty-select {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .w3-col.m3.l2 {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+
+#faculty-select {
+  width: 300px; 
+  max-width: 100%;
+}
+
+/* Para pantallas pequeñas */
+@media screen and (max-width: 600px) {
+  #faculty-select {
+    width: 100%;
+  }
+}
+
+/* Estilos para el copyright */
+.copyright {
+  font-size: 14px;
+  color: #555;
+  padding: 8px 0;
+}
+
+.copyright a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.copyright a:hover {
+  text-decoration: underline;
+}
+
+.copyright span {
+  margin: 0 5px;
+  color: #999;
+}
+
+/* Ajustes para móviles */
+@media screen and (max-width: 600px) {
+  .copyright {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  
+  .copyright span {
+    display: inline-block;
+    margin: 0 3px;
+  }
+}
+
+
 
 /* Estilos para los gráficos */
 .charts-wrapper {
@@ -66,23 +149,30 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 }
 
 .chart-wrapper canvas {
-  width: 100% !important;
-  height: auto !important;
-  max-height: 300px;
+  max-width: 100%;
+  min-width: unset;
 }
 
-/* Estilos para el gráfico interactivo */
-.interactive-chart-container {
+/* Estilos para el wordcloud */
+.wordcloud-container {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   margin-bottom: 20px;
+  overflow: hidden; /* Añade esto para contener el wordcloud */
 }
 
-.interactive-chart-wrapper {
-  height: 500px;
-  margin-top: 20px;
+.wordcloud-wrapper {
+  height: 400px; /* Altura fija en lugar de auto */
+  width: 100%;
+  position: relative;
+}
+
+#wordcloud {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
 }
 
 /* Estilos para la leyenda de ODS */
@@ -133,17 +223,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   font-weight: bold;
 }
 
-/* Estilos para el footer */
-.footer-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.footer-legend {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #ddd;
-}
 
 /* Estilos para la información del grado */
 .degree-info {
@@ -161,7 +240,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   color: #333;
 }
 
-/* Estilos para el desplegable (añadidos) */
+/* Estilos para el desplegable */
 .w3-dropdown-content {
   display: none;
   position: relative;
@@ -205,16 +284,15 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <hr>
   <div class="w3-bar-block">
     <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Inici</a>
-    <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles</a>
-    <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
-    <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures</a>
     <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
-      <i class="fa fa-info-circle fa-fw"></i>  Informació
+      <i class="fa fa-line-chart fa-fw"></i>  Anàlisi
       <div class="w3-dropdown-content">
-        <a href="../pages/about.html" class="w3-bar-item w3-button"><i class="fa fa-question-circle fa-fw"></i>  Sobre aquest projecte</a>
-        <a href="../pages/methods.html" class="w3-bar-item w3-button"><i class="fa fa-cogs fa-fw"></i>  Metodologia</a>
+        <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles</a>
+        <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
+        <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures</a>
       </div>
     </div>
+    <a href="../pages/info.html" class="w3-bar-item w3-button"><i class="fa fa-info-circle fa-fw"></i>  Informació</a>
     <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
   </div>
 </nav>
@@ -235,37 +313,29 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <p>Aquesta pàgina mostra informació sobre totes les Facultats i Escoles de la URV i la seva alineació amb els Objectius de Desenvolupament Sostenible.</p>
   </div>
 
-  <!-- Gráfico interactivo -->
+  <!-- Wordcloud interactivo -->
   <div class="w3-container">
-    <div class="interactive-chart-container">
-      <h2>ODS per Facultat/Escola</h2>
-      <p>Selecciona una Facultat/Escola per veure la distribució percentual dels ODS:</p>
+    <div class="wordcloud-container">
+      <h2>Paraules clau per Facultat/Escola</h2>
 
       <div class="w3-row">
-        <div class="w3-col m4">          
-          <select id="faculty-select" class="w3-select w3-border" onchange="updateBarChart()">
+        <div class="w3-col m3 l2"> <!-- Reducimos el ancho de la columna -->
+          <select id="faculty-select" class="w3-select w3-border" style="max-width: 300px;">
             <option value="">-- Selecciona una Facultat/Escola --</option>
-            <!-- Las opciones se llenarán dinámicamente -->
           </select>
         </div>
       </div>
 
-      <div class="interactive-chart-wrapper">
-        <canvas id="interactive-bar-chart"></canvas>
+      <div class="wordcloud-wrapper">
+        <canvas id="wordcloud"></canvas>
       </div>
     </div>
   </div>
 
-    <!-- Leyenda de ODS -->
-    <div class="w3-container">
-      <h3></h3>
-      <div class="sdg-legend" id="sdg-legend-top"></div>
-    </div>
-
   <!-- Gráficos circulares -->
   <div class="w3-container">
     <div class="charts-wrapper">
-      <h2>Distribució dels ODS per Facultat/Escola</h2>
+      <h2>ODS per Facultat/Escola</h2>
       <div class="chart-grid" id="charts-container"></div>
     </div>
   </div>
@@ -276,14 +346,21 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-16 w3-light-grey">
-    <div class="footer-content">
-      <div>
-        <h4>FOOTER</h4>
-        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-      </div>
+<footer class="w3-container w3-padding-16 w3-light-grey">
+  <div class="footer-content">
+    <div class="copyright w3-center">
+      © Universitat Rovira i Virgili 
+      <span>·</span> 
+      <a href="/ca/universitat/comunicacio/web/legal/">Avís legal</a> 
+      <span>·</span> 
+      <a href="/ca/universitat/comunicacio/web/legal/galetes/">Política de galetes</a> 
+      <span>·</span> 
+      <a href="/ca/universitat/comunicacio/web/accessibilitat/">Accessibilitat</a> 
+      <span>·</span> 
+      <a href="/ca/universitat/comunicacio/web/suport/">Sobre aquest web</a>
     </div>
-  </footer>
+  </div>
+</footer>
 
   <!-- End page content -->
 </div>
@@ -374,540 +451,6 @@ function createSDGLegend(containerId) {
   }
 }
 
-// Datos completos de todas las facultades y escuelas de la URV
-const facultiesData = [
-  {
-    "faculty": "Escola Tècnica Superior d'Arquitectura",
-    "total_courses": 69,
-    "courses_with_sdgs": 68,
-    "sdg_coverage_percent": 98.6,
-    "sdgs": {
-      "SDG-01": 44,
-      "SDG-02": 40,
-      "SDG-03": 42,
-      "SDG-04": 51,
-      "SDG-05": 13,
-      "SDG-06": 54,
-      "SDG-07": 30,
-      "SDG-08": 61,
-      "SDG-09": 53,
-      "SDG-10": 59,
-      "SDG-11": 66,
-      "SDG-12": 39,
-      "SDG-13": 25,
-      "SDG-14": 19,
-      "SDG-15": 53,
-      "SDG-16": 52,
-      "SDG-17": 11
-    },
-    "percentages": {
-      "SDG-01": 6.2,
-      "SDG-02": 5.6,
-      "SDG-03": 5.9,
-      "SDG-04": 7.2,
-      "SDG-05": 1.8,
-      "SDG-06": 7.6,
-      "SDG-07": 4.2,
-      "SDG-08": 8.6,
-      "SDG-09": 7.4,
-      "SDG-10": 8.3,
-      "SDG-11": 9.3,
-      "SDG-12": 5.5,
-      "SDG-13": 3.5,
-      "SDG-14": 2.7,
-      "SDG-15": 7.4,
-      "SDG-16": 7.3,
-      "SDG-17": 1.5
-    }
-  },
-  {
-    "faculty": "Escola Tècnica Superior d'Enginyeria",
-    "total_courses": 362,
-    "courses_with_sdgs": 358,
-    "sdg_coverage_percent": 98.9,
-    "sdgs": {
-      "SDG-01": 199,
-      "SDG-02": 191,
-      "SDG-03": 288,
-      "SDG-04": 273,
-      "SDG-05": 94,
-      "SDG-06": 121,
-      "SDG-07": 133,
-      "SDG-08": 272,
-      "SDG-09": 308,
-      "SDG-10": 317,
-      "SDG-11": 263,
-      "SDG-12": 225,
-      "SDG-13": 87,
-      "SDG-14": 30,
-      "SDG-15": 240,
-      "SDG-16": 274,
-      "SDG-17": 60
-    },
-    "percentages": {
-      "SDG-01": 5.9,
-      "SDG-02": 5.7,
-      "SDG-03": 8.5,
-      "SDG-04": 8.1,
-      "SDG-05": 2.8,
-      "SDG-06": 3.6,
-      "SDG-07": 3.9,
-      "SDG-08": 8.1,
-      "SDG-09": 9.1,
-      "SDG-10": 9.4,
-      "SDG-11": 7.8,
-      "SDG-12": 6.7,
-      "SDG-13": 2.6,
-      "SDG-14": 0.9,
-      "SDG-15": 7.1,
-      "SDG-16": 8.1,
-      "SDG-17": 1.8
-    }
-  },
-  {
-    "faculty": "Escola Tècnica Superior d'Enginyeria Química",
-    "total_courses": 206,
-    "courses_with_sdgs": 203,
-    "sdg_coverage_percent": 98.5,
-    "sdgs": {
-      "SDG-01": 133,
-      "SDG-02": 129,
-      "SDG-03": 148,
-      "SDG-04": 143,
-      "SDG-05": 45,
-      "SDG-06": 92,
-      "SDG-07": 93,
-      "SDG-08": 171,
-      "SDG-09": 186,
-      "SDG-10": 173,
-      "SDG-11": 153,
-      "SDG-12": 147,
-      "SDG-13": 74,
-      "SDG-14": 29,
-      "SDG-15": 154,
-      "SDG-16": 154,
-      "SDG-17": 45
-    },
-    "percentages": {
-      "SDG-01": 6.4,
-      "SDG-02": 6.2,
-      "SDG-03": 7.2,
-      "SDG-04": 6.9,
-      "SDG-05": 2.2,
-      "SDG-06": 4.4,
-      "SDG-07": 4.5,
-      "SDG-08": 8.3,
-      "SDG-09": 9,
-      "SDG-10": 8.4,
-      "SDG-11": 7.4,
-      "SDG-12": 7.1,
-      "SDG-13": 3.6,
-      "SDG-14": 1.4,
-      "SDG-15": 7.4,
-      "SDG-16": 7.4,
-      "SDG-17": 2.2
-    }
-  },
-  {
-    "faculty": "Facultat d'Economia i Empresa",
-    "total_courses": 204,
-    "courses_with_sdgs": 203,
-    "sdg_coverage_percent": 99.5,
-    "sdgs": {
-      "SDG-01": 132,
-      "SDG-02": 85,
-      "SDG-03": 140,
-      "SDG-04": 165,
-      "SDG-05": 51,
-      "SDG-06": 34,
-      "SDG-07": 24,
-      "SDG-08": 179,
-      "SDG-09": 174,
-      "SDG-10": 173,
-      "SDG-11": 126,
-      "SDG-12": 75,
-      "SDG-13": 23,
-      "SDG-14": 8,
-      "SDG-15": 106,
-      "SDG-16": 156,
-      "SDG-17": 95
-    },
-    "percentages": {
-      "SDG-01": 7.6,
-      "SDG-02": 4.9,
-      "SDG-03": 8,
-      "SDG-04": 9.5,
-      "SDG-05": 2.9,
-      "SDG-06": 1.9,
-      "SDG-07": 1.4,
-      "SDG-08": 10.3,
-      "SDG-09": 10,
-      "SDG-10": 9.9,
-      "SDG-11": 7.2,
-      "SDG-12": 4.3,
-      "SDG-13": 1.3,
-      "SDG-14": 0.5,
-      "SDG-15": 6.1,
-      "SDG-16": 8.9,
-      "SDG-17": 5.4
-    }
-  },
-  {
-    "faculty": "Facultat d'Enologia",
-    "total_courses": 201,
-    "courses_with_sdgs": 200,
-    "sdg_coverage_percent": 99.5,
-    "sdgs": {
-      "SDG-01": 87,
-      "SDG-02": 104,
-      "SDG-03": 123,
-      "SDG-04": 113,
-      "SDG-05": 46,
-      "SDG-06": 48,
-      "SDG-07": 42,
-      "SDG-08": 129,
-      "SDG-09": 142,
-      "SDG-10": 123,
-      "SDG-11": 96,
-      "SDG-12": 111,
-      "SDG-13": 44,
-      "SDG-14": 30,
-      "SDG-15": 116,
-      "SDG-16": 102,
-      "SDG-17": 19
-    },
-    "percentages": {
-      "SDG-01": 5.9,
-      "SDG-02": 7.1,
-      "SDG-03": 8.3,
-      "SDG-04": 7.7,
-      "SDG-05": 3.1,
-      "SDG-06": 3.3,
-      "SDG-07": 2.8,
-      "SDG-08": 8.7,
-      "SDG-09": 9.6,
-      "SDG-10": 8.3,
-      "SDG-11": 6.5,
-      "SDG-12": 7.5,
-      "SDG-13": 3,
-      "SDG-14": 2,
-      "SDG-15": 7.9,
-      "SDG-16": 6.9,
-      "SDG-17": 1.3
-    }
-  },
-  {
-    "faculty": "Facultat d'Infermeria",
-    "total_courses": 68,
-    "courses_with_sdgs": 68,
-    "sdg_coverage_percent": 100,
-    "sdgs": {
-      "SDG-01": 52,
-      "SDG-02": 55,
-      "SDG-03": 68,
-      "SDG-04": 65,
-      "SDG-05": 44,
-      "SDG-06": 47,
-      "SDG-07": 29,
-      "SDG-08": 67,
-      "SDG-09": 67,
-      "SDG-10": 68,
-      "SDG-11": 63,
-      "SDG-12": 49,
-      "SDG-13": 19,
-      "SDG-14": 14,
-      "SDG-15": 46,
-      "SDG-16": 65,
-      "SDG-17": 27
-    },
-    "percentages": {
-      "SDG-01": 6.2,
-      "SDG-02": 6.5,
-      "SDG-03": 8,
-      "SDG-04": 7.7,
-      "SDG-05": 5.2,
-      "SDG-06": 5.6,
-      "SDG-07": 3.4,
-      "SDG-08": 7.9,
-      "SDG-09": 7.9,
-      "SDG-10": 8,
-      "SDG-11": 7.5,
-      "SDG-12": 5.8,
-      "SDG-13": 2.2,
-      "SDG-14": 1.7,
-      "SDG-15": 5.4,
-      "SDG-16": 7.7,
-      "SDG-17": 3.2
-    }
-  },
-  {
-    "faculty": "Facultat de Ciències Jurídiques",
-    "total_courses": 280,
-    "courses_with_sdgs": 279,
-    "sdg_coverage_percent": 99.6,
-    "sdgs": {
-      "SDG-01": 173,
-      "SDG-02": 87,
-      "SDG-03": 171,
-      "SDG-04": 167,
-      "SDG-05": 133,
-      "SDG-06": 74,
-      "SDG-07": 21,
-      "SDG-08": 251,
-      "SDG-09": 194,
-      "SDG-10": 245,
-      "SDG-11": 214,
-      "SDG-12": 94,
-      "SDG-13": 22,
-      "SDG-14": 30,
-      "SDG-15": 123,
-      "SDG-16": 255,
-      "SDG-17": 90
-    },
-    "percentages": {
-      "SDG-01": 7.4,
-      "SDG-02": 3.7,
-      "SDG-03": 7.3,
-      "SDG-04": 7.1,
-      "SDG-05": 5.7,
-      "SDG-06": 3.2,
-      "SDG-07": 0.9,
-      "SDG-08": 10.7,
-      "SDG-09": 8.3,
-      "SDG-10": 10.5,
-      "SDG-11": 9.1,
-      "SDG-12": 4,
-      "SDG-13": 0.9,
-      "SDG-14": 1.3,
-      "SDG-15": 5.2,
-      "SDG-16": 10.9,
-      "SDG-17": 3.8
-    }
-  },
-  {
-    "faculty": "Facultat de Ciències de l'Educació i Psicologia",
-    "total_courses": 288,
-    "courses_with_sdgs": 285,
-    "sdg_coverage_percent": 99,
-    "sdgs": {
-      "SDG-01": 197,
-      "SDG-02": 157,
-      "SDG-03": 215,
-      "SDG-04": 236,
-      "SDG-05": 103,
-      "SDG-06": 74,
-      "SDG-07": 31,
-      "SDG-08": 228,
-      "SDG-09": 221,
-      "SDG-10": 232,
-      "SDG-11": 200,
-      "SDG-12": 120,
-      "SDG-13": 97,
-      "SDG-14": 16,
-      "SDG-15": 141,
-      "SDG-16": 224,
-      "SDG-17": 159
-    },
-    "percentages": {
-      "SDG-01": 7.4,
-      "SDG-02": 5.9,
-      "SDG-03": 8.1,
-      "SDG-04": 8.9,
-      "SDG-05": 3.9,
-      "SDG-06": 2.8,
-      "SDG-07": 1.2,
-      "SDG-08": 8.6,
-      "SDG-09": 8.3,
-      "SDG-10": 8.8,
-      "SDG-11": 7.5,
-      "SDG-12": 4.5,
-      "SDG-13": 3.7,
-      "SDG-14": 0.6,
-      "SDG-15": 5.3,
-      "SDG-16": 8.4,
-      "SDG-17": 6
-    }
-  },
-  {
-    "faculty": "Facultat de Lletres",
-    "total_courses": 372,
-    "courses_with_sdgs": 370,
-    "sdg_coverage_percent": 99.5,
-    "sdgs": {
-      "SDG-01": 159,
-      "SDG-02": 101,
-      "SDG-03": 177,
-      "SDG-04": 250,
-      "SDG-05": 91,
-      "SDG-06": 63,
-      "SDG-07": 11,
-      "SDG-08": 293,
-      "SDG-09": 275,
-      "SDG-10": 285,
-      "SDG-11": 306,
-      "SDG-12": 105,
-      "SDG-13": 21,
-      "SDG-14": 30,
-      "SDG-15": 129,
-      "SDG-16": 222,
-      "SDG-17": 84
-    },
-    "percentages": {
-      "SDG-01": 6.1,
-      "SDG-02": 3.9,
-      "SDG-03": 6.8,
-      "SDG-04": 9.6,
-      "SDG-05": 3.5,
-      "SDG-06": 2.4,
-      "SDG-07": 0.4,
-      "SDG-08": 11.3,
-      "SDG-09": 10.6,
-      "SDG-10": 11,
-      "SDG-11": 11.8,
-      "SDG-12": 4,
-      "SDG-13": 0.8,
-      "SDG-14": 1.2,
-      "SDG-15": 5,
-      "SDG-16": 8.5,
-      "SDG-17": 3.2
-    }
-  },
-  {
-    "faculty": "Facultat de Medicina i Ciències de la Salut",
-    "total_courses": 208,
-    "courses_with_sdgs": 208,
-    "sdg_coverage_percent": 100,
-    "sdgs": {
-      "SDG-01": 104,
-      "SDG-02": 129,
-      "SDG-03": 206,
-      "SDG-04": 190,
-      "SDG-05": 75,
-      "SDG-06": 59,
-      "SDG-07": 27,
-      "SDG-08": 135,
-      "SDG-09": 159,
-      "SDG-10": 203,
-      "SDG-11": 131,
-      "SDG-12": 97,
-      "SDG-13": 17,
-      "SDG-14": 19,
-      "SDG-15": 134,
-      "SDG-16": 121,
-      "SDG-17": 37
-    },
-    "percentages": {
-      "SDG-01": 5.6,
-      "SDG-02": 7,
-      "SDG-03": 11.2,
-      "SDG-04": 10.3,
-      "SDG-05": 4.1,
-      "SDG-06": 3.2,
-      "SDG-07": 1.5,
-      "SDG-08": 7.3,
-      "SDG-09": 8.6,
-      "SDG-10": 11,
-      "SDG-11": 7.1,
-      "SDG-12": 5.3,
-      "SDG-13": 0.9,
-      "SDG-14": 1,
-      "SDG-15": 7.3,
-      "SDG-16": 6.6,
-      "SDG-17": 2
-    }
-  },
-  {
-    "faculty": "Facultat de Química",
-    "total_courses": 203,
-    "courses_with_sdgs": 196,
-    "sdg_coverage_percent": 96.6,
-    "sdgs": {
-      "SDG-01": 47,
-      "SDG-02": 119,
-      "SDG-03": 138,
-      "SDG-04": 100,
-      "SDG-05": 19,
-      "SDG-06": 51,
-      "SDG-07": 52,
-      "SDG-08": 101,
-      "SDG-09": 168,
-      "SDG-10": 118,
-      "SDG-11": 82,
-      "SDG-12": 125,
-      "SDG-13": 45,
-      "SDG-14": 27,
-      "SDG-15": 103,
-      "SDG-16": 74,
-      "SDG-17": 7
-    },
-    "percentages": {
-      "SDG-01": 3.4,
-      "SDG-02": 8.6,
-      "SDG-03": 10,
-      "SDG-04": 7.3,
-      "SDG-05": 1.4,
-      "SDG-06": 3.7,
-      "SDG-07": 3.8,
-      "SDG-08": 7.3,
-      "SDG-09": 12.2,
-      "SDG-10": 8.6,
-      "SDG-11": 6,
-      "SDG-12": 9.1,
-      "SDG-13": 3.3,
-      "SDG-14": 2,
-      "SDG-15": 7.5,
-      "SDG-16": 5.4,
-      "SDG-17": 0.5
-    }
-  },
-  {
-    "faculty": "Facultat de Turisme i Geografia",
-    "total_courses": 118,
-    "courses_with_sdgs": 118,
-    "sdg_coverage_percent": 100,
-    "sdgs": {
-      "SDG-01": 75,
-      "SDG-02": 62,
-      "SDG-03": 73,
-      "SDG-04": 73,
-      "SDG-05": 11,
-      "SDG-06": 39,
-      "SDG-07": 7,
-      "SDG-08": 111,
-      "SDG-09": 86,
-      "SDG-10": 88,
-      "SDG-11": 80,
-      "SDG-12": 47,
-      "SDG-13": 15,
-      "SDG-14": 15,
-      "SDG-15": 55,
-      "SDG-16": 83,
-      "SDG-17": 16
-    },
-    "percentages": {
-      "SDG-01": 8,
-      "SDG-02": 6.6,
-      "SDG-03": 7.8,
-      "SDG-04": 7.8,
-      "SDG-05": 1.2,
-      "SDG-06": 4.2,
-      "SDG-07": 0.7,
-      "SDG-08": 11.9,
-      "SDG-09": 9.2,
-      "SDG-10": 9.4,
-      "SDG-11": 8.5,
-      "SDG-12": 5,
-      "SDG-13": 1.6,
-      "SDG-14": 1.6,
-      "SDG-15": 5.9,
-      "SDG-16": 8.9,
-      "SDG-17": 1.7
-    }
-  }
-]
-;
-
-
 // Función para crear los gráficos
 function createCharts(data) {
   const container = document.getElementById('charts-container');
@@ -985,105 +528,174 @@ function createCharts(data) {
   });
 }
 
-// Función para inicializar el gráfico de barras interactivo
-function initInteractiveBarChart() {
-  // Llenar el selector de facultades
-  const facultySelect = document.getElementById('faculty-select');
-  facultiesData.forEach(faculty => {
-    const option = document.createElement('option');
-    option.value = faculty.faculty;
-    option.textContent = faculty.faculty;
-    facultySelect.appendChild(option);
-  });
+// Funcionalidad para el Wordcloud
+const canvas = document.getElementById("wordcloud");
+const facultySelect = document.getElementById("faculty-select");
+let wordcloudInstance = null;
+let allFaculties = [];
 
-  // Crear el gráfico vacío inicialmente
-  const ctx = document.getElementById('interactive-bar-chart').getContext('2d');
-  window.interactiveBarChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: [],
-      datasets: [{
-        label: "Percentatge d'ODS",
-        data: [],
-        backgroundColor: [],
-        borderWidth: 1
-      }]
+function resizeCanvas() {
+  const container = document.querySelector('.wordcloud-wrapper');
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+  
+  // Ajusta el tamaño del canvas al 95% del contenedor para margen interno
+  const canvasWidth = width * 0.95;
+  const canvasHeight = height * 0.95;
+  
+  const ratio = window.devicePixelRatio || 1;
+  
+  canvas.width = canvasWidth * ratio;
+  canvas.height = canvasHeight * ratio;
+  canvas.style.width = canvasWidth + 'px';
+  canvas.style.height = canvasHeight + 'px';
+  
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  
+  return { width: canvasWidth, height: canvasHeight };
+}
+
+
+function drawWordCloud(sdgs) {
+  const wordList = Object.entries(sdgs)
+    .filter(([word, count]) => typeof count === 'number')
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 100);
+
+  const { width, height } = resizeCanvas();
+  
+  if (wordcloudInstance) {
+    WordCloud.stop();
+  }
+  
+  const maxFrequency = Math.max(...wordList.map(w => w[1]));
+
+  wordcloudInstance = WordCloud(canvas, {
+    list: wordList,
+    gridSize: Math.round(width * 0.005), // Ajuste más fino
+    weightFactor: function(size) {
+      return (Math.pow(size, 0.7) / maxFrequency) * (width / 6); // Ajuste de tamaño
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true,
-          max: 14,
-          title: {
-            display: true,
-            text: 'Percentatge (%)'
-          }
-        },
-        x: {
-          title: {
-            display: true,
-            text: 'Objetius de Desenvolupament Sostenible (ODS)'
-          }
-        }
-      },
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label: function(context) {
-              const code = context.label;
-              const name = sdgDefinitions[code] || '';
-              return `${code}: ${name} - ${context.parsed.y}%`;
-            }
-          }
-        }
-      }
-    }
+    fontFamily: 'Arial',
+    color: 'random-dark',
+    backgroundColor: '#fff',
+    rotateRatio: 0, 
+    drawOutOfBound: false,
+    shrinkToFit: true,
+    minSize: 10,
+    maxSize: 80, // Tamaño máximo para evitar desbordamiento
+    origin: [width / 2, height / 2],
+    shape: 'square', // Forma más controlada
+    ellipticity: 0.6, // Controla la forma elíptica
+    clearCanvas: true,
+    wait: 10 // Tiempo entre renderizados
   });
 }
+// Al cargar la página, establece una altura inicial
+document.addEventListener('DOMContentLoaded', async function() {
+  const wordcloudWrapper = document.querySelector('.wordcloud-wrapper');
+  wordcloudWrapper.style.height = `${Math.min(window.innerHeight * 0.6, 600)}px`;
+  
+  // Resto del código de inicialización...
+});
 
-// Función para actualizar el gráfico según la facultad seleccionada
-function updateBarChart() {
-  const facultySelect = document.getElementById('faculty-select');
-  const selectedFaculty = facultySelect.value;
-
-  if (!selectedFaculty) {
-    // Si no hay facultad seleccionada, limpiar el gráfico
-    window.interactiveBarChart.data.labels = [];
-    window.interactiveBarChart.data.datasets[0].data = [];
-    window.interactiveBarChart.data.datasets[0].backgroundColor = [];
-    window.interactiveBarChart.update();
-    return;
-  }
-
-  // Encontrar los datos de la facultad seleccionada
-  const facultyData = facultiesData.find(f => f.faculty === selectedFaculty);
-
-  if (facultyData) {
-    // Preparar los datos para el gráfico
-    const labels = Object.keys(facultyData.percentages);
-    const data = Object.values(facultyData.percentages).map(Number);
-    const backgroundColors = labels.map(sdg => sdgColors[sdg] || '#ccc');
-
-    // Actualizar el gráfico
-    window.interactiveBarChart.data.labels = labels;
-    window.interactiveBarChart.data.datasets[0].data = data;
-    window.interactiveBarChart.data.datasets[0].backgroundColor = backgroundColors;
-    window.interactiveBarChart.data.datasets[0].label = `Percentatge d'ODS - ${selectedFaculty}`;
-    window.interactiveBarChart.update();
-  }
-}
 
 // Cargar los datos y crear los gráficos
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
   // Crear las leyendas de ODS (superior e inferior)
-  createSDGLegend('sdg-legend-top');
   createSDGLegend('sdg-legend-middle');
+// Mostrar estado de carga
+const loadingMessage = document.createElement('p');
+  loadingMessage.textContent = 'Carregant dades...';
+  loadingMessage.style.textAlign = 'center';
+  loadingMessage.style.padding = '20px';
+  document.getElementById('charts-container').appendChild(loadingMessage);
 
-  // Usamos los datos completos de todas las facultades
-  createCharts(facultiesData);
-  initInteractiveBarChart();
+  try {
+    // Cargar datos para wordcloud
+    const featuresResponse = await fetch('../data/faculties_features_data.json');
+    if (!featuresResponse.ok) throw new Error(`Error cargando features: ${featuresResponse.status}`);
+    const featuresData = await featuresResponse.json();
+    
+    // Cargar datos para gráficos circulares
+    const sdgResponse = await fetch('../data/faculties_sdg_data.json');
+    if (!sdgResponse.ok) throw new Error(`Error cargando SDGs: ${sdgResponse.status}`);
+    const sdgData = await sdgResponse.json();
+    
+    // Asignar datos
+    allFaculties = featuresData; // Para el wordcloud
+    
+    // Limpiar y llenar el selector de facultades (usamos features como referencia)
+    facultySelect.innerHTML = '<option value="">-- Selecciona una Facultat/Escola --</option>';
+    
+    featuresData.forEach((faculty, index) => {
+      if (faculty.faculty) {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = faculty.faculty;
+        facultySelect.appendChild(option);
+      }
+    });
+
+    // Mostrar wordcloud inicial
+    if (featuresData.length > 0 && featuresData[0].sdgs) {
+      drawWordCloud(featuresData[0].sdgs);
+    }
+
+    // Configurar event listeners para wordcloud
+    facultySelect.addEventListener("change", function() {
+      const selectedIndex = parseInt(this.value);
+      if (!isNaN(selectedIndex)) {
+        const selectedFaculty = featuresData[selectedIndex];
+        if (selectedFaculty && selectedFaculty.sdgs) {
+          drawWordCloud(selectedFaculty.sdgs);
+        }
+      }
+    });
+
+  // Optimización del redimensionamiento
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const selectedIndex = parseInt(facultySelect.value);
+        if (!isNaN(selectedIndex)) {
+          const container = document.querySelector('.wordcloud-wrapper');
+          container.style.height = `${Math.min(window.innerHeight * 0.6, 600)}px`;
+          
+          if (allFaculties[selectedIndex]?.sdgs) {
+            drawWordCloud(allFaculties[selectedIndex].sdgs);
+          }
+        }
+      }, 200);
+    });
+
+    // Crear gráficos circulares con sdgData
+    if (sdgData.length > 0) {
+      createCharts(sdgData);
+    } else {
+      console.warn('No hay datos SDG para gráficos circulares');
+      document.getElementById('charts-container').innerHTML = 
+        '<p>No hi ha dades disponibles per mostrar els gràfics circulars</p>';
+    }
+
+  } catch (error) {
+    console.error('Error al cargar los datos:', error);
+    
+    const errorContainer = document.getElementById('charts-container');
+    errorContainer.innerHTML = `
+      <div class="w3-panel w3-red w3-round">
+        <h3>Error</h3>
+        <p>${error.message}</p>
+        <p>Si us plau, torna-ho a provar més tard.</p>
+      </div>
+    `;
+    
+    facultySelect.disabled = true;
+  } finally {
+    loadingMessage.remove();
+  }
 });
 </script>
 
