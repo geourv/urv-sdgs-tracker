@@ -3,41 +3,12 @@ library(text2sdg)
 library(corpustools)
 library(readr)
 library(dplyr)
+library(purrr)
 
 # TODO: TRY TO ANALYSE SEPARATED COLUMNS. FOR NOW THE COMBINED ANALYSIS IS ENOUGH
 
 # Read course_details_df
 course_details_df <- read_csv("./data/course_details_df.csv")
-
-# Mapeo completo de los 17 ODS en diferentes idiomas
-sdg_mapping <- tibble(
-  sdg_code = paste0("SDG-", sprintf("%02d", 1:17)),
-  sdg_en = c(
-    "No poverty", "Zero hunger", "Good health and well-being", "Quality education",
-    "Gender equality", "Clean water and sanitation", "Affordable and clean energy",
-    "Decent work and economic growth", "Industry, innovation and infrastructure",
-    "Reduced inequalities", "Sustainable cities and communities", "Responsible consumption and production",
-    "Climate action", "Life below water", "Life on land", "Peace, justice and strong institutions",
-    "Partnerships for the goals"
-  ),
-  sdg_ca = c(
-    "Fi de la pobresa", "Fam zero", "Salut i benestar", "Educació de qualitat",
-    "Igualtat de gènere", "Aigua neta i sanejament", "Energia assequible i neta",
-    "Treball digne i creixement econòmic", "Indústria, innovació i infraestructura",
-    "Reducció de les desigualtats", "Comunitats i ciutats sostenibles", "Producció i consum responsables",
-    "Acció pel clima", "Vida submarina", "Vida d'ecosistemes terrestres", "Pau, justícia i institucions sòlides",
-    "Aliances per a assolir els objectius"
-  ),
-  sdg_es = c(
-    "Fin de la pobreza", "Hambre cero", "Salud y bienestar", "Educación de calidad",
-    "Igualdad de género", "Agua limpia y saneamiento", "Energía asequible y no contaminante",
-    "Trabajo decente y crecimiento económico", "Industria, innovación e infraestructura",
-    "Reducción de las desigualdades", "Ciudades y comunidades sostenibles", "Producción y consumo responsables",
-    "Acción por el clima", "Vida submarina", "Vida de ecosistemas terrestres", "Paz, justicia e instituciones sólidas",
-    "Alianzas para lograr los objetivos"
-  )
-)
-
 
 # sdg_analysis_df <- course_details_df %>%
 #  mutate(data_combined = paste(course_name_en, description_en, contents_en,
@@ -100,17 +71,6 @@ sdg_summary_df <- sdg_analysis_df_results %>%
     .groups = "drop"
   ) %>%
   mutate(document = as.integer(document))
-
-# Create the SDG lookup tables
-sdg_summary_df <- sdg_summary_df %>%
-  rowwise() %>%
-  mutate(
-    sdg_en = if (length(sdg) > 0) list(paste(sdg, sdg_mapping$sdg_en[match(sdg, sdg_mapping$sdg_code)], sep = ": ")) else list(NA),
-    sdg_ca = if (length(sdg) > 0) list(paste(sub("SDG", "ODS", sdg), sdg_mapping$sdg_ca[match(sdg, sdg_mapping$sdg_code)], sep = ": ")) else list(NA),
-    sdg_es = if (length(sdg) > 0) list(paste(sub("SDG", "ODS", sdg), sdg_mapping$sdg_es[match(sdg, sdg_mapping$sdg_code)], sep = ": ")) else list(NA)
-  ) %>%
-  ungroup()
-
 
 sdg_summary_df <-
   course_details_df %>%

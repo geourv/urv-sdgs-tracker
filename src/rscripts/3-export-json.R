@@ -22,45 +22,63 @@ faculty_list <- df %>%
   group_by(across(all_of(faculty_cols))) %>%
   group_split() %>%
   map(function(fac_df) {
-
+    
     # Atributs de la facultat
     faculty_info <- fac_df[1, faculty_cols] %>% as.list()
-
+    
     # Llista de graus dins la facultat
     degrees <- fac_df %>%
       group_by(across(all_of(degree_cols))) %>%
       group_split() %>%
       map(function(degree_df) {
-
+        
         # Atributs del grau
         degree_info <- degree_df[1, degree_cols] %>% as.list()
-
+        
+        # Comprovació robusta de presència de SDG
+        has_sdg <- map_lgl(degree_df$sdg, function(x) {
+          if (is.null(x)) return(FALSE)
+          if (is.atomic(x) && length(x) == 1 && (is.na(x) || x == "")) return(FALSE)
+          if (is.list(x) && length(x) == 0) return(FALSE)
+          TRUE
+        })
+        
+        # Càlcul dels valors automàtics
+        courses_per_degree <- nrow(degree_df)
+        sdg_courses_degree <- sum(has_sdg)
+        not_sdg_courses_degree <- sum(!has_sdg)
+        sdg_ratio_degree <- ifelse(courses_per_degree > 0, round(100 * sdg_courses_degree / courses_per_degree, 1), NA_real_)
+        
+        # Assignar els valors al grau
+        degree_info$courses_per_degree <- courses_per_degree
+        degree_info$sdg_courses_degree <- sdg_courses_degree
+        degree_info$not_sdg_courses_degree <- not_sdg_courses_degree
+        degree_info$sdg_ratio_degree <- sdg_ratio_degree
+        
         # Llista d'assignatures amb tota la informació
         courses <- degree_df %>%
           group_by(across(all_of(course_cols))) %>%
           group_split() %>%
           map(function(course_df) {
             course_info <- course_df[1, course_level_cols] %>% as.list()
-
-            # Aplanar sdg i features si són llistes o tenen duplicats
+            
             if (!is.null(course_info$sdg)) {
               course_info$sdg <- course_info$sdg
             }
             if (!is.null(course_info$features)) {
               course_info$features <- course_info$features
             }
-
+            
             course_info
           })
-
+        
         degree_info$courses <- courses
         degree_info
       })
-
+    
     faculty_info$degrees <- degrees
     faculty_info
   })
-
 
 # 4. Exportar a JSON
 json_output <- toJSON(faculty_list, pretty = TRUE, auto_unbox = TRUE)

@@ -5,9 +5,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Arquitectura",
         "degree": "Grau en Arquitectura (2010)",
-        "total_courses": 62,
-        "courses_with_sdgs": 62,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 62,
+        "sdg_courses_degree": 62,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 38,
           "SDG-02": 33,
@@ -50,9 +51,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Arquitectura",
         "degree": "Grau en Estudis d'Arquitectura (2024)",
-        "total_courses": 13,
-        "courses_with_sdgs": 12,
-        "sdg_coverage_percent": 92.3,
+        "courses_per_degree": 13,
+        "sdg_courses_degree": 12,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 92.3,
         "sdgs": {
           "SDG-01": 10,
           "SDG-02": 10,
@@ -98,9 +100,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Ciència de Dades Biomèdiques / Biomedical Data Science (2022)",
-        "total_courses": 17,
-        "courses_with_sdgs": 17,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 17,
+        "sdg_courses_degree": 17,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 10,
           "SDG-02": 7,
@@ -139,9 +142,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Doble titulació de grau en Administració i en Direcció d'Empreses i en Tècniques de Desenvolupament d'Aplicacions Web i Mòbils (2019)",
-        "total_courses": 23,
-        "courses_with_sdgs": 23,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 23,
+        "sdg_courses_degree": 23,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 14,
           "SDG-02": 9,
@@ -184,9 +188,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Doble titulació de grau en Enginyeria Biomèdica i en Enginyeria de Sistemes i Serveis de Telecomunicacions (2019)",
-        "total_courses": 60,
-        "courses_with_sdgs": 60,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 60,
+        "sdg_courses_degree": 60,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 29,
           "SDG-02": 21,
@@ -229,9 +234,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Doble titulació de grau en Enginyeria Elèctrica i en Enginyeria Electrònica Industrial i Automàtica (2014)",
-        "total_courses": 51,
-        "courses_with_sdgs": 51,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 51,
+        "sdg_courses_degree": 51,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 23,
           "SDG-02": 21,
@@ -274,9 +280,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Doble titulació de grau en Enginyeria Informàtica i en Biotecnologia (2014)",
-        "total_courses": 77,
-        "courses_with_sdgs": 77,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 77,
+        "sdg_courses_degree": 77,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 30,
           "SDG-02": 37,
@@ -319,9 +326,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Enginyeria Industrial (2013)",
-        "total_courses": 68,
-        "courses_with_sdgs": 64,
-        "sdg_coverage_percent": 94.1,
+        "courses_per_degree": 68,
+        "sdg_courses_degree": 64,
+        "not_sdg_courses_degree": 4,
+        "sdg_ratio_degree": 94.1,
         "sdgs": {
           "SDG-01": 31,
           "SDG-02": 25,
@@ -364,9 +372,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Enginyeria de la Seguretat Informàtica i Intel·ligència Artificial (2016) (Presencial)",
-        "total_courses": 15,
-        "courses_with_sdgs": 15,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 15,
+        "sdg_courses_degree": 15,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 8,
           "SDG-02": 7,
@@ -405,9 +414,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Enginyeria de la Seguretat Informàtica i Intel·ligència Artificial (2016) (Virtual)",
-        "total_courses": 15,
-        "courses_with_sdgs": 14,
-        "sdg_coverage_percent": 93.3,
+        "courses_per_degree": 15,
+        "sdg_courses_degree": 14,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 93.3,
         "sdgs": {
           "SDG-01": 11,
           "SDG-02": 10,
@@ -450,9 +460,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Grau en Enginyeria Biomèdica (2017)",
-        "total_courses": 52,
-        "courses_with_sdgs": 49,
-        "sdg_coverage_percent": 94.2,
+        "courses_per_degree": 52,
+        "sdg_courses_degree": 49,
+        "not_sdg_courses_degree": 3,
+        "sdg_ratio_degree": 94.2,
         "sdgs": {
           "SDG-01": 12,
           "SDG-02": 15,
@@ -495,9 +506,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Grau en Enginyeria Electrònica Industrial i Automàtica (2010)",
-        "total_courses": 52,
-        "courses_with_sdgs": 49,
-        "sdg_coverage_percent": 94.2,
+        "courses_per_degree": 52,
+        "sdg_courses_degree": 49,
+        "not_sdg_courses_degree": 3,
+        "sdg_ratio_degree": 94.2,
         "sdgs": {
           "SDG-01": 20,
           "SDG-02": 26,
@@ -540,9 +552,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Grau en Enginyeria Elèctrica (2010)",
-        "total_courses": 51,
-        "courses_with_sdgs": 49,
-        "sdg_coverage_percent": 96.1,
+        "courses_per_degree": 51,
+        "sdg_courses_degree": 49,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 96.1,
         "sdgs": {
           "SDG-01": 32,
           "SDG-02": 24,
@@ -585,9 +598,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Grau en Enginyeria Informàtica (2010)",
-        "total_courses": 56,
-        "courses_with_sdgs": 54,
-        "sdg_coverage_percent": 96.4,
+        "courses_per_degree": 56,
+        "sdg_courses_degree": 54,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 96.4,
         "sdgs": {
           "SDG-01": 24,
           "SDG-02": 29,
@@ -630,9 +644,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Grau en Enginyeria Matemàtica i Física (2021)",
-        "total_courses": 57,
-        "courses_with_sdgs": 57,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 57,
+        "sdg_courses_degree": 57,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 24,
           "SDG-02": 20,
@@ -675,9 +690,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Grau en Enginyeria de Sistemes i Serveis de Telecomunicacions (2016)",
-        "total_courses": 66,
-        "courses_with_sdgs": 64,
-        "sdg_coverage_percent": 97,
+        "courses_per_degree": 66,
+        "sdg_courses_degree": 64,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 97,
         "sdgs": {
           "SDG-01": 33,
           "SDG-02": 22,
@@ -720,9 +736,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Grau en Tècniques de Desenvolupament d'Aplicacions Web i Mòbils (2018)",
-        "total_courses": 20,
-        "courses_with_sdgs": 18,
-        "sdg_coverage_percent": 90,
+        "courses_per_degree": 20,
+        "sdg_courses_degree": 18,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 90,
         "sdgs": {
           "SDG-01": 4,
           "SDG-02": 4,
@@ -761,9 +778,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Health Data Science (2024)",
-        "total_courses": 31,
-        "courses_with_sdgs": 31,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 31,
+        "sdg_courses_degree": 31,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 8,
           "SDG-02": 9,
@@ -802,9 +820,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria",
         "degree": "Tecnologies del Vehicle Elèctric (2018)",
-        "total_courses": 20,
-        "courses_with_sdgs": 20,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 20,
+        "sdg_courses_degree": 20,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 7,
           "SDG-02": 6,
@@ -848,9 +867,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria Química",
         "degree": "Doble titulació de grau en Enginyeria Química i en Tècniques de Bioprocessos Alimentaris (2019)",
-        "total_courses": 30,
-        "courses_with_sdgs": 30,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 30,
+        "sdg_courses_degree": 30,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 12,
           "SDG-02": 22,
@@ -893,9 +913,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria Química",
         "degree": "Enginyeria Ambiental i Sostenibilitat Energètica/Environmental Engineering and Sustainable Energy (2016)",
-        "total_courses": 28,
-        "courses_with_sdgs": 28,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 28,
+        "sdg_courses_degree": 28,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 20,
           "SDG-02": 24,
@@ -938,9 +959,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria Química",
         "degree": "Enginyeria Química/Chemical Engineering (2013)",
-        "total_courses": 25,
-        "courses_with_sdgs": 25,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 25,
+        "sdg_courses_degree": 25,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 16,
           "SDG-02": 15,
@@ -983,9 +1005,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria Química",
         "degree": "Gestió d'Empreses Tecnològiques /Technology and Engineering Management (2017)",
-        "total_courses": 19,
-        "courses_with_sdgs": 19,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 19,
+        "sdg_courses_degree": 19,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 15,
           "SDG-02": 14,
@@ -1028,9 +1051,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria Química",
         "degree": "Grau en Enginyeria Mecànica (2010)",
-        "total_courses": 54,
-        "courses_with_sdgs": 52,
-        "sdg_coverage_percent": 96.3,
+        "courses_per_degree": 54,
+        "sdg_courses_degree": 52,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 96.3,
         "sdgs": {
           "SDG-01": 18,
           "SDG-02": 14,
@@ -1073,9 +1097,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria Química",
         "degree": "Grau en Enginyeria Química (2010)",
-        "total_courses": 51,
-        "courses_with_sdgs": 49,
-        "sdg_coverage_percent": 96.1,
+        "courses_per_degree": 51,
+        "sdg_courses_degree": 49,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 96.1,
         "sdgs": {
           "SDG-01": 29,
           "SDG-02": 22,
@@ -1118,9 +1143,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria Química",
         "degree": "Grau en Enginyeria de Bioprocessos Alimentaris (2017)",
-        "total_courses": 48,
-        "courses_with_sdgs": 46,
-        "sdg_coverage_percent": 95.8,
+        "courses_per_degree": 48,
+        "sdg_courses_degree": 46,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 95.8,
         "sdgs": {
           "SDG-01": 34,
           "SDG-02": 38,
@@ -1163,9 +1189,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria Química",
         "degree": "Grau en Tècniques de Bioprocessos Alimentaris (2018)",
-        "total_courses": 21,
-        "courses_with_sdgs": 20,
-        "sdg_coverage_percent": 95.2,
+        "courses_per_degree": 21,
+        "sdg_courses_degree": 20,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 95.2,
         "sdgs": {
           "SDG-01": 15,
           "SDG-02": 18,
@@ -1208,9 +1235,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria Química",
         "degree": "Nanociència, Materials i Processos: Tecnologia Química de Frontera/Nanoscience, Materials and Processes:Chemical Technology at the Frontier (2013)",
-        "total_courses": 13,
-        "courses_with_sdgs": 13,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 13,
+        "sdg_courses_degree": 13,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 5,
           "SDG-02": 4,
@@ -1253,9 +1281,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria Química",
         "degree": "Prevenció de Riscos Laborals (2009)",
-        "total_courses": 11,
-        "courses_with_sdgs": 11,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 11,
+        "sdg_courses_degree": 11,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 8,
           "SDG-02": 8,
@@ -1296,9 +1325,10 @@
       {
         "faculty": "Escola Tècnica Superior d'Enginyeria Química",
         "degree": "Sistemes i Tecnologies de Conversió d'Energia/Energy Conversion Systems and Technologies (2019)",
-        "total_courses": 12,
-        "courses_with_sdgs": 12,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 12,
+        "sdg_courses_degree": 12,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 7,
           "SDG-02": 9,
@@ -1344,9 +1374,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Direcció d'Empreses (2016)",
-        "total_courses": 22,
-        "courses_with_sdgs": 19,
-        "sdg_coverage_percent": 86.4,
+        "courses_per_degree": 22,
+        "sdg_courses_degree": 19,
+        "not_sdg_courses_degree": 3,
+        "sdg_ratio_degree": 86.4,
         "sdgs": {
           "SDG-01": 10,
           "SDG-02": 6,
@@ -1387,9 +1418,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Doble titulació de grau Administració i Direcció d'Empreses i Dret (2024)",
-        "total_courses": 8,
-        "courses_with_sdgs": 7,
-        "sdg_coverage_percent": 87.5,
+        "courses_per_degree": 8,
+        "sdg_courses_degree": 7,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 87.5,
         "sdgs": {
           "SDG-01": 4,
           "SDG-02": 2,
@@ -1428,9 +1460,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Doble titulació de grau en Administració i Direcció d'Empresa i en Màrqueting (Campus Terres de l'Ebre) (2021)",
-        "total_courses": 47,
-        "courses_with_sdgs": 44,
-        "sdg_coverage_percent": 93.6,
+        "courses_per_degree": 47,
+        "sdg_courses_degree": 44,
+        "not_sdg_courses_degree": 3,
+        "sdg_ratio_degree": 93.6,
         "sdgs": {
           "SDG-01": 25,
           "SDG-02": 14,
@@ -1473,9 +1506,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Doble titulació de grau en Administració i Direcció d'Empresa i en Màrqueting (Campus Terres de l'Ebre) (2024)",
-        "total_courses": 12,
-        "courses_with_sdgs": 12,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 12,
+        "sdg_courses_degree": 12,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 9,
           "SDG-02": 7,
@@ -1518,9 +1552,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Doble titulació de grau en Administració i Direcció d'Empreses i en Dret (2014)",
-        "total_courses": 71,
-        "courses_with_sdgs": 71,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 71,
+        "sdg_courses_degree": 71,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 47,
           "SDG-02": 25,
@@ -1563,9 +1598,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Doble titulació de grau en Administració i Direcció d'Empreses i en Màrqueting (2021)",
-        "total_courses": 47,
-        "courses_with_sdgs": 45,
-        "sdg_coverage_percent": 95.7,
+        "courses_per_degree": 47,
+        "sdg_courses_degree": 45,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 95.7,
         "sdgs": {
           "SDG-01": 19,
           "SDG-02": 12,
@@ -1608,9 +1644,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Doble titulació de grau en Administració i Direcció d'Empreses i en Màrqueting (2024)",
-        "total_courses": 12,
-        "courses_with_sdgs": 12,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 12,
+        "sdg_courses_degree": 12,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 8,
           "SDG-02": 7,
@@ -1653,9 +1690,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Doble titulació de grau en Administració i en Direcció d'Empreses i Finances i Comptabilitat (2014)",
-        "total_courses": 61,
-        "courses_with_sdgs": 61,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 61,
+        "sdg_courses_degree": 61,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 41,
           "SDG-02": 28,
@@ -1698,9 +1736,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Doble titulació de grau en Administració i en Direcció d'Empreses i Finances i Comptabilitat (2024)",
-        "total_courses": 12,
-        "courses_with_sdgs": 12,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 12,
+        "sdg_courses_degree": 12,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 9,
           "SDG-02": 7,
@@ -1743,9 +1782,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Doble titulació de grau en Administració i en Direcció d'Empreses i en Tècniques de Desenvolupament d'Aplicacions Web i Mòbils (2019)",
-        "total_courses": 23,
-        "courses_with_sdgs": 23,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 23,
+        "sdg_courses_degree": 23,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 13,
           "SDG-02": 8,
@@ -1784,9 +1824,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Emprenedoria i Innovació (2014)",
-        "total_courses": 18,
-        "courses_with_sdgs": 15,
-        "sdg_coverage_percent": 83.3,
+        "courses_per_degree": 18,
+        "sdg_courses_degree": 15,
+        "not_sdg_courses_degree": 3,
+        "sdg_ratio_degree": 83.3,
         "sdgs": {
           "SDG-01": 7,
           "SDG-02": 5,
@@ -1827,9 +1868,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Grau en Administració i Direcció d'Empreses (2009)",
-        "total_courses": 52,
-        "courses_with_sdgs": 52,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 52,
+        "sdg_courses_degree": 52,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 42,
           "SDG-02": 23,
@@ -1872,9 +1914,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Grau en Administració i Direcció d'Empreses (2024)",
-        "total_courses": 11,
-        "courses_with_sdgs": 11,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 11,
+        "sdg_courses_degree": 11,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 8,
           "SDG-02": 6,
@@ -1915,9 +1958,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Grau en Administració i Direcció d'Empreses (Campus Terres de l'Ebre) (2009)",
-        "total_courses": 49,
-        "courses_with_sdgs": 48,
-        "sdg_coverage_percent": 98,
+        "courses_per_degree": 49,
+        "sdg_courses_degree": 48,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 98,
         "sdgs": {
           "SDG-01": 35,
           "SDG-02": 25,
@@ -1960,9 +2004,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Grau en Administració i Direcció d'Empreses (Campus Terres de l'Ebre) (2024)",
-        "total_courses": 11,
-        "courses_with_sdgs": 11,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 11,
+        "sdg_courses_degree": 11,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 8,
           "SDG-02": 6,
@@ -2003,9 +2048,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Grau en Economia (2009)",
-        "total_courses": 46,
-        "courses_with_sdgs": 46,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 46,
+        "sdg_courses_degree": 46,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 20,
           "SDG-02": 16,
@@ -2046,9 +2092,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Grau en Economia (2024)",
-        "total_courses": 12,
-        "courses_with_sdgs": 11,
-        "sdg_coverage_percent": 91.7,
+        "courses_per_degree": 12,
+        "sdg_courses_degree": 11,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 91.7,
         "sdgs": {
           "SDG-01": 7,
           "SDG-02": 5,
@@ -2089,9 +2136,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Grau en Finances i Comptabilitat (2009)",
-        "total_courses": 50,
-        "courses_with_sdgs": 50,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 50,
+        "sdg_courses_degree": 50,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 35,
           "SDG-02": 23,
@@ -2134,9 +2182,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Grau en Finances i Comptabilitat (2024)",
-        "total_courses": 11,
-        "courses_with_sdgs": 11,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 11,
+        "sdg_courses_degree": 11,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 8,
           "SDG-02": 7,
@@ -2175,9 +2224,10 @@
       {
         "faculty": "Facultat d'Economia i Empresa",
         "degree": "Mercats Internacionals (2016)",
-        "total_courses": 25,
-        "courses_with_sdgs": 22,
-        "sdg_coverage_percent": 88,
+        "courses_per_degree": 25,
+        "sdg_courses_degree": 22,
+        "not_sdg_courses_degree": 3,
+        "sdg_ratio_degree": 88,
         "sdgs": {
           "SDG-01": 11,
           "SDG-02": 8,
@@ -2221,9 +2271,10 @@
       {
         "faculty": "Facultat d'Enologia",
         "degree": "Begudes Fermentades (2014)",
-        "total_courses": 22,
-        "courses_with_sdgs": 22,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 22,
+        "sdg_courses_degree": 22,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 2,
           "SDG-02": 17,
@@ -2264,9 +2315,10 @@
       {
         "faculty": "Facultat d'Enologia",
         "degree": "Doble titulació de grau en Biotecnologia i en Bioquímica i Biologia Molecular (2014)",
-        "total_courses": 73,
-        "courses_with_sdgs": 69,
-        "sdg_coverage_percent": 94.5,
+        "courses_per_degree": 73,
+        "sdg_courses_degree": 69,
+        "not_sdg_courses_degree": 4,
+        "sdg_ratio_degree": 94.5,
         "sdgs": {
           "SDG-01": 20,
           "SDG-02": 38,
@@ -2309,9 +2361,10 @@
       {
         "faculty": "Facultat d'Enologia",
         "degree": "Doble titulació de grau en Enginyeria Informàtica i en Biotecnologia (2014)",
-        "total_courses": 77,
-        "courses_with_sdgs": 77,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 77,
+        "sdg_courses_degree": 77,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 20,
           "SDG-02": 24,
@@ -2354,9 +2407,10 @@
       {
         "faculty": "Facultat d'Enologia",
         "degree": "Grau en Biotecnologia (2009)",
-        "total_courses": 57,
-        "courses_with_sdgs": 57,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 57,
+        "sdg_courses_degree": 57,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 18,
           "SDG-02": 31,
@@ -2399,9 +2453,10 @@
       {
         "faculty": "Facultat d'Enologia",
         "degree": "Grau en Enologia (2014)",
-        "total_courses": 51,
-        "courses_with_sdgs": 50,
-        "sdg_coverage_percent": 98,
+        "courses_per_degree": 51,
+        "sdg_courses_degree": 50,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 98,
         "sdgs": {
           "SDG-01": 36,
           "SDG-02": 29,
@@ -2444,9 +2499,10 @@
       {
         "faculty": "Facultat d'Enologia",
         "degree": "Innovació en Enoturisme (Erasmus Mundus) (2016)",
-        "total_courses": 8,
-        "courses_with_sdgs": 8,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 8,
+        "sdg_courses_degree": 8,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 1,
           "SDG-02": 1,
@@ -2479,9 +2535,10 @@
       {
         "faculty": "Facultat d'Enologia",
         "degree": "Transicions i Innovacions en Enoturisme (Erasmus Mundus) (2024)",
-        "total_courses": 16,
-        "courses_with_sdgs": 16,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 16,
+        "sdg_courses_degree": 16,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 11,
           "SDG-02": 10,
@@ -2529,9 +2586,10 @@
       {
         "faculty": "Facultat d'Infermeria",
         "degree": "Grau en Infermeria (2016)",
-        "total_courses": 45,
-        "courses_with_sdgs": 45,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 45,
+        "sdg_courses_degree": 45,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 28,
           "SDG-02": 29,
@@ -2574,9 +2632,10 @@
       {
         "faculty": "Facultat d'Infermeria",
         "degree": "Grau en Infermeria (Campus Terres de l'Ebre) (2016)",
-        "total_courses": 45,
-        "courses_with_sdgs": 45,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 45,
+        "sdg_courses_degree": 45,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 33,
           "SDG-02": 33,
@@ -2619,9 +2678,10 @@
       {
         "faculty": "Facultat d'Infermeria",
         "degree": "Grau en Infermeria (Seu Baix Penedès) (2016)",
-        "total_courses": 45,
-        "courses_with_sdgs": 45,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 45,
+        "sdg_courses_degree": 45,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 31,
           "SDG-02": 33,
@@ -2664,9 +2724,10 @@
       {
         "faculty": "Facultat d'Infermeria",
         "degree": "Grau en Infermeria (Seu Vilafranca) (2016)",
-        "total_courses": 39,
-        "courses_with_sdgs": 39,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 39,
+        "sdg_courses_degree": 39,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 23,
           "SDG-02": 26,
@@ -2709,9 +2770,10 @@
       {
         "faculty": "Facultat d'Infermeria",
         "degree": "Investigació en Ciències de la Infermeria (2012)",
-        "total_courses": 16,
-        "courses_with_sdgs": 16,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 16,
+        "sdg_courses_degree": 16,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 6,
           "SDG-02": 9,
@@ -2748,9 +2810,10 @@
       {
         "faculty": "Facultat d'Infermeria",
         "degree": "Investigació en Ciències de la Infermeria (2024)",
-        "total_courses": 17,
-        "courses_with_sdgs": 17,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 17,
+        "sdg_courses_degree": 17,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 11,
           "SDG-02": 9,
@@ -2794,9 +2857,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Doble titulació de grau en Educació Infantil i en Educació Primària (2013)",
-        "total_courses": 36,
-        "courses_with_sdgs": 36,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 36,
+        "sdg_courses_degree": 36,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 36,
           "SDG-02": 31,
@@ -2839,9 +2903,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Doble titulació de grau en Educació Infantil i en Educació Primària (CTE) (2020)",
-        "total_courses": 35,
-        "courses_with_sdgs": 35,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 35,
+        "sdg_courses_degree": 35,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 25,
           "SDG-02": 14,
@@ -2884,9 +2949,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Formació del Professorat d'Educació Secundària Obligatòria i Batxillerat, Formació Professional i Ensenyament d'Idiomes (2009)",
-        "total_courses": 38,
-        "courses_with_sdgs": 38,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 38,
+        "sdg_courses_degree": 38,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 30,
           "SDG-02": 27,
@@ -2929,9 +2995,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Grau en Educació Infantil (2009)",
-        "total_courses": 35,
-        "courses_with_sdgs": 34,
-        "sdg_coverage_percent": 97.1,
+        "courses_per_degree": 35,
+        "sdg_courses_degree": 34,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 97.1,
         "sdgs": {
           "SDG-01": 25,
           "SDG-02": 11,
@@ -2974,9 +3041,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Grau en Educació Infantil (Campus Terres de l'Ebre) (2009)",
-        "total_courses": 34,
-        "courses_with_sdgs": 34,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 34,
+        "sdg_courses_degree": 34,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 25,
           "SDG-02": 15,
@@ -3019,9 +3087,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Grau en Educació Infantil (Seu Baix Penedès) (2009)",
-        "total_courses": 35,
-        "courses_with_sdgs": 34,
-        "sdg_coverage_percent": 97.1,
+        "courses_per_degree": 35,
+        "sdg_courses_degree": 34,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 97.1,
         "sdgs": {
           "SDG-01": 24,
           "SDG-02": 12,
@@ -3064,9 +3133,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Grau en Educació Primària (2009)",
-        "total_courses": 47,
-        "courses_with_sdgs": 46,
-        "sdg_coverage_percent": 97.9,
+        "courses_per_degree": 47,
+        "sdg_courses_degree": 46,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 97.9,
         "sdgs": {
           "SDG-01": 36,
           "SDG-02": 21,
@@ -3109,9 +3179,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Grau en Educació Primària (Campus Terres de l'Ebre) (2009)",
-        "total_courses": 46,
-        "courses_with_sdgs": 46,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 46,
+        "sdg_courses_degree": 46,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 39,
           "SDG-02": 30,
@@ -3154,9 +3225,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Grau en Educació Social (2009)",
-        "total_courses": 25,
-        "courses_with_sdgs": 24,
-        "sdg_coverage_percent": 96,
+        "courses_per_degree": 25,
+        "sdg_courses_degree": 24,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 96,
         "sdgs": {
           "SDG-01": 24,
           "SDG-02": 24,
@@ -3197,9 +3269,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Grau en Pedagogia (2009)",
-        "total_courses": 24,
-        "courses_with_sdgs": 23,
-        "sdg_coverage_percent": 95.8,
+        "courses_per_degree": 24,
+        "sdg_courses_degree": 23,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 95.8,
         "sdgs": {
           "SDG-01": 23,
           "SDG-02": 10,
@@ -3240,9 +3313,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Grau en Psicologia (2009)",
-        "total_courses": 107,
-        "courses_with_sdgs": 105,
-        "sdg_coverage_percent": 98.1,
+        "courses_per_degree": 107,
+        "sdg_courses_degree": 105,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 98.1,
         "sdgs": {
           "SDG-01": 41,
           "SDG-02": 28,
@@ -3283,9 +3357,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Psicologia General Sanitària (2014)",
-        "total_courses": 19,
-        "courses_with_sdgs": 19,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 19,
+        "sdg_courses_degree": 19,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 5,
           "SDG-02": 4,
@@ -3324,9 +3399,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Tecnologia Educativa: e-learning i Gestió del Coneixement (2012)",
-        "total_courses": 25,
-        "courses_with_sdgs": 25,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 25,
+        "sdg_courses_degree": 25,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 20,
           "SDG-02": 6,
@@ -3367,9 +3443,10 @@
       {
         "faculty": "Facultat de Ciències de l'Educació i Psicologia",
         "degree": "Tecnologia educativa: E-learning i Gestió del Coneixement (2024)",
-        "total_courses": 25,
-        "courses_with_sdgs": 25,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 25,
+        "sdg_courses_degree": 25,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 21,
           "SDG-02": 15,
@@ -3415,9 +3492,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Advocacia i Procura (2023)",
-        "total_courses": 15,
-        "courses_with_sdgs": 15,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 15,
+        "sdg_courses_degree": 15,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 9,
           "SDG-02": 1,
@@ -3458,9 +3536,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Doble titulació de grau Administració i Direcció d'Empreses i Dret (2024)",
-        "total_courses": 8,
-        "courses_with_sdgs": 7,
-        "sdg_coverage_percent": 87.5,
+        "courses_per_degree": 8,
+        "sdg_courses_degree": 7,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 87.5,
         "sdgs": {
           "SDG-01": 4,
           "SDG-02": 2,
@@ -3499,9 +3578,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Doble titulació de grau en Administració i Direcció d'Empreses i en Dret (2014)",
-        "total_courses": 71,
-        "courses_with_sdgs": 71,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 71,
+        "sdg_courses_degree": 71,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 41,
           "SDG-02": 25,
@@ -3544,9 +3624,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Doble titulació de grau en Dret i en Relacions Laborals i Ocupació (2014)",
-        "total_courses": 53,
-        "courses_with_sdgs": 47,
-        "sdg_coverage_percent": 88.7,
+        "courses_per_degree": 53,
+        "sdg_courses_degree": 47,
+        "not_sdg_courses_degree": 6,
+        "sdg_ratio_degree": 88.7,
         "sdgs": {
           "SDG-01": 26,
           "SDG-02": 10,
@@ -3589,9 +3670,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Doble titulació de grau en Dret i en Relacions Laborals i Recursos Humans (2022)",
-        "total_courses": 34,
-        "courses_with_sdgs": 34,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 34,
+        "sdg_courses_degree": 34,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 22,
           "SDG-02": 7,
@@ -3634,9 +3716,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Dret Ambiental (2014)",
-        "total_courses": 21,
-        "courses_with_sdgs": 21,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 21,
+        "sdg_courses_degree": 21,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 16,
           "SDG-02": 15,
@@ -3679,9 +3762,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Dret de l'Administració Pública (2018)",
-        "total_courses": 20,
-        "courses_with_sdgs": 20,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 20,
+        "sdg_courses_degree": 20,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 1,
           "SDG-02": 1,
@@ -3720,9 +3804,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Dret de l'Empresa i de la Contractació (2012)",
-        "total_courses": 15,
-        "courses_with_sdgs": 15,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 15,
+        "sdg_courses_degree": 15,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 6,
           "SDG-02": 4,
@@ -3759,9 +3844,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Grau en Dret (2009)",
-        "total_courses": 55,
-        "courses_with_sdgs": 54,
-        "sdg_coverage_percent": 98.2,
+        "courses_per_degree": 55,
+        "sdg_courses_degree": 54,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 98.2,
         "sdgs": {
           "SDG-01": 25,
           "SDG-02": 13,
@@ -3804,9 +3890,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Grau en Relacions Laborals i Ocupació (2009)",
-        "total_courses": 37,
-        "courses_with_sdgs": 36,
-        "sdg_coverage_percent": 97.3,
+        "courses_per_degree": 37,
+        "sdg_courses_degree": 36,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 97.3,
         "sdgs": {
           "SDG-01": 27,
           "SDG-02": 2,
@@ -3849,9 +3936,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Grau en Relacions Laborals i Recursos Humans (2022)",
-        "total_courses": 37,
-        "courses_with_sdgs": 35,
-        "sdg_coverage_percent": 94.6,
+        "courses_per_degree": 37,
+        "sdg_courses_degree": 35,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 94.6,
         "sdgs": {
           "SDG-01": 25,
           "SDG-02": 6,
@@ -3894,9 +3982,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Grau en Treball Social (2009)",
-        "total_courses": 42,
-        "courses_with_sdgs": 42,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 42,
+        "sdg_courses_degree": 42,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 28,
           "SDG-02": 15,
@@ -3935,9 +4024,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Grau en Treball Social (2024)",
-        "total_courses": 18,
-        "courses_with_sdgs": 18,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 18,
+        "sdg_courses_degree": 18,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 16,
           "SDG-02": 10,
@@ -3976,9 +4066,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Innovació en la Intervenció Social i Educativa (2018) (Semipresencial)",
-        "total_courses": 13,
-        "courses_with_sdgs": 13,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 13,
+        "sdg_courses_degree": 13,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 5,
           "SDG-02": 6,
@@ -4019,9 +4110,10 @@
       {
         "faculty": "Facultat de Ciències Jurídiques",
         "degree": "Innovació en la Intervenció Social i Educativa (2018) (Virtual)",
-        "total_courses": 13,
-        "courses_with_sdgs": 13,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 13,
+        "sdg_courses_degree": 13,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 5,
           "SDG-02": 6,
@@ -4067,9 +4159,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Antropologia Mèdica i Salut Global (2020)",
-        "total_courses": 20,
-        "courses_with_sdgs": 20,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 20,
+        "sdg_courses_degree": 20,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 10,
           "SDG-02": 7,
@@ -4112,9 +4205,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Antropologia Urbana, Migracions i Intervenció Social (2013) (Semipresencial)",
-        "total_courses": 14,
-        "courses_with_sdgs": 14,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 14,
+        "sdg_courses_degree": 14,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 3,
           "SDG-02": 2,
@@ -4151,9 +4245,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Antropologia Urbana, Migracions i Intervenció Social (2013) (Virtual)",
-        "total_courses": 14,
-        "courses_with_sdgs": 14,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 14,
+        "sdg_courses_degree": 14,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 4,
           "SDG-03": 9,
@@ -4190,9 +4285,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Arqueologia Clàssica Aplicada. Recerca i Transferència (2022)",
-        "total_courses": 19,
-        "courses_with_sdgs": 19,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 19,
+        "sdg_courses_degree": 19,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 6,
           "SDG-02": 3,
@@ -4235,9 +4331,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Arqueologia del Quaternari i Evolució Humana (2010)",
-        "total_courses": 23,
-        "courses_with_sdgs": 23,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 23,
+        "sdg_courses_degree": 23,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 10,
           "SDG-02": 11,
@@ -4278,9 +4375,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Arqueologia del Quaternari i Evolució Humana (Erasmus Mundus) (2012)",
-        "total_courses": 17,
-        "courses_with_sdgs": 17,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 17,
+        "sdg_courses_degree": 17,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 8,
           "SDG-02": 9,
@@ -4319,9 +4417,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Arqueologia del Quaternari i Evolució Humana (Erasmus Mundus) (2021)",
-        "total_courses": 23,
-        "courses_with_sdgs": 23,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 23,
+        "sdg_courses_degree": 23,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 11,
           "SDG-02": 11,
@@ -4362,9 +4461,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Comunicació Estratègica (2020)",
-        "total_courses": 20,
-        "courses_with_sdgs": 20,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 20,
+        "sdg_courses_degree": 20,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 3,
           "SDG-02": 3,
@@ -4405,9 +4505,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Ensenyament de Llengües: Espanyol com a Llengua Estrangera (2015) (Presencial)",
-        "total_courses": 20,
-        "courses_with_sdgs": 20,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 20,
+        "sdg_courses_degree": 20,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 15,
           "SDG-02": 9,
@@ -4448,9 +4549,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Ensenyament de Llengües: Espanyol com a Llengua Estrangera (2015) (Virtual)",
-        "total_courses": 20,
-        "courses_with_sdgs": 20,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 20,
+        "sdg_courses_degree": 20,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 15,
           "SDG-02": 9,
@@ -4491,9 +4593,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Ensenyament i Adquisició de l'Anglès com a Llengua Estrangera/Segona Llengua (2015)",
-        "total_courses": 13,
-        "courses_with_sdgs": 13,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 13,
+        "sdg_courses_degree": 13,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 9,
           "SDG-02": 9,
@@ -4526,9 +4629,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Grau en Anglès (2009)",
-        "total_courses": 44,
-        "courses_with_sdgs": 44,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 44,
+        "sdg_courses_degree": 44,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 18,
           "SDG-02": 6,
@@ -4569,9 +4673,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Grau en Comunicació Audiovisual (2009)",
-        "total_courses": 41,
-        "courses_with_sdgs": 41,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 41,
+        "sdg_courses_degree": 41,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 22,
           "SDG-02": 9,
@@ -4614,9 +4719,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Grau en Comunicació Audiovisual (2024)",
-        "total_courses": 11,
-        "courses_with_sdgs": 11,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 11,
+        "sdg_courses_degree": 11,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 8,
           "SDG-02": 4,
@@ -4657,9 +4763,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Grau en Història (2018)",
-        "total_courses": 43,
-        "courses_with_sdgs": 42,
-        "sdg_coverage_percent": 97.7,
+        "courses_per_degree": 43,
+        "sdg_courses_degree": 42,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 97.7,
         "sdgs": {
           "SDG-01": 14,
           "SDG-02": 10,
@@ -4702,9 +4809,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Grau en Història de l'Art i Arqueologia (2018)",
-        "total_courses": 43,
-        "courses_with_sdgs": 41,
-        "sdg_coverage_percent": 95.3,
+        "courses_per_degree": 43,
+        "sdg_courses_degree": 41,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 95.3,
         "sdgs": {
           "SDG-01": 14,
           "SDG-02": 7,
@@ -4745,9 +4853,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Grau en Llengua i Literatura Catalanes (2009)",
-        "total_courses": 37,
-        "courses_with_sdgs": 36,
-        "sdg_coverage_percent": 97.3,
+        "courses_per_degree": 37,
+        "sdg_courses_degree": 36,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 97.3,
         "sdgs": {
           "SDG-01": 11,
           "SDG-02": 7,
@@ -4788,9 +4897,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Grau en Llengua i Literatura Hispàniques (2009)",
-        "total_courses": 42,
-        "courses_with_sdgs": 41,
-        "sdg_coverage_percent": 97.6,
+        "courses_per_degree": 42,
+        "sdg_courses_degree": 41,
+        "not_sdg_courses_degree": 1,
+        "sdg_ratio_degree": 97.6,
         "sdgs": {
           "SDG-01": 7,
           "SDG-02": 7,
@@ -4831,9 +4941,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Grau en Periodisme (2009)",
-        "total_courses": 41,
-        "courses_with_sdgs": 41,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 41,
+        "sdg_courses_degree": 41,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 23,
           "SDG-02": 12,
@@ -4876,9 +4987,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Grau en Periodisme (2024)",
-        "total_courses": 11,
-        "courses_with_sdgs": 11,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 11,
+        "sdg_courses_degree": 11,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 6,
           "SDG-02": 4,
@@ -4919,9 +5031,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Grau en Publicitat i Relacions Públiques (2009)",
-        "total_courses": 40,
-        "courses_with_sdgs": 40,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 40,
+        "sdg_courses_degree": 40,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 19,
           "SDG-02": 11,
@@ -4964,9 +5077,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Grau en Publicitat i Relacions Públiques (2024)",
-        "total_courses": 11,
-        "courses_with_sdgs": 11,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 11,
+        "sdg_courses_degree": 11,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 8,
           "SDG-02": 4,
@@ -5007,9 +5121,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Recerca Avançada en Estudis Humanístics (2019) (Presencial)",
-        "total_courses": 23,
-        "courses_with_sdgs": 23,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 23,
+        "sdg_courses_degree": 23,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 7,
           "SDG-02": 2,
@@ -5048,9 +5163,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Recerca Avançada en Estudis Humanístics (2019) (Virtual)",
-        "total_courses": 23,
-        "courses_with_sdgs": 23,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 23,
+        "sdg_courses_degree": 23,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 6,
           "SDG-02": 2,
@@ -5089,9 +5205,10 @@
       {
         "faculty": "Facultat de Lletres",
         "degree": "Traducció Professional Anglès-Espanyol (2015)",
-        "total_courses": 13,
-        "courses_with_sdgs": 13,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 13,
+        "sdg_courses_degree": 13,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 8,
           "SDG-02": 10,
@@ -5127,9 +5244,10 @@
       {
         "faculty": "Facultat de Medicina i Ciències de la Salut",
         "degree": "Ciències del Sistema Nerviós: Neurotoxicologia, Neuropsicofarmacologia, Fisioteràpia Neuromusculoesquelètica, Neurorehabilitació (2015)",
-        "total_courses": 18,
-        "courses_with_sdgs": 18,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 18,
+        "sdg_courses_degree": 18,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 5,
           "SDG-02": 5,
@@ -5172,9 +5290,10 @@
       {
         "faculty": "Facultat de Medicina i Ciències de la Salut",
         "degree": "Envelliment i Salut (2010)",
-        "total_courses": 14,
-        "courses_with_sdgs": 14,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 14,
+        "sdg_courses_degree": 14,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 3,
           "SDG-02": 4,
@@ -5211,9 +5330,10 @@
       {
         "faculty": "Facultat de Medicina i Ciències de la Salut",
         "degree": "Grau en Fisioteràpia (2010)",
-        "total_courses": 61,
-        "courses_with_sdgs": 61,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 61,
+        "sdg_courses_degree": 61,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 43,
           "SDG-02": 44,
@@ -5256,9 +5376,10 @@
       {
         "faculty": "Facultat de Medicina i Ciències de la Salut",
         "degree": "Grau en Medicina (2009)",
-        "total_courses": 89,
-        "courses_with_sdgs": 89,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 89,
+        "sdg_courses_degree": 89,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 44,
           "SDG-02": 43,
@@ -5301,9 +5422,10 @@
       {
         "faculty": "Facultat de Medicina i Ciències de la Salut",
         "degree": "Grau en Nutrició Humana i Dietètica (2010)",
-        "total_courses": 55,
-        "courses_with_sdgs": 55,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 55,
+        "sdg_courses_degree": 55,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 22,
           "SDG-02": 52,
@@ -5351,9 +5473,10 @@
       {
         "faculty": "Facultat de Química",
         "degree": "Catàlisi Sostenible (Erasmus Mundus) (2021)",
-        "total_courses": 9,
-        "courses_with_sdgs": 7,
-        "sdg_coverage_percent": 77.8,
+        "courses_per_degree": 9,
+        "sdg_courses_degree": 7,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 77.8,
         "sdgs": {
           "SDG-01": 1,
           "SDG-02": 1,
@@ -5388,9 +5511,10 @@
       {
         "faculty": "Facultat de Química",
         "degree": "Doble titulació de grau en Biotecnologia i en Bioquímica i Biologia Molecular (2014)",
-        "total_courses": 73,
-        "courses_with_sdgs": 69,
-        "sdg_coverage_percent": 94.5,
+        "courses_per_degree": 73,
+        "sdg_courses_degree": 69,
+        "not_sdg_courses_degree": 4,
+        "sdg_ratio_degree": 94.5,
         "sdgs": {
           "SDG-01": 13,
           "SDG-02": 38,
@@ -5433,9 +5557,10 @@
       {
         "faculty": "Facultat de Química",
         "degree": "Genètica, Física i Química Forense (2017)",
-        "total_courses": 9,
-        "courses_with_sdgs": 9,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 9,
+        "sdg_courses_degree": 9,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-02": 3,
           "SDG-03": 7,
@@ -5474,9 +5599,10 @@
       {
         "faculty": "Facultat de Química",
         "degree": "Grau en Bioquímica i Biologia Molecular (2009)",
-        "total_courses": 52,
-        "courses_with_sdgs": 50,
-        "sdg_coverage_percent": 96.2,
+        "courses_per_degree": 52,
+        "sdg_courses_degree": 50,
+        "not_sdg_courses_degree": 2,
+        "sdg_ratio_degree": 96.2,
         "sdgs": {
           "SDG-01": 7,
           "SDG-02": 25,
@@ -5519,9 +5645,10 @@
       {
         "faculty": "Facultat de Química",
         "degree": "Grau en Química (2009)",
-        "total_courses": 57,
-        "courses_with_sdgs": 54,
-        "sdg_coverage_percent": 94.7,
+        "courses_per_degree": 57,
+        "sdg_courses_degree": 54,
+        "not_sdg_courses_degree": 3,
+        "sdg_ratio_degree": 94.7,
         "sdgs": {
           "SDG-01": 21,
           "SDG-02": 22,
@@ -5564,9 +5691,10 @@
       {
         "faculty": "Facultat de Química",
         "degree": "Grau en Química (anglès) (2017)",
-        "total_courses": 56,
-        "courses_with_sdgs": 53,
-        "sdg_coverage_percent": 94.6,
+        "courses_per_degree": 56,
+        "sdg_courses_degree": 53,
+        "not_sdg_courses_degree": 3,
+        "sdg_ratio_degree": 94.6,
         "sdgs": {
           "SDG-01": 21,
           "SDG-02": 22,
@@ -5609,9 +5737,10 @@
       {
         "faculty": "Facultat de Química",
         "degree": "Nutrició i Metabolisme (2012)",
-        "total_courses": 51,
-        "courses_with_sdgs": 51,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 51,
+        "sdg_courses_degree": 51,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 5,
           "SDG-02": 49,
@@ -5654,9 +5783,10 @@
       {
         "faculty": "Facultat de Química",
         "degree": "Síntesi, Catàlisi i Disseny Molecular (2013)",
-        "total_courses": 14,
-        "courses_with_sdgs": 14,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 14,
+        "sdg_courses_degree": 14,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 2,
           "SDG-02": 2,
@@ -5693,9 +5823,10 @@
       {
         "faculty": "Facultat de Química",
         "degree": "Tècniques Cromatogràfiques Aplicades (2010)",
-        "total_courses": 7,
-        "courses_with_sdgs": 7,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 7,
+        "sdg_courses_degree": 7,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 7,
           "SDG-02": 7,
@@ -5739,9 +5870,10 @@
       {
         "faculty": "Facultat de Turisme i Geografia",
         "degree": "Gestió de Destinacions Turístiques (2017) (Semipresencial)",
-        "total_courses": 17,
-        "courses_with_sdgs": 17,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 17,
+        "sdg_courses_degree": 17,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 7,
           "SDG-02": 5,
@@ -5780,9 +5912,10 @@
       {
         "faculty": "Facultat de Turisme i Geografia",
         "degree": "Gestió de Destinacions Turístiques (2017) (Virtual)",
-        "total_courses": 17,
-        "courses_with_sdgs": 17,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 17,
+        "sdg_courses_degree": 17,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 7,
           "SDG-02": 5,
@@ -5821,9 +5954,10 @@
       {
         "faculty": "Facultat de Turisme i Geografia",
         "degree": "Grau en Geografia, Anàlisi Territorial i Sostenibilitat (2018)",
-        "total_courses": 55,
-        "courses_with_sdgs": 55,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 55,
+        "sdg_courses_degree": 55,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 44,
           "SDG-02": 43,
@@ -5866,9 +6000,10 @@
       {
         "faculty": "Facultat de Turisme i Geografia",
         "degree": "Grau en Gestió en Turisme i Hoteleria (2018)",
-        "total_courses": 64,
-        "courses_with_sdgs": 64,
-        "sdg_coverage_percent": 100,
+        "courses_per_degree": 64,
+        "sdg_courses_degree": 64,
+        "not_sdg_courses_degree": 0,
+        "sdg_ratio_degree": 100,
         "sdgs": {
           "SDG-01": 34,
           "SDG-02": 22,
