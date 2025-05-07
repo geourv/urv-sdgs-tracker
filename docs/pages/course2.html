@@ -10,7 +10,7 @@
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
-/* Estilos generales */
+/* General styles */
 .w3-quarter {
   width: 25%;
 }
@@ -46,7 +46,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   color: #999;
 }
 
-/* Selectores */
+/* Selectors */
 .selector-container {
   display: flex;
   flex-wrap: wrap;
@@ -65,7 +65,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   font-weight: bold;
 }
 
-/* Información del grado */
+/* Degree information */
 .degree-info {
   background-color: #f9f9f9;
   padding: 15px;
@@ -81,7 +81,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   color: #333;
 }
 
-/* Tabla de asignaturas */
+/* Courses table */
 .courses-table {
   width: 100%;
   border-collapse: collapse;
@@ -133,7 +133,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   margin-right: 3px;
 }
 
-/* Detalles de asignatura */
+/* Course details */
 .course-details {
   padding: 20px;
   background-color: #f8f9fa;
@@ -154,7 +154,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   text-decoration: underline;
 }
 
-/* Listas */
+/* Lists */
 .sdg-list {
   display: flex;
   flex-wrap: wrap;
@@ -178,7 +178,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   margin: 2px;
 }
 
-/* Leyenda ODS */
+/* SDG legend */
 .sdg-legend-item {
   display: flex;
   align-items: center;
@@ -249,7 +249,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   }
 }
 
-/* Ajustes específicos */
+/* Specific settings */
 .w3-quarter img {
   width: 168.75px;
 }
@@ -312,8 +312,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles (núvol de paraules)</a>
         <a href="../pages/faculty2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles (gràfics circulars)</a>
         <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
-        <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-pencil fa-fw"></i>  Assignatures de l'ensenyament</a>
-        <a href="../pages/course2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatura al detall</a>
+        <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures de l'ensenyament</a>
+        <a href="../pages/course2.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-pencil fa-fw"></i>  Assignatura en detall</a>
       </div>
     </div>
     <a href="../pages/info.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-info-circle fa-fw"></i>  Informació</a>
@@ -334,13 +334,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <div class="w3-container">
     <h1>Assignatures de la Universitat Rovira i Virgili</h1>
-    <p>Aquesta pàgina mostra informació sobre totes les assignatures de la URV i la seva alineació amb els Objectius de Desenvolupament Sostenible.</p>
+    <p>Aquesta pàgina mostra informació sobre l'assignatura concreta que vosté seleccioni 
+      i mostra la seva alineació amb els Objectius de Desenvolupament Sostenible.</p>
   </div>
 
-  <!-- Selectores y contenido -->
+  <!-- Selectors and content -->
   <div class="w3-container">
     <div class="w3-row">
-      <!-- Columna izquierda (25%) -->
+      <!-- Left column (25%) -->
       <div class="w3-col m3 w3-padding-small">
         <div class="interactive-chart-container">
           <h2>ODS per assignatures</h2>
@@ -369,7 +370,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         </div>
       </div>
   
-      <!-- Columna derecha (75%) -->
+      <!-- Right column (75%) -->
       <div class="w3-col m9 w3-padding-small">
         
         <div id="degree-info-container" class="degree-info" style="display: none;">
@@ -453,49 +454,49 @@ function w3_close() {
   overlayBg.style.display = "none";
 }
 
-// Definición de los ODS con sus nombres en catalán
+// SDG definitions
 const sdgDefinitions = {
-  "SDG-01": "Fi de la pobresa",
-  "SDG-02": "Fam zero",
-  "SDG-03": "Salut i benestar",
-  "SDG-04": "Educació de qualitat",
-  "SDG-05": "Igualtat de gènere",
-  "SDG-06": "Aigua neta i sanejament",
-  "SDG-07": "Energia neta i assequible",
-  "SDG-08": "Treball digne i creixement econòmic",
-  "SDG-09": "Indústria, innovació i infraestructura",
-  "SDG-10": "Reducció de les desigualtats",
-  "SDG-11": "Ciutats i comunitats sostenibles",
-  "SDG-12": "Producció i consum responsables",
-  "SDG-13": "Acció climàtica",
-  "SDG-14": "Vida submarina",
-  "SDG-15": "Vida d'ecosistemes terrestres",
-  "SDG-16": "Pau, justícia i institucions sòlides",
-  "SDG-17": "Aliança per assolir els objectius"
+  "ODS-01": "Fi de la pobresa",
+  "ODS-02": "Fam zero",
+  "ODS-03": "Salut i benestar",
+  "ODS-04": "Educació de qualitat",
+  "ODS-05": "Igualtat de gènere",
+  "ODS-06": "Aigua neta i sanejament",
+  "ODS-07": "Energia neta i assequible",
+  "ODS-08": "Treball digne i creixement econòmic",
+  "ODS-09": "Indústria, innovació i infraestructura",
+  "ODS-10": "Reducció de les desigualtats",
+  "ODS-11": "Ciutats i comunitats sostenibles",
+  "ODS-12": "Producció i consum responsables",
+  "ODS-13": "Acció climàtica",
+  "ODS-14": "Vida submarina",
+  "ODS-15": "Vida d'ecosistemes terrestres",
+  "ODS-16": "Pau, justícia i institucions sòlides",
+  "ODS-17": "Aliança per assolir els objectius"
 };
 
-// Colores oficiales de los ODS
+// SDG colors
 const sdgColors = {
-  "SDG-01": "#e5243b",
-  "SDG-02": "#dda63a",
-  "SDG-03": "#4c9f38",
-  "SDG-04": "#c5192d",
-  "SDG-05": "#ff3a21",
-  "SDG-06": "#26bde2",
-  "SDG-07": "#fcc30b",
-  "SDG-08": "#a21942",
-  "SDG-09": "#fd6925",
-  "SDG-10": "#dd1367",
-  "SDG-11": "#fd9d24",
-  "SDG-12": "#bf8b2e",
-  "SDG-13": "#3f7e44",
-  "SDG-14": "#0a97d9",
-  "SDG-15": "#56c02b",
-  "SDG-16": "#00689d",
-  "SDG-17": "#19486a"
+  "ODS-01": "#e5243b",
+  "ODS-02": "#dda63a",
+  "ODS-03": "#4c9f38",
+  "ODS-04": "#c5192d",
+  "ODS-05": "#ff3a21",
+  "ODS-06": "#26bde2",
+  "ODS-07": "#fcc30b",
+  "ODS-08": "#a21942",
+  "ODS-09": "#fd6925",
+  "ODS-10": "#dd1367",
+  "ODS-11": "#fd9d24",
+  "ODS-12": "#bf8b2e",
+  "ODS-13": "#3f7e44",
+  "ODS-14": "#0a97d9",
+  "ODS-15": "#56c02b",
+  "ODS-16": "#00689d",
+  "ODS-17": "#19486a"
 };
 
-// Orden de los cursos
+// Course order
 const courseYearOrder = {
   "Primer curs": 1,
   "Segon curs": 2,
@@ -506,16 +507,22 @@ const courseYearOrder = {
   "Optatives": 7
 };
 
-// Variable global para almacenar los datos
+// Global variable to store data
 let facultiesData = [];
 
-// Función para capitalizar solo la primera letra de la frase
+// Function to transform SDG nomenclature to ODS
+function transformSDGToODS(sdgArray) {
+  if (!sdgArray || !sdgArray[0]) return [];
+  return sdgArray[0].map(sdg => sdg.replace('SDG-', 'ODS-'));
+}
+
+// Function to capitalize only the first letter of the sentence
 function capitalizeFirstLetter(str) {
   if (!str) return str;
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-// Función para cargar los datos desde el JSON
+// Function to load data from JSON
 async function loadData() {
   try {
     const response = await fetch('../data/urv-sdgs.json');
@@ -526,7 +533,7 @@ async function loadData() {
     initSelectors();
   } catch (error) {
     console.error('Error:', error);
-    // Mostrar mensaje de error al usuario
+    // Show error message to user
     const container = document.querySelector('.interactive-chart-container');
     container.innerHTML = `
       <div class="w3-panel w3-red w3-round">
@@ -538,12 +545,12 @@ async function loadData() {
   }
 }
 
-// Función para inicializar los selectores
+// Function to initialize selectors
 function initSelectors() {
-  // Llenar el selector de facultades
+  // Fill faculty selector
   const facultySelect = document.getElementById('faculty-select');
   
-  // Ordenar facultades alfabéticamente
+  // Sort faculties alphabetically
   facultiesData.sort((a, b) => a.faculty_school_name.localeCompare(b.faculty_school_name));
   
   facultiesData.forEach(faculty => {
@@ -554,7 +561,7 @@ function initSelectors() {
   });
 }
 
-// Función para actualizar el selector de grados según la facultad seleccionada
+// Function to update degree selector based on selected faculty
 function updateDegreeSelect() {
   const facultySelect = document.getElementById('faculty-select');
   const degreeSelect = document.getElementById('degree-select');
@@ -569,7 +576,7 @@ function updateDegreeSelect() {
   if (selectedFaculty) {
     const selectedFacultyData = facultiesData.find(faculty => faculty.faculty_school_name === selectedFaculty);
     
-    // Ordenar grados alfabéticamente
+    // Sort degrees alphabetically
     selectedFacultyData.degrees.sort((a, b) => a.degree_name.localeCompare(b.degree_name));
     
     selectedFacultyData.degrees.forEach(degree => {
@@ -578,13 +585,17 @@ function updateDegreeSelect() {
       option.textContent = degree.degree_name;
       degreeSelect.appendChild(option);
     });
-  }
+  
 
-  // Limpiar la información
+  // Clear information
   resetUI();
 }
 
-// Función para actualizar el selector de asignaturas según el grado seleccionado
+  // Clear information
+  resetUI();
+}
+
+// Function to update course selector based on selected degree
 function updateCourseSelect() {
   const facultySelect = document.getElementById('faculty-select');
   const degreeSelect = document.getElementById('degree-select');
@@ -600,14 +611,35 @@ function updateCourseSelect() {
     const degreeData = facultyData.degrees.find(d => d.degree_name === selectedDegree);
     
     if (degreeData && degreeData.courses) {
-      // Mostrar información del grado
+      // Show degree information
       document.getElementById('degree-info-container').style.display = 'block';
       document.getElementById('degree-title').textContent = selectedDegree;
       document.getElementById('degree-faculty').textContent = selectedFaculty;
       document.getElementById('degree-year').textContent = degreeData.degree_year || 'No disponible';
       document.getElementById('total-courses').textContent = degreeData.courses.length;
       
-      // Llenar selector de asignaturas con nombres capitalizados
+      // Add new fields
+      const degreeInfoContainer = document.getElementById('degree-info-container');
+      
+      // Check if elements already exist to avoid duplication
+      if (!document.getElementById('sdg-courses')) {
+        const sdgCoursesP = document.createElement('p');
+        sdgCoursesP.innerHTML = '<strong>Assignatures amb ODS:</strong> <span id="sdg-courses"></span>';
+        degreeInfoContainer.appendChild(sdgCoursesP);
+      }
+      
+      if (!document.getElementById('sdg-ratio')) {
+        const sdgRatioP = document.createElement('p');
+        sdgRatioP.innerHTML = '<strong>Ratio d\'assignatures amb ODS per ensenyament:</strong> <span id="sdg-ratio"></span>';
+        degreeInfoContainer.appendChild(sdgRatioP);
+      }
+      
+      // Update values
+      document.getElementById('sdg-courses').textContent = degreeData.sdg_courses_degree || 'No disponible';
+      document.getElementById('sdg-ratio').textContent = degreeData.sdg_ratio_degree ? 
+        `${degreeData.sdg_ratio_degree}%` : 'No disponible';
+      
+      // Fill course selector with capitalized names
       degreeData.courses.forEach(course => {
         const option = document.createElement('option');
         option.value = course.course_name;
@@ -618,7 +650,7 @@ function updateCourseSelect() {
   }
 }
 
-// Función para mostrar los detalles de una asignatura desde el selector
+// Function to show course details from selector
 function showCourseDetails() {
   const facultySelect = document.getElementById('faculty-select');
   const degreeSelect = document.getElementById('degree-select');
@@ -638,7 +670,7 @@ function showCourseDetails() {
   const courseData = degreeData.courses.find(c => c.course_name === selectedCourse);
 
   if (courseData) {
-    // Mostrar información básica con nombres capitalizados
+    // Show basic information with capitalized names
     document.getElementById('course-title').textContent = capitalizeFirstLetter(courseData.course_name);
     document.getElementById('course-code').textContent = courseData.course_code || 'No disponible';
     document.getElementById('course-credits').textContent = courseData.credits || 'No disponible';
@@ -647,7 +679,7 @@ function showCourseDetails() {
     document.getElementById('course-type').textContent = courseData.course_type || 'No disponible';
     document.getElementById('course-year').textContent = courseData.year || 'No disponible';
     
-    // Configurar enlace a la guía docente si existe
+    // Set link to teaching guide if it exists
     const courseUrlElement = document.getElementById('course-url');
     if (courseData.course_url) {
       courseUrlElement.href = courseData.course_url;
@@ -656,18 +688,19 @@ function showCourseDetails() {
       courseUrlElement.style.display = 'none';
     }
     
-    // Mostrar ODS
+    // Show SDGs
     const sdgsContainer = document.getElementById('course-sdgs');
     sdgsContainer.innerHTML = '';
-    
+        
     if (courseData.sdg && courseData.sdg.length > 0 && courseData.sdg[0].length > 0) {
-      courseData.sdg[0].forEach(sdg => {
+      const odsList = transformSDGToODS(courseData.sdg);
+      odsList.forEach(ods => {
         const sdgItem = document.createElement('div');
         sdgItem.className = 'sdg-legend-item';
         sdgItem.innerHTML = `
-          <div class="sdg-color" style="background-color: ${sdgColors[sdg]};"></div>
-          <span class="sdg-code">${sdg}</span>
-          <span class="sdg-name">${sdgDefinitions[sdg]}</span>
+          <div class="sdg-color" style="background-color: ${sdgColors[ods]};"></div>
+          <span class="sdg-code">${ods}</span>
+          <span class="sdg-name">${sdgDefinitions[ods]}</span>
         `;
         sdgsContainer.appendChild(sdgItem);
       });
@@ -675,7 +708,7 @@ function showCourseDetails() {
       sdgsContainer.textContent = 'No té ODS associats';
     }
     
-    // Mostrar características
+    // Show features
     const featuresContainer = document.getElementById('course-features');
     featuresContainer.innerHTML = '';
     
@@ -690,20 +723,28 @@ function showCourseDetails() {
       featuresContainer.textContent = 'No té característiques específiques';
     }
     
-    // Mostrar el contenedor de detalles
+    // Show details container
     courseDetailsContainer.style.display = 'block';
   }
 }
 
-// Función para resetear la UI
+// Function to reset UI
 function resetUI() {
   document.getElementById('degree-info-container').style.display = 'none';
   document.getElementById('course-details-container').style.display = 'none';
+  
+  // Clear new fields if they exist
+  if (document.getElementById('sdg-courses')) {
+    document.getElementById('sdg-courses').textContent = '';
+  }
+  if (document.getElementById('sdg-ratio')) {
+    document.getElementById('sdg-ratio').textContent = '';
+  }
 }
 
-// Cargar los datos y crear los selectores
+// Load data and create selectors
 document.addEventListener('DOMContentLoaded', function() {
-  // Cargar los datos del JSON
+  // Load JSON data
   loadData();
 });
 </script>

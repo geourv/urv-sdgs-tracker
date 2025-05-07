@@ -4,13 +4,18 @@
 <title>Facultats i Escoles</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- External CSS Libraries -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
-/* Estilos para hacer la página responsiva */
+<style>
+/* Base typography styles */
+html, body, h1, h2, h3, h4, h5 {
+    font-family: "Raleway", sans-serif;
+}
+
+/* Responsive layout styles */
 .w3-quarter {
   width: 25%;
 }
@@ -29,7 +34,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 .w3-sidebar {
   width: 300px;
-  max-width: 80vw; /* Permite que se ajuste en pantallas pequeñas */
+  max-width: 80vw; /* Adjusts for small screens */
 }
 
 .w3-row {
@@ -44,7 +49,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 }
 
 .w3-col.m3.l2 {
-  padding: 0 8px; /* Reducimos el padding */
+  padding: 0 8px; /* Reduced padding */
 }
 
 @media screen and (max-width: 600px) {
@@ -64,14 +69,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   max-width: 100%;
 }
 
-/* Para pantallas pequeñas */
+/* Small screen adjustments */
 @media screen and (max-width: 600px) {
   #faculty-select {
     width: 100%;
   }
 }
 
-/* Estilos para el copyright */
+/* Copyright styles */
 .copyright {
   font-size: 14px;
   color: #555;
@@ -92,7 +97,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   color: #999;
 }
 
-/* Ajustes para móviles */
+/* Mobile adjustments */
 @media screen and (max-width: 600px) {
   .copyright {
     font-size: 12px;
@@ -105,7 +110,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   }
 }
 
-/* Estilos para los gráficos */
+/* Chart container styles */
 .charts-wrapper {
   width: 100%;
   overflow: hidden;
@@ -148,7 +153,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   min-width: unset;
 }
 
-/* Estilos para la leyenda de ODS */
+/* SDG legend styles */
 .sdg-legend {
   display: flex;
   flex-wrap: wrap;
@@ -177,7 +182,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   margin-right: 5px;
 }
 
-/* Estilos para los selectores */
+/* Selector styles */
 .selector-container {
   display: flex;
   flex-wrap: wrap;
@@ -196,7 +201,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   font-weight: bold;
 }
 
-/* Estilos para la información del grado */
+/* Degree info styles */
 .degree-info {
   background-color: #f9f9f9;
   padding: 15px;
@@ -212,7 +217,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   color: #333;
 }
 
-/* Estilos para el desplegable */
+/* Dropdown styles */
 .w3-dropdown-content {
   display: none;
   position: relative;
@@ -236,38 +241,54 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </head>
 <body class="w3-light-grey">
 
-<!-- Top container -->
+<!-- Top navigation bar -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
   <span class="w3-bar-item w3-right">ODS a la Universitat Rovira i Virgili</span>
 </div>
 
-<!-- Sidebar/menu -->
+<!-- Sidebar Navigation -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
-    <div class="w3-col s4">
-      <img src="../assets/logos/edited/cat/cat_ods_logo_cut.png" class="w3-circle" style="width:72px">
-    </div>
-    <div class="w3-col s8 w3-bar">
-      <span>ODS a la Universitat</span>
-      <span>Rovira i Virgili</span>
-    </div>
+      <div class="w3-col s4">
+          <img src="../assets/logos/edited/cat/cat_ods_logo_cut.png" class="w3-circle" style="width:72px">
+      </div>
+      <div class="w3-col s8 w3-bar">
+          <span>ODS a la</span>
+          <span>Universitat Rovira i Virgili</span>
+      </div>
   </div>
   <hr>
   <div class="w3-bar-block">
-    <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Inici</a>
-    <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
-      <i class="fa fa-line-chart fa-fw"></i>  Anàlisi
-      <div class="w3-dropdown-content">
-        <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles (núvol de paraules)</a>
-        <a href="../pages/faculty2.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles (gràfics circulars)</a>
-        <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
-        <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures de l'ensenyament</a>
-        <a href="../pages/course2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatura al detall</a>
+      <a href="../index.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-home fa-fw"></i> Inici
+      </a>
+      <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
+          <i class="fa fa-line-chart fa-fw"></i> Anàlisi
+          <div class="w3-dropdown-content">
+              <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-university fa-fw"></i> Facultats i Escoles (núvol de paraules)
+              </a>
+              <a href="../pages/faculty2.html" class="w3-bar-item w3-button w3-padding w3-blue">
+                  <i class="fa fa-university fa-fw"></i> Facultats i Escoles (gràfics circulars)
+              </a>
+              <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-book fa-fw"></i> Ensenyaments
+              </a>
+              <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-pencil fa-fw"></i> Assignatures de l'ensenyament
+              </a>
+              <a href="../pages/course2.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-pencil fa-fw"></i> Assignatura en detall
+              </a>
+          </div>
       </div>
-    </div>
-    <a href="../pages/info.html" class="w3-bar-item w3-button"><i class="fa fa-info-circle fa-fw"></i>  Informació</a>
-    <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
+      <a href="../pages/info.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-info-circle fa-fw"></i> Informació
+      </a>
+      <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-envelope fa-fw"></i> Contacte
+      </a>
   </div>
 </nav>
 
@@ -286,7 +307,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <h1>Facultats i Escoles de la Universitat Rovira i Virgili</h1>
     <p>Aquesta pàgina mostra informació sobre totes les Facultats i Escoles de la URV i la seva alineació amb els Objectius de Desenvolupament Sostenible.</p>
     
-  <!-- Gráficos circulares con selector debajo del título -->
+  <!-- Circular charts section -->
   <div class="w3-container">
     <div class="charts-wrapper w3-panel w3-card w3-white w3-padding">
       <h2>ODS per Facultat/Escola</h2>
@@ -297,7 +318,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         </select>
       </div>
       <div id="chart-container" class="chart-grid">
-        <!-- Aquí se cargará el gráfico dinámico -->
+        <!-- Dynamic chart will be loaded here -->
       </div>
     </div>
   </div>
@@ -322,18 +343,18 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- End page content -->
 </div>
 
-<!-- Cargar las librerías de gráficos -->
+<!-- Load charting libraries -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 
 <script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
+// DOM elements for sidebar functionality
+const mySidebar = document.getElementById("mySidebar");
+const overlayBg = document.getElementById("myOverlay");
 
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
+/**
+ * Toggles the sidebar visibility and overlay
+ */
 function w3_open() {
   if (mySidebar.style.display === 'block') {
     mySidebar.style.display = 'none';
@@ -344,63 +365,68 @@ function w3_open() {
   }
 }
 
-// Close the sidebar with the close button
+/**
+ * Closes the sidebar and removes overlay
+ */
 function w3_close() {
   mySidebar.style.display = "none";
   overlayBg.style.display = "none";
 }
 
-// Definición de los ODS con sus nombres en catalán
-const sdgDefinitions = {
-  "SDG-01": "Fi de la pobresa",
-  "SDG-02": "Fam zero",
-  "SDG-03": "Salut i benestar",
-  "SDG-04": "Educació de qualitat",
-  "SDG-05": "Igualtat de gènere",
-  "SDG-06": "Aigua neta i sanejament",
-  "SDG-07": "Energia neta i assequible",
-  "SDG-08": "Treball digne i creixement econòmic",
-  "SDG-09": "Indústria, innovació i infraestructura",
-  "SDG-10": "Reducció de les desigualtats",
-  "SDG-11": "Ciutats i comunitats sostenibles",
-  "SDG-12": "Producció i consum responsables",
-  "SDG-13": "Acció climàtica",
-  "SDG-14": "Vida submarina",
-  "SDG-15": "Vida d'ecosistemes terrestres",
-  "SDG-16": "Pau, justícia i institucions sòlides",
-  "SDG-17": "Aliança per assolir els objectius"
+// SDG definitions with Catalan names
+const odsDefinitions = {
+  "ODS-01": "Fi de la pobresa",
+  "ODS-02": "Fam zero",
+  "ODS-03": "Salut i benestar",
+  "ODS-04": "Educació de qualitat",
+  "ODS-05": "Igualtat de gènere",
+  "ODS-06": "Aigua neta i sanejament",
+  "ODS-07": "Energia neta i assequible",
+  "ODS-08": "Treball digne i creixement econòmic",
+  "ODS-09": "Indústria, innovació i infraestructura",
+  "ODS-10": "Reducció de les desigualtats",
+  "ODS-11": "Ciutats i comunitats sostenibles",
+  "ODS-12": "Producció i consum responsables",
+  "ODS-13": "Acció climàtica",
+  "ODS-14": "Vida submarina",
+  "ODS-15": "Vida d'ecosistemes terrestres",
+  "ODS-16": "Pau, justícia i institucions sòlides",
+  "ODS-17": "Aliança per assolir els objectius"
 };
 
-// Colores oficiales de los ODS
-const sdgColors = {
-  "SDG-01": "#e5243b",
-  "SDG-02": "#dda63a",
-  "SDG-03": "#4c9f38",
-  "SDG-04": "#c5192d",
-  "SDG-05": "#ff3a21",
-  "SDG-06": "#26bde2",
-  "SDG-07": "#fcc30b",
-  "SDG-08": "#a21942",
-  "SDG-09": "#fd6925",
-  "SDG-10": "#dd1367",
-  "SDG-11": "#fd9d24",
-  "SDG-12": "#bf8b2e",
-  "SDG-13": "#3f7e44",
-  "SDG-14": "#0a97d9",
-  "SDG-15": "#56c02b",
-  "SDG-16": "#00689d",
-  "SDG-17": "#19486a"
+// Official SDG colors
+const odsColors = {
+  "ODS-01": "#e5243b",
+  "ODS-02": "#dda63a",
+  "ODS-03": "#4c9f38",
+  "ODS-04": "#c5192d",
+  "ODS-05": "#ff3a21",
+  "ODS-06": "#26bde2",
+  "ODS-07": "#fcc30b",
+  "ODS-08": "#a21942",
+  "ODS-09": "#fd6925",
+  "ODS-10": "#dd1367",
+  "ODS-11": "#fd9d24",
+  "ODS-12": "#bf8b2e",
+  "ODS-13": "#3f7e44",
+  "ODS-14": "#0a97d9",
+  "ODS-15": "#56c02b",
+  "ODS-16": "#00689d",
+  "ODS-17": "#19486a"
 };
 
-// Función para crear la leyenda de ODS
-function createSDGLegend(containerId) {
+/**
+ * Creates an SDG legend in the specified container
+ * @param {string} containerId - The ID of the container element
+ */
+function createODSLegend(containerId) {
   const legendContainer = document.getElementById(containerId);
 
-  for (const [code, name] of Object.entries(sdgDefinitions)) {
+  for (const [code, name] of Object.entries(odsDefinitions)) {
     const legendItem = document.createElement('div');
     legendItem.className = 'sdg-legend-item';
     legendItem.innerHTML = `
-      <div class="sdg-color" style="background-color: ${sdgColors[code]};"></div>
+      <div class="sdg-color" style="background-color: ${odsColors[code]};"></div>
       <span class="sdg-code">${code}</span>
       <span class="sdg-name">${name}</span>
     `;
@@ -408,10 +434,14 @@ function createSDGLegend(containerId) {
   }
 }
 
-// Función para crear un gráfico circular
+/**
+ * Creates a doughnut chart with SDG data
+ * @param {Object} data - The faculty and SDG data to visualize
+ * @param {string} containerId - The ID of the container element
+ */
 function createChart(data, containerId) {
   const container = document.getElementById(containerId);
-  container.innerHTML = ''; // Limpiar contenedor
+  container.innerHTML = ''; // Clear previous content
 
   const chartId = `chart-${Date.now()}`;
 
@@ -419,7 +449,7 @@ function createChart(data, containerId) {
   chartDiv.className = 'chart-container';
   chartDiv.innerHTML = `
     <h3>${data.faculty}</h3>
-    <p>${data.total_courses} assignatures amb SDG</p>
+    <p>${data.sdg_courses_faculty} de ${data.courses_per_faculty} assignatures amb ODS (${data.sdg_ratio_faculty}%)</p>
     <div class="chart-wrapper">
       <canvas id="${chartId}"></canvas>
     </div>
@@ -427,19 +457,33 @@ function createChart(data, containerId) {
 
   container.appendChild(chartDiv);
 
-  const labels = Object.keys(data.sdgs);
-  const values = Object.values(data.sdgs);
-  const percentages = data.percentages;
+  // Convert SDG to ODS in data if needed
+  const odsData = {};
+  const odsPercentages = {};
+  
+  for (const [key, value] of Object.entries(data.sdgs)) {
+    const newKey = key.replace('SDG', 'ODS');
+    odsData[newKey] = value;
+  }
+  
+  for (const [key, value] of Object.entries(data.percentages)) {
+    const newKey = key.replace('SDG', 'ODS');
+    odsPercentages[newKey] = value;
+  }
 
-  // Crear el gráfico
+  const labels = Object.keys(odsData);
+  const values = Object.values(odsData);
+  const percentages = odsPercentages;
+
+  // Create the chart
   const ctx = document.getElementById(chartId).getContext('2d');
   new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: labels.map(code => `${code}: ${sdgDefinitions[code]}`),
+      labels: labels.map(code => `${code}: ${odsDefinitions[code]}`),
       datasets: [{
         data: values,
-        backgroundColor: labels.map(sdg => sdgColors[sdg] || '#ccc'),
+        backgroundColor: labels.map(ods => odsColors[ods] || '#ccc'),
         borderWidth: 1
       }]
     },
@@ -483,12 +527,12 @@ function createChart(data, containerId) {
   });
 }
 
-// Cargar los datos y crear los gráficos
+// Initialize page when DOM is loaded
 document.addEventListener('DOMContentLoaded', async function() {
   const facultySelect = document.getElementById('faculty-select');
   const chartContainer = document.getElementById('chart-container');
   
-  // Mostrar estado de carga
+  // Show loading state
   const loadingMessage = document.createElement('p');
   loadingMessage.textContent = 'Carregant dades...';
   loadingMessage.style.textAlign = 'center';
@@ -496,12 +540,12 @@ document.addEventListener('DOMContentLoaded', async function() {
   chartContainer.appendChild(loadingMessage);
 
   try {
-    // Cargar datos para gráficos circulares
+    // Load SDG data for circular charts
     const sdgResponse = await fetch('../data/faculties_sdg_data.json');
-    if (!sdgResponse.ok) throw new Error(`Error cargando SDGs: ${sdgResponse.status}`);
+    if (!sdgResponse.ok) throw new Error(`Error loading SDG data: ${sdgResponse.status}`);
     const sdgData = await sdgResponse.json();
     
-    // Llenar el selector de facultades
+    // Populate faculty dropdown
     facultySelect.innerHTML = '<option value="">-- Selecciona una Facultat/Escola --</option>';
     
     sdgData.forEach((faculty, index) => {
@@ -513,7 +557,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       }
     });
 
-    // Configurar event listener para el selector
+    // Set up faculty selection handler
     facultySelect.addEventListener("change", function() {
       const selectedIndex = parseInt(this.value);
       if (!isNaN(selectedIndex)) {
@@ -524,18 +568,18 @@ document.addEventListener('DOMContentLoaded', async function() {
       }
     });
 
-    // Mostrar el primer gráfico por defecto si hay datos
+    // Show first chart by default if data exists
     if (sdgData.length > 0) {
       createChart(sdgData[0], 'chart-container');
       facultySelect.value = 0;
     } else {
-      console.warn('No hay datos SDG para gráficos circulares');
+      console.warn('No SDG data available for circular charts');
       chartContainer.innerHTML = 
         '<p>No hi ha dades disponibles per mostrar els gràfics circulars</p>';
     }
 
   } catch (error) {
-    console.error('Error al cargar los datos:', error);
+    console.error('Error loading data:', error);
     
     chartContainer.innerHTML = `
       <div class="w3-panel w3-red w3-round">

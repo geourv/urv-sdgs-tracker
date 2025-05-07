@@ -4,16 +4,21 @@
 <title>Contacte</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- External CSS Libraries -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
-/* Estilos para hacer la página responsiva */
-.w3-quarter {
-  width: 25%;
-}
+<style>
+  /* Base typography styles */
+  html, body, h1, h2, h3, h4, h5 {
+      font-family: "Raleway", sans-serif;
+  }
+
+    /* Responsive quarter-width columns */
+    .w3-quarter {
+        width: 25%;
+    }
 
 @media screen and (max-width: 600px) {
   .w3-main {
@@ -29,7 +34,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 .w3-sidebar {
   width: 300px;
-  max-width: 80vw; /* Permite que se ajuste en pantallas pequeñas */
+  max-width: 80vw;
 }
 
 .w3-row {
@@ -37,7 +42,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   flex-wrap: wrap;
 }
 
-/* Estilos para el copyright */
+/* Copyright styles */
 .copyright {
   font-size: 14px;
   color: #555;
@@ -58,7 +63,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   color: #999;
 }
 
-/* Ajustes para móviles */
+/* Small screen adjustments */
 @media screen and (max-width: 600px) {
   .copyright {
     font-size: 12px;
@@ -71,7 +76,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   }
 }
 
-/* Estilos para el desplegable */
+/* Dropdown styles */
 .w3-dropdown-content {
   display: none;
   position: relative;
@@ -92,18 +97,18 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 .w3-dropdown-clicker:hover .w3-dropdown-content {display: block;}
 
-/* Ajustar el tamaño de los logos */
+/* Logo size adjustments */
 .w3-quarter img {
-  width: 168.75px; /* 25% más pequeños */
+  width: 168.75px;
 }
 
 @media screen and (max-width: 600px) {
   .w3-quarter img {
-    width: 253.125px; /* 25% más pequeños en pantallas pequeñas */
+    width: 253.125px; 
   }
 }
 
-/* Mover los títulos ODS entre los logos y el texto */
+
 .w3-quarter h4 {
   font-weight: bold;
   margin-top: 10px;
@@ -119,7 +124,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   text-align: center;
 }
 
-/* Ajustes para el logo y el texto en la barra lateral */
+
 .w3-sidebar .w3-col {
   margin-top: 10px;
 }
@@ -138,38 +143,56 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </head>
 <body class="w3-light-grey">
 
-<!-- Top container -->
+<!-- Top Navigation Bar -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();">
+      <i class="fa fa-bars"></i> Menu
+  </button>
   <span class="w3-bar-item w3-right">ODS a la Universitat Rovira i Virgili</span>
 </div>
 
-<!-- Sidebar/menu -->
+<!-- Sidebar Navigation -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
-    <div class="w3-col s4">
-      <img src="../assets/logos/edited/cat/cat_ods_logo_cut.png" class="w3-circle" style="width:72px">
-    </div>
-    <div class="w3-col s8 w3-bar">
-      <span>ODS a la Universitat</span>
-      <span>Rovira i Virgili</span>
-    </div>
+      <div class="w3-col s4">
+          <img src="../assets/logos/edited/cat/cat_ods_logo_cut.png" class="w3-circle" style="width:72px">
+      </div>
+      <div class="w3-col s8 w3-bar">
+          <span>ODS a la</span>
+          <span>Universitat Rovira i Virgili</span>
+      </div>
   </div>
   <hr>
   <div class="w3-bar-block">
-    <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Inici</a>
-    <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
-      <i class="fa fa-line-chart fa-fw"></i>  Anàlisi
-      <div class="w3-dropdown-content">
-        <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles (núvol de paraules)</a>
-        <a href="../pages/faculty2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles (gràfics circulars)</a>
-        <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
-        <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatura de l'ensenyament</a>
-        <a href="../pages/course2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures al detall</a>
+      <a href="../index.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-home fa-fw"></i> Inici
+      </a>
+      <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
+          <i class="fa fa-line-chart fa-fw"></i> Anàlisi
+          <div class="w3-dropdown-content">
+              <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-university fa-fw"></i> Facultats i Escoles (núvol de paraules)
+              </a>
+              <a href="../pages/faculty2.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-university fa-fw"></i> Facultats i Escoles (gràfics circulars)
+              </a>
+              <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-book fa-fw"></i> Ensenyaments
+              </a>
+              <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-pencil fa-fw"></i> Assignatures de l'ensenyament
+              </a>
+              <a href="../pages/course2.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-pencil fa-fw"></i> Assignatura en detall
+              </a>
+          </div>
       </div>
-    </div>
-    <a href="../pages/info.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-info-circle fa-fw"></i>  Informació</a>
-    <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
+      <a href="../pages/info.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-info-circle fa-fw"></i> Informació
+      </a>
+      <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding w3-blue">
+          <i class="fa fa-envelope fa-fw"></i> Contacte
+      </a>
   </div>
 </nav>
 
@@ -207,33 +230,38 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
   </footer>
 
-  <!-- End page content -->
 </div>
 
 <script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
-
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-    overlayBg.style.display = "none";
-  } else {
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
+  // DOM Elements
+  const mySidebar = document.getElementById("mySidebar");
+  const overlayBg = document.getElementById("myOverlay");
+  
+  /**
+   * Toggles the sidebar visibility on mobile devices
+   * - Shows/hides the sidebar
+   * - Manages the overlay that dims the main content when sidebar is open
+   */
+  function w3_open() {
+      if (mySidebar.style.display === 'block') {
+          mySidebar.style.display = 'none';
+          overlayBg.style.display = "none";
+      } else {
+          mySidebar.style.display = 'block';
+          overlayBg.style.display = "block";
+      }
   }
-}
-
-// Close the sidebar with the close button
-function w3_close() {
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
-}
-</script>
-
-</body>
-</html>
+  
+  /**
+   * Closes the sidebar (used on mobile devices)
+   * - Hides the sidebar
+   * - Removes the overlay
+   */
+  function w3_close() {
+      mySidebar.style.display = "none";
+      overlayBg.style.display = "none";
+  }
+  </script>
+  
+  </body>
+  </html>

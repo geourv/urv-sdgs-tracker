@@ -4,13 +4,18 @@
 <title>Ensenyaments</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- External CSS Libraries -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
-/* Estilos para hacer la página responsiva */
+<style>
+  /* Base typography styles */
+  html, body, h1, h2, h3, h4, h5 {
+      font-family: "Raleway", sans-serif;
+  }
+
+/* Responsive page styles */
 .w3-quarter {
   width: 25%;
 }
@@ -29,7 +34,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 .w3-sidebar {
   width: 300px;
-  max-width: 80vw; /* Permite que se ajuste en pantallas pequeñas */
+  max-width: 80vw; /* Adjusts for small screens */
 }
 
 .w3-row {
@@ -37,7 +42,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   flex-wrap: wrap;
 }
 
-/* Estilos para el copyright */
+/* Copyright styles */
 .copyright {
   font-size: 14px;
   color: #555;
@@ -58,20 +63,20 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   color: #999;
 }
 
-/* Ajustes para móviles */
+/* Small screen adjustments */
 @media screen and (max-width: 600px) {
   .copyright {
     font-size: 12px;
     line-height: 1.5;
   }
-  
+
   .copyright span {
     display: inline-block;
     margin: 0 3px;
   }
 }
 
-/* Estilos para los gráficos */
+/* Graphic styles */
 .charts-wrapper {
   width: 100%;
   overflow: hidden;
@@ -115,7 +120,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   max-height: 300px;
 }
 
-/* Estilos para el gráfico interactivo */
+/* Interactive chart styles */
 .interactive-chart-container {
   background: #fff;
   padding: 20px;
@@ -129,7 +134,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   margin-top: 20px;
 }
 
-/* Estilos para la leyenda de ODS */
+/* ODS legend styles */
 .sdg-legend {
   display: flex;
   flex-wrap: wrap;
@@ -158,7 +163,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   margin-right: 5px;
 }
 
-/* Estilos para los selectores */
+/* Selector styles */
 .selector-container {
   display: flex;
   flex-wrap: wrap;
@@ -177,7 +182,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   font-weight: bold;
 }
 
-/* Estilos para la información del grado */
+/* Degree info styles */
 .degree-info {
   background-color: #f9f9f9;
   padding: 15px;
@@ -193,7 +198,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   color: #333;
 }
 
-/* Estilos para el desplegable */
+/* Fropdown styles */
 .w3-dropdown-content {
   display: none;
   position: relative;
@@ -223,32 +228,48 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <span class="w3-bar-item w3-right">ODS a la Universitat Rovira i Virgili</span>
 </div>
 
-<!-- Sidebar/menu -->
+<!-- Sidebar Navigation -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
-    <div class="w3-col s4">
-      <img src="../assets/logos/edited/cat/cat_ods_logo_cut.png" class="w3-circle" style="width:72px">
-    </div>
-    <div class="w3-col s8 w3-bar">
-      <span>ODS a la Universitat</span>
-      <span>Rovira i Virgili</span>
-    </div>
+      <div class="w3-col s4">
+          <img src="../assets/logos/edited/cat/cat_ods_logo_cut.png" class="w3-circle" style="width:72px">
+      </div>
+      <div class="w3-col s8 w3-bar">
+          <span>ODS a la</span>
+          <span>Universitat Rovira i Virgili</span>
+      </div>
   </div>
   <hr>
   <div class="w3-bar-block">
-    <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Inici</a>
-    <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
-      <i class="fa fa-line-chart fa-fw"></i>  Anàlisi
-      <div class="w3-dropdown-content">
-        <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles (núvol de paraules)</a>
-        <a href="../pages/faculty2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles (gràfics circulars)</a>
-        <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
-        <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures de l'ensenyament</a>
-        <a href="../pages/course2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatura al detall</a>
+      <a href="../index.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-home fa-fw"></i> Inici
+      </a>
+      <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
+          <i class="fa fa-line-chart fa-fw"></i> Anàlisi
+          <div class="w3-dropdown-content">
+              <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-university fa-fw"></i> Facultats i Escoles (núvol de paraules)
+              </a>
+              <a href="../pages/faculty2.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-university fa-fw"></i> Facultats i Escoles (gràfics circulars)
+              </a>
+              <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding w3-blue">
+                  <i class="fa fa-book fa-fw"></i> Ensenyaments
+              </a>
+              <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-pencil fa-fw"></i> Assignatures de l'ensenyament
+              </a>
+              <a href="../pages/course2.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-pencil fa-fw"></i> Assignatura en detall
+              </a>
+          </div>
       </div>
-    </div>
-    <a href="../pages/info.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-info-circle fa-fw"></i>  Informació</a>
-    <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
+      <a href="../pages/info.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-info-circle fa-fw"></i> Informació
+      </a>
+      <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-envelope fa-fw"></i> Contacte
+      </a>
   </div>
 </nav>
 
@@ -268,10 +289,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <p>Aquesta pàgina mostra informació sobre tots els ensenyaments de la URV i la seva alineació amb els Objectius de Desenvolupament Sostenible.</p>
   </div>
 
-  <!-- Gráfico interactivo -->
+  <!-- Interactive Wordcloud -->
   <div class="w3-container">
     <div class="interactive-chart-container" style="display: flex; flex-wrap: wrap;">
-      <!-- Contenedor izquierdo -->
+      <!-- Left box -->
       <div style="flex: 1; min-width: 250px; max-width: 25%; padding-right: 20px;">
         <h2>ODS per ensenyament</h2>
         <p>Selecciona una facultat i un ensenyament per veure la distribució percentual dels ODS:</p>
@@ -281,14 +302,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
             <label for="faculty-select">Facultat:</label>
             <select id="faculty-select" class="w3-select w3-border" onchange="updateDegreeSelect()">
               <option value="">-- Selecciona una facultat --</option>
-              <!-- Las opciones se llenarán dinámicamente -->
+              <!-- Options will be filled automaticaly -->
             </select>
           </div>
           <div class="selector-box">
             <label for="degree-select">Ensenyament:</label>
             <select id="degree-select" class="w3-select w3-border" onchange="updateBarChart()" disabled>
               <option value="">-- Selecciona un ensenyament --</option>
-              <!-- Las opciones se llenarán dinámicamente -->
+              <!-- Options will be filled automaticaly -->
             </select>
           </div>
         </div>
@@ -296,12 +317,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <div id="degree-info-container" class="degree-info" style="display: none; margin-top: 20px;">
           <h3 id="degree-title"></h3>
           <p><strong>Facultat:</strong> <span id="degree-faculty"></span></p>
-          <p><strong>Total d'assignatures:</strong> <span id="total-courses"></span></p>
-          <p><strong>Assignatures amb ODS:</strong> <span id="courses-with-sdgs"></span> (<span id="sdg-coverage"></span>%)</p>
+          <p><strong>Total d'assignatures:</strong> <span id="courses_per_degree"></span></p>
+          <p><strong>Assignatures amb ODS:</strong> <span id="sdg_courses_degree"></span></p>
+          <p><strong>Ratio d'assignatures amb ODS per ensenyament:</strong> <span id="sdg_ratio_degree"></span>%</p>
         </div>
       </div>
 
-       <!-- Contenedor derecho (ahora 4/5) -->
+       <!-- Right box -->
       <div style="flex: 4; min-width: 400px; max-width: 75%;">
         <div class="interactive-chart-wrapper" style="height: 500px;">
           <canvas id="interactive-bar-chart"></canvas>
@@ -310,7 +332,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
   </div>
 
-  <!-- Leyenda de ODS en la parte inferior -->
+  <!-- ODS legend -->
   <div class="w3-container">
     <div class="sdg-legend" id="sdg-legend-top"></div>
   </div>
@@ -319,14 +341,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <footer class="w3-container w3-padding-16 w3-light-grey">
     <div class="footer-content">
       <div class="copyright w3-center">
-        © Universitat Rovira i Virgili 
-        <span>·</span> 
-        <a href="/ca/universitat/comunicacio/web/legal/">Avís legal</a> 
-        <span>·</span> 
-        <a href="/ca/universitat/comunicacio/web/legal/galetes/">Política de galetes</a> 
-        <span>·</span> 
-        <a href="/ca/universitat/comunicacio/web/accessibilitat/">Accessibilitat</a> 
-        <span>·</span> 
+        © Universitat Rovira i Virgili
+        <span>·</span>
+        <a href="/ca/universitat/comunicacio/web/legal/">Avís legal</a>
+        <span>·</span>
+        <a href="/ca/universitat/comunicacio/web/legal/galetes/">Política de galetes</a>
+        <span>·</span>
+        <a href="/ca/universitat/comunicacio/web/accessibilitat/">Accessibilitat</a>
+        <span>·</span>
         <a href="/ca/universitat/comunicacio/web/suport/">Sobre aquest web</a>
       </div>
     </div>
@@ -335,254 +357,286 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- End page content -->
 </div>
 
-<!-- Cargar las librerías de gráficos -->
+<!-- Load the chart libraries -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 
 <script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
+  // Get the Sidebar
+  var mySidebar = document.getElementById("mySidebar");
 
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
+  // Get the DIV with overlay effect
+  var overlayBg = document.getElementById("myOverlay");
 
-// Toggle between showing and hiding the sidebar, and add overlay effect
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
+  // Toggle between showing and hiding the sidebar, and add overlay effect
+  function w3_open() {
+    if (mySidebar.style.display === 'block') {
+      mySidebar.style.display = 'none';
+      overlayBg.style.display = "none";
+    } else {
+      mySidebar.style.display = 'block';
+      overlayBg.style.display = "block";
+    }
+  }
+
+  // Close the sidebar with the close button
+  function w3_close() {
+    mySidebar.style.display = "none";
     overlayBg.style.display = "none";
-  } else {
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
   }
-}
 
-// Close the sidebar with the close button
-function w3_close() {
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
-}
+  // Official SDG colors
+  const sdgDefinitions = {
+    "ODS-01": "Fi de la pobresa",
+    "ODS-02": "Fam zero",
+    "ODS-03": "Salut i benestar",
+    "ODS-04": "Educació de qualitat",
+    "ODS-05": "Igualtat de gènere",
+    "ODS-06": "Aigua neta i sanejament",
+    "ODS-07": "Energia neta i assequible",
+    "ODS-08": "Treball digne i creixement econòmic",
+    "ODS-09": "Indústria, innovació i infraestructura",
+    "ODS-10": "Reducció de les desigualtats",
+    "ODS-11": "Ciutats i comunitats sostenibles",
+    "ODS-12": "Producció i consum responsables",
+    "ODS-13": "Acció climàtica",
+    "ODS-14": "Vida submarina",
+    "ODS-15": "Vida d'ecosistemes terrestres",
+    "ODS-16": "Pau, justícia i institucions sòlides",
+    "ODS-17": "Aliança per assolir els objectius"
+  };
 
-// Definición de los ODS con sus nombres en catalán
-const sdgDefinitions = {
-  "SDG-01": "Fi de la pobresa",
-  "SDG-02": "Fam zero",
-  "SDG-03": "Salut i benestar",
-  "SDG-04": "Educació de qualitat",
-  "SDG-05": "Igualtat de gènere",
-  "SDG-06": "Aigua neta i sanejament",
-  "SDG-07": "Energia neta i assequible",
-  "SDG-08": "Treball digne i creixement econòmic",
-  "SDG-09": "Indústria, innovació i infraestructura",
-  "SDG-10": "Reducció de les desigualtats",
-  "SDG-11": "Ciutats i comunitats sostenibles",
-  "SDG-12": "Producció i consum responsables",
-  "SDG-13": "Acció climàtica",
-  "SDG-14": "Vida submarina",
-  "SDG-15": "Vida d'ecosistemes terrestres",
-  "SDG-16": "Pau, justícia i institucions sòlides",
-  "SDG-17": "Aliança per assolir els objectius"
-};
+  // Update colors while maintaining the same references
+  const sdgColors = {
+    "ODS-01": "#e5243b",
+    "ODS-02": "#dda63a",
+    "ODS-03": "#4c9f38",
+    "ODS-04": "#c5192d",
+    "ODS-05": "#ff3a21",
+    "ODS-06": "#26bde2",
+    "ODS-07": "#fcc30b",
+    "ODS-08": "#a21942",
+    "ODS-09": "#fd6925",
+    "ODS-10": "#dd1367",
+    "ODS-11": "#fd9d24",
+    "ODS-12": "#bf8b2e",
+    "ODS-13": "#3f7e44",
+    "ODS-14": "#0a97d9",
+    "ODS-15": "#56c02b",
+    "ODS-16": "#00689d",
+    "ODS-17": "#19486a"
+  };
 
-// Colores oficiales de los ODS
-const sdgColors = {
-  "SDG-01": "#e5243b",
-  "SDG-02": "#dda63a",
-  "SDG-03": "#4c9f38",
-  "SDG-04": "#c5192d",
-  "SDG-05": "#ff3a21",
-  "SDG-06": "#26bde2",
-  "SDG-07": "#fcc30b",
-  "SDG-08": "#a21942",
-  "SDG-09": "#fd6925",
-  "SDG-10": "#dd1367",
-  "SDG-11": "#fd9d24",
-  "SDG-12": "#bf8b2e",
-  "SDG-13": "#3f7e44",
-  "SDG-14": "#0a97d9",
-  "SDG-15": "#56c02b",
-  "SDG-16": "#00689d",
-  "SDG-17": "#19486a"
-};
+  // Function to create the SDG legend
+  function createSDGLegend(containerId) {
+    const legendContainer = document.getElementById(containerId);
+    legendContainer.innerHTML = '';
 
-// Función para crear la leyenda de ODS
-function createSDGLegend(containerId) {
-  const legendContainer = document.getElementById(containerId);
-  legendContainer.innerHTML = '';
-
-  for (const [code, name] of Object.entries(sdgDefinitions)) {
-    const legendItem = document.createElement('div');
-    legendItem.className = 'sdg-legend-item';
-    legendItem.innerHTML = `
-      <div class="sdg-color" style="background-color: ${sdgColors[code]};"></div>
-      <span class="sdg-code">${code}</span>
-      <span class="sdg-name">${name}</span>
-    `;
-    legendContainer.appendChild(legendItem);
+    for (const [code, name] of Object.entries(sdgDefinitions)) {
+      const legendItem = document.createElement('div');
+      legendItem.className = 'sdg-legend-item';
+      legendItem.innerHTML = `
+        <div class="sdg-color" style="background-color: ${sdgColors[code]};"></div>
+        <span class="sdg-code">${code}</span>
+        <span class="sdg-name">${name}</span>
+      `;
+      legendContainer.appendChild(legendItem);
+    }
   }
-}
 
-// Variable global para almacenar los datos de las facultades
-let facultiesData = [];
+  // Global variable to store faculty data
+  let facultiesData = [];
 
-// Función para cargar los datos desde el JSON
-async function loadFacultiesData() {
-  try {
-    const response = await fetch('../data/degree_sdg_data.json');
-    if (!response.ok) throw new Error('Error al cargar los datos');
-    facultiesData = await response.json();
-    initInteractiveBarChart();
-  } catch (error) {
-    console.error('Error:', error);
-    // Mostrar mensaje de error al usuario
-    const container = document.querySelector('.interactive-chart-container');
-    container.innerHTML = `
-      <div class="w3-panel w3-red w3-round">
-        <h3>Error</h3>
-        <p>${error.message}</p>
-        <p>Si us plau, torna-ho a provar més tard.</p>
-      </div>
-    `;
-  }
-}
+  async function loadFacultiesData() {
+    try {
+      const response = await fetch('../data/degree_sdg_data.json');
+      if (!response.ok) throw new Error('Error al cargar los datos');
+      facultiesData = await response.json();
 
-// Función para inicializar el gráfico de barras interactivo
-function initInteractiveBarChart() {
-  // Llenar el selector de facultades
-  const facultySelect = document.getElementById('faculty-select');
-  
-  facultiesData.forEach(faculty => {
-    const option = document.createElement('option');
-    option.value = faculty.faculty;
-    option.textContent = faculty.faculty;
-    facultySelect.appendChild(option);
-  });
-
-  // Crear el gráfico vacío inicialmente
-  const ctx = document.getElementById('interactive-bar-chart').getContext('2d');
-  window.interactiveBarChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: Object.keys(sdgDefinitions),
-      datasets: [{
-        label: "Percentatge d'ODS",
-        data: Array(Object.keys(sdgDefinitions).length).fill(0),
-        backgroundColor: Object.keys(sdgDefinitions).map(sdg => sdgColors[sdg]),
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true,
-          max: 20,
-          title: {
-            display: true,
-            text: 'Percentatge (%)'
+      // Transform SDG to ODS in the data if necessary
+      facultiesData.forEach(faculty => {
+        faculty.degrees?.forEach(degree => {
+          if (degree.percentages) {
+            const newPercentages = {};
+            Object.keys(degree.percentages).forEach(key => {
+              newPercentages[key.replace('SDG', 'ODS')] = degree.percentages[key];
+            });
+            degree.percentages = newPercentages;
           }
-        },
-        x: {
-          title: {
-            display: true,
-            text: 'Objetius de Desenvolupament Sostenible (ODS)'
+
+          if (degree.sdgs) {
+            const newSdgs = {};
+            Object.keys(degree.sdgs).forEach(key => {
+              newSdgs[key.replace('SDG', 'ODS')] = degree.sdgs[key];
+            });
+            degree.sdgs = newSdgs;
           }
-        }
+        });
+      });
+
+      initInteractiveBarChart();
+    } catch (error) {
+      console.error('Error:', error);
+      // Error handling...
+    }
+  }
+
+  // Function to initialize the interactive bar chart
+  function initInteractiveBarChart() {
+    // Populate the faculty selector
+    const facultySelect = document.getElementById('faculty-select');
+
+    facultiesData.forEach(faculty => {
+      const option = document.createElement('option');
+      option.value = faculty.faculty;
+      option.textContent = faculty.faculty;
+      facultySelect.appendChild(option);
+    });
+
+    // Create the initially empty chart
+    const ctx = document.getElementById('interactive-bar-chart').getContext('2d');
+    window.interactiveBarChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: Object.keys(sdgDefinitions),
+        datasets: [{
+          label: "Percentatge d'ODS",
+          data: Array(Object.keys(sdgDefinitions).length).fill(0),
+          backgroundColor: Object.keys(sdgDefinitions).map(sdg => sdgColors[sdg]),
+          borderWidth: 1
+        }]
       },
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label: function(context) {
-              const code = context.label;
-              const name = sdgDefinitions[code] || '';
-              return `${code}: ${name} - ${context.parsed.y}%`;
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 20,
+            title: {
+              display: true,
+              text: 'Percentatge (%)'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Objetius de Desenvolupament Sostenible (ODS)'
             }
           }
         },
-        legend: {
-          display: false
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const code = context.label;
+                const name = sdgDefinitions[code] || '';
+
+                // Get the data of the selected degree
+                const facultySelect = document.getElementById('faculty-select');
+                const degreeSelect = document.getElementById('degree-select');
+                const selectedFaculty = facultySelect.value;
+                const selectedDegree = degreeSelect.value;
+
+                if (!selectedFaculty || !selectedDegree) return `${code}: ${name} - ${context.parsed.y}%`;
+
+                const faculty = facultiesData.find(f => f.faculty === selectedFaculty);
+                if (!faculty || !faculty.degrees) return `${code}: ${name} - ${context.parsed.y}%`;
+
+                const degreeData = faculty.degrees.find(d => d.degree === selectedDegree);
+                if (!degreeData || !degreeData.sdgs) return `${code}: ${name} - ${context.parsed.y}%`;
+
+                const absoluteValue = degreeData.sdgs[code] || 0;
+                const percentage = context.parsed.y;
+
+                return `${code}: ${name} - ${percentage}% (Identificat en ${absoluteValue} assignatures)`;
+              }
+            }
+          },
+          legend: {
+            display: false
+          }
         }
       }
+    });
+  }
+
+  // Function to update the degree selector based on the selected faculty
+  function updateDegreeSelect() {
+    const facultySelect = document.getElementById('faculty-select');
+    const degreeSelect = document.getElementById('degree-select');
+    const selectedFaculty = facultySelect.value;
+
+    degreeSelect.innerHTML = '<option value="">-- Selecciona un ensenyament --</option>';
+    degreeSelect.disabled = !selectedFaculty;
+
+    if (selectedFaculty) {
+      const faculty = facultiesData.find(f => f.faculty === selectedFaculty);
+      if (faculty && faculty.degrees) {
+        faculty.degrees.forEach(degree => {
+          const option = document.createElement('option');
+          option.value = degree.degree;
+          option.textContent = degree.degree;
+          degreeSelect.appendChild(option);
+        });
+      }
     }
-  });
-}
 
-// Función para actualizar el selector de grados según la facultad seleccionada
-function updateDegreeSelect() {
-  const facultySelect = document.getElementById('faculty-select');
-  const degreeSelect = document.getElementById('degree-select');
-  const selectedFaculty = facultySelect.value;
+    // Clear the chart if no degree is selected
+    updateBarChart();
+  }
 
-  degreeSelect.innerHTML = '<option value="">-- Selecciona un ensenyament --</option>';
-  degreeSelect.disabled = !selectedFaculty;
+  // Function to update the chart based on the selected degree
+  function updateBarChart() {
+    const facultySelect = document.getElementById('faculty-select');
+    const degreeSelect = document.getElementById('degree-select');
+    const selectedFaculty = facultySelect.value;
+    const selectedDegree = degreeSelect.value;
+    const infoContainer = document.getElementById('degree-info-container');
 
-  if (selectedFaculty) {
+    if (!selectedFaculty || !selectedDegree) {
+      // If no faculty or degree is selected, clear the chart and hide info
+      infoContainer.style.display = 'none';
+      window.interactiveBarChart.data.datasets[0].data = Array(Object.keys(sdgDefinitions).length).fill(0);
+      window.interactiveBarChart.update();
+      return;
+    }
+
+    // Find the data of the selected degree
     const faculty = facultiesData.find(f => f.faculty === selectedFaculty);
-    if (faculty && faculty.degrees) {
-      faculty.degrees.forEach(degree => {
-        const option = document.createElement('option');
-        option.value = degree.degree;
-        option.textContent = degree.degree;
-        degreeSelect.appendChild(option);
-      });
-    }
-  }
+    if (!faculty || !faculty.degrees) return;
 
-  // Limpiar el gráfico si no hay grado seleccionado
-  updateBarChart();
-}
+    const degreeData = faculty.degrees.find(d => d.degree === selectedDegree);
+    if (!degreeData) return;
 
-// Función para actualizar el gráfico según el grado seleccionado
-function updateBarChart() {
-  const facultySelect = document.getElementById('faculty-select');
-  const degreeSelect = document.getElementById('degree-select');
-  const selectedFaculty = facultySelect.value;
-  const selectedDegree = degreeSelect.value;
-  const infoContainer = document.getElementById('degree-info-container');
+    // Show degree information
+    infoContainer.style.display = 'block';
+    document.getElementById('degree-title').textContent = selectedDegree;
+    document.getElementById('degree-faculty').textContent = selectedFaculty;
+    document.getElementById('courses_per_degree').textContent = degreeData.courses_per_degree;
+    document.getElementById('sdg_courses_degree').textContent = degreeData.sdg_courses_degree;
+    document.getElementById('sdg_ratio_degree').textContent = degreeData.sdg_ratio_degree;
 
-  if (!selectedFaculty || !selectedDegree) {
-    // Si no hay facultad o grado seleccionado, limpiar el gráfico y ocultar info
-    infoContainer.style.display = 'none';
-    window.interactiveBarChart.data.datasets[0].data = Array(Object.keys(sdgDefinitions).length).fill(0);
+    // Prepare data for the chart
+    const labels = Object.keys(sdgDefinitions);
+    const data = labels.map(sdg => degreeData.percentages[sdg] || 0);
+
+    // Update the chart
+    window.interactiveBarChart.data.datasets[0].data = data;
+    window.interactiveBarChart.data.datasets[0].label = `Percentatge d'ODS - ${selectedDegree}`;
     window.interactiveBarChart.update();
-    return;
   }
 
-  // Encontrar los datos del grado seleccionado
-  const faculty = facultiesData.find(f => f.faculty === selectedFaculty);
-  if (!faculty || !faculty.degrees) return;
-  
-  const degreeData = faculty.degrees.find(d => d.degree === selectedDegree);
-  if (!degreeData) return;
+  // Load data and create charts
+  document.addEventListener('DOMContentLoaded', function() {
+    // Create SDG legends
+    createSDGLegend('sdg-legend-top');
 
-  // Mostrar información del grado
-  infoContainer.style.display = 'block';
-  document.getElementById('degree-title').textContent = selectedDegree;
-  document.getElementById('degree-faculty').textContent = selectedFaculty;
-  document.getElementById('total-courses').textContent = degreeData.total_courses;
-  document.getElementById('courses-with-sdgs').textContent = degreeData.courses_with_sdgs;
-  document.getElementById('sdg-coverage').textContent = degreeData.sdg_coverage_percent;
-
-  // Preparar los datos para el gráfico
-  const labels = Object.keys(sdgDefinitions);
-  const data = labels.map(sdg => degreeData.percentages[sdg] || 0);
-
-  // Actualizar el gráfico
-  window.interactiveBarChart.data.datasets[0].data = data;
-  window.interactiveBarChart.data.datasets[0].label = `Percentatge d'ODS - ${selectedDegree}`;
-  window.interactiveBarChart.update();
-}
-
-// Cargar los datos y crear los gráficos
-document.addEventListener('DOMContentLoaded', function() {
-  // Crear las leyendas de ODS
-  createSDGLegend('sdg-legend-top');
-
-  // Cargar los datos de las facultades
-  loadFacultiesData();
-});
+    // Load faculty data
+    loadFacultiesData();
+  });
 </script>
+
 
 </body>
 </html>

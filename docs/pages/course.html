@@ -1,346 +1,354 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html>
 <head>
-<title>Assignatures URV - ODS</title>
+<title>Assignatures</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- External CSS Libraries -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
-html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-
-/* Estilos generales */
-
-.w3-main {
-  margin-left: 300px;
-  margin-top: 43px;
-  padding-left: 40px;  /* Margen izquierdo */
-  padding-right: 40px; /* Margen derecho */
-}
-
-.w3-quarter {
-width: 25%;
-}
-
-.w3-sidebar {
-width: 300px;
-max-width: 80vw;
-}
-
-.w3-row {
-display: flex;
-flex-wrap: wrap;
-}
-
-/* Copyright */
-.copyright {
-font-size: 14px;
-color: #555;
-padding: 8px 0;
-}
-
-.copyright a {
-color: #0066cc;
-text-decoration: none;
-}
-
-.copyright a:hover {
-text-decoration: underline;
-}
-
-.copyright span {
-margin: 0 5px;
-color: #999;
-}
-
-/* Selectores */
-.selector-container {
-display: flex;
-flex-wrap: wrap;
-gap: 20px;
-margin-bottom: 20px;
-}
-
-.selector-box {
-width: 100%;
-margin-bottom: 15px;
-}
-
-.selector-box label {
-display: block;
-margin-bottom: 8px;
-font-weight: bold;
-}
-
-/* Información del grado */
-.degree-info {
-background-color: #f9f9f9;
-padding: 15px;
-border-radius: 5px;
-margin-bottom: 20px;
-}
-
-.degree-info p {
-margin: 5px 0;
-}
-
-.degree-info strong {
-color: #333;
-}
-
-/* Tabla de asignaturas */
-.courses-table {
-width: 100%;
-border-collapse: collapse;
-margin-top: 20px;
-}
-
-.courses-table th, .courses-table td {
-border: 1px solid #ddd;
-padding: 8px;
-text-align: left;
-}
-
-.courses-table th {
-background-color: #f2f2f2;
-}
-
-.courses-table tr:nth-child(even) {
-background-color: #f9f9f9;
-}
-
-.course-row {
-cursor: pointer;
-transition: background-color 0.3s;
-}
-
-.course-row:hover {
-background-color: #f1f1f1 !important;
-}
-
-.course-details-row {
-background-color: #f8f9fa;
-}
-
-.course-details-cell {
-padding: 0 !important;
-}
-
-.course-details-cell .w3-container {
-padding: 16px;
-border-top: 1px solid #ddd;
-border-bottom: 1px solid #ddd;
-}
-
-.course-sdg {
-display: inline-block;
-width: 15px;
-height: 15px;
-border-radius: 3px;
-margin-right: 3px;
-}
-
-/* Detalles de asignatura */
-.course-details {
-padding: 20px;
-background-color: #f8f9fa;
-border-radius: 5px;
-min-height: 300px;
-}
-
-.course-details p {
-margin: 5px 0;
-}
-
-.course-details a {
-color: #0066cc;
-text-decoration: none;
-}
-
-.course-details a:hover {
-text-decoration: underline;
-}
-
-/* Listas */
-.sdg-list {
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-margin-top: 10px;
-}
-
-.feature-list {
-display: flex;
-flex-wrap: wrap;
-gap: 5px;
-margin-top: 10px;
-}
-
-.feature-item {
-background-color: #e6f3ff;
-padding: 3px 8px;
-border-radius: 12px;
-font-size: 0.8em;
-display: inline-block;
-margin: 2px;
-}
-
-/* Leyenda ODS */
-.sdg-legend-item {
-display: flex;
-align-items: center;
-margin-right: 10px;
-margin-bottom: 5px;
-font-size: 0.8em;
-}
-
-.sdg-color {
-width: 15px;
-height: 15px;
-margin-right: 5px;
-border-radius: 3px;
-}
-
-.sdg-code {
-font-weight: bold;
-margin-right: 5px;
-}
-
-/* Dropdown */
-.w3-dropdown-content {
-display: none;
-position: relative;
-background-color: #f9f9f9;
-min-width: 160px;
-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-z-index: 1;
-}
-
-.w3-dropdown-content a {
-color: black;
-padding: 12px 16px;
-text-decoration: none;
-display: block;
-}
-
-.w3-dropdown-content a:hover {background-color: #f1f1f1}
-
-.w3-dropdown-clicker:hover .w3-dropdown-content {display: block;}
-
-/* Responsive */
-@media screen and (max-width: 600px) {
-  .w3-main {
-    margin-left: 0;
-    padding-left: 20px;  /* Menos margen en móviles */
-    padding-right: 20px; /* Menos margen en móviles */
+  /* Base typography styles */
+  html, body, h1, h2, h3, h4, h5 {
+      font-family: "Raleway", sans-serif;
   }
 
-.w3-quarter,
-.w3-col.m3,
-.w3-col.m9,
-.w3-col.m6 {
-width: 100%;
-padding: 0 !important;
-}
+  .w3-main {
+    margin-left: 300px;
+    margin-top: 43px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 
-.copyright {
-font-size: 12px;
-line-height: 1.5;
-}
+  .w3-quarter {
+    width: 25%;
+  }
 
-.copyright span {
-display: inline-block;
-margin: 0 3px;
-}
+  .w3-sidebar {
+    width: 300px;
+    max-width: 80vw;
+  }
 
-.w3-sidebar {
-width: 100%;
-}
-}
+  .w3-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-/* Ajustes específicos */
-.w3-quarter img {
-width: 168.75px;
-}
+  /* Copyright */
+  .copyright {
+    font-size: 14px;
+    color: #555;
+    padding: 8px 0;
+  }
 
-.w3-quarter h4 {
-font-weight: bold;
-margin-top: 10px;
-margin-bottom: 10px;
-text-align: left;
-}
+  .copyright a {
+    color: #0066cc;
+    text-decoration: none;
+  }
 
-.w3-quarter p {
-margin-top: 10px;
-}
+  .copyright a:hover {
+    text-decoration: underline;
+  }
 
-.w3-quarter .w3-container {
-text-align: left;
-}
+  .copyright span {
+    margin: 0 5px;
+    color: #999;
+  }
 
-.w3-sidebar .w3-col {
-margin-top: 10px;
-}
+  /* Selectors */
+  .selector-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
 
-.w3-sidebar .w3-bar {
-text-align: left;
-margin-top: 10px;
-}
+  .selector-box {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 
-.w3-sidebar .w3-bar span {
-display: block;
-margin-top: 5px;
-}
+  .selector-box label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
 
-/* Estilos para la distribución horizontal */
-.horizontal-container {
-display: flex;
-flex-direction: column;
-align-items: left;
-width: 100%;
-}
+  /* Degree Information */
+  .degree-info {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
 
-.horizontal-container h1 {
-width: 100%;
-text-align: left;
-}
+  .degree-info p {
+    margin: 5px 0;
+  }
 
-.horizontal-container .selector-container {
-width: 100%;
-justify-content: left;
-gap: 40px;
-}
+  .degree-info strong {
+    color: #333;
+  }
 
-.horizontal-container .selector-box {
-flex: 1;
-max-width: 300px;
-}
+  /* Courses Table */
+  .courses-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
 
-.horizontal-container .degree-info {
-width: 100%;
-text-align: left;
-}
+  .courses-table th, .courses-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
 
-.horizontal-container .degree-info p {
-display: inline-block;
-margin: 5px 10px;
-}
+  .courses-table th {
+    background-color: #f2f2f2;
+  }
+
+  .courses-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .course-row {
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .course-row:hover {
+    background-color: #f1f1f1 !important;
+  }
+
+  .course-details-row {
+    background-color: #f8f9fa;
+  }
+
+  .course-details-cell {
+    padding: 0 !important;
+  }
+
+  .course-details-cell .w3-container {
+    padding: 16px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .course-sdg {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    margin-right: 3px;
+  }
+
+  /* Course Details */
+  .course-details {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    min-height: 300px;
+  }
+
+  .course-details p {
+    margin: 5px 0;
+  }
+
+  .course-details a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+
+  .course-details a:hover {
+    text-decoration: underline;
+  }
+
+  /* Lists */
+  .sdg-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  .feature-item {
+    background-color: #e6f3ff;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    display: inline-block;
+    margin: 2px;
+  }
+
+  /* SDG Legend */
+  .sdg-legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+  }
+
+  .sdg-color {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    border-radius: 3px;
+  }
+
+  .sdg-code {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  /* Dropdown */
+  .w3-dropdown-content {
+    display: none;
+    position: relative;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .w3-dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .w3-dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+
+  .w3-dropdown-clicker:hover .w3-dropdown-content {
+    display: block;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 600px) {
+    .w3-main {
+      margin-left: 0;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .w3-quarter,
+    .w3-col.m3,
+    .w3-col.m9,
+    .w3-col.m6 {
+      width: 100%;
+      padding: 0 !important;
+    }
+
+    .copyright {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .copyright span {
+      display: inline-block;
+      margin: 0 3px;
+    }
+
+    .w3-sidebar {
+      width: 100%;
+    }
+  }
+
+  /* Specific Adjustments */
+  .w3-quarter img {
+    width: 168.75px;
+  }
+
+  .w3-quarter h4 {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .w3-quarter p {
+    margin-top: 10px;
+  }
+
+  .w3-quarter .w3-container {
+    text-align: left;
+  }
+
+  .w3-sidebar .w3-col {
+    margin-top: 10px;
+  }
+
+  .w3-sidebar .w3-bar {
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  .w3-sidebar .w3-bar span {
+    display: block;
+    margin-top: 5px;
+  }
+
+  /* Horizontal Layout Styles */
+  .horizontal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100%;
+  }
+
+  .horizontal-container h1 {
+    width: 100%;
+    text-align: left;
+  }
+
+  .horizontal-container .selector-container {
+    width: 100%;
+    justify-content: left;
+    gap: 40px;
+  }
+
+  .horizontal-container .selector-box {
+    flex: 1;
+    max-width: 300px;
+  }
+
+  .horizontal-container .degree-info {
+    width: 100%;
+    text-align: left;
+  }
+
+  .horizontal-container .degree-info p {
+    display: inline-block;
+    margin: 5px 10px;
+  }
 </style>
 
 </head>
 <body class="w3-light-grey">
 
 <!-- Top container -->
-
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open()">
+    <i class="fa fa-bars"></i> Menu
+  </button>
   <span class="w3-bar-item w3-right">ODS a la Universitat Rovira i Virgili</span>
 </div>
 
 <!-- Sidebar/menu -->
-
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar">
+  <br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
       <img src="../assets/logos/edited/cat/cat_ods_logo_cut.png" class="w3-circle" style="width:72px">
@@ -352,43 +360,56 @@ margin: 5px 10px;
   </div>
   <hr>
   <div class="w3-bar-block">
-    <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Inici</a>
+    <a href="../index.html" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-home fa-fw"></i> Inici
+    </a>
     <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
-      <i class="fa fa-line-chart fa-fw"></i>  Anàlisi
+      <i class="fa fa-line-chart fa-fw"></i> Anàlisi
       <div class="w3-dropdown-content">
-        <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles (núvol de paraules)</a>
-        <a href="../pages/faculty2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles (gràfics circulars)</a>
-        <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
-        <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-pencil fa-fw"></i>  Assignatures de l'ensenyament</a>
-        <a href="../pages/course2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatura al detall</a>
+        <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-university fa-fw"></i> Facultats i Escoles (núvol de paraules)
+        </a>
+        <a href="../pages/faculty2.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-university fa-fw"></i> Facultats i Escoles (gràfics circulars)
+        </a>
+        <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-book fa-fw"></i> Ensenyaments
+        </a>
+        <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding w3-blue">
+          <i class="fa fa-pencil fa-fw"></i> Assignatures de l'ensenyament
+        </a>
+        <a href="../pages/course2.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-pencil fa-fw"></i> Assignatura en detall
+        </a>
       </div>
     </div>
-    <a href="../pages/info.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-info-circle fa-fw"></i>  Informació</a>
-    <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
+    <a href="../pages/info.html" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-info-circle fa-fw"></i> Informació
+    </a>
+    <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-envelope fa-fw"></i> Contacte
+    </a>
   </div>
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
-
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
 
   <!-- Header -->
-
   <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-pencil"></i> Assignatures</b></h5>
   </header>
 
-  <!-- Contenido principal -->
-
+  <!-- Main Content -->
   <div class="horizontal-container">
     <h1>Assignatures de la Universitat Rovira i Virgili</h1>
-    <p>Aquesta pàgina mostra informació sobre totes les assignatures de la URV i la seva alineació amb els Objectius de Desenvolupament Sostenible.</p>
+    <p>Aquesta pàgina mostra informació sobre les assignatures de l'ensenyament de la URV concret que vosté seleccioni 
+      i mostra la seva alineació amb els Objectius de Desenvolupament Sostenible.</p>
 
-    <!-- Selectores -->
+    <!-- Selectors -->
     <div class="selector-container">
       <div class="selector-box">
         <label for="faculty-select">Facultat:</label>
@@ -404,7 +425,7 @@ margin: 5px 10px;
       </div>
     </div>
 
-    <!-- Información del ensenyament -->
+    <!-- Teaching Information -->
     <div id="degree-info-container" class="degree-info" style="display: none;">
       <h3 id="degree-title"></h3>
       <p><strong>Facultat:</strong> <span id="degree-faculty"></span></p>
@@ -412,7 +433,7 @@ margin: 5px 10px;
       <p><strong>Total d'assignatures:</strong> <span id="total-courses"></span></p>
     </div>
 
-    <!-- Tabla de asignaturas -->
+    <!-- Courses Table -->
     <div id="courses-table-container" style="display: none; margin-top: 20px;">
       <h3>Llista d'assignatures de l'ensenyament</h3>
       <table class="courses-table">
@@ -432,7 +453,6 @@ margin: 5px 10px;
   </div>
 
   <!-- Footer -->
-
   <footer class="w3-container w3-padding-16 w3-light-grey">
     <div class="footer-content">
       <div class="copyright w3-center">
@@ -450,7 +470,6 @@ margin: 5px 10px;
   </footer>
 
   <!-- End page content -->
-
 </div>
 
 <script>
@@ -477,69 +496,75 @@ function w3_close() {
   overlayBg.style.display = "none";
 }
 
-// Definición de los ODS con sus nombres en catalán
+// SDG Definitions
 const sdgDefinitions = {
-  "SDG-01": "Fi de la pobresa",
-  "SDG-02": "Fam zero",
-  "SDG-03": "Salut i benestar",
-  "SDG-04": "Educació de qualitat",
-  "SDG-05": "Igualtat de gènere",
-  "SDG-06": "Aigua neta i sanejament",
-  "SDG-07": "Energia neta i assequible",
-  "SDG-08": "Treball digne i creixement econòmic",
-  "SDG-09": "Indústria, innovació i infraestructura",
-  "SDG-10": "Reducció de les desigualtats",
-  "SDG-11": "Ciutats i comunitats sostenibles",
-  "SDG-12": "Producció i consum responsables",
-  "SDG-13": "Acció climàtica",
-  "SDG-14": "Vida submarina",
-  "SDG-15": "Vida d'ecosistemes terrestres",
-  "SDG-16": "Pau, justícia i institucions sòlides",
-  "SDG-17": "Aliança per assolir els objectius"
+  "ODS-01": "Fi de la pobresa",
+  "ODS-02": "Fam zero",
+  "ODS-03": "Salut i benestar",
+  "ODS-04": "Educació de qualitat",
+  "ODS-05": "Igualtat de gènere",
+  "ODS-06": "Aigua neta i sanejament",
+  "ODS-07": "Energia neta i assequible",
+  "ODS-08": "Treball digne i creixement econòmic",
+  "ODS-09": "Indústria, innovació i infraestructura",
+  "ODS-10": "Reducció de les desigualtats",
+  "ODS-11": "Ciutats i comunitats sostenibles",
+  "ODS-12": "Producció i consum responsables",
+  "ODS-13": "Acció climàtica",
+  "ODS-14": "Vida submarina",
+  "ODS-15": "Vida d'ecosistemes terrestres",
+  "ODS-16": "Pau, justícia i institucions sòlides",
+  "ODS-17": "Aliança per assolir els objectius"
 };
 
-// Colores oficiales de los ODS
+// SDG Colors
 const sdgColors = {
-  "SDG-01": "#e5243b",
-  "SDG-02": "#dda63a",
-  "SDG-03": "#4c9f38",
-  "SDG-04": "#c5192d",
-  "SDG-05": "#ff3a21",
-  "SDG-06": "#26bde2",
-  "SDG-07": "#fcc30b",
-  "SDG-08": "#a21942",
-  "SDG-09": "#fd6925",
-  "SDG-10": "#dd1367",
-  "SDG-11": "#fd9d24",
-  "SDG-12": "#bf8b2e",
-  "SDG-13": "#3f7e44",
-  "SDG-14": "#0a97d9",
-  "SDG-15": "#56c02b",
-  "SDG-16": "#00689d",
-  "SDG-17": "#19486a"
+  "ODS-01": "#e5243b",
+  "ODS-02": "#dda63a",
+  "ODS-03": "#4c9f38",
+  "ODS-04": "#c5192d",
+  "ODS-05": "#ff3a21",
+  "ODS-06": "#26bde2",
+  "ODS-07": "#fcc30b",
+  "ODS-08": "#a21942",
+  "ODS-09": "#fd6925",
+  "ODS-10": "#dd1367",
+  "ODS-11": "#fd9d24",
+  "ODS-12": "#bf8b2e",
+  "ODS-13": "#3f7e44",
+  "ODS-14": "#0a97d9",
+  "ODS-15": "#56c02b",
+  "ODS-16": "#00689d",
+  "ODS-17": "#19486a"
 };
 
-// Orden de los cursos
+// Course Year Order
 const courseYearOrder = {
   "Primer curs": 1,
   "Segon curs": 2,
   "Tercer curs": 3,
   "Quart curs": 4,
-  "Cinque curs": 5,
-  "Sise curs": 6,
+  "Cinquè curs": 5,
+  "Sisè curs": 6,
   "Optatives": 7
 };
 
-// Variable global para almacenar los datos
+// Function to transform SDG nomenclature to ODS
+function transformSDGToODS(sdgArray) {
+  if (!sdgArray || !sdgArray[0]) return [];
+  return sdgArray[0].map(sdg => sdg.replace('SDG-', 'ODS-'));
+}
+
+// Global variable to store data
 let facultiesData = [];
 
-// Función para capitalizar solo la primera letra de la frase
+// Function to capitalize the first letter of a string
 function capitalizeFirstLetter(str) {
   if (!str) return str;
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-// Función para cargar los datos desde el JSON
+// Function to load data from JSON
 async function loadData() {
   try {
     const response = await fetch('../data/urv-sdgs.json');
@@ -550,7 +575,7 @@ async function loadData() {
     initSelectors();
   } catch (error) {
     console.error('Error:', error);
-    // Mostrar mensaje de error al usuario
+    // Show error message to the user
     const container = document.querySelector('.horizontal-container');
     container.innerHTML = `
       <div class="w3-panel w3-red w3-round">
@@ -562,12 +587,12 @@ async function loadData() {
   }
 }
 
-// Función para inicializar los selectores
+// Function to initialize selectors
 function initSelectors() {
-  // Llenar el selector de facultades
+  // Populate the faculty selector
   const facultySelect = document.getElementById('faculty-select');
 
-  // Ordenar facultades alfabéticamente
+  // Sort faculties alphabetically
   facultiesData.sort((a, b) => a.faculty_school_name.localeCompare(b.faculty_school_name));
 
   facultiesData.forEach(faculty => {
@@ -578,7 +603,7 @@ function initSelectors() {
   });
 }
 
-// Función para actualizar el selector de grados según la facultad seleccionada
+// Function to update the degree selector based on the selected faculty
 function updateDegreeSelect() {
   const facultySelect = document.getElementById('faculty-select');
   const degreeSelect = document.getElementById('degree-select');
@@ -590,7 +615,7 @@ function updateDegreeSelect() {
   if (selectedFaculty) {
     const selectedFacultyData = facultiesData.find(faculty => faculty.faculty_school_name === selectedFaculty);
 
-    // Ordenar grados alfabéticamente
+    // Sort degrees alphabetically
     selectedFacultyData.degrees.sort((a, b) => a.degree_name.localeCompare(b.degree_name));
 
     selectedFacultyData.degrees.forEach(degree => {
@@ -601,11 +626,11 @@ function updateDegreeSelect() {
     });
   }
 
-  // Limpiar la información
+  // Clear information
   resetUI();
 }
 
-// Función para actualizar el selector de asignaturas según el grado seleccionado
+// Function to update the course selector based on the selected degree
 function updateCourseSelect() {
   const facultySelect = document.getElementById('faculty-select');
   const degreeSelect = document.getElementById('degree-select');
@@ -617,29 +642,50 @@ function updateCourseSelect() {
     const degreeData = facultyData.degrees.find(d => d.degree_name === selectedDegree);
 
     if (degreeData && degreeData.courses) {
-      // Mostrar información del grado
+      // Show degree information
       document.getElementById('degree-info-container').style.display = 'block';
       document.getElementById('degree-title').textContent = selectedDegree;
       document.getElementById('degree-faculty').textContent = selectedFaculty;
       document.getElementById('degree-year').textContent = degreeData.degree_year || 'No disponible';
       document.getElementById('total-courses').textContent = degreeData.courses.length;
 
-      // Mostrar tabla de asignaturas
+      // Add new fields
+      const degreeInfoContainer = document.getElementById('degree-info-container');
+
+      // Check if elements already exist to avoid duplication
+      if (!document.getElementById('sdg-courses')) {
+        const sdgCoursesP = document.createElement('p');
+        sdgCoursesP.innerHTML = '<strong>Assignatures amb ODS:</strong> <span id="sdg-courses"></span>';
+        degreeInfoContainer.appendChild(sdgCoursesP);
+      }
+
+      if (!document.getElementById('sdg-ratio')) {
+        const sdgRatioP = document.createElement('p');
+        sdgRatioP.innerHTML = '<strong>Ratio d\'assignatures amb ODS per ensenyament:</strong> <span id="sdg-ratio"></span>';
+        degreeInfoContainer.appendChild(sdgRatioP);
+      }
+
+      // Update values
+      document.getElementById('sdg-courses').textContent = degreeData.sdg_courses_degree || 'No disponible';
+      document.getElementById('sdg-ratio').textContent = degreeData.sdg_ratio_degree ?
+        `${degreeData.sdg_ratio_degree}%` : 'No disponible';
+
+      // Show courses table
       showCoursesTable(degreeData.courses);
     }
   }
 }
 
-// Función para mostrar la tabla de asignaturas
+// Function to show the courses table
 function showCoursesTable(courses) {
   const tableContainer = document.getElementById('courses-table-container');
   const tableBody = document.getElementById('courses-table-body');
 
   tableBody.innerHTML = '';
 
-  // Ordenar primero por curso según el orden especificado y luego alfabéticamente
+  // Sort first by course year according to the specified order and then alphabetically
   courses.sort((a, b) => {
-    const aOrder = courseYearOrder[a.year] || 8; // 8 para valores no especificados
+    const aOrder = courseYearOrder[a.year] || 8; // 8 for unspecified values
     const bOrder = courseYearOrder[b.year] || 8;
 
     if (aOrder !== bOrder) {
@@ -649,7 +695,7 @@ function showCoursesTable(courses) {
   });
 
   courses.forEach(course => {
-    // Fila principal
+    // Main row
     const row = document.createElement('tr');
     row.className = 'course-row';
     row.setAttribute('data-course', JSON.stringify(course));
@@ -661,19 +707,20 @@ function showCoursesTable(courses) {
     const yearCell = document.createElement('td');
     const periodCell = document.createElement('td');
 
-    // Mostrar nombre de la asignatura con primera letra en mayúscula
+    // Show subject name with the first letter capitalized
     nameCell.textContent = capitalizeFirstLetter(course.course_name);
     creditsCell.textContent = course.credits || 'No disponible';
     yearCell.textContent = course.year || 'No disponible';
     periodCell.textContent = course.course_period || 'No disponible';
 
-    // Mostrar los ODS de la asignatura con sus colores
+    // Show the SDGs of the subject with their colors
     if (course.sdg && course.sdg.length > 0 && course.sdg[0].length > 0) {
-      course.sdg[0].forEach(sdg => {
+      const odsList = transformSDGToODS(course.sdg);
+      odsList.forEach(ods => {
         const sdgSpan = document.createElement('span');
         sdgSpan.className = 'course-sdg';
-        sdgSpan.title = `${sdg}: ${sdgDefinitions[sdg]}`;
-        sdgSpan.style.backgroundColor = sdgColors[sdg];
+        sdgSpan.title = `${ods}: ${sdgDefinitions[ods]}`;
+        sdgSpan.style.backgroundColor = sdgColors[ods];
         sdgsCell.appendChild(sdgSpan);
       });
     } else {
@@ -687,7 +734,7 @@ function showCoursesTable(courses) {
     row.appendChild(periodCell);
     tableBody.appendChild(row);
 
-    // Fila de detalles (oculta inicialmente)
+    // Details row (initially hidden)
     const detailsRow = document.createElement('tr');
     detailsRow.className = 'course-details-row';
     detailsRow.style.display = 'none';
@@ -702,7 +749,7 @@ function showCoursesTable(courses) {
   tableContainer.style.display = 'block';
 }
 
-// Función para mostrar/ocultar detalles al hacer clic en una fila
+// Function to show/hide details when clicking on a row
 function toggleCourseDetails(row) {
   const detailsRow = row.nextElementSibling;
   const detailsCell = detailsRow.querySelector('.course-details-cell');
@@ -710,7 +757,7 @@ function toggleCourseDetails(row) {
   if (detailsRow.style.display === 'none') {
     const courseData = JSON.parse(row.getAttribute('data-course'));
 
-    // Generar el contenido de detalles
+    // Generate details content
     detailsCell.innerHTML = `
       <div class="w3-container w3-padding">
         <h4>${capitalizeFirstLetter(courseData.course_name)}</h4>
@@ -732,14 +779,14 @@ function toggleCourseDetails(row) {
         <div class="w3-margin-top">
           <strong>ODS identificats:</strong>
           <div class="sdg-list">
-            ${courseData.sdg && courseData.sdg[0] && courseData.sdg[0].length > 0 ?
-              courseData.sdg[0].map(sdg => `
-                <div class="sdg-legend-item">
-                  <div class="sdg-color" style="background-color: ${sdgColors[sdg]};"></div>
-                  <span class="sdg-code">${sdg}</span>
-                  <span class="sdg-name">${sdgDefinitions[sdg]}</span>
-                </div>
-              `).join('') : 'No té ODS associats'}
+          ${courseData.sdg && courseData.sdg[0] && courseData.sdg[0].length > 0 ?
+            transformSDGToODS(courseData.sdg).map(ods => `
+              <div class="sdg-legend-item">
+                <div class="sdg-color" style="background-color: ${sdgColors[ods]};"></div>
+                <span class="sdg-code">${ods}</span>
+                <span class="sdg-name">${sdgDefinitions[ods]}</span>
+              </div>
+            `).join('') : 'No té ODS associats'}
           </div>
         </div>
 
@@ -762,15 +809,23 @@ function toggleCourseDetails(row) {
   }
 }
 
-// Función para resetear la UI
+// Function to reset the UI
 function resetUI() {
   document.getElementById('degree-info-container').style.display = 'none';
   document.getElementById('courses-table-container').style.display = 'none';
+
+  // Clear new fields if they exist
+  if (document.getElementById('sdg-courses')) {
+    document.getElementById('sdg-courses').textContent = '';
+  }
+  if (document.getElementById('sdg-ratio')) {
+    document.getElementById('sdg-ratio').textContent = '';
+  }
 }
 
-// Cargar los datos y crear los selectores
+// Load data and create selectors
 document.addEventListener('DOMContentLoaded', function() {
-  // Cargar los datos del JSON
+  // Load data from JSON
   loadData();
 });
 </script>

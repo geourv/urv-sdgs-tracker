@@ -4,14 +4,19 @@
 <title>Facultats i Escoles</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- External CSS Libraries -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.1.1/src/wordcloud2.min.js"></script>
-<style>
-html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
-/* Estilos para hacer la página responsiva */
+<style>
+  /* Base typography styles */
+  html, body, h1, h2, h3, h4, h5 {
+      font-family: "Raleway", sans-serif;
+  }
+  
+/* Responsive page styles */
 .w3-quarter {
   width: 25%;
 }
@@ -30,7 +35,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 .w3-sidebar {
   width: 300px;
-  max-width: 80vw; /* Permite que se ajuste en pantallas pequeñas */
+  max-width: 80vw; /* Adjusts for small screens */
 }
 
 .w3-row {
@@ -45,7 +50,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 }
 
 .w3-col.m3.l2 {
-  padding: 0 8px; /* Reducimos el padding */
+  padding: 0 8px; /* Reduced padding */
 }
 
 @media screen and (max-width: 600px) {
@@ -65,14 +70,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   max-width: 100%;
 }
 
-/* Para pantallas pequeñas */
+/* Small screen adjustments */
 @media screen and (max-width: 600px) {
   #faculty-select {
     width: 100%;
   }
 }
 
-/* Estilos para el copyright */
+/* Copyright styles */
 .copyright {
   font-size: 14px;
   color: #555;
@@ -93,7 +98,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   color: #999;
 }
 
-/* Ajustes para móviles */
+/* Mobile adjustments */
 @media screen and (max-width: 600px) {
   .copyright {
     font-size: 12px;
@@ -106,7 +111,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   }
 }
 
-/* Estilos para el wordcloud */
+/* Wordcloud styles */
 .wordcloud-container {
   background: #fff;
   padding: 20px;
@@ -128,7 +133,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   display: block;
 }
 
-/* Estilos para la leyenda de ODS */
+/* SDG legend styles */
 .sdg-legend {
   display: flex;
   flex-wrap: wrap;
@@ -157,7 +162,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   margin-right: 5px;
 }
 
-/* Estilos para los selectores */
+/* Selector styles */
 .selector-container {
   display: flex;
   flex-wrap: wrap;
@@ -176,7 +181,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   font-weight: bold;
 }
 
-/* Estilos para la información del grado */
+/* Degree info styles */
 .degree-info {
   background-color: #f9f9f9;
   padding: 15px;
@@ -192,7 +197,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   color: #333;
 }
 
-/* Estilos para el desplegable */
+/* Dropdown styles */
 .w3-dropdown-content {
   display: none;
   position: relative;
@@ -216,38 +221,54 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </head>
 <body class="w3-light-grey">
 
-<!-- Top container -->
+<!-- Top Navigation Bar -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
   <span class="w3-bar-item w3-right">ODS a la Universitat Rovira i Virgili</span>
 </div>
 
-<!-- Sidebar/menu -->
+<!-- Sidebar Navigation -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
-    <div class="w3-col s4">
-      <img src="../assets/logos/edited/cat/cat_ods_logo_cut.png" class="w3-circle" style="width:72px">
-    </div>
-    <div class="w3-col s8 w3-bar">
-      <span>ODS a la Universitat</span>
-      <span>Rovira i Virgili</span>
-    </div>
+      <div class="w3-col s4">
+          <img src="../assets/logos/edited/cat/cat_ods_logo_cut.png" class="w3-circle" style="width:72px">
+      </div>
+      <div class="w3-col s8 w3-bar">
+          <span>ODS a la</span>
+          <span>Universitat Rovira i Virgili</span>
+      </div>
   </div>
   <hr>
   <div class="w3-bar-block">
-    <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Inici</a>
-    <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
-      <i class="fa fa-line-chart fa-fw"></i>  Anàlisi
-      <div class="w3-dropdown-content">
-        <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles (núvol de paraules)</a>
-        <a href="../pages/faculty2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-university fa-fw"></i>  Facultats i Escoles (gràfics circulars)</a>
-        <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Ensenyaments</a>
-        <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatures de l'ensenyament</a>
-        <a href="../pages/course2.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw"></i>  Assignatura al detall</a>
+      <a href="../index.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-home fa-fw"></i> Inici
+      </a>
+      <div class="w3-dropdown-clicker w3-bar-item w3-button w3-padding">
+          <i class="fa fa-line-chart fa-fw"></i> Anàlisi
+          <div class="w3-dropdown-content">
+              <a href="../pages/faculty.html" class="w3-bar-item w3-button w3-padding w3-blue">
+                  <i class="fa fa-university fa-fw"></i> Facultats i Escoles (núvol de paraules)
+              </a>
+              <a href="../pages/faculty2.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-university fa-fw"></i> Facultats i Escoles (gràfics circulars)
+              </a>
+              <a href="../pages/degree.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-book fa-fw"></i> Ensenyaments
+              </a>
+              <a href="../pages/course.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-pencil fa-fw"></i> Assignatures de l'ensenyament
+              </a>
+              <a href="../pages/course2.html" class="w3-bar-item w3-button w3-padding">
+                  <i class="fa fa-pencil fa-fw"></i> Assignatura en detall
+              </a>
+          </div>
       </div>
-    </div>
-    <a href="../pages/info.html" class="w3-bar-item w3-button"><i class="fa fa-info-circle fa-fw"></i>  Informació</a>
-    <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>  Contacte</a>
+      <a href="../pages/info.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-info-circle fa-fw"></i> Informació
+      </a>
+      <a href="../pages/contact.html" class="w3-bar-item w3-button w3-padding">
+          <i class="fa fa-envelope fa-fw"></i> Contacte
+      </a>
   </div>
 </nav>
 
@@ -267,7 +288,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <p>Aquesta pàgina mostra informació sobre totes les Facultats i Escoles de la URV i la seva alineació amb els Objectius de Desenvolupament Sostenible.</p>
   </div>
 
-  <!-- Wordcloud interactivo -->
+  <!-- Interactive Wordcloud -->
   <div class="w3-container">
     <div class="wordcloud-container">
       <h2>Paraules clau per Facultat/Escola</h2>
@@ -307,13 +328,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </div>
 
 <script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
+// Global variables for sidebar and overlay elements
+const mySidebar = document.getElementById("mySidebar");
+const overlayBg = document.getElementById("myOverlay");
 
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
+/**
+ * Toggles the sidebar visibility and overlay effect
+ */
 function w3_open() {
   if (mySidebar.style.display === 'block') {
     mySidebar.style.display = 'none';
@@ -324,18 +345,24 @@ function w3_open() {
   }
 }
 
-// Close the sidebar with the close button
+/**
+ * Closes the sidebar and removes overlay
+ */
 function w3_close() {
   mySidebar.style.display = "none";
   overlayBg.style.display = "none";
 }
 
-// Funcionalidad para el Wordcloud
+// Wordcloud functionality
 const canvas = document.getElementById("wordcloud");
 const facultySelect = document.getElementById("faculty-select");
 let wordcloudInstance = null;
 let allFaculties = [];
 
+/**
+ * Resizes the canvas to fit its container while maintaining aspect ratio
+ * @returns {Object} The new width and height of the canvas
+ */
 function resizeCanvas() {
   const container = document.querySelector('.wordcloud-wrapper');
   const width = container.clientWidth;
@@ -357,7 +384,12 @@ function resizeCanvas() {
   return { width: canvasWidth, height: canvasHeight };
 }
 
+/**
+ * Draws a word cloud based on the provided SDG data
+ * @param {Object} sdgs - The Sustainable Development Goals data to visualize
+ */
 function drawWordCloud(sdgs) {
+  // Prepare word list from SDG data
   const wordList = Object.entries(sdgs)
     .filter(([word, count]) => typeof count === 'number')
     .sort((a, b) => b[1] - a[1])
@@ -365,12 +397,15 @@ function drawWordCloud(sdgs) {
 
   const { width, height } = resizeCanvas();
   
+  // Stop any existing wordcloud instance
   if (wordcloudInstance) {
     WordCloud.stop();
   }
   
+  // Calculate maximum frequency for scaling
   const maxFrequency = Math.max(...wordList.map(w => w[1]));
 
+  // Create new wordcloud instance
   wordcloudInstance = WordCloud(canvas, {
     list: wordList,
     gridSize: Math.round(width * 0.005),
@@ -393,21 +428,22 @@ function drawWordCloud(sdgs) {
   });
 }
 
-// Al cargar la página, establece una altura inicial
+// Initialize the page when DOM is loaded
 document.addEventListener('DOMContentLoaded', async function() {
+  // Set initial height for wordcloud container
   const wordcloudWrapper = document.querySelector('.wordcloud-wrapper');
   wordcloudWrapper.style.height = `${Math.min(window.innerHeight * 0.6, 600)}px`;
   
   try {
-    // Cargar datos para wordcloud
+    // Load faculty features data for wordcloud
     const featuresResponse = await fetch('../data/faculties_features_data.json');
-    if (!featuresResponse.ok) throw new Error(`Error cargando features: ${featuresResponse.status}`);
+    if (!featuresResponse.ok) throw new Error(`Error loading features: ${featuresResponse.status}`);
     const featuresData = await featuresResponse.json();
     
-    // Asignar datos
+    // Store faculty data globally
     allFaculties = featuresData;
     
-    // Limpiar y llenar el selector de facultades
+    // Populate faculty dropdown selector
     facultySelect.innerHTML = '<option value="">-- Selecciona una Facultat/Escola --</option>';
     
     featuresData.forEach((faculty, index) => {
@@ -419,12 +455,12 @@ document.addEventListener('DOMContentLoaded', async function() {
       }
     });
 
-    // Mostrar wordcloud inicial
+    // Display initial wordcloud if data exists
     if (featuresData.length > 0 && featuresData[0].sdgs) {
       drawWordCloud(featuresData[0].sdgs);
     }
 
-    // Configurar event listeners para wordcloud
+    // Handle faculty selection changes
     facultySelect.addEventListener("change", function() {
       const selectedIndex = parseInt(this.value);
       if (!isNaN(selectedIndex)) {
@@ -435,7 +471,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       }
     });
 
-    // Manejo de redimensionamiento
+    // Handle window resize events with debounce
     let resizeTimeout;
     window.addEventListener('resize', function() {
       clearTimeout(resizeTimeout);
@@ -453,7 +489,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
   } catch (error) {
-    console.error('Error al cargar los datos:', error);
+    console.error('Error loading data:', error);
     facultySelect.disabled = true;
   }
 });
