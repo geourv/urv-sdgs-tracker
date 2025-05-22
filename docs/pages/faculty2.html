@@ -237,6 +237,60 @@ html, body, h1, h2, h3, h4, h5 {
 .w3-dropdown-content a:hover {background-color: #f1f1f1}
 
 .w3-dropdown-clicker:hover .w3-dropdown-content {display: block;}
+
+
+/* Filter tabs styles */
+.filter-container {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.filter-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-tab {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  background: #e9e9e9;
+  transition: all 0.3s;
+  font-size: 0.9em;
+}
+
+.filter-tab:hover {
+  background-color: #ddd;
+}
+
+.filter-tab.active {
+  background-color: hsl(117, 74%, 34%);
+  color: white;
+}
+
+.filter-tab.active:hover {
+  background-color: hsl(117, 74%, 34%);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+  .filter-tabs {
+    flex-direction: column;
+  }
+  
+  .filter-tab {
+    width: 100%;
+    text-align: center;
+  }
+}
 </style>
 </head>
 <body class="w3-light-grey">
@@ -317,6 +371,18 @@ html, body, h1, h2, h3, h4, h5 {
           <option value="">-- Selecciona una Facultat/Escola --</option>
         </select>
       </div>
+      
+      <!-- Filter Tabs -->
+      <div class="filter-container">
+        <div class="filter-title">Filtres per contingut analitzat:</div>
+        <div class="filter-tabs">
+          <div class="filter-tab active" data-filter="complete">Guia docent completa</div>
+          <div class="filter-tab" data-filter="descriptive">Títol, descripció i continguts</div>
+          <div class="filter-tab" data-filter="competencial">Competències i resultats d'aprenentatge</div>
+          <div class="filter-tab" data-filter="bibliographical">Bibliografia</div>
+        </div>
+      </div>
+      
       <div id="chart-container" class="chart-grid">
         <!-- Dynamic chart will be loaded here -->
       </div>
@@ -414,6 +480,24 @@ const odsColors = {
   "ODS-16": "#00689d",
   "ODS-17": "#19486a"
 };
+
+// Data sources for each filter
+const dataSources = {
+  complete: '../data/faculties_sdg_data.json',
+  descriptive: '../data/faculties_sdg_data_descriptive.json',
+  competencial: '../data/faculties_sdg_data_competencial.json',
+  bibliographical: '../data/faculties_sdg_data_bibliographical.json'
+};
+
+// Global variables to store loaded data
+let currentFilter = 'complete';
+let allData = {
+  complete: null,
+  descriptive: null,
+  competencial: null,
+  bibliographical: null
+};
+let currentFacultyIndex = 0;
 
 /**
  * Creates an SDG legend in the specified container
@@ -527,28 +611,75 @@ function createChart(data, containerId) {
   });
 }
 
+/**
+ * Loads data for all filters
+ */
+async function loadAllData() {
+  try {
+    // Load data for each filter
+    for (const [filter, url] of Object.entries(dataSources)) {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Error loading ${filter} data: ${response.status}`);
+      allData[filter] = await response.json();
+    }
+    return true;
+  } catch (error) {
+    console.error('Error loading data:', error);
+    return false;
+  }
+}
+
+/**
+ * Updates the chart based on current filter and selected faculty
+ */
+function updateChart() {
+  if (allData[currentFilter] && allData[currentFilter][currentFacultyIndex]) {
+    createChart(allData[currentFilter][currentFacultyIndex], 'chart-container');
+  }
+}
+
+/**
+ * Sets up filter tab functionality
+ */
+function setupFilterTabs() {
+  const tabs = document.querySelectorAll('.filter-tab');
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      // Remove active class from all tabs
+      tabs.forEach(t => t.classList.remove('active'));
+      
+      // Add active class to clicked tab
+      this.classList.add('active');
+      
+      // Update current filter
+      currentFilter = this.dataset.filter;
+      
+      // Update the chart with new data
+      updateChart();
+    });
+  });
+}
+
 // Initialize page when DOM is loaded
 document.addEventListener('DOMContentLoaded', async function() {
   const facultySelect = document.getElementById('faculty-select');
-  const chartContainer = document.getElementById('chart-container');
   
   // Show loading state
   const loadingMessage = document.createElement('p');
   loadingMessage.textContent = 'Carregant dades...';
   loadingMessage.style.textAlign = 'center';
   loadingMessage.style.padding = '20px';
-  chartContainer.appendChild(loadingMessage);
+  document.getElementById('chart-container').appendChild(loadingMessage);
 
-  try {
-    // Load SDG data for circular charts
-    const sdgResponse = await fetch('../data/faculties_sdg_data.json');
-    if (!sdgResponse.ok) throw new Error(`Error loading SDG data: ${sdgResponse.status}`);
-    const sdgData = await sdgResponse.json();
-    
-    // Populate faculty dropdown
+  // Load all data sources
+  const dataLoaded = await loadAllData();
+  
+  if (dataLoaded) {
+    // Populate faculty dropdown with data from the default filter (complete)
     facultySelect.innerHTML = '<option value="">-- Selecciona una Facultat/Escola --</option>';
     
-    sdgData.forEach((faculty, index) => {
+    allData.complete.forEach((faculty, index) => {
       if (faculty.faculty) {
         const option = document.createElement('option');
         option.value = index;
@@ -561,36 +692,36 @@ document.addEventListener('DOMContentLoaded', async function() {
     facultySelect.addEventListener("change", function() {
       const selectedIndex = parseInt(this.value);
       if (!isNaN(selectedIndex)) {
-        const selectedFaculty = sdgData[selectedIndex];
-        if (selectedFaculty) {
-          createChart(selectedFaculty, 'chart-container');
-        }
+        currentFacultyIndex = selectedIndex;
+        updateChart();
       }
     });
 
+    // Set up filter tabs
+    setupFilterTabs();
+
     // Show first chart by default if data exists
-    if (sdgData.length > 0) {
-      createChart(sdgData[0], 'chart-container');
+    if (allData.complete.length > 0) {
+      updateChart();
       facultySelect.value = 0;
     } else {
       console.warn('No SDG data available for circular charts');
-      chartContainer.innerHTML = 
+      document.getElementById('chart-container').innerHTML = 
         '<p>No hi ha dades disponibles per mostrar els gràfics circulars</p>';
     }
-
-  } catch (error) {
-    console.error('Error loading data:', error);
+  } else {
+    console.error('Failed to load data');
     
-    chartContainer.innerHTML = `
+    document.getElementById('chart-container').innerHTML = `
       <div class="w3-panel w3-red w3-round">
         <h3>Error</h3>
-        <p>${error.message}</p>
+        <p>No s'han pogut carregar les dades.</p>
         <p>Si us plau, torna-ho a provar més tard.</p>
       </div>
     `;
     
     facultySelect.disabled = true;
-  } finally {
+  } {
     loadingMessage.remove();
   }
 });

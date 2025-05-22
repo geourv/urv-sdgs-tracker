@@ -217,6 +217,59 @@
 .w3-dropdown-content a:hover {background-color: #f1f1f1}
 
 .w3-dropdown-clicker:hover .w3-dropdown-content {display: block;}
+
+/* Filter tabs styles */
+.filter-container {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.filter-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-tab {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  background: #e9e9e9;
+  transition: all 0.3s;
+  font-size: 0.9em;
+}
+
+.filter-tab:hover {
+  background-color: #ddd;
+}
+
+.filter-tab.active {
+  background-color: hsl(117, 74%, 34%);
+  color: white;
+}
+
+.filter-tab.active:hover {
+  background-color: hsl(117, 74%, 34%);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+  .filter-tabs {
+    flex-direction: column;
+  }
+  
+  .filter-tab {
+    width: 100%;
+    text-align: center;
+  }
+}
 </style>
 </head>
 <body class="w3-light-grey">
@@ -301,6 +354,25 @@
         </div>
       </div>
 
+      <!-- Filter Tabs -->
+      <div class="filter-container">
+        <div class="filter-title">Filtres per contingut analitzat:</div>
+        <div class="filter-tabs">
+          <div class="filter-tab active" data-json="faculties_features_data.json">
+            Guia docent completa
+          </div>
+          <div class="filter-tab" data-json="faculties_features_data_descriptive.json">
+            Títol, descripció i continguts
+          </div>
+          <div class="filter-tab" data-json="faculties_features_data_competencial.json">
+            Competències i resultats
+          </div>
+          <div class="filter-tab" data-json="faculties_features_data_bibliographical.json">
+            Bibliografia
+          </div>
+        </div>
+      </div>
+
       <div class="wordcloud-wrapper">
         <canvas id="wordcloud"></canvas>
       </div>
@@ -358,6 +430,7 @@ const canvas = document.getElementById("wordcloud");
 const facultySelect = document.getElementById("faculty-select");
 let wordcloudInstance = null;
 let allFaculties = [];
+let currentDataFile = "faculties_features_data.json"; // Default file
 
 /**
  * Resizes the canvas to fit its container while maintaining aspect ratio
@@ -389,9 +462,11 @@ function resizeCanvas() {
  * @param {Object} sdgs - The Sustainable Development Goals data to visualize
  */
 function drawWordCloud(sdgs) {
+  if (!sdgs) return;
+  
   // Prepare word list from SDG data
   const wordList = Object.entries(sdgs)
-    .filter(([word, count]) => typeof count === 'number')
+    .filter(([word, count]) => typeof count === 'number' && word.trim() !== '')
     .sort((a, b) => b[1] - a[1])
     .slice(0, 100);
 
@@ -403,7 +478,7 @@ function drawWordCloud(sdgs) {
   }
   
   // Calculate maximum frequency for scaling
-  const maxFrequency = Math.max(...wordList.map(w => w[1]));
+  const maxFrequency = wordList.length > 0 ? Math.max(...wordList.map(w => w[1])) : 1;
 
   // Create new wordcloud instance
   wordcloudInstance = WordCloud(canvas, {
@@ -428,20 +503,26 @@ function drawWordCloud(sdgs) {
   });
 }
 
-// Initialize the page when DOM is loaded
-document.addEventListener('DOMContentLoaded', async function() {
-  // Set initial height for wordcloud container
-  const wordcloudWrapper = document.querySelector('.wordcloud-wrapper');
-  wordcloudWrapper.style.height = `${Math.min(window.innerHeight * 0.6, 600)}px`;
-  
+/**
+ * Loads faculty data from the specified JSON file
+ * @param {string} dataFile - The JSON file to load
+ */
+async function loadFacultyData(dataFile) {
   try {
+    // Show loading state
+    facultySelect.disabled = true;
+    facultySelect.innerHTML = '<option value="">Carregant dades...</option>';
+    
     // Load faculty features data for wordcloud
-    const featuresResponse = await fetch('../data/faculties_features_data.json');
+    const featuresResponse = await fetch(`../data/${dataFile}`);
     if (!featuresResponse.ok) throw new Error(`Error loading features: ${featuresResponse.status}`);
     const featuresData = await featuresResponse.json();
     
     // Store faculty data globally
     allFaculties = featuresData;
+    
+    // Get current selected faculty (if any)
+    const currentSelection = facultySelect.value;
     
     // Populate faculty dropdown selector
     facultySelect.innerHTML = '<option value="">-- Selecciona una Facultat/Escola --</option>';
@@ -455,43 +536,91 @@ document.addEventListener('DOMContentLoaded', async function() {
       }
     });
 
-    // Display initial wordcloud if data exists
-    if (featuresData.length > 0 && featuresData[0].sdgs) {
-      drawWordCloud(featuresData[0].sdgs);
+    // Restore selection if it exists in new data
+    if (currentSelection && featuresData[currentSelection]?.faculty) {
+      facultySelect.value = currentSelection;
+    } else {
+      // Default to first faculty (Architecture)
+      const architectureIndex = featuresData.findIndex(f => f.faculty && f.faculty.toLowerCase().includes('arquitectura'));
+      if (architectureIndex !== -1) {
+        facultySelect.value = architectureIndex;
+      } else if (featuresData.length > 0) {
+        facultySelect.value = 0;
+      }
     }
 
-    // Handle faculty selection changes
-    facultySelect.addEventListener("change", function() {
-      const selectedIndex = parseInt(this.value);
-      if (!isNaN(selectedIndex)) {
-        const selectedFaculty = featuresData[selectedIndex];
-        if (selectedFaculty && selectedFaculty.sdgs) {
-          drawWordCloud(selectedFaculty.sdgs);
-        }
+    // Display wordcloud for selected faculty
+    const selectedIndex = parseInt(facultySelect.value);
+    if (!isNaN(selectedIndex)) {
+      const selectedFaculty = featuresData[selectedIndex];
+      if (selectedFaculty && selectedFaculty.sdgs) {
+        drawWordCloud(selectedFaculty.sdgs);
       }
-    });
+    }
 
-    // Handle window resize events with debounce
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        const selectedIndex = parseInt(facultySelect.value);
-        if (!isNaN(selectedIndex)) {
-          const container = document.querySelector('.wordcloud-wrapper');
-          container.style.height = `${Math.min(window.innerHeight * 0.6, 600)}px`;
-          
-          if (allFaculties[selectedIndex]?.sdgs) {
-            drawWordCloud(allFaculties[selectedIndex].sdgs);
-          }
-        }
-      }, 200);
-    });
+    // Re-enable select
+    facultySelect.disabled = false;
 
   } catch (error) {
     console.error('Error loading data:', error);
+    facultySelect.innerHTML = '<option value="">Error carregant dades</option>';
     facultySelect.disabled = true;
   }
+}
+
+// Initialize the page when DOM is loaded
+document.addEventListener('DOMContentLoaded', async function() {
+  // Set initial height for wordcloud container
+  const wordcloudWrapper = document.querySelector('.wordcloud-wrapper');
+  wordcloudWrapper.style.height = `${Math.min(window.innerHeight * 0.6, 600)}px`;
+  
+  // Load default data
+  await loadFacultyData(currentDataFile);
+
+  // Handle faculty selection changes
+  facultySelect.addEventListener("change", function() {
+    const selectedIndex = parseInt(this.value);
+    if (!isNaN(selectedIndex)) {
+      const selectedFaculty = allFaculties[selectedIndex];
+      if (selectedFaculty && selectedFaculty.sdgs) {
+        drawWordCloud(selectedFaculty.sdgs);
+      }
+    }
+  });
+
+  // Handle window resize events with debounce
+  let resizeTimeout;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const selectedIndex = parseInt(facultySelect.value);
+      if (!isNaN(selectedIndex)) {
+        const container = document.querySelector('.wordcloud-wrapper');
+        container.style.height = `${Math.min(window.innerHeight * 0.6, 600)}px`;
+        
+        if (allFaculties[selectedIndex]?.sdgs) {
+          drawWordCloud(allFaculties[selectedIndex].sdgs);
+        }
+      }
+    }, 200);
+  });
+
+  // Handle filter tab clicks
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', async function() {
+      // Update active tab
+      filterTabs.forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Get the JSON file to load
+      const jsonFile = this.getAttribute('data-json');
+      currentDataFile = jsonFile;
+      
+      // Load new data
+      await loadFacultyData(jsonFile);
+    });
+  });
 });
 </script>
 

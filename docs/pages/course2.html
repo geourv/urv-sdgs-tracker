@@ -225,27 +225,80 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   .w3-main {
     margin-left: 0;
   }
-  
-  .w3-quarter, 
-  .w3-col.m3, 
+
+  .w3-quarter,
+  .w3-col.m3,
   .w3-col.m9,
   .w3-col.m6 {
     width: 100%;
     padding: 0 !important;
   }
-  
+
   .copyright {
     font-size: 12px;
     line-height: 1.5;
   }
-  
+
   .copyright span {
     display: inline-block;
     margin: 0 3px;
   }
-  
+
   .w3-sidebar {
     width: 100%;
+  }
+}
+
+/* Filter tabs styles */
+.filter-container {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.filter-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-tab {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  background: #e9e9e9;
+  transition: all 0.3s;
+  font-size: 0.9em;
+}
+
+.filter-tab:hover {
+  background-color: #ddd;
+}
+
+.filter-tab.active {
+  background-color: hsl(117, 74%, 34%);
+  color: white;
+}
+
+.filter-tab.active:hover {
+  background-color: hsl(117, 74%, 34%);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+  .filter-tabs {
+    flex-direction: column;
+  }
+
+  .filter-tab {
+    width: 100%;
+    text-align: center;
   }
 }
 
@@ -334,7 +387,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <div class="w3-container">
     <h1>Assignatures de la Universitat Rovira i Virgili</h1>
-    <p>Aquesta pàgina mostra informació sobre l'assignatura concreta que vosté seleccioni 
+    <p>Aquesta pàgina mostra informació sobre l'assignatura concreta que vosté seleccioni
       i mostra la seva alineació amb els Objectius de Desenvolupament Sostenible.</p>
   </div>
 
@@ -346,7 +399,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <div class="interactive-chart-container">
           <h2>ODS per assignatures</h2>
           <p>Selecciona una Facultat/Escola, un ensenyament i una assignatura per veure la presència dels ODS:</p>
-  
+
           <div class="selector-container">
             <div class="selector-box">
               <label for="faculty-select">Facultat:</label>
@@ -367,19 +420,30 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
               </select>
             </div>
           </div>
+
+          <!-- Filter tabs -->
+          <div class="filter-container">
+            <div class="filter-title">Selecciona el tipus de dades:</div>
+            <div class="filter-tabs">
+              <div class="filter-tab active" onclick="changeFilter('complete')">Guia docent completa</div>
+              <div class="filter-tab" onclick="changeFilter('descriptive')">Títol, descripció i continguts</div>
+              <div class="filter-tab" onclick="changeFilter('competencial')">Competències i resultats d'aprenentatge</div>
+              <div class="filter-tab" onclick="changeFilter('bibliographical')">Bibliografia</div>
+            </div>
+          </div>
         </div>
       </div>
-  
+
       <!-- Right column (75%) -->
       <div class="w3-col m9 w3-padding-small">
-        
+
         <div id="degree-info-container" class="degree-info" style="display: none;">
         <h3 id="degree-title"></h3>
           <p><strong>Facultat:</strong> <span id="degree-faculty"></span></p>
           <p><strong>Any:</strong> <span id="degree-year"></span></p>
           <p><strong>Total d'assignatures:</strong> <span id="total-courses"></span></p>
         </div>
-        
+
         <div id="course-details-container" class="course-details" style="display: none;">
         <h3 id="course-title"></h3>
           <div class="w3-row">
@@ -395,12 +459,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
             </div>
           </div>
           <p><strong>Guia docent:</strong> <a id="course-url" href="#" target="_blank">Veure guia docent</a></p>
-          
+
           <div class="w3-margin-top">
             <strong>ODS identificats:</strong>
             <div id="course-sdgs" class="sdg-list"></div>
           </div>
-          
+
           <div class="w3-margin-top">
             <strong>Paraules clau (en anglès):</strong>
             <div id="course-features" class="feature-list"></div>
@@ -414,14 +478,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <footer class="w3-container w3-padding-16 w3-light-grey">
     <div class="footer-content">
       <div class="copyright w3-center">
-        © Universitat Rovira i Virgili 
-        <span>·</span> 
-        <a href="/ca/universitat/comunicacio/web/legal/">Avís legal</a> 
-        <span>·</span> 
-        <a href="/ca/universitat/comunicacio/web/legal/galetes/">Política de galetes</a> 
-        <span>·</span> 
-        <a href="/ca/universitat/comunicacio/web/accessibilitat/">Accessibilitat</a> 
-        <span>·</span> 
+        © Universitat Rovira i Virgili
+        <span>·</span>
+        <a href="/ca/universitat/comunicacio/web/legal/">Avís legal</a>
+        <span>·</span>
+        <a href="/ca/universitat/comunicacio/web/legal/galetes/">Política de galetes</a>
+        <span>·</span>
+        <a href="/ca/universitat/comunicacio/web/accessibilitat/">Accessibilitat</a>
+        <span>·</span>
         <a href="/ca/universitat/comunicacio/web/suport/">Sobre aquest web</a>
       </div>
     </div>
@@ -509,6 +573,7 @@ const courseYearOrder = {
 
 // Global variable to store data
 let facultiesData = [];
+let currentFilter = 'complete';
 
 // Function to transform SDG nomenclature to ODS
 function transformSDGToODS(sdgArray) {
@@ -523,9 +588,27 @@ function capitalizeFirstLetter(str) {
 }
 
 // Function to load data from JSON
-async function loadData() {
+async function loadData(filter) {
   try {
-    const response = await fetch('../data/urv-sdgs.json');
+    let jsonFile;
+    switch(filter) {
+      case 'complete':
+        jsonFile = '../data/urv-sdgs.json';
+        break;
+      case 'descriptive':
+        jsonFile = '../data/urv-sdgs_descriptive.json';
+        break;
+      case 'competencial':
+        jsonFile = '../data/urv-sdgs_competencial.json';
+        break;
+      case 'bibliographical':
+        jsonFile = '../data/urv-sdgs_bibliographical.json';
+        break;
+      default:
+        jsonFile = '../data/urv-sdgs.json';
+    }
+
+    const response = await fetch(jsonFile);
     if (!response.ok) {
       throw new Error('Error al cargar los datos');
     }
@@ -545,14 +628,23 @@ async function loadData() {
   }
 }
 
+// Function to change filter
+function changeFilter(filter) {
+  currentFilter = filter;
+  const tabs = document.querySelectorAll('.filter-tab');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  loadData(filter);
+}
+
 // Function to initialize selectors
 function initSelectors() {
   // Fill faculty selector
   const facultySelect = document.getElementById('faculty-select');
-  
+
   // Sort faculties alphabetically
   facultiesData.sort((a, b) => a.faculty_school_name.localeCompare(b.faculty_school_name));
-  
+
   facultiesData.forEach(faculty => {
     const option = document.createElement('option');
     option.value = faculty.faculty_school_name;
@@ -575,17 +667,16 @@ function updateDegreeSelect() {
 
   if (selectedFaculty) {
     const selectedFacultyData = facultiesData.find(faculty => faculty.faculty_school_name === selectedFaculty);
-    
+
     // Sort degrees alphabetically
     selectedFacultyData.degrees.sort((a, b) => a.degree_name.localeCompare(b.degree_name));
-    
+
     selectedFacultyData.degrees.forEach(degree => {
       const option = document.createElement('option');
       option.value = degree.degree_name;
       option.textContent = degree.degree_name;
       degreeSelect.appendChild(option);
     });
-  
 
   // Clear information
   resetUI();
@@ -609,7 +700,7 @@ function updateCourseSelect() {
   if (selectedFaculty && selectedDegree) {
     const facultyData = facultiesData.find(f => f.faculty_school_name === selectedFaculty);
     const degreeData = facultyData.degrees.find(d => d.degree_name === selectedDegree);
-    
+
     if (degreeData && degreeData.courses) {
       // Show degree information
       document.getElementById('degree-info-container').style.display = 'block';
@@ -617,28 +708,28 @@ function updateCourseSelect() {
       document.getElementById('degree-faculty').textContent = selectedFaculty;
       document.getElementById('degree-year').textContent = degreeData.degree_year || 'No disponible';
       document.getElementById('total-courses').textContent = degreeData.courses.length;
-      
+
       // Add new fields
       const degreeInfoContainer = document.getElementById('degree-info-container');
-      
+
       // Check if elements already exist to avoid duplication
       if (!document.getElementById('sdg-courses')) {
         const sdgCoursesP = document.createElement('p');
         sdgCoursesP.innerHTML = '<strong>Assignatures amb ODS:</strong> <span id="sdg-courses"></span>';
         degreeInfoContainer.appendChild(sdgCoursesP);
       }
-      
+
       if (!document.getElementById('sdg-ratio')) {
         const sdgRatioP = document.createElement('p');
         sdgRatioP.innerHTML = '<strong>Ratio d\'assignatures amb ODS per ensenyament:</strong> <span id="sdg-ratio"></span>';
         degreeInfoContainer.appendChild(sdgRatioP);
       }
-      
+
       // Update values
       document.getElementById('sdg-courses').textContent = degreeData.sdg_courses_degree || 'No disponible';
-      document.getElementById('sdg-ratio').textContent = degreeData.sdg_ratio_degree ? 
+      document.getElementById('sdg-ratio').textContent = degreeData.sdg_ratio_degree ?
         `${degreeData.sdg_ratio_degree}%` : 'No disponible';
-      
+
       // Fill course selector with capitalized names
       degreeData.courses.forEach(course => {
         const option = document.createElement('option');
@@ -678,7 +769,7 @@ function showCourseDetails() {
     document.getElementById('course-period').textContent = courseData.course_period || 'No disponible';
     document.getElementById('course-type').textContent = courseData.course_type || 'No disponible';
     document.getElementById('course-year').textContent = courseData.year || 'No disponible';
-    
+
     // Set link to teaching guide if it exists
     const courseUrlElement = document.getElementById('course-url');
     if (courseData.course_url) {
@@ -687,11 +778,11 @@ function showCourseDetails() {
     } else {
       courseUrlElement.style.display = 'none';
     }
-    
+
     // Show SDGs
     const sdgsContainer = document.getElementById('course-sdgs');
     sdgsContainer.innerHTML = '';
-        
+
     if (courseData.sdg && courseData.sdg.length > 0 && courseData.sdg[0].length > 0) {
       const odsList = transformSDGToODS(courseData.sdg);
       odsList.forEach(ods => {
@@ -707,11 +798,11 @@ function showCourseDetails() {
     } else {
       sdgsContainer.textContent = 'No té ODS associats';
     }
-    
+
     // Show features
     const featuresContainer = document.getElementById('course-features');
     featuresContainer.innerHTML = '';
-    
+
     if (courseData.features && courseData.features.length > 0 && courseData.features[0].length > 0) {
       courseData.features[0].forEach(feature => {
         const featureItem = document.createElement('div');
@@ -722,7 +813,7 @@ function showCourseDetails() {
     } else {
       featuresContainer.textContent = 'No té característiques específiques';
     }
-    
+
     // Show details container
     courseDetailsContainer.style.display = 'block';
   }
@@ -732,7 +823,7 @@ function showCourseDetails() {
 function resetUI() {
   document.getElementById('degree-info-container').style.display = 'none';
   document.getElementById('course-details-container').style.display = 'none';
-  
+
   // Clear new fields if they exist
   if (document.getElementById('sdg-courses')) {
     document.getElementById('sdg-courses').textContent = '';
@@ -745,7 +836,7 @@ function resetUI() {
 // Load data and create selectors
 document.addEventListener('DOMContentLoaded', function() {
   // Load JSON data
-  loadData();
+  loadData(currentFilter);
 });
 </script>
 

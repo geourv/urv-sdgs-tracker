@@ -218,6 +218,59 @@
 .w3-dropdown-content a:hover {background-color: #f1f1f1}
 
 .w3-dropdown-clicker:hover .w3-dropdown-content {display: block;}
+
+/* Filter tabs styles */
+.filter-container {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.filter-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-tab {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  background: #e9e9e9;
+  transition: all 0.3s;
+  font-size: 0.9em;
+}
+
+.filter-tab:hover {
+  background-color: #ddd;
+}
+
+.filter-tab.active {
+  background-color: hsl(117, 74%, 34%);
+  color: white;
+}
+
+.filter-tab.active:hover {
+  background-color: hsl(117, 74%, 34%);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+  .filter-tabs {
+    flex-direction: column;
+  }
+
+  .filter-tab {
+    width: 100%;
+    text-align: center;
+  }
+}
 </style>
 </head>
 <body class="w3-light-grey">
@@ -311,6 +364,17 @@
               <option value="">-- Selecciona un ensenyament --</option>
               <!-- Options will be filled automaticaly -->
             </select>
+          </div>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="filter-container">
+          <div class="filter-title">Filtres per contingut analitzat:</div>
+          <div class="filter-tabs">
+            <div class="filter-tab active" data-filter="complete" onclick="changeFilter(this, 'degree_sdg_data.json')">Guia docent completa</div>
+            <div class="filter-tab" data-filter="descriptive" onclick="changeFilter(this, 'degree_sdg_data_descriptive.json')">Títol, descripció i continguts</div>
+            <div class="filter-tab" data-filter="competencial" onclick="changeFilter(this, 'degree_sdg_data_competencial.json')">Competències i resultats d'aprenentatge</div>
+            <div class="filter-tab" data-filter="bibliographical" onclick="changeFilter(this, 'degree_sdg_data_bibliographical.json')">Bibliografia</div>
           </div>
         </div>
 
@@ -446,118 +510,151 @@
 
   // Global variable to store faculty data
   let facultiesData = [];
+  let currentFilter = 'degree_sdg_data.json'; // Default filter
+
+  // Function to change the active filter
+  function changeFilter(element, filterFile) {
+    // Remove active class from all tabs
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.classList.remove('active');
+    });
+
+    // Add active class to clicked tab
+    element.classList.add('active');
+
+    // Update current filter
+    currentFilter = filterFile;
+
+    // Reload data with new filter
+    loadFacultiesData();
+  }
 
   async function loadFacultiesData() {
     try {
-      const response = await fetch('../data/degree_sdg_data.json');
-      if (!response.ok) throw new Error('Error al cargar los datos');
-      facultiesData = await response.json();
+        const response = await fetch(`../data/${currentFilter}`);
+        if (!response.ok) throw new Error('Failed to load data');
+        facultiesData = await response.json();
 
-      // Transform SDG to ODS in the data if necessary
-      facultiesData.forEach(faculty => {
-        faculty.degrees?.forEach(degree => {
-          if (degree.percentages) {
-            const newPercentages = {};
-            Object.keys(degree.percentages).forEach(key => {
-              newPercentages[key.replace('SDG', 'ODS')] = degree.percentages[key];
-            });
-            degree.percentages = newPercentages;
-          }
+        // Convert SDG keys to ODS format if necessary
+        facultiesData.forEach(faculty => {
+            faculty.degrees?.forEach(degree => {
+                if (degree.percentages) {
+                    const newPercentages = {};
+                    Object.keys(degree.percentages).forEach(key => {
+                        newPercentages[key.replace('SDG', 'ODS')] = degree.percentages[key];
+                    });
+                    degree.percentages = newPercentages;
+                }
 
-          if (degree.sdgs) {
-            const newSdgs = {};
-            Object.keys(degree.sdgs).forEach(key => {
-              newSdgs[key.replace('SDG', 'ODS')] = degree.sdgs[key];
+                if (degree.sdgs) {
+                    const newSdgs = {};
+                    Object.keys(degree.sdgs).forEach(key => {
+                        newSdgs[key.replace('SDG', 'ODS')] = degree.sdgs[key];
+                    });
+                    degree.sdgs = newSdgs;
+                }
             });
-            degree.sdgs = newSdgs;
-          }
         });
-      });
 
-      initInteractiveBarChart();
+        // Save current selections
+        const facultySelect = document.getElementById('faculty-select');
+        const degreeSelect = document.getElementById('degree-select');
+        const selectedFaculty = facultySelect.value;
+        const selectedDegree = degreeSelect.value;
+
+        // Refresh faculty dropdown
+        updateFacultySelect();
+
+        // Restore previously selected faculty if it still exists
+        if (selectedFaculty) {
+            facultySelect.value = selectedFaculty;
+            updateDegreeSelect();
+
+            // Restore previously selected degree if it still exists
+            const faculty = facultiesData.find(f => f.faculty === selectedFaculty);
+            const hasDegree = faculty?.degrees?.some(d => d.degree === selectedDegree);
+
+            if (hasDegree) {
+                degreeSelect.value = selectedDegree;
+                updateBarChart(); // Update chart and data for selected degree
+            } else {
+                // If degree no longer exists, clear selection and chart
+                degreeSelect.value = '';
+                updateBarChart();
+            }
+        } else {
+            updateBarChart(); // No selection, clear chart
+        }
+
     } catch (error) {
-      console.error('Error:', error);
-      // Error handling...
+        console.error('Data loading error:', error);
+    }
+}
+
+
+
+  function updateFacultySelect() {
+    const facultySelect = document.getElementById('faculty-select');
+    facultySelect.innerHTML = '<option value="">-- Selecciona una facultat --</option>';
+
+    if (facultiesData && facultiesData.length > 0) {
+        facultiesData.forEach(faculty => {
+            const option = document.createElement('option');
+            option.value = faculty.faculty;
+            option.textContent = faculty.faculty;
+            facultySelect.appendChild(option);
+        });
     }
   }
 
   // Function to initialize the interactive bar chart
   function initInteractiveBarChart() {
-    // Populate the faculty selector
-    const facultySelect = document.getElementById('faculty-select');
-
-    facultiesData.forEach(faculty => {
-      const option = document.createElement('option');
-      option.value = faculty.faculty;
-      option.textContent = faculty.faculty;
-      facultySelect.appendChild(option);
-    });
-
-    // Create the initially empty chart
     const ctx = document.getElementById('interactive-bar-chart').getContext('2d');
     window.interactiveBarChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: Object.keys(sdgDefinitions),
-        datasets: [{
-          label: "Percentatge d'ODS",
-          data: Array(Object.keys(sdgDefinitions).length).fill(0),
-          backgroundColor: Object.keys(sdgDefinitions).map(sdg => sdgColors[sdg]),
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 20,
-            title: {
-              display: true,
-              text: 'Percentatge (%)'
-            }
-          },
-          x: {
-            title: {
-              display: true,
-              text: 'Objetius de Desenvolupament Sostenible (ODS)'
-            }
-          }
+        type: 'bar',
+        data: {
+            labels: Object.keys(sdgDefinitions),
+            datasets: [{
+                label: "Percentatge d'ODS",
+                data: Array(Object.keys(sdgDefinitions).length).fill(0),
+                backgroundColor: Object.keys(sdgDefinitions).map(sdg => sdgColors[sdg]),
+                borderWidth: 1
+            }]
         },
-        plugins: {
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                const code = context.label;
-                const name = sdgDefinitions[code] || '';
-
-                // Get the data of the selected degree
-                const facultySelect = document.getElementById('faculty-select');
-                const degreeSelect = document.getElementById('degree-select');
-                const selectedFaculty = facultySelect.value;
-                const selectedDegree = degreeSelect.value;
-
-                if (!selectedFaculty || !selectedDegree) return `${code}: ${name} - ${context.parsed.y}%`;
-
-                const faculty = facultiesData.find(f => f.faculty === selectedFaculty);
-                if (!faculty || !faculty.degrees) return `${code}: ${name} - ${context.parsed.y}%`;
-
-                const degreeData = faculty.degrees.find(d => d.degree === selectedDegree);
-                if (!degreeData || !degreeData.sdgs) return `${code}: ${name} - ${context.parsed.y}%`;
-
-                const absoluteValue = degreeData.sdgs[code] || 0;
-                const percentage = context.parsed.y;
-
-                return `${code}: ${name} - ${percentage}% (Identificat en ${absoluteValue} assignatures)`;
-              }
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 20,
+                    title: {
+                        display: true,
+                        text: 'Percentatge (%)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Objetius de Desenvolupament Sostenible (ODS)'
+                    }
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const code = context.label;
+                            const name = sdgDefinitions[code] || '';
+                            return `${code}: ${name} - ${context.parsed.y}%`;
+                        }
+                    }
+                },
+                legend: {
+                    display: false
+                }
             }
-          },
-          legend: {
-            display: false
-          }
         }
-      }
     });
   }
 
@@ -571,18 +668,18 @@
     degreeSelect.disabled = !selectedFaculty;
 
     if (selectedFaculty) {
-      const faculty = facultiesData.find(f => f.faculty === selectedFaculty);
-      if (faculty && faculty.degrees) {
-        faculty.degrees.forEach(degree => {
-          const option = document.createElement('option');
-          option.value = degree.degree;
-          option.textContent = degree.degree;
-          degreeSelect.appendChild(option);
-        });
-      }
+        const faculty = facultiesData.find(f => f.faculty === selectedFaculty);
+        if (faculty && faculty.degrees) {
+            faculty.degrees.forEach(degree => {
+                const option = document.createElement('option');
+                option.value = degree.degree;
+                option.textContent = degree.degree;
+                degreeSelect.appendChild(option);
+            });
+        }
     }
 
-    // Clear the chart if no degree is selected
+    // Update the chart
     updateBarChart();
   }
 
@@ -595,11 +692,13 @@
     const infoContainer = document.getElementById('degree-info-container');
 
     if (!selectedFaculty || !selectedDegree) {
-      // If no faculty or degree is selected, clear the chart and hide info
-      infoContainer.style.display = 'none';
-      window.interactiveBarChart.data.datasets[0].data = Array(Object.keys(sdgDefinitions).length).fill(0);
-      window.interactiveBarChart.update();
-      return;
+        // If no faculty or degree is selected, clear the chart and hide info
+        infoContainer.style.display = 'none';
+        if (window.interactiveBarChart) {
+            window.interactiveBarChart.data.datasets[0].data = Array(Object.keys(sdgDefinitions).length).fill(0);
+            window.interactiveBarChart.update();
+        }
+        return;
     }
 
     // Find the data of the selected degree
@@ -622,21 +721,24 @@
     const data = labels.map(sdg => degreeData.percentages[sdg] || 0);
 
     // Update the chart
-    window.interactiveBarChart.data.datasets[0].data = data;
-    window.interactiveBarChart.data.datasets[0].label = `Percentatge d'ODS - ${selectedDegree}`;
-    window.interactiveBarChart.update();
+    if (window.interactiveBarChart) {
+        window.interactiveBarChart.data.datasets[0].data = data;
+        window.interactiveBarChart.data.datasets[0].label = `Percentatge d'ODS - ${selectedDegree}`;
+        window.interactiveBarChart.update();
+    }
   }
 
-  // Load data and create charts
   document.addEventListener('DOMContentLoaded', function() {
     // Create SDG legends
     createSDGLegend('sdg-legend-top');
 
-    // Load faculty data
+    // Initialize the chart
+    initInteractiveBarChart();
+
+    // Load initial data
     loadFacultiesData();
   });
 </script>
-
 
 </body>
 </html>
