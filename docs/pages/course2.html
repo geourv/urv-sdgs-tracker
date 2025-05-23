@@ -225,25 +225,25 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   .w3-main {
     margin-left: 0;
   }
-
-  .w3-quarter,
-  .w3-col.m3,
+  
+  .w3-quarter, 
+  .w3-col.m3, 
   .w3-col.m9,
   .w3-col.m6 {
     width: 100%;
     padding: 0 !important;
   }
-
+  
   .copyright {
     font-size: 12px;
     line-height: 1.5;
   }
-
+  
   .copyright span {
     display: inline-block;
     margin: 0 3px;
   }
-
+  
   .w3-sidebar {
     width: 100%;
   }
@@ -288,6 +288,20 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 .filter-tab.active:hover {
   background-color: hsl(117, 74%, 34%);
+}
+
+/* Additional styles for content sections */
+.content-section {
+  display: none;
+  padding: 15px;
+  background: #fff;
+  border-radius: 5px;
+  margin-top: 15px;
+  border: 1px solid #eee;
+}
+
+.content-section.active {
+  display: block;
 }
 
 /* Responsive adjustments */
@@ -387,7 +401,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <div class="w3-container">
     <h1>Assignatures de la Universitat Rovira i Virgili</h1>
-    <p>Aquesta pàgina mostra informació sobre l'assignatura concreta que vosté seleccioni
+    <p>Aquesta pàgina mostra informació sobre l'assignatura concreta que vosté seleccioni 
       i mostra la seva alineació amb els Objectius de Desenvolupament Sostenible.</p>
   </div>
 
@@ -399,7 +413,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <div class="interactive-chart-container">
           <h2>ODS per assignatures</h2>
           <p>Selecciona una Facultat/Escola, un ensenyament i una assignatura per veure la presència dels ODS:</p>
-
+  
           <div class="selector-container">
             <div class="selector-box">
               <label for="faculty-select">Facultat:</label>
@@ -420,32 +434,21 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
               </select>
             </div>
           </div>
-
-          <!-- Filter tabs -->
-          <div class="filter-container">
-            <div class="filter-title">Selecciona el tipus de dades:</div>
-            <div class="filter-tabs">
-              <div class="filter-tab active" onclick="changeFilter('complete')">Guia docent completa</div>
-              <div class="filter-tab" onclick="changeFilter('descriptive')">Títol, descripció i continguts</div>
-              <div class="filter-tab" onclick="changeFilter('competencial')">Competències i resultats d'aprenentatge</div>
-              <div class="filter-tab" onclick="changeFilter('bibliographical')">Bibliografia</div>
-            </div>
-          </div>
         </div>
       </div>
-
+  
       <!-- Right column (75%) -->
       <div class="w3-col m9 w3-padding-small">
-
+        
         <div id="degree-info-container" class="degree-info" style="display: none;">
         <h3 id="degree-title"></h3>
           <p><strong>Facultat:</strong> <span id="degree-faculty"></span></p>
           <p><strong>Any:</strong> <span id="degree-year"></span></p>
           <p><strong>Total d'assignatures:</strong> <span id="total-courses"></span></p>
         </div>
-
+        
         <div id="course-details-container" class="course-details" style="display: none;">
-        <h3 id="course-title"></h3>
+          <h3 id="course-title"></h3>
           <div class="w3-row">
             <div class="w3-col m6">
               <p><strong>Codi:</strong> <span id="course-code"></span></p>
@@ -459,15 +462,65 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
             </div>
           </div>
           <p><strong>Guia docent:</strong> <a id="course-url" href="#" target="_blank">Veure guia docent</a></p>
-
-          <div class="w3-margin-top">
-            <strong>ODS identificats:</strong>
-            <div id="course-sdgs" class="sdg-list"></div>
+          
+          <!-- Filter tabs -->
+          <div class="filter-container">
+            <div class="filter-title">Filtres per contingut analitzat:</div>
+            <div class="filter-tabs">
+              <div class="filter-tab active" data-filter="complete" onclick="changeFilter('complete')">Guia docent completa</div>
+              <div class="filter-tab" data-filter="descriptive" onclick="changeFilter('descriptive')">Títol, descripció i continguts</div>
+              <div class="filter-tab" data-filter="competencial" onclick="changeFilter('competencial')">Competències i resultats d'aprenentatge</div>
+              <div class="filter-tab" data-filter="bibliographical" onclick="changeFilter('bibliographical')">Bibliografia</div>
+            </div>
           </div>
-
-          <div class="w3-margin-top">
-            <strong>Paraules clau (en anglès):</strong>
-            <div id="course-features" class="feature-list"></div>
+          
+          <!-- Content sections -->
+          <div id="complete-content" class="content-section active">
+            <div class="w3-margin-top">
+              <strong>ODS identificats:</strong>
+              <div id="course-sdgs" class="sdg-list"></div>
+            </div>
+            
+            <div class="w3-margin-top">
+              <strong>Paraules clau (en anglès):</strong>
+              <div id="course-features" class="feature-list"></div>
+            </div>
+          </div>
+          
+          <div id="descriptive-content" class="content-section">
+            <div class="w3-margin-top">
+              <strong>Descripció:</strong>
+              <div id="course-description"></div>
+            </div>
+            
+            <div class="w3-margin-top">
+              <strong>Continguts:</strong>
+              <div id="course-contents"></div>
+            </div>
+          </div>
+          
+          <div id="competencial-content" class="content-section">
+            <div class="w3-margin-top">
+              <strong>Competències:</strong>
+              <div id="course-competences"></div>
+            </div>
+            
+            <div class="w3-margin-top">
+              <strong>Resultats d'aprenentatge:</strong>
+              <div id="course-learning-outcomes"></div>
+            </div>
+          </div>
+          
+          <div id="bibliographical-content" class="content-section">
+            <div class="w3-margin-top">
+              <strong>Bibliografia bàsica:</strong>
+              <div id="course-basic-bibliography"></div>
+            </div>
+            
+            <div class="w3-margin-top">
+              <strong>Bibliografia complementària:</strong>
+              <div id="course-complementary-bibliography"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -478,14 +531,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <footer class="w3-container w3-padding-16 w3-light-grey">
     <div class="footer-content">
       <div class="copyright w3-center">
-        © Universitat Rovira i Virgili
-        <span>·</span>
-        <a href="/ca/universitat/comunicacio/web/legal/">Avís legal</a>
-        <span>·</span>
-        <a href="/ca/universitat/comunicacio/web/legal/galetes/">Política de galetes</a>
-        <span>·</span>
-        <a href="/ca/universitat/comunicacio/web/accessibilitat/">Accessibilitat</a>
-        <span>·</span>
+        © Universitat Rovira i Virgili 
+        <span>·</span> 
+        <a href="/ca/universitat/comunicacio/web/legal/">Avís legal</a> 
+        <span>·</span> 
+        <a href="/ca/universitat/comunicacio/web/legal/galetes/">Política de galetes</a> 
+        <span>·</span> 
+        <a href="/ca/universitat/comunicacio/web/accessibilitat/">Accessibilitat</a> 
+        <span>·</span> 
         <a href="/ca/universitat/comunicacio/web/suport/">Sobre aquest web</a>
       </div>
     </div>
@@ -501,7 +554,7 @@ var mySidebar = document.getElementById("mySidebar");
 // Get the DIV with overlay effect
 var overlayBg = document.getElementById("myOverlay");
 
-// Toggle between showing and hiding the sidebar, and add overlay effect
+// Toggle sidebar
 function w3_open() {
   if (mySidebar.style.display === 'block') {
     mySidebar.style.display = 'none';
@@ -512,139 +565,104 @@ function w3_open() {
   }
 }
 
-// Close the sidebar with the close button
+// Close sidebar
 function w3_close() {
   mySidebar.style.display = "none";
   overlayBg.style.display = "none";
 }
 
-// SDG definitions
+// SDG definitions and colors
 const sdgDefinitions = {
-  "ODS-01": "Fi de la pobresa",
-  "ODS-02": "Fam zero",
-  "ODS-03": "Salut i benestar",
-  "ODS-04": "Educació de qualitat",
-  "ODS-05": "Igualtat de gènere",
-  "ODS-06": "Aigua neta i sanejament",
-  "ODS-07": "Energia neta i assequible",
-  "ODS-08": "Treball digne i creixement econòmic",
-  "ODS-09": "Indústria, innovació i infraestructura",
-  "ODS-10": "Reducció de les desigualtats",
-  "ODS-11": "Ciutats i comunitats sostenibles",
-  "ODS-12": "Producció i consum responsables",
-  "ODS-13": "Acció climàtica",
-  "ODS-14": "Vida submarina",
-  "ODS-15": "Vida d'ecosistemes terrestres",
-  "ODS-16": "Pau, justícia i institucions sòlides",
+  "ODS-01": "Fi de la pobresa", "ODS-02": "Fam zero",
+  "ODS-03": "Salut i benestar", "ODS-04": "Educació de qualitat",
+  "ODS-05": "Igualtat de gènere", "ODS-06": "Aigua neta i sanejament",
+  "ODS-07": "Energia neta i assequible", "ODS-08": "Treball digne i creixement econòmic",
+  "ODS-09": "Indústria, innovació i infraestructura", "ODS-10": "Reducció de les desigualtats",
+  "ODS-11": "Ciutats i comunitats sostenibles", "ODS-12": "Producció i consum responsables",
+  "ODS-13": "Acció climàtica", "ODS-14": "Vida submarina",
+  "ODS-15": "Vida d'ecosistemes terrestres", "ODS-16": "Pau, justícia i institucions sòlides",
   "ODS-17": "Aliança per assolir els objectius"
 };
 
-// SDG colors
 const sdgColors = {
-  "ODS-01": "#e5243b",
-  "ODS-02": "#dda63a",
-  "ODS-03": "#4c9f38",
-  "ODS-04": "#c5192d",
-  "ODS-05": "#ff3a21",
-  "ODS-06": "#26bde2",
-  "ODS-07": "#fcc30b",
-  "ODS-08": "#a21942",
-  "ODS-09": "#fd6925",
-  "ODS-10": "#dd1367",
-  "ODS-11": "#fd9d24",
-  "ODS-12": "#bf8b2e",
-  "ODS-13": "#3f7e44",
-  "ODS-14": "#0a97d9",
-  "ODS-15": "#56c02b",
-  "ODS-16": "#00689d",
-  "ODS-17": "#19486a"
+  "ODS-01": "#e5243b", "ODS-02": "#dda63a", "ODS-03": "#4c9f38",
+  "ODS-04": "#c5192d", "ODS-05": "#ff3a21", "ODS-06": "#26bde2",
+  "ODS-07": "#fcc30b", "ODS-08": "#a21942", "ODS-09": "#fd6925",
+  "ODS-10": "#dd1367", "ODS-11": "#fd9d24", "ODS-12": "#bf8b2e",
+  "ODS-13": "#3f7e44", "ODS-14": "#0a97d9", "ODS-15": "#56c02b",
+  "ODS-16": "#00689d", "ODS-17": "#19486a"
 };
 
-// Course order
-const courseYearOrder = {
-  "Primer curs": 1,
-  "Segon curs": 2,
-  "Tercer curs": 3,
-  "Quart curs": 4,
-  "Cinque curs": 5,
-  "Sise curs": 6,
-  "Optatives": 7
-};
-
-// Global variable to store data
+// Global variables
 let facultiesData = [];
+let currentCourseData = null;
 let currentFilter = 'complete';
 
-// Function to transform SDG nomenclature to ODS
+// Helper functions
 function transformSDGToODS(sdgArray) {
-  if (!sdgArray || !sdgArray[0]) return [];
-  return sdgArray[0].map(sdg => sdg.replace('SDG-', 'ODS-'));
+  // Aseguramos que sdgArray existe, es un array y tiene al menos un elemento
+  if (!sdgArray || !Array.isArray(sdgArray)) return [];
+  
+  // Tomamos el primer elemento del array principal (que debería ser el array de SDGs)
+  const mainSDGArray = sdgArray[0];
+  
+  // Verificamos que el primer elemento existe y es un array con contenido
+  if (!mainSDGArray || !Array.isArray(mainSDGArray)) return [];
+  
+  // Convertimos y filtramos solo los SDGs válidos
+  return mainSDGArray
+    .filter(sdg => sdg && typeof sdg === 'string' && sdg.startsWith('SDG-'))
+    .map(sdg => sdg.replace('SDG-', 'ODS-'));
 }
 
-// Function to capitalize only the first letter of the sentence
+
+
 function capitalizeFirstLetter(str) {
   if (!str) return str;
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-// Function to load data from JSON
-async function loadData(filter) {
+// Data loading
+async function loadData() {
   try {
-    let jsonFile;
-    switch(filter) {
-      case 'complete':
-        jsonFile = '../data/urv-sdgs.json';
-        break;
-      case 'descriptive':
-        jsonFile = '../data/urv-sdgs_descriptive.json';
-        break;
-      case 'competencial':
-        jsonFile = '../data/urv-sdgs_competencial.json';
-        break;
-      case 'bibliographical':
-        jsonFile = '../data/urv-sdgs_bibliographical.json';
-        break;
-      default:
-        jsonFile = '../data/urv-sdgs.json';
-    }
-
-    const response = await fetch(jsonFile);
-    if (!response.ok) {
-      throw new Error('Error al cargar los datos');
-    }
+    const response = await fetch('../data/urv-sdgs.json');
+    if (!response.ok) throw new Error('Error al cargar los datos');
     facultiesData = await response.json();
     initSelectors();
   } catch (error) {
     console.error('Error:', error);
-    // Show error message to user
-    const container = document.querySelector('.interactive-chart-container');
-    container.innerHTML = `
+    document.querySelector('.interactive-chart-container').innerHTML = `
       <div class="w3-panel w3-red w3-round">
         <h3>Error</h3>
         <p>No se han podido cargar los datos. Por favor, inténtelo más tarde.</p>
-        <p>Detalle: ${error.message}</p>
       </div>
     `;
   }
 }
 
-// Function to change filter
-function changeFilter(filter) {
-  currentFilter = filter;
-  const tabs = document.querySelectorAll('.filter-tab');
-  tabs.forEach(tab => tab.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-  loadData(filter);
+async function loadFilterData(filterType) {
+  try {
+    const jsonFiles = {
+      'complete': 'urv-sdgs.json',
+      'descriptive': 'urv-sdgs_descriptive.json',
+      'competencial': 'urv-sdgs_competencial.json',
+      'bibliographical': 'urv-sdgs_bibliographical.json'
+    };
+    
+    const response = await fetch(`../data/${jsonFiles[filterType] || 'urv-sdgs.json'}`);
+    if (!response.ok) throw new Error(`Error al cargar los datos de ${filterType}`);
+    return await response.json();
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
+  }
 }
 
-// Function to initialize selectors
+// UI functions
 function initSelectors() {
-  // Fill faculty selector
   const facultySelect = document.getElementById('faculty-select');
-
-  // Sort faculties alphabetically
   facultiesData.sort((a, b) => a.faculty_school_name.localeCompare(b.faculty_school_name));
-
+  
   facultiesData.forEach(faculty => {
     const option = document.createElement('option');
     option.value = faculty.faculty_school_name;
@@ -653,41 +671,29 @@ function initSelectors() {
   });
 }
 
-// Function to update degree selector based on selected faculty
 function updateDegreeSelect() {
   const facultySelect = document.getElementById('faculty-select');
   const degreeSelect = document.getElementById('degree-select');
-  const courseSelect = document.getElementById('course-select');
   const selectedFaculty = facultySelect.value;
 
   degreeSelect.innerHTML = '<option value="">-- Selecciona un ensenyament --</option>';
   degreeSelect.disabled = !selectedFaculty;
-  courseSelect.innerHTML = '<option value="">-- Selecciona una assignatura --</option>';
-  courseSelect.disabled = true;
 
   if (selectedFaculty) {
-    const selectedFacultyData = facultiesData.find(faculty => faculty.faculty_school_name === selectedFaculty);
-
-    // Sort degrees alphabetically
-    selectedFacultyData.degrees.sort((a, b) => a.degree_name.localeCompare(b.degree_name));
-
-    selectedFacultyData.degrees.forEach(degree => {
+    const facultyData = facultiesData.find(f => f.faculty_school_name === selectedFaculty);
+    facultyData.degrees.sort((a, b) => a.degree_name.localeCompare(b.degree_name));
+    
+    facultyData.degrees.forEach(degree => {
       const option = document.createElement('option');
       option.value = degree.degree_name;
       option.textContent = degree.degree_name;
       degreeSelect.appendChild(option);
     });
-
-  // Clear information
+  }
   resetUI();
 }
 
-  // Clear information
-  resetUI();
-}
-
-// Function to update course selector based on selected degree
-function updateCourseSelect() {
+async function updateCourseSelect() {
   const facultySelect = document.getElementById('faculty-select');
   const degreeSelect = document.getElementById('degree-select');
   const courseSelect = document.getElementById('course-select');
@@ -700,143 +706,206 @@ function updateCourseSelect() {
   if (selectedFaculty && selectedDegree) {
     const facultyData = facultiesData.find(f => f.faculty_school_name === selectedFaculty);
     const degreeData = facultyData.degrees.find(d => d.degree_name === selectedDegree);
-
-    if (degreeData && degreeData.courses) {
-      // Show degree information
-      document.getElementById('degree-info-container').style.display = 'block';
-      document.getElementById('degree-title').textContent = selectedDegree;
-      document.getElementById('degree-faculty').textContent = selectedFaculty;
-      document.getElementById('degree-year').textContent = degreeData.degree_year || 'No disponible';
-      document.getElementById('total-courses').textContent = degreeData.courses.length;
-
-      // Add new fields
-      const degreeInfoContainer = document.getElementById('degree-info-container');
-
-      // Check if elements already exist to avoid duplication
-      if (!document.getElementById('sdg-courses')) {
-        const sdgCoursesP = document.createElement('p');
-        sdgCoursesP.innerHTML = '<strong>Assignatures amb ODS:</strong> <span id="sdg-courses"></span>';
-        degreeInfoContainer.appendChild(sdgCoursesP);
-      }
-
-      if (!document.getElementById('sdg-ratio')) {
-        const sdgRatioP = document.createElement('p');
-        sdgRatioP.innerHTML = '<strong>Ratio d\'assignatures amb ODS per ensenyament:</strong> <span id="sdg-ratio"></span>';
-        degreeInfoContainer.appendChild(sdgRatioP);
-      }
-
-      // Update values
-      document.getElementById('sdg-courses').textContent = degreeData.sdg_courses_degree || 'No disponible';
-      document.getElementById('sdg-ratio').textContent = degreeData.sdg_ratio_degree ?
-        `${degreeData.sdg_ratio_degree}%` : 'No disponible';
-
-      // Fill course selector with capitalized names
-      degreeData.courses.forEach(course => {
-        const option = document.createElement('option');
-        option.value = course.course_name;
-        option.textContent = capitalizeFirstLetter(course.course_name);
-        courseSelect.appendChild(option);
-      });
+    
+    if (degreeData?.courses) {
+      showDegreeInfo(degreeData, selectedDegree, selectedFaculty);
+      populateCourseSelect(degreeData.courses, courseSelect);
+      await updateDegreeStatistics(); // Load initial statistics
     }
   }
 }
 
-// Function to show course details from selector
-function showCourseDetails() {
+function showDegreeInfo(degreeData, degreeName, facultyName) {
+  const container = document.getElementById('degree-info-container');
+  container.style.display = 'block';
+  
+  document.getElementById('degree-title').textContent = degreeName;
+  document.getElementById('degree-faculty').textContent = facultyName;
+  document.getElementById('degree-year').textContent = degreeData.degree_year || 'No disponible';
+  document.getElementById('total-courses').textContent = degreeData.courses.length;
+
+  // Ensure stats elements exist
+  if (!document.getElementById('sdg-courses')) {
+    const container = document.getElementById('degree-info-container');
+    container.innerHTML += `
+      <p><strong>Assignatures amb ODS:</strong> <span id="sdg-courses"></span></p>
+      <p><strong>Ratio d'assignatures amb ODS:</strong> <span id="sdg-ratio"></span></p>
+    `;
+  }
+}
+
+function populateCourseSelect(courses, selectElement) {
+  courses.forEach(course => {
+    const option = document.createElement('option');
+    option.value = course.course_name;
+    option.textContent = capitalizeFirstLetter(course.course_name);
+    selectElement.appendChild(option);
+  });
+}
+
+// Filter functions
+async function changeFilter(filterType) {
+  currentFilter = filterType;
+  updateActiveTab(filterType);
+  
+  const degreeSelect = document.getElementById('degree-select');
+  if (degreeSelect.value) {
+    await updateDegreeStatistics();
+    await showCourseDetails();
+  }
+}
+
+function updateActiveTab(filterType) {
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.classList.toggle('active', tab.dataset.filter === filterType);
+  });
+}
+
+async function updateDegreeStatistics() {
+  const facultySelect = document.getElementById('faculty-select');
+  const degreeSelect = document.getElementById('degree-select');
+  const selectedFaculty = facultySelect.value;
+  const selectedDegree = degreeSelect.value;
+
+  if (!selectedFaculty || !selectedDegree) return;
+
+  const filterData = await loadFilterData(currentFilter);
+  if (!filterData) return;
+
+  const facultyData = filterData.find(f => f.faculty_school_name === selectedFaculty);
+  const degreeData = facultyData?.degrees.find(d => d.degree_name === selectedDegree);
+
+  if (degreeData) {
+    document.getElementById('sdg-courses').textContent = degreeData.sdg_courses_degree || 'No disponible';
+    document.getElementById('sdg-ratio').textContent = degreeData.sdg_ratio_degree ? 
+      `${degreeData.sdg_ratio_degree}%` : 'No disponible';
+  }
+}
+
+// Course details functions
+async function showCourseDetails() {
   const facultySelect = document.getElementById('faculty-select');
   const degreeSelect = document.getElementById('degree-select');
   const courseSelect = document.getElementById('course-select');
-  const selectedFaculty = facultySelect.value;
-  const selectedDegree = degreeSelect.value;
   const selectedCourse = courseSelect.value;
-  const courseDetailsContainer = document.getElementById('course-details-container');
 
   if (!selectedCourse) {
-    courseDetailsContainer.style.display = 'none';
+    document.getElementById('course-details-container').style.display = 'none';
     return;
   }
 
-  const facultyData = facultiesData.find(f => f.faculty_school_name === selectedFaculty);
-  const degreeData = facultyData.degrees.find(d => d.degree_name === selectedDegree);
-  const courseData = degreeData.courses.find(c => c.course_name === selectedCourse);
+  const filterData = await loadFilterData(currentFilter);
+  if (!filterData) return;
+
+  const facultyData = filterData.find(f => f.faculty_school_name === facultySelect.value);
+  const degreeData = facultyData.degrees.find(d => d.degree_name === degreeSelect.value);
+  const courseData = degreeData.courses.find(c => 
+    c.course_name.trim().toLowerCase() === selectedCourse.trim().toLowerCase()
+  );
 
   if (courseData) {
-    // Show basic information with capitalized names
-    document.getElementById('course-title').textContent = capitalizeFirstLetter(courseData.course_name);
-    document.getElementById('course-code').textContent = courseData.course_code || 'No disponible';
-    document.getElementById('course-credits').textContent = courseData.credits || 'No disponible';
-    document.getElementById('course-delivery-mode').textContent = courseData.course_delivery_mode || 'No disponible';
-    document.getElementById('course-period').textContent = courseData.course_period || 'No disponible';
-    document.getElementById('course-type').textContent = courseData.course_type || 'No disponible';
-    document.getElementById('course-year').textContent = courseData.year || 'No disponible';
+    currentCourseData = courseData;
+    displayCourseInfo(courseData);
+    updateCourseContent();
+    document.getElementById('course-details-container').style.display = 'block';
+  }
+}
 
-    // Set link to teaching guide if it exists
-    const courseUrlElement = document.getElementById('course-url');
-    if (courseData.course_url) {
-      courseUrlElement.href = courseData.course_url;
-      courseUrlElement.style.display = 'inline';
-    } else {
-      courseUrlElement.style.display = 'none';
-    }
+function displayCourseInfo(courseData) {
+  document.getElementById('course-title').textContent = capitalizeFirstLetter(courseData.course_name);
+  document.getElementById('course-code').textContent = courseData.course_code || 'No disponible';
+  document.getElementById('course-credits').textContent = courseData.credits || 'No disponible';
+  document.getElementById('course-delivery-mode').textContent = courseData.course_delivery_mode || 'No disponible';
+  document.getElementById('course-period').textContent = courseData.course_period || 'No disponible';
+  document.getElementById('course-type').textContent = courseData.course_type || 'No disponible';
+  document.getElementById('course-year').textContent = courseData.year || 'No disponible';
 
-    // Show SDGs
-    const sdgsContainer = document.getElementById('course-sdgs');
-    sdgsContainer.innerHTML = '';
+  const courseUrlElement = document.getElementById('course-url');
+  if (courseData.course_url) {
+    courseUrlElement.href = courseData.course_url;
+    courseUrlElement.style.display = 'inline';
+  } else {
+    courseUrlElement.style.display = 'none';
+  }
+}
 
-    if (courseData.sdg && courseData.sdg.length > 0 && courseData.sdg[0].length > 0) {
-      const odsList = transformSDGToODS(courseData.sdg);
-      odsList.forEach(ods => {
-        const sdgItem = document.createElement('div');
-        sdgItem.className = 'sdg-legend-item';
-        sdgItem.innerHTML = `
-          <div class="sdg-color" style="background-color: ${sdgColors[ods]};"></div>
-          <span class="sdg-code">${ods}</span>
-          <span class="sdg-name">${sdgDefinitions[ods]}</span>
+
+
+function updateCourseContent() {
+  if (!currentCourseData) return;
+
+  // Update SDGs - Corregido para manejar correctamente 1 SDG
+  const sdgsContainer = document.getElementById('course-sdgs');
+  sdgsContainer.innerHTML = '';
+  
+  const odsList = transformSDGToODS(currentCourseData.sdg);
+  
+  if (odsList && odsList.length > 0) {
+    odsList.forEach(ods => {
+      // Verificamos que el ODS existe en nuestras definiciones
+      if (sdgDefinitions[ods] && sdgColors[ods]) {
+        sdgsContainer.innerHTML += `
+          <div class="sdg-legend-item">
+            <div class="sdg-color" style="background-color: ${sdgColors[ods]};"></div>
+            <span class="sdg-code">${ods}</span>
+            <span class="sdg-name">${sdgDefinitions[ods]}</span>
+          </div>
         `;
-        sdgsContainer.appendChild(sdgItem);
-      });
-    } else {
+      }
+    });
+    
+    // Si después de filtrar no hay ODS válidos
+    if (sdgsContainer.innerHTML === '') {
       sdgsContainer.textContent = 'No té ODS associats';
     }
+  } else {
+    sdgsContainer.textContent = 'No té ODS associats';
+  }
 
-    // Show features
-    const featuresContainer = document.getElementById('course-features');
-    featuresContainer.innerHTML = '';
-
-    if (courseData.features && courseData.features.length > 0 && courseData.features[0].length > 0) {
-      courseData.features[0].forEach(feature => {
-        const featureItem = document.createElement('div');
-        featureItem.className = 'feature-item';
-        featureItem.textContent = feature;
-        featuresContainer.appendChild(featureItem);
+  // Update Features - Corregido para manejar mejor los casos
+  const featuresContainer = document.getElementById('course-features');
+  featuresContainer.innerHTML = '';
+  
+  if (currentCourseData.features && 
+      Array.isArray(currentCourseData.features) && 
+      currentCourseData.features[0] && 
+      Array.isArray(currentCourseData.features[0]) && 
+      currentCourseData.features[0].length > 0) {
+    
+    const validFeatures = currentCourseData.features[0].filter(
+      feature => feature && typeof feature === 'string' && feature.trim() !== ''
+    );
+    
+    if (validFeatures.length > 0) {
+      validFeatures.forEach(feature => {
+        featuresContainer.innerHTML += `<div class="feature-item">${feature}</div>`;
       });
     } else {
       featuresContainer.textContent = 'No té característiques específiques';
     }
-
-    // Show details container
-    courseDetailsContainer.style.display = 'block';
+  } else {
+    featuresContainer.textContent = 'No té característiques específiques';
   }
 }
 
-// Function to reset UI
+
 function resetUI() {
   document.getElementById('degree-info-container').style.display = 'none';
   document.getElementById('course-details-container').style.display = 'none';
-
-  // Clear new fields if they exist
-  if (document.getElementById('sdg-courses')) {
-    document.getElementById('sdg-courses').textContent = '';
-  }
-  if (document.getElementById('sdg-ratio')) {
-    document.getElementById('sdg-ratio').textContent = '';
-  }
 }
 
-// Load data and create selectors
+// Initialize
 document.addEventListener('DOMContentLoaded', function() {
-  // Load JSON data
-  loadData(currentFilter);
+  loadData();
+  
+  // Event listeners
+  document.getElementById('faculty-select').addEventListener('change', updateDegreeSelect);
+  document.getElementById('degree-select').addEventListener('change', updateCourseSelect);
+  document.getElementById('course-select').addEventListener('change', showCourseDetails);
+  
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => changeFilter(tab.dataset.filter));
+  });
 });
 </script>
 
