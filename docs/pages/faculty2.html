@@ -256,6 +256,7 @@ html, body, h1, h2, h3, h4, h5 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-items: center;
 }
 
 .filter-tab {
@@ -278,6 +279,14 @@ html, body, h1, h2, h3, h4, h5 {
 
 .filter-tab.active:hover {
   background-color: hsl(117, 74%, 34%);
+}
+
+/* Symbol styles */
+.filter-symbol {
+  font-size: 2.5em;
+  color: #555;
+  margin: 0 0px;
+  vertical-align: middle;
 }
 
 /* Responsive adjustments */
@@ -376,10 +385,13 @@ html, body, h1, h2, h3, h4, h5 {
       <div class="filter-container">
         <div class="filter-title">Filtres per contingut analitzat:</div>
         <div class="filter-tabs">
-          <div class="filter-tab active" data-filter="complete">Guia docent completa</div>
           <div class="filter-tab" data-filter="descriptive">Títol, descripció i continguts</div>
+          <span class="filter-symbol">+</span>
           <div class="filter-tab" data-filter="competencial">Competències i resultats d'aprenentatge</div>
+          <span class="filter-symbol">+</span>
           <div class="filter-tab" data-filter="bibliographical">Bibliografia</div>
+          <span class="filter-symbol">=</span>
+          <div class="filter-tab active" data-filter="complete">Guia docent completa</div>
         </div>
       </div>
       
@@ -603,7 +615,12 @@ function createChart(data, containerId) {
             size: 10
           },
           anchor: 'end',
-          align: 'start'
+          align: 'start',
+          backgroundColor: 'rgba(255, 255, 255, 0.7)',
+          borderColor: 'rgba(255, 255, 255, 0.9)',
+          borderWidth: 1.5,
+          borderRadius: 2,
+          padding: 1
         }
       }
     },

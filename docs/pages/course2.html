@@ -266,6 +266,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-items: center;
 }
 
 .filter-tab {
@@ -288,6 +289,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 .filter-tab.active:hover {
   background-color: hsl(117, 74%, 34%);
+}
+
+/* Symbol styles */
+.filter-symbol {
+  font-size: 2.5em;
+  color: #555;
+  margin: 0 0px;
+  vertical-align: middle;
 }
 
 /* Additional styles for content sections */
@@ -463,14 +472,17 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           </div>
           <p><strong>Guia docent:</strong> <a id="course-url" href="#" target="_blank">Veure guia docent</a></p>
           
-          <!-- Filter tabs -->
+          <!-- Filter Tabs -->
           <div class="filter-container">
             <div class="filter-title">Filtres per contingut analitzat:</div>
             <div class="filter-tabs">
-              <div class="filter-tab active" data-filter="complete" onclick="changeFilter('complete')">Guia docent completa</div>
-              <div class="filter-tab" data-filter="descriptive" onclick="changeFilter('descriptive')">Títol, descripció i continguts</div>
-              <div class="filter-tab" data-filter="competencial" onclick="changeFilter('competencial')">Competències i resultats d'aprenentatge</div>
-              <div class="filter-tab" data-filter="bibliographical" onclick="changeFilter('bibliographical')">Bibliografia</div>
+              <div class="filter-tab" data-filter="descriptive">Títol, descripció i continguts</div>
+              <span class="filter-symbol">+</span>
+              <div class="filter-tab" data-filter="competencial">Competències i resultats d'aprenentatge</div>
+              <span class="filter-symbol">+</span>
+              <div class="filter-tab" data-filter="bibliographical">Bibliografia</div>
+              <span class="filter-symbol">=</span>
+              <div class="filter-tab active" data-filter="complete">Guia docent completa</div>
             </div>
           </div>
           

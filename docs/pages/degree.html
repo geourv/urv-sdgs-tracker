@@ -236,6 +236,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-items: center;
 }
 
 .filter-tab {
@@ -258,6 +259,14 @@
 
 .filter-tab.active:hover {
   background-color: hsl(117, 74%, 34%);
+}
+
+/* Symbol styles */
+.filter-symbol {
+  font-size: 2.5em;
+  color: #555;
+  margin: 0 0px;
+  vertical-align: middle;
 }
 
 /* Responsive adjustments */
@@ -371,13 +380,17 @@
         <div class="filter-container">
           <div class="filter-title">Filtres per contingut analitzat:</div>
           <div class="filter-tabs">
-            <div class="filter-tab active" data-filter="complete" onclick="changeFilter(this, 'degree_sdg_data.json')">Guia docent completa</div>
             <div class="filter-tab" data-filter="descriptive" onclick="changeFilter(this, 'degree_sdg_data_descriptive.json')">Títol, descripció i continguts</div>
+            <span class="filter-symbol">+</span>
             <div class="filter-tab" data-filter="competencial" onclick="changeFilter(this, 'degree_sdg_data_competencial.json')">Competències i resultats d'aprenentatge</div>
+            <span class="filter-symbol">+</span>
             <div class="filter-tab" data-filter="bibliographical" onclick="changeFilter(this, 'degree_sdg_data_bibliographical.json')">Bibliografia</div>
+            <span class="filter-symbol">=</span>
+            <div class="filter-tab active" data-filter="complete" onclick="changeFilter(this, 'degree_sdg_data.json')">Guia docent completa</div>
           </div>
         </div>
 
+        <!-- Degree info -->
         <div id="degree-info-container" class="degree-info" style="display: none; margin-top: 20px;">
           <h3 id="degree-title"></h3>
           <p><strong>Facultat:</strong> <span id="degree-faculty"></span></p>
